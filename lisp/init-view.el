@@ -1,6 +1,6 @@
 (setq-default 
    inhibit-startup-screen t;隐藏启动显示画面
-   display-line-numbers 'absolute
+   display-line-numbers 'relative
 )
 
 
@@ -12,12 +12,11 @@
 (setq-default window-system-default-frame-alist                 
               '( 
                     (ns ;; if frame created on mac
-                    (alpha . 85)
                     (height . 0.98)
                     (width . 0.98)
                     (left . 80)
                     (top . 0.2)
-                    (alpha . 85)
+                    (alpha . 90)
                     (foreground-color . "#eeeeec")
                     (background-color . "#202020") ;;
                     (background-mode . dark)
