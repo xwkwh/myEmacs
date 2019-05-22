@@ -1,8 +1,21 @@
 (setq-default 
    inhibit-startup-screen t;隐藏启动显示画面
    display-line-numbers 'relative
-)
+   )
 
+(require 'use-package)
+(use-package dashboard
+  :ensure
+  :init
+  (dashboard-setup-startup-hook)
+  :config
+  (setq dashboard-banner-logo-title "Happy Emacs")
+  ;; (setq dashboard-startup-banner "~/.emacs.d/go.png")
+  (setq dashboard-items
+        '((recents . 9)
+          (bookmarks . 5)
+          (projects . 3)
+          (agenda . 5))))
 
 
 ;; 隐藏状态栏
@@ -16,7 +29,7 @@
                     (width . 0.98)
                     (left . 80)
                     (top . 0.2)
-                    (alpha . 90)
+                    (alpha . 95)
                     (foreground-color . "#eeeeec")
                     (background-color . "#202020") ;;
                     (background-mode . dark)
