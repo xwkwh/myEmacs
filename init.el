@@ -31,6 +31,11 @@
 (require 'conf-evil)        ;; vim操作
 (require 'init-org)         ;;org mode
 (setq org-startup-indented t)
+(setq make-backup-files nil)
+(scroll-bar-mode -1)
+
+
+
 
 (custom-set-variables
  ;; custom-set-variables was added by Custom.
@@ -42,7 +47,7 @@
     ("bffa9739ce0752a37d9b1eee78fc00ba159748f50dc328af4be661484848e476" default)))
  '(package-selected-packages
    (quote
-    (json-mode lua-mode dashboard atom-one-dark-theme spacemacs-theme magit-org-todos 0blayout evil counsel yasnippet company-lsp company-posframe company exec-path-from-shell golint go-eldoc))))
+    (evil-search-highlight-persist evil-leader json-mode lua-mode dashboard atom-one-dark-theme spacemacs-theme magit-org-todos 0blayout evil counsel yasnippet company-lsp company-posframe company exec-path-from-shell golint go-eldoc))))
 (custom-set-faces
  ;; custom-set-faces was added by Custom.
  ;; If you edit it by hand, you could mess it up, so be careful.
