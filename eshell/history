@@ -9,3 +9,24 @@ ll
 l
 ls
 cd lisp
+ll
+ls
+go removeDuplicates.go 
+go run removeDuplicates.go 
+..
+exit
+exit
+go
+go run removeDuplicates.go 
+exit
+go run removeDuplicates.go 
+go run removeDuplicates.go 
+go run letterCasePermutation.go 
+pwd
+ls
+gcc hello.c 
+ls
+gcc
+gcc hello.c 
+ls
+./a.out 

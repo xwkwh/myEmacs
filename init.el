@@ -29,7 +29,8 @@
 (require 'conf-counsel)     ;; 搜索buffer文件
 (require 'conf-awesome-tab) ;; tab页
 (require 'conf-evil)        ;; vim操作
-
+(require 'init-org)         ;;org mode
+(setq org-startup-indented t)
 
 (custom-set-variables
  ;; custom-set-variables was added by Custom.
