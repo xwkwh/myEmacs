@@ -29,11 +29,14 @@
 (require 'conf-counsel)     ;; 搜索buffer文件
 (require 'conf-awesome-tab) ;; tab页
 (require 'conf-evil)        ;; vim操作
-(require 'init-org)         ;;org mode
+(require 'init-org)         ;; org mode
+(require 'conf-dired)       ;; 文件目录操作
+
+;; 不知道放在哪里的配置
 (setq org-startup-indented t)
 (setq make-backup-files nil)
+(setq debug-on-error t)
 (scroll-bar-mode -1)
-
 
 
 
@@ -47,7 +50,7 @@
     ("bffa9739ce0752a37d9b1eee78fc00ba159748f50dc328af4be661484848e476" default)))
  '(package-selected-packages
    (quote
-    (evil-search-highlight-persist evil-leader json-mode lua-mode dashboard atom-one-dark-theme spacemacs-theme magit-org-todos 0blayout evil counsel yasnippet company-lsp company-posframe company exec-path-from-shell golint go-eldoc))))
+    (dired-narrow ivy-dired-history projectile evil-search-highlight-persist evil-leader json-mode lua-mode dashboard atom-one-dark-theme spacemacs-theme magit-org-todos 0blayout evil counsel yasnippet company-lsp company-posframe company exec-path-from-shell golint go-eldoc))))
 (custom-set-faces
  ;; custom-set-faces was added by Custom.
  ;; If you edit it by hand, you could mess it up, so be careful.
