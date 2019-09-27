@@ -23,7 +23,8 @@
                                        "GOBIN"))
 (exec-path-from-shell-initialize))
 
-
+(require 'init-elpa)
+(require 'init-utils)
 (require 'init-go)
 (require 'init-view)
 (require 'conf-counsel)     ;; 搜索buffer文件
@@ -31,6 +32,9 @@
 (require 'conf-evil)        ;; vim操作
 (require 'init-org)         ;; org mode
 (require 'conf-dired)       ;; 文件目录操作
+(require 'conf-projectile)
+; (require 'init-themes)
+
 
 ;; 不知道放在哪里的配置
 (setq org-startup-indented t)
@@ -57,3 +61,5 @@
  ;; Your init file should contain only one such instance.
  ;; If there is more than one, they won't work right.
  )
+
+
