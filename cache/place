@@ -1,19 +1,26 @@
 ;;; -*- coding: utf-8 -*-
-(("/Users/xwk/.emacs.d/lisp/conf-evil.el" . 709)
- ("/Users/xwk/.emacs.d/lisp/awesome-tab.el" . 70535)
- ("/Users/xwk/.emacs.d/lisp/conf-custom.el" . 1209)
- ("/Users/xwk/.emacs.d/lisp/"
-  (dired-filename . "/Users/xwk/.emacs.d/lisp/conf-evil.el"))
- ("/Users/xwk/.emacs.d/init.el" . 312)
- ("/Users/xwk/Work.localized/LuojilabLogs/emacs.org" . 105)
- ("/Users/xwk/emacs.d/conf/conf-ivy.el" . 3457)
- ("/Users/xwk/.emacs.d/lisp/init-view.el" . 1609)
- ("/Users/xwk/emacs.d/"
-  (dired-filename . "/Users/xwk/emacs.d/elpa"))
+(("/Users/xwk/Work.localized/myEmacs/lisp/conf-keybind.el" . 659)
+ ("/Users/xwk/Work.localized/myEmacs/lisp/"
+  (dired-filename . "/Users/xwk/Work.localized/myEmacs/lisp/conf-keybind.el"))
+ ("/Users/xwk/Work.localized/myEmacs/"
+  (dired-filename . "/Users/xwk/Work.localized/myEmacs/lisp"))
+ ("/Users/xwk/Work.localized/vmacs/"
+  (dired-filename . "/Users/xwk/Work.localized/vmacs/.git"))
+ ("/Users/"
+  (dired-filename . "/Users/xwk"))
  ("/Users/xwk/"
-  (dired-filename . "/Users/xwk/.emacs.d"))
- ("/Users/xwk/.emacs.d/cache/recentf" . 550)
+  (dired-filename . "/Users/xwk/Work.localized"))
+ ("/Users/xwk/Work.localized/"
+  (dired-filename . "/Users/xwk/Work.localized/spacemacs"))
+ ("/Users/xwk/Work.localized/spacemacs/"
+  (dired-filename . "/Users/xwk/Work.localized/spacemacs/.git"))
  ("/Users/xwk/.emacs.d/"
-  (dired-filename . "/Users/xwk/.emacs.d/.git"))
- ("/Users/xwk/.local/share/karabiner/pid/preferences_window.pid" . 6)
- ("/Users/xwk/Downloads/moment.js" . 134))
+  (dired-filename . "/Users/xwk/.emacs.d/init.el"))
+ ("/Users/xwk/.emacs.d/elpa-26.2/magit-20190927.124/magit-autoloads.el" . 83238)
+ ("/Users/xwk/.emacs.d/elpa-26.2/git-commit-20190717.29/git-commit-autoloads.el" . 1430)
+ ("/Users/xwk/.emacs.d/elpa-26.2/transient-20190905.1138/transient-autoloads.el" . 537)
+ ("/Users/xwk/.emacs.d/elpa-26.2/dash-20190920.1035/dash-autoloads.el" . 557)
+ ("/Users/xwk/.emacs.d/elpa-26.2/with-editor-20190715.2007/with-editor-autoloads.el" . 3403)
+ ("/Users/xwk/.emacs.d/elpa-26.2/async-20190503.656/async-autoloads.el" . 5296)
+ ("/Users/xwk/.emacs.d/lisp/conf-custom.el" . 393)
+ ("/Users/xwk/.emacs.d/init.el" . 1144))

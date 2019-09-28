@@ -33,7 +33,8 @@
 (require 'init-org)         ;; org mode
 (require 'conf-dired)       ;; 文件目录操作
 (require 'conf-projectile)
-					; (require 'init-themes)
+(require 'conf-keybind)     ;; 键位绑定
+;; (require 'init-themes)
 
 
 ;; 不知道放在哪里的配置
