@@ -1,5 +1,15 @@
 ;;; -*- coding: utf-8 -*-
-(("/Users/xwk/"
+(("/Users/xwk/.emacs.d/lisp/conf-evil.el" . 578)
+ ("/Users/xwk/.emacs.d/lisp/"
+  (dired-filename . "/Users/xwk/.emacs.d/lisp/conf-evil.el"))
+ ("/Users/xwk/.emacs.d/lisp/conf-custom.el" . 1209)
+ ("/Users/xwk/.emacs.d/init.el" . 312)
+ ("/Users/xwk/Work.localized/LuojilabLogs/emacs.org" . 105)
+ ("/Users/xwk/emacs.d/conf/conf-ivy.el" . 3457)
+ ("/Users/xwk/.emacs.d/lisp/init-view.el" . 1609)
+ ("/Users/xwk/emacs.d/"
+  (dired-filename . "/Users/xwk/emacs.d/elpa"))
+ ("/Users/xwk/"
   (dired-filename . "/Users/xwk/.emacs.d"))
  ("/Users/xwk/.emacs.d/cache/recentf" . 550)
  ("/Users/xwk/.emacs.d/"
