@@ -50,4 +50,5 @@ site-lisp/package/
 /magithub
 .cache/
 /forge-database.sqlite
+/recentf
 /transient

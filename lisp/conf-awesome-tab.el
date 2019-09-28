@@ -22,6 +22,7 @@
                           "\*helm"
                           "\*Flymake log\*"
                           "\*Help\*"
+			  "\*go-bingo"
                           "\*gopls::stderr\*"
                           "\*gopls\*"
                           "\*sdcv\*"
