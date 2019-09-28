@@ -1,8 +1,9 @@
 ;;; -*- coding: utf-8 -*-
-(("/Users/xwk/.emacs.d/lisp/conf-evil.el" . 578)
+(("/Users/xwk/.emacs.d/lisp/conf-evil.el" . 709)
+ ("/Users/xwk/.emacs.d/lisp/awesome-tab.el" . 70535)
+ ("/Users/xwk/.emacs.d/lisp/conf-custom.el" . 1209)
  ("/Users/xwk/.emacs.d/lisp/"
   (dired-filename . "/Users/xwk/.emacs.d/lisp/conf-evil.el"))
- ("/Users/xwk/.emacs.d/lisp/conf-custom.el" . 1209)
  ("/Users/xwk/.emacs.d/init.el" . 312)
  ("/Users/xwk/Work.localized/LuojilabLogs/emacs.org" . 105)
  ("/Users/xwk/emacs.d/conf/conf-ivy.el" . 3457)
