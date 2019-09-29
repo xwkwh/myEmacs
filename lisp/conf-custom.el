@@ -11,7 +11,7 @@
  '(electric-pair-mode t)
  '(package-selected-packages
    (quote
-    (magit ibuffer-projectile projectile fullframe seq dired-narrow ivy-dired-history evil-search-highlight-persist evil-leader json-mode lua-mode dashboard atom-one-dark-theme spacemacs-theme magit-org-todos 0blayout evil counsel yasnippet company-lsp company-posframe company exec-path-from-shell golint go-eldoc)))
+    (ibuffer-projectile projectile fullframe seq evil-magit powerline-evil magit dired-narrow ivy-dired-history evil-search-highlight-persist evil-leader json-mode lua-mode dashboard atom-one-dark-theme spacemacs-theme magit-org-todos 0blayout evil counsel yasnippet company-lsp company-posframe company exec-path-from-shell golint go-eldoc)))
  '(save-place-file "~/.emacs.d/cache/place")
  '(savehist-file "~/.emacs.d/cache/history")
  '(tramp-persistency-file-name "~/.emacs.d/cache/tramp"))
