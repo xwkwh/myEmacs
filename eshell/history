@@ -30,3 +30,6 @@ gcc
 gcc hello.c 
 ls
 ./a.out 
+pwd
+git log
+q

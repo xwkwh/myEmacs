@@ -25,14 +25,16 @@
 
 (require 'init-elpa)        ;; 暂时没用 purcell上烤的
 (require 'init-utils)       ;; too
-(require 'init-go)          ;; golang相关
 (require 'init-view)        ;; 显示相关
+(require 'init-go)          ;; golang相关
 (require 'conf-counsel)     ;; 搜索buffer文件
 (require 'conf-awesome-tab) ;; tab页
 (require 'conf-evil)        ;; vim操作
 (require 'init-org)         ;; org mode
 (require 'conf-dired)       ;; 文件目录操作
 (require 'conf-projectile)
+(require 'evil-magit)
+(require 'conf-iedit)
 (require 'conf-keybind)     ;; 键位绑定
 ;; (require 'init-themes)
 
@@ -43,6 +45,29 @@
 ;; (setq debug-on-error t)
 (scroll-bar-mode -1)
 (save-place-mode t)
+(global-auto-revert-mode t)
+(setq recentf-max-saved-items 300)
+
+;; ;; vendor 不需修改
+;; (defun find-file-vendor-read-only ()
+;;   (when (string-match "/vendor/" (or (buffer-file-name)  dired-directory)) )
+;;   (read-only-mode 1))
+
+;; (add-hook 'find-file-hooks 'find-file-vendor-read-only) ;;
+
+
+
+(setq-default
+ magit-status-margin '(t age magit-log-margin-width t 10) ;magit-status 中的Recent commits列表有没有办法增加作者列
+ ;; slow ,if t
+ magit-diff-refine-hunk nil  ;'all, This is super useful when only a single identifier/word is changed all over the place
+ magit-diff-show-diffstat nil
+ magit-diff-highlight-hunk-body nil
+ magit-log-arguments  '("-n256" "--graph" "--decorate" "--follow") ;加了--follow ,rename的log也能看到
+ magit-display-buffer-function 'magit-display-buffer-fullframe-status-v1
+ magit-diff-section-arguments '("--ignore-space-at-eol" "--ignore-blank-lines" "--no-ext-diff") ;do not set this ;use  toggle-diff-whitespace-eol to toggle
+ magit-section-highlight-hook nil       ;不必hightlight,光标移动的时候，默认会显示当前section区域
+ magit-section-unhighlight-hook nil)                         ;
 
 (setq 
  backup-by-copying t    ;自动备份

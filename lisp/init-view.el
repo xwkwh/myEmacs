@@ -57,6 +57,33 @@
 
 (create-frame-font-big-mac)
 
+;; 窗口显示文件路径
+(setq frame-title-format '("%e " evil-mode-line-format "「"mode-line-buffer-identification "」("  (:propertize ("" mode-name) ) ") "   mode-line-misc-info   "%f  GNU/Emacs"))
+
+
+;; 修改evil line
+(setq evil-mode-line-format '(before . mode-line-front-space))
+(setq evil-normal-state-tag   (propertize "[Normal]")
+      evil-emacs-state-tag    (propertize "[Emacs]")
+      evil-insert-state-tag   (propertize "[Insert]")
+      evil-motion-state-tag   (propertize "[Motion]")
+      evil-visual-state-tag   (propertize "[Visual]")
+      evil-operator-state-tag (propertize "[Operator]"))
+
+(defun samray/set-mode-line-width ()
+  "Set mode line width, it is so cool."
+  (set-face-attribute 'mode-line nil
+		      :box '(:line-height 0)))
+(defvar after-load-theme-hook nil
+  "Hook run after a color theme is loaded using `load-theme'.")
+(defadvice load-theme (after run-after-load-theme-hook activate)
+  "Run `after-load-theme-hook'."
+  (run-hooks 'after-load-theme-hook))
+(add-hook 'after-load-theme-hook #'samray/set-mode-line-width)
+
+
+
+
 
 
 (provide 'init-view)
