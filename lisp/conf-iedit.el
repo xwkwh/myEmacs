@@ -1,3 +1,4 @@
+(require 'iedit)
 (setq-default iedit-toggle-key-default nil)
 (global-set-key (kbd "C-;") 'evil-iedit-state-iedit-mode)
 (evil-define-state iedit

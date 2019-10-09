@@ -30,6 +30,8 @@ Replaces default behaviour of comment-dwim, when it inserts comment at the end o
     (comment-dwim arg)))
 
 (global-set-key "\M-;" 'vmacs-comment-dwim-line)
+(global-set-key (kbd "C-.") 'vterm-toggle-cd)
+(define-key evil-normal-state-map (kbd "C-.") nil)
 
 
 
@@ -39,6 +41,15 @@ Replaces default behaviour of comment-dwim, when it inserts comment at the end o
 (define-key transient-edit-map   "q" 'transient-quit-one)
 (define-key transient-sticky-map "q" 'transient-quit-seq)
 
+
+(require 'vterm)
+(require 'vterm-toggle)
+
+(define-key vterm-mode-map (kbd "s-t")   #'vterm)
+(defun vmacs-auto-exit(buf)
+  (when buf (kill-buffer buf)))
+
+(add-hook 'vterm-exit-functions #'vmacs-auto-exit)
 
 
 

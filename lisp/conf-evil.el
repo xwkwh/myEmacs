@@ -1,5 +1,27 @@
 
 (require 'evil)
+
+(evil-set-initial-state 'vterm-mode 'insert)
+(evil-set-initial-state 'bm-show-mode 'insert)
+(evil-set-initial-state 'diff-mode 'normal)
+(evil-set-initial-state 'git-rebase-mode 'normal)
+(evil-set-initial-state 'package-menu-mode 'normal)
+(evil-set-initial-state 'vc-annotate-mode 'normal)
+(evil-set-initial-state 'Custom-mode 'normal)
+(evil-set-initial-state 'erc-mode 'normal)
+(evil-set-initial-state 'ibuffer-mode 'normal)
+(evil-set-initial-state 'vc-dir-mode 'normal)
+(evil-set-initial-state 'vc-git-log-view-mode 'normal)
+(evil-set-initial-state 'vc-svn-log-view-mode 'normal)
+;; (evil-set-initial-state 'erlang-shell-mode 'normal)
+(evil-set-initial-state 'org-agenda-mode 'normal)
+(evil-set-initial-state 'minibuffer-inactive-mode 'normal)
+(evil-set-initial-state 'ivy-occur-mode 'normal)
+(evil-set-initial-state 'ivy-occur-grep-mode 'normal)
+(evil-set-initial-state 'grep-mode 'normal)
+(evil-set-initial-state 'Info-mode 'motion)
+
+
 (evil-mode)
 (setq-default
  evil-default-cursor '(t "white")
@@ -172,7 +194,6 @@
 
 (my-line-theme)
 
-
 ;;; 自定义 mode line
 (setq-default mode-line-format '(
 				 "%e"
@@ -184,12 +205,12 @@
 				 ;; mode-line-modified -- show buffer change or not
 				 ;; mode-line-remote -- no need to indicate this specially
 				 ;; mode-line-frame-identification -- this is for text-mode emacs only
-				 "["
+				 ;; "["
 				 ;; mode-name
 				 ;; ":"
 				 ;; mode-line-buffer-identification
 				 "%f"
-				 "]"
+				 ;; "]"
 				 " "
 				 mode-line-position
 				 (vc-mode vc-mode)
@@ -204,6 +225,9 @@
 
 
 
+
+(set-face-foreground 'mode-line "white")
+(set-face-background 'mode-line "red")
 
 
 

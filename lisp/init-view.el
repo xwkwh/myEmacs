@@ -1,3 +1,5 @@
+(load-theme 'spacemacs-dark t)
+
 (setq-default 
    inhibit-startup-screen t;隐藏启动显示画面
    display-line-numbers 'relative
@@ -84,7 +86,23 @@
 
 
 
+(defface font-lock-todo-face nil
+  "Font Lock mode face used to highlight TODO."
+  :group 'font-lock-faces)
+(defface font-lock-done-face nil
+  "Font Lock mode face used to highlight DONE."
 
+  :group 'font-lock-faces)
+(dolist (mode '(c-mode c++-mode java-mode lisp-mode emacs-lisp-mode erlang-mode
+                       go-mode
+                       actionscript-mode lisp-interaction-mode sh-mode sgml-mode))
+  (font-lock-add-keywords
+   mode
+   '(("\\<\\(FIXME\\|TODO\\|Todo\\|HACK\\|todo\\):" 1  'font-lock-todo-face prepend)
+     ("@\\<\\(FIXME\\|TODO\\|Todo\\|HACK\\|todo\\)" 1  'font-lock-todo-face prepend)
+     ("\\<\\(DONE\\|Done\\|done\\):" 1 'font-lock-done-face t)
+     ("\\<\\(and\\|or\\|not\\)\\>" . font-lock-keyword-face)
+     )))
 
 (provide 'init-view)
 

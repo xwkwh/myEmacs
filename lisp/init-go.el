@@ -1,3 +1,13 @@
+
+(when (memq window-system '(mac ns x))
+  (setq exec-path-from-shell-variables '("PATH"
+					 "GOPATH"
+					 "GOROOT"
+					 "GOBIN"))
+  (exec-path-from-shell-initialize))
+
+
+
 ;;;custom go ide
 ;;(require 'go-eldoc)
 (require 'yasnippet)
