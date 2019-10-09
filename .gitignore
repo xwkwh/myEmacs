@@ -48,7 +48,8 @@ site-lisp/package/
 /rake.cache
 /plantuml.jar
 /magithub
-/cache/
+/cache
+cache
 /forge-database.sqlite
 /recentf
 /transient

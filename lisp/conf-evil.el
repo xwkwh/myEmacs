@@ -55,12 +55,12 @@
 ;;  行号magit
 ;; (setq display-line-numbers-current-absolute t)
 (defun vmacs-change-line-number-abs()
-  (if (member major-mode '( term-mode eshell-mode ansi-term-mode tsmterm-mode magit-status-mode ))
+  (if (member major-mode '( term-mode eshell-mode ansi-term-mode tsmterm-mode magit-status-mode vterm-mode))
       (setq display-line-numbers nil)
     (setq display-line-numbers 'absolute)))
 
 (defun vmacs-change-line-number-relative()
-  (if (member major-mode '( term-mode eshell-mode ansi-term-mode tsmterm-mode magit-status-mode))
+  (if (member major-mode '( term-mode eshell-mode ansi-term-mode tsmterm-mode magit-status-mode vterm-mode))
       (setq display-line-numbers nil)
     (setq display-line-numbers 'visual)))
 

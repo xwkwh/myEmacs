@@ -1,17 +1,18 @@
 
 ;; ----- smex-history -----
 (
+ describe-mode
  eval-buffer
  vterm
  cd
  5x5
  arp
  dbx
- dig
 )
 
 ;; ----- smex-data -----
 (
  (vterm . 1)
  (eval-buffer . 4)
+ (describe-mode . 1)
 )
