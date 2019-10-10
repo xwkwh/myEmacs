@@ -1,5 +1,3 @@
-(load-theme 'spacemacs-dark t)
-
 (setq-default 
    inhibit-startup-screen t;隐藏启动显示画面
    display-line-numbers 'relative
@@ -107,6 +105,37 @@
      ("\\<\\(DONE\\|Done\\|done\\):" 1 'font-lock-done-face t)
      ("\\<\\(and\\|or\\|not\\)\\>" . font-lock-keyword-face)
      )))
+
+;; (load-theme 'spacemacs-dark t)
+;; (load-theme 'material t)
+;; (load-theme 'monokai t)
+;; (load-theme 'monokai-pro t)
+;; (load-theme 'zenburn t)
+;; (load-theme 'hc-zenburn t)
+
+(require 'doom-themes)
+
+;; Global settings (defaults)
+(setq doom-themes-enable-bold t    ; if nil, bold is universally disabled
+      doom-themes-enable-italic t) ; if nil, italics is universally disabled
+
+;; Load the theme (doom-one, doom-molokai, etc); keep in mind that each theme
+;; may have their own settings.
+(load-theme 'doom-one t)
+
+;; Enable flashing mode-line on errors
+(doom-themes-visual-bell-config)
+
+;; Enable custom neotree theme (all-the-icons must be installed!)
+(doom-themes-neotree-config)
+;; or for treemacs users
+(setq doom-themes-treemacs-theme "doom-colors") ; use the colorful treemacs theme
+(doom-themes-treemacs-config)
+
+;; Corrects (and improves) org-mode's native fontification.
+(doom-themes-org-config)
+
+
 
 (provide 'init-view)
 
