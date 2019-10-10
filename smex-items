@@ -1,13 +1,13 @@
 
 ;; ----- smex-history -----
 (
+ package-install
+ lsp
  describe-mode
  eval-buffer
  vterm
  cd
  5x5
- arp
- dbx
 )
 
 ;; ----- smex-data -----
@@ -15,4 +15,6 @@
  (vterm . 1)
  (eval-buffer . 4)
  (describe-mode . 1)
+ (lsp . 1)
+ (package-install . 1)
 )

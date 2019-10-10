@@ -1,2 +1,29 @@
 ;;; -*- coding: utf-8 -*-
-(("/Users/xwk/.emacs.d/lisp/init-view.el" . 814))
+(("/Users/xwk/gopath/src/gitlab.luojilab.com/igetserver/ledgers/dao/notes_topic_dao/init_notes_topic.go" . 8426)
+ ("/Users/xwk/gopath/src/gitlab.luojilab.com/igetserver/ledgers/vendor/gitlab.luojilab.com/zeroteam/artemis/repo.go" . 14697)
+ ("/Users/xwk/gopath/src/gitlab.luojilab.com/igetserver/ledgers/api/comment_endpoint.go" . 13669)
+ ("/Users/xwk/gopath/src/gitlab.luojilab.com/igetserver/ledgers/api/topic_endpoint.go" . 14)
+ ("/Users/xwk/gopath/src/gitlab.luojilab.com/igetserver/ledgers/models/notes_info.go" . 1804)
+ ("/Users/xwk/gopath/src/gitlab.luojilab.com/igetserver/ledgers/service/topic_service/topic_service_cms.go" . 2558)
+ ("/Users/xwk/gopath/src/gitlab.luojilab.com/igetserver/ledgers/models/notes_topic_notes.go" . 214)
+ ("/Users/xwk/gopath/src/gitlab.luojilab.com/igetserver/ledgers/router/router.go" . 3338)
+ ("/Users/xwk/gopath/src/gitlab.luojilab.com/igetserver/ledgers/api/topic_cms_endpoint.go" . 3818)
+ ("/Users/xwk/gopath/src/gitlab.luojilab.com/"
+  (dired-filename . "/Users/xwk/gopath/src/gitlab.luojilab.com/igetserver"))
+ ("/Users/xwk/gopath/src/gitlab.luojilab.com/igetserver/"
+  (dired-filename . "/Users/xwk/gopath/src/gitlab.luojilab.com/igetserver/ledgers"))
+ ("/Users/xwk/gopath/src/gitlab.luojilab.com/igetserver/ledgers/"
+  (dired-filename . "/Users/xwk/gopath/src/gitlab.luojilab.com/igetserver/ledgers/config"))
+ ("/Users/xwk/gopath/src/gitlab.luojilab.com/igetserver/ledgers/dao/notes_topic_dao/notes_topic_base_dao_gen.go" . 12345)
+ ("/Users/xwk/gopath/src/gitlab.luojilab.com/igetserver/ledgers/api/notes_endpoint.go" . 16351)
+ ("/Users/xwk/gopath/src/gitlab.luojilab.com/igetserver/ledgers/service/topic_service/topic_service.go" . 3942)
+ ("/Users/xwk/.emacs.d/init.el" . 473)
+ ("/Users/xwk/.emacs.d/elpa/wakatime-mode-20180920.702/wakatime-mode-autoloads.el" . 1354)
+ ("/Users/xwk/.emacs.d/lisp/conf-evil.el" . 5643)
+ ("/Users/xwk/gopath/src/gitlab.luojilab.com/igetserver/ledgers/api/"
+  (dired-filename . "/Users/xwk/gopath/src/gitlab.luojilab.com/igetserver/ledgers/api/topic_cms_endpoint.go"))
+ ("/Users/xwk/gopath/src/gitlab.luojilab.com/igetserver/ledgers/vendor/gitlab.luojilab.com/igetserver/storage/storage.go" . 439)
+ ("/Users/xwk/gopath/src/gitlab.luojilab.com/igetserver/ledgers/defs/ledgers_defs.go" . 9928)
+ ("/Users/xwk/gopath/src/gitlab.luojilab.com/igetserver/ledgers/vendor/gitlab.luojilab.com/igetserver/base/basedefs/base_defs.go" . 617)
+ ("/Users/xwk/gopath/src/gitlab.luojilab.com/igetserver/apiV3/"
+  (dired-filename . "/Users/xwk/gopath/src/gitlab.luojilab.com/igetserver/apiV3/.git")))
