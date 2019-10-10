@@ -157,78 +157,87 @@
                           (lhs (list (let ((evil-face (powerline-evil-face)))
                                        (if evil-mode
                                            (powerline-raw (powerline-evil-tag) evil-face)))
-                                     (powerline-buffer-id `(mode-line-buffer-id ,mode-line) 'l)
-                                     (powerline-raw "[" mode-line 'l)
-                                     (powerline-major-mode mode-line)
-                                     (powerline-process mode-line)
-                                     (powerline-raw "]" mode-line)
-                                     (when (buffer-modified-p)
-                                       (powerline-raw "[+]" mode-line))
-                                     (when buffer-read-only
-                                       (powerline-raw "[RO]" mode-line))
-                                     (powerline-raw "[%z]" mode-line)
-                                     ;; (powerline-raw (concat "[" (mode-line-eol-desc) "]") mode-line)
-                                     (when (and (boundp 'which-func-mode) which-func-mode)
-                                       (powerline-raw which-func-format nil 'l))
-                                     (when (boundp 'erc-modified-channels-object)
-                                       (powerline-raw erc-modified-channels-object face1 'l))
-                                     (powerline-raw "[" mode-line 'l)
-                                     (powerline-minor-modes mode-line)
-                                     (powerline-raw "%n" mode-line)
-                                     (powerline-raw "]" mode-line)
-                                     (when (and vc-mode buffer-file-name)
-                                       (let ((backend (vc-backend buffer-file-name)))
-                                         (when backend
-                                           (concat (powerline-raw "[" mode-line 'l)
-                                                   (powerline-raw (format "%s / %s" backend (vc-working-revision buffer-file-name backend)))
-                                                   (powerline-raw "]" mode-line)))))))
-                          (rhs (list (powerline-raw '(10 "%i"))
-                                     (powerline-raw global-mode-string mode-line 'r)
-                                     (powerline-raw "%l," mode-line 'l)
-                                     (powerline-raw (format-mode-line '(10 "%c")))
-                                     (powerline-raw (replace-regexp-in-string  "%" "%%" (format-mode-line '(-3 "%p"))) mode-line 'r))))
+				     (powerline-raw "%f" mode-line 'l)
+                                     ;; (powerline-buffer-id `(mode-line-buffer-id ,mode-line) 'l)
+                                     ;; (powerline-raw "[" mode-line 'l)
+                                     ;; (powerline-major-mode mode-line)
+                                     ;; (powerline-process mode-line)
+                                     ;; (powerline-raw "]" mode-line)
+                                     ;; (when (buffer-modified-p)
+                                     ;;   (powerline-raw "[+]" mode-line))
+                                     ;; (when buffer-read-only
+                                     ;;   (powerline-raw "[RO]" mode-line))
+                                     ;; (powerline-raw "[%z]" mode-line)
+                                     ;; ;; (powerline-raw (concat "[" (mode-line-eol-desc) "]") mode-line)
+                                     ;; (when (and (boundp 'which-func-mode) which-func-mode)
+                                     ;;   (powerline-raw which-func-format nil 'l))
+                                     ;; (when (boundp 'erc-modified-channels-object)
+                                     ;;   (powerline-raw erc-modified-channels-object face1 'l))
+                                     ;; (powerline-raw "[" mode-line 'l)
+                                     ;; (powerline-minor-modes mode-line)
+                                     ;; (powerline-raw "%n" mode-line)
+                                     ;; (powerline-raw "]" mode-line)
+                                     ;; (when (and vc-mode buffer-file-name)
+                                     ;;   (let ((backend (vc-backend buffer-file-name)))
+                                     ;;     (when backend
+                                     ;;       (concat (powerline-raw "[" mode-line 'l)
+                                     ;;               (powerline-raw (format "%s / %s" backend (vc-working-revision buffer-file-name backend)))
+                                     ;;               (powerline-raw "]" mode-line)))))
+			       ))
+                          (rhs (list
+				     ;; (powerline-raw '(10 "%i"))
+                                     ;; (powerline-raw global-mode-string mode-line 'r)
+                                     ;; (powerline-raw "%l," mode-line 'l)
+                                     ;; (powerline-raw (format-mode-line '(10 "%c")))
+				     (powerline-raw (replace-regexp-in-string  "%" "%%" (format-mode-line '(-3 "%p"))) mode-line 'r)
+				     (powerline-raw vc-mode mode-line 'r)
+				)))
                      (concat (powerline-render lhs)
                              (powerline-fill mode-line (powerline-width rhs))
                              (powerline-render rhs)))))))
 
 
-(my-line-theme)
-
+(format-mode-line vc-mode)
+(concat "1" "2")
+(length "sfsf")
+;; (get-text-property 0 'face nil)
 ;;; 自定义 mode line
-(setq-default mode-line-format '(
-				 "%e"
-				 (:eval
-				  (window-numbering-get-number-string))
-				 ;; mode-line-front-space
-				 ;; mode-line-mule-info
-				 ;; mode-line-client
-				 ;; mode-line-modified -- show buffer change or not
-				 ;; mode-line-remote -- no need to indicate this specially
-				 ;; mode-line-frame-identification -- this is for text-mode emacs only
-				 ;; "["
-				 ;; mode-name
-				 ;; ":"
-				 ;; mode-line-buffer-identification
-				 "%f"
-				 ;; "]"
-				 " "
-				 mode-line-position
-				 (vc-mode vc-mode)
-				 " "
-				 ;; mode-line-modes -- move major-name above
-				 ;; "["
-				 ;; minor-mode-alist
-				 ;; "]"
-				 ;; mode-line-misc-info
-				 ;; mode-line-end-spaces
-				 ))
+;; (setq-default mode-line-format '(
+;; 				 "%e"
+;; 				 (:eval
+;; 				  (window-numbering-get-number-string))
+;; 				 ;; mode-line-front-space
+;; 				 ;; mode-line-mule-info
+;; 				 ;; mode-line-client
+;; 				 ;; mode-line-modified -- show buffer change or not
+;; 				 ;; mode-line-remote -- no need to indicate this specially
+;; 				 ;; mode-line-frame-identification -- this is for text-mode emacs only
+;; 				 ;; "["
+;; 				 ;; mode-name
+;; 				 ;; ":"
+;; 				 ;; mode-line-buffer-identification
+;; 				 "%f"
+;; 				 ;; "]"
+;; 				 " "
+;; 				 mode-line-position
+;; 				 (vc-mode vc-mode)
+;; 				 " "
+;; 				 ;; mode-line-modes -- move major-name above
+;; 				 ;; "["
+;; 				 ;; minor-mode-alist
+;; 				 ;; "]"
+;; 				 ;; mode-line-misc-info
+;; 				 ;; mode-line-end-spaces
+;; 				 ))
 
 
 
 
-(set-face-foreground 'mode-line "white")
-(set-face-background 'mode-line "red")
+;; (set-face-foreground 'mode-line "white")
+(set-face-background 'mode-line "black")
 
+
+(my-line-theme)
 
 
 

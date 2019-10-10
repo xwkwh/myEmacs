@@ -13,11 +13,13 @@
   :config
   (setq dashboard-banner-logo-title "Happy Emacs")
   ;; (setq dashboard-startup-banner "~/.emacs.d/go.png")
+  (setq dashboard-startup-banner nil)
   (setq dashboard-items
         '((recents . 9)
-          (bookmarks . 5)
           (projects . 3)
-          (agenda . 5))))
+          (agenda . 5)))
+  ;; (setq dashboard-items-default-length 10)
+)
 
 
 ;; 隐藏状态栏
@@ -25,24 +27,26 @@
 
 ;直接emacs命令打开的窗口相关设置,不要在这里设置字体，否则daemon 启动时字体有可能没创建好，会导致字体设置失败
 (setq-default window-system-default-frame-alist                 
-              '( 
-                    (ns ;; if frame created on mac
-                    (height . 0.98)
-                    (width . 0.98)
-                    (left . 80)
-                    (top . 0.2)
-                    (alpha . 95)
-                    (foreground-color . "#eeeeec")
-                    (background-color . "#202020") ;;
-                    (background-mode . dark)
-                    )))
+	      '( 
+		(ns ;; if frame created on mac
+		 (height . 0.98)
+		 ;; (width . 0.98)
+		 (width . 1.00)
+		 (left . 0)
+		 (top . 0)
+		 (alpha . 98)
+		 (foreground-color . "#eeeeec")
+		 (background-color . "#202020") ;;
+		 ;; (background-mode . dark)
+		 )
+		))
 
 ; 字体
 (create-fontset-from-fontset-spec
  (concat "-*-*-*-*-*--*-*-*-*-*-*-fontset-bigmac"
-         ",han:PingFang SC:size=20"
-         ",symbol:PingFang SC:size=20"
-         ",cjk-misc:PingFang SC:size=20"
+	 ",han:PingFang SC:size=20"
+	 ",symbol:PingFang SC:size=20"
+	 ",cjk-misc:PingFang SC:size=20"
          ",bopomofo:PingFang SC:size=20"
          ",kana:Hiragino Sans:size=20"
          ",hangul:Apple SD Gothic Neo:size=23"
