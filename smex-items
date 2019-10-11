@@ -1,13 +1,13 @@
 
 ;; ----- smex-history -----
 (
+ swiper
+ recover-file
+ ivy-posframe-mode
  package-install
- lsp
- describe-mode
- eval-buffer
- vterm
- cd
- 5x5
+ butterfly
+ ivy-pop-view
+ ivy-switch-view
 )
 
 ;; ----- smex-data -----
@@ -16,5 +16,12 @@
  (eval-buffer . 4)
  (describe-mode . 1)
  (lsp . 1)
- (package-install . 1)
+ (package-install . 3)
+ (vterm-toggle . 1)
+ (ivy-switch-view . 1)
+ (ivy-pop-view . 1)
+ (butterfly . 2)
+ (swiper . 3)
+ (ivy-posframe-mode . 2)
+ (recover-file . 2)
 )

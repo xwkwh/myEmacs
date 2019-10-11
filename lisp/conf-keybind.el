@@ -13,7 +13,8 @@
 
 ;; lsp查看方法被调用
 (evil-leader/set-key "u" 'lsp-find-references)
-
+(evil-leader/set-key "." 'vterm-toggle)
+(evil-leader/set-key "," 'hs-toggle-hiding) ;; 代码折叠
 
 ;;代码注释工作，如果有选中区域，则注释或者反注释这个区域
 ;;如果，没选中区域，则注释或者注释当前行，如果光标在行末，则在行末添加或删除注释
@@ -31,6 +32,7 @@ Replaces default behaviour of comment-dwim, when it inserts comment at the end o
 
 (global-set-key "\M-;" 'vmacs-comment-dwim-line)
 (global-set-key (kbd "C-.") 'vterm-toggle-cd)
+;; (global-set-key (kbd "C-C") 'vterm-toggle-cd)
 (define-key evil-normal-state-map (kbd "C-.") nil)
 
 
@@ -51,7 +53,7 @@ Replaces default behaviour of comment-dwim, when it inserts comment at the end o
 
 (add-hook 'vterm-exit-functions #'vmacs-auto-exit)
 
-
+;; (global-set-key (kbd "SPC-,") 'hs-toggle-hiding)
 
 
 (provide 'conf-keybind)

@@ -201,7 +201,7 @@
 (concat "1" "2")
 (length "sfsf")
 ;; (get-text-property 0 'face nil)
-;;; 自定义 mode line
+;; ;;; 自定义 mode line
 ;; (setq-default mode-line-format '(
 ;; 				 "%e"
 ;; 				 (:eval
@@ -246,4 +246,4 @@
 
 
 
-(provide 'conf-evil)
+provide 'conf-evil)
