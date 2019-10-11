@@ -1,9 +1,7 @@
 ;;; -*- coding: utf-8 -*-
-(("/Users/xwk/gopath/src/gitlab.luojilab.com/igetserver/"
-  (dired-filename . "/Users/xwk/gopath/src/gitlab.luojilab.com/igetserver/ledgers"))
- ("/Users/xwk/gopath/src/gitlab.luojilab.com/igetserver/ledgers/"
-  (dired-filename . "/Users/xwk/gopath/src/gitlab.luojilab.com/igetserver/ledgers/.git"))
- ("/Users/xwk/gopath/src/gitlab.luojilab.com/igetserver/ledgers/service/notes_service/business_source.go" . 8655)
- ("/Users/xwk/.emacs.d/elpa/counsel-20191008.1105/counsel.el" . 112601)
- ("/Users/xwk/.emacs.d/lisp/conf-counsel.el" . 3504)
- ("/Users/xwk/.emacs.d/lisp/conf-ivy.el" . 1671))
+(("/Users/xwk/gopath/src/gitlab.luojilab.com/igetserver/ledgers/main.go" . 495)
+ ("/Applications/Emacs.app/Contents/Resources/lisp/progmodes/hideshow.el.gz" . 38964)
+ ("/Users/xwk/.emacs.d/lisp/conf-keybind.el" . 2302)
+ ("/Applications/Emacs.app/Contents/Resources/lisp/subr.el.gz" . 60664)
+ ("/Users/xwk/.emacs.d/lisp/conf-emacs.el" . 855)
+ ("/Users/xwk/.emacs.d/lisp/conf-evil.el" . 2377))

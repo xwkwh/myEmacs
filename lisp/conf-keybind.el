@@ -14,7 +14,6 @@
 ;; lsp查看方法被调用
 (evil-leader/set-key "u" 'lsp-find-references)
 (evil-leader/set-key "." 'vterm-toggle)
-(evil-leader/set-key "," 'hs-toggle-hiding) ;; 代码折叠
 
 ;;代码注释工作，如果有选中区域，则注释或者反注释这个区域
 ;;如果，没选中区域，则注释或者注释当前行，如果光标在行末，则在行末添加或删除注释
@@ -55,5 +54,13 @@ Replaces default behaviour of comment-dwim, when it inserts comment at the end o
 
 ;; (global-set-key (kbd "SPC-,") 'hs-toggle-hiding)
 
+(defun my-comment-code ()
+  "Comment code"
+  (interactive)
+  (hs-minor-mode 1)
+  (hs-toggle-hiding)
+  )
+(evil-leader/set-key "," 'my-comment-code) ;; 代码折叠
+ 
 
 (provide 'conf-keybind)
