@@ -1,13 +1,13 @@
 
 ;; ----- smex-history -----
 (
- swiper
- recover-file
- ivy-posframe-mode
+ cnfonts-edit-profile
  package-install
- butterfly
- ivy-pop-view
- ivy-switch-view
+ kill-buffer
+ counsel-imenu
+ org-version
+ swiper
+ hs-minor-mode
 )
 
 ;; ----- smex-data -----
@@ -16,12 +16,20 @@
  (eval-buffer . 4)
  (describe-mode . 1)
  (lsp . 1)
- (package-install . 3)
+ (package-install . 5)
  (vterm-toggle . 1)
  (ivy-switch-view . 1)
  (ivy-pop-view . 1)
  (butterfly . 2)
- (swiper . 3)
+ (swiper . 5)
  (ivy-posframe-mode . 2)
  (recover-file . 2)
+ (hs-minor-mode . 1)
+ (hs-show-all . 1)
+ (hs-hide-all . 1)
+ (hs-toggle-hiding . 13)
+ (org-version . 1)
+ (counsel-imenu . 3)
+ (kill-buffer . 1)
+ (cnfonts-edit-profile . 1)
 )

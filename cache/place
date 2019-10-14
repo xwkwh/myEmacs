@@ -1,7 +1,4 @@
 ;;; -*- coding: utf-8 -*-
-(("/Users/xwk/gopath/src/gitlab.luojilab.com/igetserver/ledgers/main.go" . 495)
- ("/Applications/Emacs.app/Contents/Resources/lisp/progmodes/hideshow.el.gz" . 38964)
- ("/Users/xwk/.emacs.d/lisp/conf-keybind.el" . 2302)
- ("/Applications/Emacs.app/Contents/Resources/lisp/subr.el.gz" . 60664)
- ("/Users/xwk/.emacs.d/lisp/conf-emacs.el" . 855)
- ("/Users/xwk/.emacs.d/lisp/conf-evil.el" . 2377))
+(("/Users/xwk/Work.localized/LuojilabLogs/topic.org" . 132)
+ ("/Users/xwk/.emacs.d/lisp/init-view.el" . 2031)
+ ("/Users/xwk/.emacs.d/cnfonts/v4/profile1.el" . 5259))

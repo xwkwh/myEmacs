@@ -14,7 +14,7 @@
 ;; lsp查看方法被调用
 (evil-leader/set-key "u" 'lsp-find-references)
 (evil-leader/set-key "." 'vterm-toggle)
-
+(evil-leader/set-key "," 'counsel-imenu) ;; 查看当前文件的方法和变量列表
 ;;代码注释工作，如果有选中区域，则注释或者反注释这个区域
 ;;如果，没选中区域，则注释或者注释当前行，如果光标在行末，则在行末添加或删除注释
 ;;;###autoload
@@ -45,6 +45,20 @@ Replaces default behaviour of comment-dwim, when it inserts comment at the end o
 
 (require 'vterm)
 (require 'vterm-toggle)
+(defun vmacs-kill-buffer-hook()
+  (when (funcall vterm-toggle--vterm-buffer-p-function)
+    (let ((proc (get-buffer-process (current-buffer))))
+      (when (process-live-p proc)
+        (when (derived-mode-p 'term-mode)
+          (term-send-raw-string "\^C")
+          (term-send-raw-string "\^D")
+          (term-send-raw-string "\^\\"))
+        (when (derived-mode-p 'vterm-mode)
+          (vterm-send-ctrl-c))
+        (kill-process proc)))))
+
+(add-hook 'kill-buffer-hook 'vmacs-kill-buffer-hook)
+
 
 (define-key vterm-mode-map (kbd "s-t")   #'vterm)
 (defun vmacs-auto-exit(buf)
@@ -60,7 +74,7 @@ Replaces default behaviour of comment-dwim, when it inserts comment at the end o
   (hs-minor-mode 1)
   (hs-toggle-hiding)
   )
-(evil-leader/set-key "," 'my-comment-code) ;; 代码折叠
+(evil-leader/set-key "/" 'my-comment-code) ;; 代码折叠
  
 
 (provide 'conf-keybind)

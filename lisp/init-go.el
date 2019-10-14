@@ -1,4 +1,6 @@
 
+(setq exec-path-from-shell-check-startup-files nil) ;
+
 (when (memq window-system '(mac ns x))
   (setq exec-path-from-shell-variables '("PATH"
 					 "GOPATH"

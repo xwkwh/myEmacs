@@ -7,12 +7,16 @@
 (global-auto-revert-mode t)
 (setq recentf-max-saved-items 300)
 
-;; ;; vendor 不需修改
-;; (defun find-file-vendor-read-only ()
-;;   (when (string-match "/vendor/" (or (buffer-file-name)  dired-directory)) )
-;;   (read-only-mode 1))
+;; vendor 不需修改
+(defun find-file-vendor-read-only ()
+  (when (string-match "/vendor/" (buffer-file-name))
+    (read-only-mode 1)
+    )
+  )
 
-;; (add-hook 'find-file-hooks 'find-file-vendor-read-only) ;;
+(add-hook 'find-file-hooks 'find-file-vendor-read-only) ;;
+
+  
 
 (setq 
  backup-by-copying t    ;自动备份
