@@ -1,13 +1,13 @@
 
 ;; ----- smex-history -----
 (
- cnfonts-edit-profile
  package-install
- kill-buffer
- counsel-imenu
+ describe-font
+ list-packages
  org-version
- swiper
- hs-minor-mode
+ cnfonts-edit-profile
+ make-frame
+ cnfonts-edit-profile-without-ui
 )
 
 ;; ----- smex-data -----
@@ -16,7 +16,7 @@
  (eval-buffer . 4)
  (describe-mode . 1)
  (lsp . 1)
- (package-install . 5)
+ (package-install . 6)
  (vterm-toggle . 1)
  (ivy-switch-view . 1)
  (ivy-pop-view . 1)
@@ -28,8 +28,12 @@
  (hs-show-all . 1)
  (hs-hide-all . 1)
  (hs-toggle-hiding . 13)
- (org-version . 1)
+ (org-version . 2)
  (counsel-imenu . 3)
  (kill-buffer . 1)
- (cnfonts-edit-profile . 1)
+ (cnfonts-edit-profile . 7)
+ (cnfonts-edit-profile-without-ui . 1)
+ (make-frame . 1)
+ (describe-font . 10)
+ (list-packages . 1)
 )

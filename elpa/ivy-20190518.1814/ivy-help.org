@@ -9,7 +9,7 @@
 ** Help
 
 - ~C-h m~ :: Pop to this generic help buffer.
-
+             
 ** Basic Operations
 *** Key bindings for navigation
 

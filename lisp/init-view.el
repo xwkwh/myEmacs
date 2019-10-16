@@ -19,9 +19,9 @@
   ;; (setq dashboard-items-default-length 10)
 )
 
-;; (require 'cnfonts)
+(require 'cnfonts)
 ;; 让 cnfonts 随着 Emacs 自动生效。
-;; (cnfonts-enable)
+(cnfonts-enable) ;
 ;; 让 spacemacs mode-line 中的 Unicode 图标正确显示。
 ;; (cnfonts-set-spacemacs-fallback-fonts)
 ;; (setq cnfonts-use-face-font-rescale t)
@@ -71,6 +71,23 @@
 ;; ここここここここここここここここここここ|
 ;; ｺｺｺｺｺｺｺｺｺｺｺｺｺｺｺｺｺｺｺｺｺｺｺｺｺｺｺｺｺｺｺｺｺｺｺｺｺｺｺｺ|
 ;; 까까까까까까까까까까까까까까까까까까까까|
+
+;; (create-fontset-from-fontset-spec
+;;    "-apple-Menlo-medium-normal-normal-*-12-*-*-*-m-0-fontset-mymac,
+;;  ascii:-apple-Menlo-medium-normal-normal-*-12-*-*-*-m-0-iso10646-1,
+;; han:-*-PingFang SC-normal-normal-normal-*-14-*-*-*-p-0-iso10646-1,
+;; cjk-misc:-*-PingFang SC-normal-normal-normal-*-14-*-*-*-p-0-iso10646-1,
+;; kana:-*-PingFang SC-normal-normal-normal-*-30-*-*-*-p-0-iso10646-1,
+;; hangul:-*-Apple SD Gothic Neo-normal-normal-normal-*-16-*-*-*-p-0-iso10646-1")
+;; (add-to-list 'default-frame-alist '(font . "fontset-mymac"))
+;; (set-frame-font "fontset-mymac" )
+
+
+;; (setq buffer-file-coding-system 'utf-8)
+;; (prefer-coding-system 'utf-8)
+;; (add-to-list 'default-frame-alist '(font . "Noto Sans Mono-16"))
+;; (set-frame-font "Noto Sans Mono-16" 16)
+;; (set-default-font "Noto Sans Mono-16" 16） ;
 
 ;; (defun create-frame-font-mac()          ;emacs 若直接启动 启动时调用此函数似乎无效
 ;;   (set-face-attribute
@@ -130,15 +147,15 @@
 ;;;;;;;;;;;;;
 
 ;;;###autoload
-(defun create-frame-font-big-mac()          ;emacs 若直接启动 启动时调用此函数似乎无效
-  (interactive)
-  (set-face-attribute
-   'default nil
-   :font
-   "Menlo 16"
-   :fontset "fontset-bigmac"))
+;; (defun create-frame-font-big-mac()          ;emacs 若直接启动 启动时调用此函数似乎无效
+;;   (interactive)
+;;   (set-face-attribute
+;;    'default nil
+;;    :font
+;;    "Menlo 16"
+;;    :fontset "fontset-bigmac"))
 
-(create-frame-font-big-mac)
+;; (create-frame-font-big-mac)
 
 ;; 窗口显示文件路径
 (setq frame-title-format '("%e " evil-mode-line-format "「"mode-line-buffer-identification "」("  (:propertize ("" mode-name) ) ") "   mode-line-misc-info   "%f  GNU/Emacs"))

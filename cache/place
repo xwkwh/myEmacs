@@ -1,4 +1,3 @@
 ;;; -*- coding: utf-8 -*-
-(("/Users/xwk/Work.localized/LuojilabLogs/topic.org" . 132)
- ("/Users/xwk/.emacs.d/lisp/init-view.el" . 2031)
- ("/Users/xwk/.emacs.d/cnfonts/v4/profile1.el" . 5259))
+(("/Users/xwk/.emacs.d/lisp/init-org.el" . 368)
+ ("/Users/xwk/.emacs.d/elpa/ox-gfm-20170628.2102/ox-gfm-autoloads.el" . 2553))
