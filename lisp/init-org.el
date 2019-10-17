@@ -3,11 +3,18 @@
 
 ;; Remove the markup characters, i.e., "/text/" becomes (italized) "text"
 (setq org-hide-emphasis-markers t)
+(setq org-src-fontify-natively t)
+;; 设置默认 Org Agenda 文件目录
+(setq org-agenda-files '("~/org"))
+
+;; 设置 org-agenda 打开快捷键
+(global-set-key (kbd "C-c a") 'org-agenda)
+
 
 ;; Turn on visual-line-mode for Org-mode only
 ;; Also install "adaptive-wrap" from elpa
-(add-hook 'org-mode-hook 'turn-on-visual-line-mode)
-
+;; (add-hook 'org-mode-hook 'turn-on-visual-line-mode)
+;; 
 
 ;; (eval-after-load "org"
 ;;   '(require 'ox-md nil t))

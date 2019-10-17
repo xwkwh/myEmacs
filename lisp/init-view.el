@@ -230,7 +230,7 @@
 (doom-themes-treemacs-config)
 
 ;; Corrects (and improves) org-mode's native fontification.
-(doom-themes-org-config)
+;; (doom-themes-org-config)
 
 
 

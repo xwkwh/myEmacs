@@ -1,13 +1,13 @@
 
 ;; ----- smex-history -----
 (
+ pwd
  package-install
  describe-font
  list-packages
  org-version
  cnfonts-edit-profile
  make-frame
- cnfonts-edit-profile-without-ui
 )
 
 ;; ----- smex-data -----
@@ -36,4 +36,5 @@
  (make-frame . 1)
  (describe-font . 10)
  (list-packages . 1)
+ (pwd . 1)
 )
