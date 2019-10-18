@@ -1,11 +1,11 @@
 
 ;; ----- smex-history -----
 (
+ package-install
  list-processes
  list-buffers
  buffer-menu
  pwd
- package-install
  describe-font
  list-packages
 )
@@ -16,7 +16,7 @@
  (eval-buffer . 4)
  (describe-mode . 1)
  (lsp . 1)
- (package-install . 6)
+ (package-install . 7)
  (vterm-toggle . 1)
  (ivy-switch-view . 1)
  (ivy-pop-view . 1)
