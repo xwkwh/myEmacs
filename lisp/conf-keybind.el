@@ -56,6 +56,12 @@ Replaces default behaviour of comment-dwim, when it inserts comment at the end o
         (when (derived-mode-p 'vterm-mode)
           (vterm-send-ctrl-c))
         (kill-process proc)))))
+(defun vmacs-vterm-hook()
+  (let ((p (get-buffer-process (current-buffer))))
+    (when p
+      (set-process-query-on-exit-flag p nil))))
+
+(add-hook 'vterm-mode-hook 'vmacs-vterm-hook)
 
 (add-hook 'kill-buffer-hook 'vmacs-kill-buffer-hook)
 

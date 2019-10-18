@@ -1,13 +1,13 @@
 
 ;; ----- smex-history -----
 (
+ list-processes
+ list-buffers
+ buffer-menu
  pwd
  package-install
  describe-font
  list-packages
- org-version
- cnfonts-edit-profile
- make-frame
 )
 
 ;; ----- smex-data -----
@@ -37,4 +37,7 @@
  (describe-font . 10)
  (list-packages . 1)
  (pwd . 1)
+ (buffer-menu . 1)
+ (list-buffers . 1)
+ (list-processes . 1)
 )
