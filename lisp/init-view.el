@@ -19,6 +19,10 @@
   ;; (setq dashboard-items-default-length 10)
 )
 
+(require 'popup)
+(setq clippy-tip-show-function #'clippy-popup-tip-show)
+
+
 (require 'cnfonts)
 ;; 让 cnfonts 随着 Emacs 自动生效。
 (cnfonts-enable) ;
@@ -231,6 +235,9 @@
 
 ;; Corrects (and improves) org-mode's native fontification.
 ;; (doom-themes-org-config)
+
+(global-hl-line-mode)
+
 
 
 

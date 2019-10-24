@@ -39,6 +39,9 @@
 ;;       org-html-validation-link nil
 ;;       org-export-kill-product-buffer-when-displayed t
 ;;       org-tags-column 80)
+(setq org-ellipsis "⤵")
+(setq org-src-tab-acts-natively t)
 
+(add-hook 'org-mode-hook 'org-bullets-mode)
 
 (provide 'init-org)

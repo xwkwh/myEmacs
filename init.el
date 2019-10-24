@@ -1,4 +1,3 @@
-
 ;; Added by Package.el.  This must come before configurations of
 ;; installed packages.  Don't delete this line.  If you don't want it,
 ;; just comment it out by adding a semicolon to the start of the line.
@@ -17,11 +16,13 @@
 (require 'init-elpa)        ;; 暂时没用 purcell上烤的
 (require 'init-utils)       ;; too
 (require 'init-view)        ;; 显示相关
+(require 'conf-modeline)
 (require 'init-go)          ;; golang相关
 (require 'conf-counsel)     ;; 搜索buffer文件
 (require 'conf-awesome-tab) ;; tab页
 (require 'conf-ivy)         ;; ivy
 (require 'conf-evil)        ;; vim操作
+(require 'conf-evil-symbol)
 (require 'init-org)         ;; org mode
 (require 'conf-dired)       ;; 文件目录操作
 (require 'conf-projectile)
@@ -31,6 +32,7 @@
 ;; (require 'init-themes)
 
 (require 'conf-emacs) ;; emacs 的其他配置
+
 
 (require 'conf-custom)
 (put 'dired-find-alternate-file 'disabled nil)

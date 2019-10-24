@@ -17,4 +17,7 @@
  magit-section-unhighlight-hook nil)                         ;
 
 
+(add-hook 'prog-mode-hook 'turn-on-diff-hl-mode)
+
+
 (provide 'conf-git)

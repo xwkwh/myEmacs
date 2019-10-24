@@ -46,7 +46,7 @@
 (setq ivy-fixed-height-minibuffer t)
 (setq ivy-count-format "")
 
-
+(setq ivy-virtual-abbreviate 'full) ; not only show buffer name,but path
 
 
 
