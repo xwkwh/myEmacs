@@ -56,6 +56,12 @@ Replaces default behaviour of comment-dwim, when it inserts comment at the end o
         (when (derived-mode-p 'vterm-mode)
           (vterm-send-ctrl-c))
         (kill-process proc)))))
+(defun vmacs-vterm-hook()
+  (let ((p (get-buffer-process (current-buffer))))
+    (when p
+      (set-process-query-on-exit-flag p nil))))
+
+(add-hook 'vterm-mode-hook 'vmacs-vterm-hook)
 
 (add-hook 'kill-buffer-hook 'vmacs-kill-buffer-hook)
 
@@ -76,5 +82,141 @@ Replaces default behaviour of comment-dwim, when it inserts comment at the end o
   )
 (evil-leader/set-key "/" 'my-comment-code) ;; 代码折叠
  
+(global-set-key (kbd "C-d") 'golden-ratio-scroll-screen-up) 
+
+(global-set-key (kbd "C-b") 'golden-ratio-scroll-screen-down) ;M-v
+(define-key evil-motion-state-map (kbd "C-d") nil)
+(define-key evil-motion-state-map (kbd "C-b") nil)
+(define-key evil-insert-state-map (kbd "C-b") nil)
+(define-key evil-insert-state-map (kbd "C-d") nil)
+
+(define-key evil-normal-state-map "m" nil)
+(define-key evil-normal-state-map "s" nil)
+(define-key evil-motion-state-map "sv" 'evil-visual-char) ;==v开始选中区域
+(define-key evil-motion-state-map "sm" 'evil-visual-line) ;==V 开始行选中
+;; 因为C-v用于滚屏，故mv==原vim的C-v
+(define-key evil-normal-state-map "mv" 'evil-visual-block) ;==vim.C-v 开始矩形操作，然后移动位置，就可得到选区
+
+(define-key evil-visual-state-map "n" 'rectangle-number-lines) ;C-xrN
+
+(global-set-key  (kbd "C-2") 'set-mark-command)
+
+;; 选中区域后 交换当前光标点，
+(define-key evil-visual-state-map "x" 'exchange-point-and-mark)
+(define-key evil-visual-state-map "X" 'evil-visual-exchange-corners)
+
+
+
+;; 有一种需要是
+;; 当我取消选中后 我希望光标停留在选中前光标所在的位置而不是在选区的开头或结尾处
+;;
+;; (define-key evil-normal-state-map "mf" 'evil-mark-defun) ;mark-defun 相当于C-M-h
+;; (define-key evil-normal-state-map "mh" 'evil-M-h)        ;相当于M-h
+;; (define-key evil-normal-state-map "mxh" 'evil-mark-whole-buffer) ;相当于C-xh
+;; (define-key evil-normal-state-map "mb" 'evil-mark-whole-buffer);相当于C-xh
+
+
+;; (require 'bm)
+;; (autoload 'pulse-momentary-highlight-region "pulse")
+
+;; (defvar evil-mark-funs-marker nil)
+
+;; ;; (defadvice keyboard-quit (before save-marker-when-mark-region activate)
+;; ;;   "goto init position after quit mark region"
+;; ;;   (when (and (member last-command '(evil-mark-defun
+;; ;;                                     evil-M-h
+;; ;;                                     evil-mark-whole-buffer
+;; ;;                                     evil-indent))
+;; ;;              ;; (region-active-p)
+;; ;;              evil-mark-funs-marker)
+;; ;;     (goto-char (marker-position evil-mark-funs-marker))
+;; ;;     (setq evil-mark-funs-marker nil)
+;; ;;     (bm-bookmark-remove)))
+;; (defun go-back-after-mark-region()
+;;   (when (and evil-mark-funs-marker
+;;              (not mark-active))
+;;     (goto-char (marker-position evil-mark-funs-marker))
+;;     (setq evil-mark-funs-marker nil)
+;;     (bm-bookmark-remove)))
+
+;;   (add-hook 'post-command-hook 'go-back-after-mark-region)
+
+;; ;;;###autoload
+;; (defun evil-mark-defun(&optional arg)
+;;   "call function binding to `C-M-h'"
+;;   (interactive)
+;;   (setq evil-mark-funs-marker (point-marker))
+;;   (bm-bookmark-add)
+;;   (call-interactively (key-binding (kbd "C-M-h")))
+;;   (message (concat "call function: "
+;;                    (symbol-name (key-binding (kbd "C-M-h"))))))
+;; ;;;###autoload
+;; (defun evil-M-h(&optional arg)
+;;   "call function binding to `M-h'"
+;;   (interactive)
+;;   (setq evil-mark-funs-marker (point-marker))
+;;   (bm-bookmark-add)
+;;   (call-interactively (key-binding (kbd "M-h")))
+;;   (message (concat "call function: "
+;;                    (symbol-name (key-binding (kbd "M-h"))))))
+;; ;;;###autoload
+;; (defun evil-mark-whole-buffer(&optional arg)
+;;   "call function binding to `C-xh'"
+;;   (interactive)
+;;   (setq evil-mark-funs-marker (point-marker))
+;;   (bm-bookmark-add)
+;;   (call-interactively (key-binding (kbd "C-x h")))
+;;   (message (concat "call function: "
+;;                    (symbol-name (key-binding (kbd "C-x h"))))))
+;; ;;;###autoload
+;; (defun evil-begin-of-defun(&optional arg)
+;;   "call function binding to `C-M-a'"
+;;   (interactive)
+;;   (call-interactively (key-binding (kbd "C-M-a")))
+;;   (message (concat "call function: "
+;;                    (symbol-name (key-binding (kbd "C-M-a"))))))
+;; ;;;###autoload
+;; (defun evil-end-of-defun(&optional arg)
+;;   "call function binding to `C-M-e'"
+;;   (interactive)
+;;   (call-interactively (key-binding (kbd "C-M-e")))
+;;   (message (concat "call function: "
+;;                    (symbol-name (key-binding (kbd "C-M-e"))))))
+;; ;;;###autoload
+;; (defun evil-M-e(&optional arg)
+;;   "call function binding to `M-e'"
+;;   (interactive)
+;;   (call-interactively (key-binding (kbd "M-e")))
+;;   (message (concat "call function: "
+;;                    (symbol-name (key-binding (kbd "M-e"))))))
+;; ;;;###autoload
+;; (defun evil-M-a(&optional arg)
+;;   "call function binding to `M-a'"
+;;   (interactive)
+;;   (call-interactively (key-binding (kbd "M-a")))
+;;   (message (concat "call function: "
+;;                    (symbol-name (key-binding (kbd "M-a"))))))
+
+;; ;;;###autoload
+;; (defun evil-C-M-f(&optional arg)
+;;   "call function binding to `C-M-f'"
+;;   (interactive)
+;;   (call-interactively (key-binding (kbd "C-M-f")))
+;;   (message (concat "call function: "
+;;                    (symbol-name (key-binding (kbd "C-M-f"))))))
+;; ;;;###autoload
+;; (defun evil-C-M-b(&optional arg)
+;;   "call function binding to `C-M-b'"
+;;   (interactive)
+;;   (call-interactively (key-binding (kbd "C-M-b")))
+;;   (message (concat "call function: "
+;;                    (symbol-name (key-binding (kbd "C-M-b"))))))
+;; ;;;###autoload
+;; (defun evil-C-M-k(&optional arg)
+;;   "call function binding to `C-M-k'"
+;;   (interactive)
+;;   (call-interactively (key-binding (kbd "C-M-k")))
+;;   (message (concat "call function: "
+;;                    (symbol-name (key-binding (kbd "C-M-k"))))))
 
 (provide 'conf-keybind)

@@ -1,22 +1,22 @@
 
 ;; ----- smex-history -----
 (
+ eval-buffer
+ clippy-describe-function
+ lsp-mode
+ clippy-describe-variable
  package-install
- describe-font
- list-packages
- org-version
- cnfonts-edit-profile
- make-frame
- cnfonts-edit-profile-without-ui
+ describe-theme
+ magit-find-file
 )
 
 ;; ----- smex-data -----
 (
  (vterm . 1)
- (eval-buffer . 4)
+ (eval-buffer . 11)
  (describe-mode . 1)
  (lsp . 1)
- (package-install . 6)
+ (package-install . 17)
  (vterm-toggle . 1)
  (ivy-switch-view . 1)
  (ivy-pop-view . 1)
@@ -36,4 +36,17 @@
  (make-frame . 1)
  (describe-font . 10)
  (list-packages . 1)
+ (pwd . 1)
+ (buffer-menu . 1)
+ (list-buffers . 1)
+ (list-processes . 1)
+ (go-import-add . 2)
+ (flymake-mode . 5)
+ (yank . 1)
+ (magit-reflog-head . 1)
+ (magit-find-file . 1)
+ (describe-theme . 1)
+ (clippy-describe-function . 18)
+ (clippy-describe-variable . 2)
+ (lsp-mode . 2)
 )
