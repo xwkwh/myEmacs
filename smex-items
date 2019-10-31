@@ -1,22 +1,22 @@
 
 ;; ----- smex-history -----
 (
- version
- lsp
+ virtual-dired
  package-install
- toggle-frame-fullscreen
  eval-buffer
- toggle-frame-maximized
- maximize-window
+ dired-single-buffer
+ dired-single-magic-buffer
+ toggle-frame-fullscreen
+ highlight-lines-matching-regexp
 )
 
 ;; ----- smex-data -----
 (
  (vterm . 1)
- (eval-buffer . 13)
+ (eval-buffer . 16)
  (describe-mode . 1)
- (lsp . 18)
- (package-install . 27)
+ (lsp . 19)
+ (package-install . 31)
  (vterm-toggle . 1)
  (ivy-switch-view . 1)
  (ivy-pop-view . 1)
@@ -52,8 +52,15 @@
  (lsp-workspace-show-log . 2)
  (version . 2)
  (load-theme . 1)
- (toggle-frame-fullscreen . 7)
+ (toggle-frame-fullscreen . 13)
  (switch-to-buffer . 1)
  (maximize-window . 2)
  (toggle-frame-maximized . 1)
+ (dired . 1)
+ (counsel-find-file . 1)
+ (hlt-highlight-line-dups-region . 1)
+ (highlight-lines-matching-regexp . 1)
+ (dired-single-buffer . 6)
+ (dired-single-magic-buffer . 1)
+ (virtual-dired . 1)
 )

@@ -13,7 +13,7 @@
  '(org-agenda-files nil)
  '(package-selected-packages
    (quote
-    (nimbus-theme green-is-the-new-black-theme dracula-theme darktooth-theme flycheck zerodark-theme chocolate-theme popup clippy diff-hl evil-escape golden-ratio-scroll-screen which-key guide-key panda-theme downplay-mode ox-gfm cnfonts ivy-posframe doom-themes hc-zenburn-theme zenburn-theme monokai-pro-theme monokai-theme material-theme wakatime-mode smex vterm-toggle vterm ibuffer-projectile projectile fullframe seq wgrep iedit evil-magit powerline-evil magit dired-narrow ivy-dired-history evil-search-highlight-persist evil-leader json-mode lua-mode dashboard atom-one-dark-theme spacemacs-theme magit-org-todos 0blayout evil counsel yasnippet company-lsp company-posframe company exec-path-from-shell golint go-eldoc)))
+    (dired-quick-sort dired-single nimbus-theme green-is-the-new-black-theme dracula-theme darktooth-theme flycheck zerodark-theme chocolate-theme popup clippy diff-hl evil-escape golden-ratio-scroll-screen which-key guide-key panda-theme downplay-mode ox-gfm cnfonts ivy-posframe doom-themes hc-zenburn-theme zenburn-theme monokai-pro-theme monokai-theme material-theme wakatime-mode smex vterm-toggle vterm ibuffer-projectile projectile fullframe seq wgrep iedit evil-magit powerline-evil magit dired-narrow ivy-dired-history evil-search-highlight-persist evil-leader json-mode lua-mode dashboard atom-one-dark-theme spacemacs-theme magit-org-todos 0blayout evil counsel yasnippet company-lsp company-posframe company exec-path-from-shell golint go-eldoc)))
  '(save-place-file "~/.emacs.d/cache/place")
  '(savehist-file "~/.emacs.d/cache/history")
  '(tramp-persistency-file-name "~/.emacs.d/cache/tramp"))
