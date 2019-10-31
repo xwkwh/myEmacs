@@ -1,0 +1,3 @@
+[submodule "theme/laguna-theme"]
+	path = theme/laguna-theme
+	url = https://github.com/HenryNewcomer/laguna-theme.git

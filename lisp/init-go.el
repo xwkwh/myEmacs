@@ -18,21 +18,21 @@
 ;;(require 'auto-complete-config)
 ;;(require 'golint)
 					; (ac-config-default)
+(setq lsp-auto-configure nil)
 (defun go-mode-setup ()
  ;; (go-eldoc-setup)
   (setq gofmt-command "goimports")
   (setq compile-command "go build -v && go test -v && go vet")
   (define-key (current-local-map) "\C-c\C-c" 'compile)
   (add-hook 'before-save-hook 'gofmt-before-save)
-  (lsp)
+  ;; (lsp)
+  (lsp-deferred)
   (flymake-mode -1)
   (setq company-backends `((company-lsp company-yasnippet company-files )))
   (local-set-key (kbd "M-.") 'godef-jump))
 (add-hook 'go-mode-hook 'go-mode-setup)
 
-;;autocomplete
-					; (set (make-local-variable 'company-backends) '(company-go))
-					; (company-mode)
+
 (require 'lsp-clients)
 
 
@@ -49,5 +49,7 @@
 (define-key company-search-map (kbd "C-n") 'company-select-next)
 (define-key company-search-map (kbd "C-p") 'company-select-previous)
 
+
+(setq company-lsp-cache-candidates  'auto)
 (provide 'init-go)
 ;;;

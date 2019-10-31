@@ -206,4 +206,8 @@
 
 
 (my-line-theme)
+
+
+;; (zerodark-setup-modeline-format)
+
 (provide 'conf-modeline)

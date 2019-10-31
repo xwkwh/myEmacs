@@ -1,22 +1,22 @@
 
 ;; ----- smex-history -----
 (
- eval-buffer
- clippy-describe-function
- lsp-mode
- clippy-describe-variable
+ version
+ lsp
  package-install
- describe-theme
- magit-find-file
+ toggle-frame-fullscreen
+ eval-buffer
+ toggle-frame-maximized
+ maximize-window
 )
 
 ;; ----- smex-data -----
 (
  (vterm . 1)
- (eval-buffer . 11)
+ (eval-buffer . 13)
  (describe-mode . 1)
- (lsp . 1)
- (package-install . 17)
+ (lsp . 18)
+ (package-install . 27)
  (vterm-toggle . 1)
  (ivy-switch-view . 1)
  (ivy-pop-view . 1)
@@ -35,18 +35,25 @@
  (cnfonts-edit-profile-without-ui . 1)
  (make-frame . 1)
  (describe-font . 10)
- (list-packages . 1)
+ (list-packages . 3)
  (pwd . 1)
  (buffer-menu . 1)
  (list-buffers . 1)
  (list-processes . 1)
- (go-import-add . 2)
- (flymake-mode . 5)
+ (go-import-add . 3)
+ (flymake-mode . 10)
  (yank . 1)
  (magit-reflog-head . 1)
  (magit-find-file . 1)
- (describe-theme . 1)
+ (describe-theme . 5)
  (clippy-describe-function . 18)
  (clippy-describe-variable . 2)
- (lsp-mode . 2)
+ (lsp-mode . 5)
+ (lsp-workspace-show-log . 2)
+ (version . 2)
+ (load-theme . 1)
+ (toggle-frame-fullscreen . 7)
+ (switch-to-buffer . 1)
+ (maximize-window . 2)
+ (toggle-frame-maximized . 1)
 )
