@@ -33,6 +33,8 @@
 (setq ls-lisp-use-insert-directory-program nil)
 (setq ls-lisp-verbosity nil)
 
+
+;; dired 目录排序
 (defun custom-dired-sort-dir-first ()
   "Dired sort hook to list directories first."
   (save-excursion
@@ -46,6 +48,5 @@
   )
 
 (add-hook 'dired-after-readin-hook 'custom-dired-sort-dir-first)
-
 
 (provide 'conf-dired)
