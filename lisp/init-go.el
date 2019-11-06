@@ -42,6 +42,7 @@
 (global-company-mode 1)
 
 (company-posframe-mode 1)
+(setq company-lsp-cache-candidates 'auto)
 
 (define-key company-active-map (kbd "C-s") #'company-filter-candidates)
 (define-key company-active-map (kbd "C-n") 'company-select-next)
