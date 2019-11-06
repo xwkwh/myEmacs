@@ -32,6 +32,8 @@
 
 ;; 隐藏状态栏
 (tool-bar-mode -1)
+(menu-bar-mode -1)
+(scroll-bar-mode -1)
 
 ;直接emacs命令打开的窗口相关设置,不要在这里设置字体，否则daemon 启动时字体有可能没创建好，会导致字体设置失败
 (setq-default window-system-default-frame-alist                 
@@ -213,33 +215,49 @@
 ;; (load-theme 'zenburn t)
 ;; (load-theme 'hc-zenburn t)
 
-(require 'doom-themes)
+;; (require 'doom-themes)
 
-;; Global settings (defaults)
-(setq doom-themes-enable-bold t    ; if nil, bold is universally disabled
-      doom-themes-enable-italic t) ; if nil, italics is universally disabled
+;; ;; Global settings (defaults)
+;; (setq doom-themes-enable-bold t    ; if nil, bold is universally disabled
+;;       doom-themes-enable-italic t) ; if nil, italics is universally disabled
 
-;; Load the theme (doom-one, doom-molokai, etc); keep in mind that each theme
-;; may have their own settings.
-;; (load-theme 'doom-one t)
-(load-theme 'doom-vibrant t)
+;; ;; Load the theme (doom-one, doom-molokai, etc); keep in mind that each theme
+;; ;; may have their own settings.
+;; ;; (load-theme 'doom-one t)
+;; (load-theme 'doom-vibrant t)
 
-;; Enable flashing mode-line on errors
-(doom-themes-visual-bell-config)
+;; ;; Enable flashing mode-line on errors
+;; (doom-themes-visual-bell-config)
 
-;; Enable custom neotree theme (all-the-icons must be installed!)
-(doom-themes-neotree-config)
-;; or for treemacs users
-(setq doom-themes-treemacs-theme "doom-colors") ; use the colorful treemacs theme
-(doom-themes-treemacs-config)
+;; ;; Enable custom neotree theme (all-the-icons must be installed!)
+;; (doom-themes-neotree-config)
+;; ;; or for treemacs users
+;; (setq doom-themes-treemacs-theme "doom-colors") ; use the colorful treemacs theme
+;; (doom-themes-treemacs-config)
 
 ;; Corrects (and improves) org-mode's native fontification.
 ;; (doom-themes-org-config)
 
+
 (global-hl-line-mode)
 
 
+(add-to-list'custom-theme-load-path "~/.emacs.d/theme/laguna-theme")
+(load-theme 'laguna)
+
+;; (load-theme 'chocolate)
+;; (load-theme 'zerodark t)
+;; Optionally setup the modeline
+;; (zerodark-setup-modeline-format)
+
+;; (load-theme 'darktooth)
+;; (load-theme 'dracula)
+;; (require 'green-is-the-new-black-theme)
+
+;; (load-theme 'nimbus t)
 
 
+
+(setq ns-use-native-fullscreen nil)
 (provide 'init-view)
 

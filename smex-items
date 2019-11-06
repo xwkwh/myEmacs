@@ -1,22 +1,22 @@
 
 ;; ----- smex-history -----
 (
- eval-buffer
- clippy-describe-function
- lsp-mode
- clippy-describe-variable
+ virtual-dired
  package-install
- describe-theme
- magit-find-file
+ eval-buffer
+ dired-single-buffer
+ dired-single-magic-buffer
+ toggle-frame-fullscreen
+ highlight-lines-matching-regexp
 )
 
 ;; ----- smex-data -----
 (
  (vterm . 1)
- (eval-buffer . 11)
+ (eval-buffer . 16)
  (describe-mode . 1)
- (lsp . 1)
- (package-install . 17)
+ (lsp . 19)
+ (package-install . 31)
  (vterm-toggle . 1)
  (ivy-switch-view . 1)
  (ivy-pop-view . 1)
@@ -35,18 +35,32 @@
  (cnfonts-edit-profile-without-ui . 1)
  (make-frame . 1)
  (describe-font . 10)
- (list-packages . 1)
+ (list-packages . 3)
  (pwd . 1)
  (buffer-menu . 1)
  (list-buffers . 1)
  (list-processes . 1)
- (go-import-add . 2)
- (flymake-mode . 5)
+ (go-import-add . 3)
+ (flymake-mode . 10)
  (yank . 1)
  (magit-reflog-head . 1)
  (magit-find-file . 1)
- (describe-theme . 1)
+ (describe-theme . 5)
  (clippy-describe-function . 18)
  (clippy-describe-variable . 2)
- (lsp-mode . 2)
+ (lsp-mode . 5)
+ (lsp-workspace-show-log . 2)
+ (version . 2)
+ (load-theme . 1)
+ (toggle-frame-fullscreen . 13)
+ (switch-to-buffer . 1)
+ (maximize-window . 2)
+ (toggle-frame-maximized . 1)
+ (dired . 1)
+ (counsel-find-file . 1)
+ (hlt-highlight-line-dups-region . 1)
+ (highlight-lines-matching-regexp . 1)
+ (dired-single-buffer . 6)
+ (dired-single-magic-buffer . 1)
+ (virtual-dired . 1)
 )

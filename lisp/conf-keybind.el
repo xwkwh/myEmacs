@@ -4,7 +4,8 @@
 (autoload 'dired-jump "dired-x" "dired-jump" t)
 (evil-leader/set-key "j" 'dired-jump) ;; 跳到当前目录文件
 (evil-leader/set-key "s" 'evil-write-all) ;; 保存全部  
-(evil-leader/set-key  "ff" 'counsel-find-file)
+;; (evil-leader/set-key  "ff" 'counsel-find-file)
+(evil-leader/set-key  "ff" 'dired)
 (evil-leader/set-key  "ft" #'(lambda()(interactive)(let ((default-directory "/tmp/"))(call-interactively 'counsel-find-file))))
 (evil-leader/set-key  "fh" #'(lambda()(interactive)(let ((default-directory "~"))(call-interactively 'counsel-find-file))))
 (evil-leader/set-key  "fg" #'(lambda()(interactive)(let ((default-directory "~/gopath/src/gitlab.luojilab.com/igetserver"))(call-interactively 'counsel-find-file))))
