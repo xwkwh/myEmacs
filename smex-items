@@ -1,22 +1,22 @@
 
 ;; ----- smex-history -----
 (
- virtual-dired
- package-install
  eval-buffer
- dired-single-buffer
- dired-single-magic-buffer
  toggle-frame-fullscreen
- highlight-lines-matching-regexp
+ lsp
+ yas-minor-mode
+ package-install
+ vc-annotate
+ magit-blame-mode
 )
 
 ;; ----- smex-data -----
 (
  (vterm . 1)
- (eval-buffer . 16)
+ (eval-buffer . 21)
  (describe-mode . 1)
- (lsp . 19)
- (package-install . 31)
+ (lsp . 24)
+ (package-install . 32)
  (vterm-toggle . 1)
  (ivy-switch-view . 1)
  (ivy-pop-view . 1)
@@ -52,7 +52,7 @@
  (lsp-workspace-show-log . 2)
  (version . 2)
  (load-theme . 1)
- (toggle-frame-fullscreen . 13)
+ (toggle-frame-fullscreen . 25)
  (switch-to-buffer . 1)
  (maximize-window . 2)
  (toggle-frame-maximized . 1)
@@ -63,4 +63,14 @@
  (dired-single-buffer . 6)
  (dired-single-magic-buffer . 1)
  (virtual-dired . 1)
+ (vc-annotate . 4)
+ (vc-diff . 1)
+ (vc-annotate-goto-line . 1)
+ (vc-annotate-display-select . 1)
+ (vc-annotate-display-autoscale . 1)
+ (vc-annotate-show-log-revision-at-line . 1)
+ (magit-blame . 5)
+ (magit-blame-quit . 4)
+ (magit-blame-mode . 2)
+ (yas-minor-mode . 1)
 )

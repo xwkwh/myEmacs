@@ -19,5 +19,37 @@
 
 (add-hook 'prog-mode-hook 'turn-on-diff-hl-mode)
 
+;; move cursor into position when entering commit message
+(defun my/magit-cursor-fix ()
+  (beginning-of-buffer)
+  (when (looking-at "#")
+    (forward-line 2)))
+
+(add-hook 'git-commit-mode-hook 'my/magit-cursor-fix)
+
+
+
+
+;; full screen vc-annotate
+(defun vc-annotate-quit ()
+  "Restores the previous window configuration and kills the vc-annotate buffer"
+  (interactive)
+  (kill-buffer)
+  (jump-to-register :vc-annotate-fullscreen))
+
+(with-eval-after-load "vc-annotate"
+     (defadvice vc-annotate (around fullscreen activate)
+       (window-configuration-to-register :vc-annotate-fullscreen)
+       ad-do-it
+       (delete-other-windows))
+     (define-key vc-annotate-mode-map (kbd "q") 'vc-annotate-quit)
+     (define-key vc-annotate-mode-map (kbd "j") nil)
+     )
+(set-default 'magit-diff-refine-hunk t)
+
+;; update diff-hl
+
+(global-diff-hl-mode)
+(add-hook 'magit-post-refresh-hook 'diff-hl-magit-post-refresh)
 
 (provide 'conf-git)

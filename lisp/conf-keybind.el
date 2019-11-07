@@ -11,6 +11,7 @@
 (evil-leader/set-key  "fg" #'(lambda()(interactive)(let ((default-directory "~/gopath/src/gitlab.luojilab.com/igetserver"))(call-interactively 'counsel-find-file))))
 (evil-leader/set-key "g" 'vmacs-counsel-rg) ;; 搜索当前目录下 根据单词 + 空格
 (evil-leader/set-key "vj" 'magit-status) ;like dired-jump
+(evil-leader/set-key "va" 'vc-annotate)  ;like dired-jump
 
 ;; lsp查看方法被调用
 (evil-leader/set-key "u" 'lsp-find-references)

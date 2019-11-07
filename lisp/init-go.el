@@ -51,5 +51,9 @@
 
 
 (setq company-lsp-cache-candidates  'auto)
+
+
+(yas-global-mode 1)
+
 (provide 'init-go)
 ;;;

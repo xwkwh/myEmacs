@@ -22,7 +22,38 @@
 (evil-set-initial-state 'grep-mode 'normal)
 (evil-set-initial-state 'Info-mode 'motion)
 
+(add-to-list 'evil-overriding-maps '(vc-annotate-mode-map . nil))
+;; evil-overriding-maps中的按键绑定 优先级高于evil-mode
+(add-to-list 'evil-overriding-maps '(vc-git-log-view-mode-map . nil))
+(add-to-list 'evil-overriding-maps '(vc-svn-log-view-mode-map . nil))
+(add-to-list 'evil-overriding-maps '(vmacs-leader-map . nil))
+(add-to-list 'evil-overriding-maps '(custom-mode-map . nil))
+(add-to-list 'evil-overriding-maps '(ediff-mode-map . nil))
+(add-to-list 'evil-overriding-maps '(package-menu-mode-map . nil))
+(add-to-list 'evil-overriding-maps '(minibuffer-local-map . nil))
+(add-to-list 'evil-overriding-maps '(minibuffer-local-completion-map . nil))
+(add-to-list 'evil-overriding-maps '(minibuffer-local-must-match-map . nil))
+(add-to-list 'evil-overriding-maps '(minibuffer-local-isearch-map . nil))
+(add-to-list 'evil-overriding-maps '(minibuffer-local-ns-map . nil))
+(add-to-list 'evil-overriding-maps '(epa-key-list-mode-map . nil))
+(add-to-list 'evil-overriding-maps '(term-mode-map . nil))
+(add-to-list 'evil-overriding-maps '(term-raw-map . nil))
+(add-to-list 'evil-overriding-maps '(calc-mode-map . nil))
+(add-to-list 'evil-overriding-maps '(magit-blob-mode-map . nil)) ;n p 浏览文件历史版本
+(add-to-list 'evil-overriding-maps '(org-agenda-mode-map . nil))
+(add-to-list 'evil-overriding-maps '(xref--xref-buffer-mode-map . nil))
+(add-to-list 'evil-overriding-maps '(snails-mode-map . nil))
 
+(evil-set-custom-state-maps 'evil-overriding-maps
+                            'evil-pending-overriding-maps
+                            'override-state
+                            'evil-make-overriding-map
+                            evil-overriding-maps)
+
+;; evil-normalize-keymaps forces an update of all Evil keymaps
+(add-hook 'magit-blob-mode-hook #'evil-normalize-keymaps)
+;; 更新 evil-overriding-maps ,因为org-agenda-mode-map 变量初始为空keymap,在org-agenda-mode内才往里添加绑定
+(add-hook 'org-agenda-mode-hook #'evil-normalize-keymaps)
 (evil-mode)
 (setq-default
  evil-default-cursor '(t "white")

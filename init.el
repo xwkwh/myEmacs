@@ -14,6 +14,7 @@
 
 (package-initialize)
 
+(require 'conf-custom)
 
 (require 'init-elpa)        ;; 暂时没用 purcell上烤的
 (require 'init-utils)       ;; too
@@ -36,5 +37,4 @@
 (require 'conf-emacs) ;; emacs 的其他配置
 
 
-(require 'conf-custom)
 (put 'dired-find-alternate-file 'disabled nil)
