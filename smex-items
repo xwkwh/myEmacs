@@ -1,13 +1,13 @@
 
 ;; ----- smex-history -----
 (
+ message-tab
+ pwd
  eval-buffer
  toggle-frame-fullscreen
  lsp
  yas-minor-mode
  package-install
- vc-annotate
- magit-blame-mode
 )
 
 ;; ----- smex-data -----
@@ -36,7 +36,7 @@
  (make-frame . 1)
  (describe-font . 10)
  (list-packages . 3)
- (pwd . 1)
+ (pwd . 2)
  (buffer-menu . 1)
  (list-buffers . 1)
  (list-processes . 1)
@@ -73,4 +73,5 @@
  (magit-blame-quit . 4)
  (magit-blame-mode . 2)
  (yas-minor-mode . 1)
+ (message-tab . 1)
 )

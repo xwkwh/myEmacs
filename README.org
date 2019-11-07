@@ -1,0 +1,12 @@
+* My Emacs Config 
+Thanks to [[https://github.com/jixiuf][jixiuf]]
+** Keys Guild for Emacs
+- C Shorthand for the ctrl-key
+- M Shorthand for the meta-key (bound to cmd on my mac settings)
+- S Shorthand for the shift-key
+** General
+** File
+** Windows
+** Git
+** Text
+** Org

@@ -52,4 +52,20 @@
 (global-diff-hl-mode)
 (add-hook 'magit-post-refresh-hook 'diff-hl-magit-post-refresh)
 
+
+
+
+;; don't prompt me
+(set-default 'magit-push-always-verify nil)
+(set-default 'magit-revert-buffers 'silent)
+(set-default 'magit-no-confirm '(stage-all-changes
+                                 unstage-all-changes))
+;; expand sections by default
+(setq magit-section-initial-visibility-alist
+      '((untracked . show)
+        (unstaged . show)
+        (unpushed . show)
+        (unpulled . show)
+        (stashes . show)))
+
 (provide 'conf-git)
