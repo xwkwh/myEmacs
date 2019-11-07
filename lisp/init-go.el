@@ -1,4 +1,4 @@
-
+=
 (setq exec-path-from-shell-check-startup-files nil) ;
 
 (when (memq window-system '(mac ns x))
@@ -56,5 +56,27 @@
 
 (yas-global-mode 1)
 
+;; No need to be so verbose
+(setq yas-verbosity 1)
+
+;; Wrap around region
+(setq yas-wrap-around-region t)
+
+(require 'go-snippets)
+
+;; ????? TODO
+(setq lsp-before-save-edits nil)
+(setq lsp-eldoc-render-all nil)
+(setq lsp-enable-on-type-formatting nil)
+(setq lsp-prefer-flymake :none)
+
+(add-hook 'go-mode-hook
+          (lambda ()
+            (setq gofmt-command "goimports")
+            (setq go-packages-function 'go-packages-go-list)
+            (add-hook 'before-save-hook 'gofmt-before-save)
+            (setq truncate-lines t)
+            (setq indent-tabs-mode t)
+            (setq tab-width 4)
 (provide 'init-go)
 ;;;

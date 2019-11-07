@@ -43,6 +43,4 @@
 
 (fset 'yes-or-no-p 'y-or-n-p) ;; 把Yes用y代替
 
-;; C-c <left> and C-c <right> to switch between window
-(winner-mode)
 (provide 'conf-emacs)

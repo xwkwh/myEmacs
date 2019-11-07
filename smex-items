@@ -1,22 +1,22 @@
 
 ;; ----- smex-history -----
 (
- message-tab
- pwd
+ package-install
+ load-theme
  eval-buffer
  toggle-frame-fullscreen
+ message-tab
+ pwd
  lsp
- yas-minor-mode
- package-install
 )
 
 ;; ----- smex-data -----
 (
  (vterm . 1)
- (eval-buffer . 21)
+ (eval-buffer . 26)
  (describe-mode . 1)
  (lsp . 24)
- (package-install . 32)
+ (package-install . 34)
  (vterm-toggle . 1)
  (ivy-switch-view . 1)
  (ivy-pop-view . 1)
@@ -51,8 +51,8 @@
  (lsp-mode . 5)
  (lsp-workspace-show-log . 2)
  (version . 2)
- (load-theme . 1)
- (toggle-frame-fullscreen . 25)
+ (load-theme . 7)
+ (toggle-frame-fullscreen . 26)
  (switch-to-buffer . 1)
  (maximize-window . 2)
  (toggle-frame-maximized . 1)

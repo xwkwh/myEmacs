@@ -259,5 +259,35 @@
 
 
 (setq ns-use-native-fullscreen nil)
+
+
+;; TODO Don't highlight matches with jump-char - it's distracting
+(setq jump-char-lazy-highlight-face nil)
+
+(recentf-mode 1)
+(setq recentf-max-saved-items 100) ;; just 20 is too recent
+
+;; Save minibuffer history
+(savehist-mode 1)
+(setq history-length 1000)
+
+;; Undo/redo window configuration with C-c <left>/<right>
+(winner-mode 1)
+;; Keep cursor away from edges when scrolling up/down
+(require 'smooth-scrolling)
+;; Don't be so stingy on the memory, we have lots now. It's the distant future.
+(setq gc-cons-threshold 20000000)
+
+;; Offer to create parent directories if they do not exist
+;; http://iqbalansari.github.io/blog/2014/12/07/automatically-create-parent-directories-on-visiting-a-new-file-in-emacs/
+(defun my-create-non-existent-directory ()
+  (let ((parent-directory (file-name-directory buffer-file-name)))
+    (when (and (not (file-exists-p parent-directory))
+               (y-or-n-p (format "Directory `%s' does not exist! Create it?" parent-directory)))
+      (make-directory parent-directory t))))
+
+(add-to-list 'find-file-not-found-functions 'my-create-non-existent-directory)
+
+
 (provide 'init-view)
 

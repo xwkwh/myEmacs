@@ -49,4 +49,11 @@
 
 (add-hook 'dired-after-readin-hook 'custom-dired-sort-dir-first)
 
+
+;; Make dired less verbose
+(add-hook 'dired-mode-hook (lambda () (dired-hide-details-mode 1)))
+
+;; Move files between split panes
+(setq dired-dwim-target t)
+
 (provide 'conf-dired)

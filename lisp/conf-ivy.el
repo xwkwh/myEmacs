@@ -21,7 +21,9 @@
 	(counsel-rg      . nil)
 	(complete-symbol . ivy-posframe-display-at-point)
 	(counsel-M-x     . nil)
-	(t               . ivy-posframe-display-at-window-center)))
+	(dired-mode    .  ivy-posframe-display-at-window-center)
+	(t               . ivy-posframe-display-at-window-center))
+      )
 
 
 (put 'ivy-posframe 'face-alias 'default)
