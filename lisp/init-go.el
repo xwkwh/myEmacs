@@ -1,4 +1,3 @@
-=
 (setq exec-path-from-shell-check-startup-files nil) ;
 
 (when (memq window-system '(mac ns x))
@@ -77,6 +76,5 @@
             (add-hook 'before-save-hook 'gofmt-before-save)
             (setq truncate-lines t)
             (setq indent-tabs-mode t)
-            (setq tab-width 4)
+            (setq tab-width 4)))
 (provide 'init-go)
-;;;
