@@ -1,13 +1,13 @@
 
 ;; ----- smex-history -----
 (
+ lsp-find-references
+ text-scale-adjust
  package-install
  load-theme
  eval-buffer
  toggle-frame-fullscreen
  message-tab
- pwd
- lsp
 )
 
 ;; ----- smex-data -----
@@ -74,4 +74,6 @@
  (magit-blame-mode . 2)
  (yas-minor-mode . 1)
  (message-tab . 1)
+ (text-scale-adjust . 2)
+ (lsp-find-references . 1)
 )

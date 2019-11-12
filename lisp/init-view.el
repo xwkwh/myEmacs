@@ -23,9 +23,9 @@
 (setq clippy-tip-show-function #'clippy-popup-tip-show)
 
 
-(require 'cnfonts)
-;; 让 cnfonts 随着 Emacs 自动生效。
-(cnfonts-enable) ;
+;; (require 'cnfonts)
+;; ;; 让 cnfonts 随着 Emacs 自动生效。
+;; (cnfonts-enable) ;
 ;; 让 spacemacs mode-line 中的 Unicode 图标正确显示。
 ;; (cnfonts-set-spacemacs-fallback-fonts)
 ;; (setq cnfonts-use-face-font-rescale t)
@@ -48,6 +48,7 @@
 		 (foreground-color . "#eeeeec")
 		 (background-color . "#202020") ;;
 		 ;; (background-mode . dark)
+                    (font . "Ubuntu Mono-22")
 		 )
 		))
 
@@ -242,15 +243,15 @@
 (global-hl-line-mode)
 
 
-(add-to-list'custom-theme-load-path "~/.emacs.d/theme/laguna-theme")
-(load-theme 'laguna)
+;; (add-to-list'custom-theme-load-path "~/.emacs.d/theme/laguna-theme")
+;; (load-theme 'laguna)
 
 ;; (load-theme 'chocolate)
 ;; (load-theme 'zerodark t)
 ;; Optionally setup the modeline
 ;; (zerodark-setup-modeline-format)
 
-;; (load-theme 'darktooth)
+(load-theme 'darktooth)
 ;; (load-theme 'dracula)
 ;; (require 'green-is-the-new-black-theme)
 
