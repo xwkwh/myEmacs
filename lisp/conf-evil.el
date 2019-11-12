@@ -139,6 +139,7 @@
   (define-key wgrep-mode-map (kbd "C-g") 'wgrep-abort-changes)
   (define-key wgrep-mode-map (kbd "C-c C-c") 'vmacs-wgrep-finish-edit))
 
+(require 'wgrep)
 (defun enable-wgrep-when-entry-insert()
   (when (derived-mode-p 'ivy-occur-mode
                         'ivy-occur-grep-mode 'helm-grep-mode)
