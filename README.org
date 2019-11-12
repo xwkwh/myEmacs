@@ -10,3 +10,7 @@ Thanks to [[https://github.com/jixiuf][jixiuf]]
 ** Git
 ** Text
 ** Org
+- 表格分割线
+  - 表格末尾 C-c -
+  - 新起一行，对齐后输入 "|-" tab
+- 

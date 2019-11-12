@@ -1,13 +1,13 @@
 
 ;; ----- smex-history -----
 (
+ package-install
+ end-of-line
+ sort-columns
+ org-sort
+ lsp
  lsp-find-references
  text-scale-adjust
- package-install
- load-theme
- eval-buffer
- toggle-frame-fullscreen
- message-tab
 )
 
 ;; ----- smex-data -----
@@ -15,8 +15,8 @@
  (vterm . 1)
  (eval-buffer . 26)
  (describe-mode . 1)
- (lsp . 24)
- (package-install . 34)
+ (lsp . 28)
+ (package-install . 37)
  (vterm-toggle . 1)
  (ivy-switch-view . 1)
  (ivy-pop-view . 1)
@@ -75,5 +75,8 @@
  (yas-minor-mode . 1)
  (message-tab . 1)
  (text-scale-adjust . 2)
- (lsp-find-references . 1)
+ (lsp-find-references . 2)
+ (end-of-line . 104)
+ (org-sort . 1)
+ (sort-columns . 1)
 )

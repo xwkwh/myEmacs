@@ -1,3 +1,4 @@
+
 (setq-default 
    inhibit-startup-screen t;隐藏启动显示画面
    display-line-numbers 'relative
@@ -48,10 +49,14 @@
 		 (foreground-color . "#eeeeec")
 		 (background-color . "#202020") ;;
 		 ;; (background-mode . dark)
-                    (font . "Ubuntu Mono-22")
+		 (font . "Ubuntu Mono-22")
+		 ;; (font . "Fira Code-20")
 		 )
 		))
 
+;;(mac-auto-operator-composition-mode)
+(set-language-environment "UTF-8")
+(set-default-coding-systems 'utf-8)
 ; 字体
 (create-fontset-from-fontset-spec
  (concat "-*-*-*-*-*--*-*-*-*-*-*-fontset-bigmac"
