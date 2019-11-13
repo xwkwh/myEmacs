@@ -19,7 +19,7 @@
 (require 'init-elpa)        ;; 暂时没用 purcell上烤的
 (require 'init-utils)       ;; too
 (require 'init-view)        ;; 显示相关
-(require 'fira-code-mode)
+;; (require 'fira-code-mode)
 (require 'conf-modeline)
 (require 'init-go)          ;; golang相关
 (require 'conf-counsel)     ;; 搜索buffer文件

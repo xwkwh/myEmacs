@@ -1,19 +1,19 @@
 
 ;; ----- smex-history -----
 (
- package-install
- end-of-line
- sort-columns
- org-sort
- lsp
- lsp-find-references
- text-scale-adjust
+ disable-theme
+ my-line-theme
+ describe-theme
+ eval-buffer
+ my-buffer-face-mode-variable
+ describe-font
+ buffer-face-mode
 )
 
 ;; ----- smex-data -----
 (
  (vterm . 1)
- (eval-buffer . 26)
+ (eval-buffer . 31)
  (describe-mode . 1)
  (lsp . 28)
  (package-install . 37)
@@ -34,7 +34,7 @@
  (cnfonts-edit-profile . 7)
  (cnfonts-edit-profile-without-ui . 1)
  (make-frame . 1)
- (describe-font . 10)
+ (describe-font . 22)
  (list-packages . 3)
  (pwd . 2)
  (buffer-menu . 1)
@@ -45,7 +45,7 @@
  (yank . 1)
  (magit-reflog-head . 1)
  (magit-find-file . 1)
- (describe-theme . 5)
+ (describe-theme . 6)
  (clippy-describe-function . 18)
  (clippy-describe-variable . 2)
  (lsp-mode . 5)
@@ -79,4 +79,12 @@
  (end-of-line . 104)
  (org-sort . 1)
  (sort-columns . 1)
+ (list-fontsets . 1)
+ (describe-fontset . 1)
+ (set-face-font . 1)
+ (set-frame-font . 12)
+ (buffer-face-mode . 3)
+ (my-buffer-face-mode-variable . 3)
+ (my-line-theme . 1)
+ (disable-theme . 1)
 )

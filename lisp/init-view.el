@@ -48,11 +48,27 @@
 		 (alpha . 98)
 		 (foreground-color . "#eeeeec")
 		 (background-color . "#202020") ;;
-		 ;; (background-mode . dark)
-		 (font . "Ubuntu Mono-22")
+		 (background-mode . dark)
+		 ;; (font . "Ubuntu Mono-22")
 		 ;; (font . "Fira Code-20")
+		 ;; (font . "DejaVu Sans Mono-13")
+		 ;; (font . "Space Mono-22")
+		 ;; (font . "Hack-22")
+		 ;; (font . "Envy Code R-20")
+		 (font . "Source Code Pro 16")
+		 ;; (font . "fantasque sans mono-20")
 		 )
 		))
+;; Use variable width font faces in current buffer
+(defun my-buffer-face-mode-variable ()
+   "Set font to a variable width (proportional) fonts in current buffer"
+   (interactive)
+   (setq buffer-face-mode-face '(:family "Ubuntu Mono" :width semi-condensed))
+   (buffer-face-mode))
+
+ ;; Set default font faces 
+(add-hook 'org-mode-hook 'my-buffer-face-mode-variable)
+
 
 ;;(mac-auto-operator-composition-mode)
 (set-language-environment "UTF-8")

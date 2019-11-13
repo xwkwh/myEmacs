@@ -89,7 +89,7 @@
   )
 
 (defun vmacs-change-line-number-relative()
-  (if (member major-mode '( term-mode eshell-mode ansi-term-mode tsmterm-mode magit-status-mode vterm-mode))
+  (if (member major-mode '(dired-mode term-mode eshell-mode ansi-term-mode tsmterm-mode magit-status-mode vterm-mode))
       (setq display-line-numbers nil)
     (setq display-line-numbers 'visual)
     )
