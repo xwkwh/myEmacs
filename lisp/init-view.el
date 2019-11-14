@@ -55,7 +55,7 @@
 		 ;; (font . "Space Mono-22")
 		 ;; (font . "Hack-22")
 		 ;; (font . "Envy Code R-20")
-		 (font . "Source Code Pro 16")
+		 (font . "Source Code Pro 20")
 		 ;; (font . "fantasque sans mono-20")
 		 )
 		))

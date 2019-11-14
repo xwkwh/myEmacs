@@ -50,7 +50,7 @@
 (define-key company-search-map (kbd "C-p") 'company-select-previous)
 
 
-(setq company-lsp-cache-candidates  'auto)
+;; (setq company-lsp-cache-candidates  'auto)
 
 
 (yas-global-mode 1)

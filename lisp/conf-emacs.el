@@ -23,7 +23,7 @@
 ;; ;; triggered.
 ;; (setq which-key-idle-delay 10000)
 ;; (setq which-key-idle-secondary-delay 0.05)
-(which-key-mode)
+;; (which-key-mode)
   
 
 (setq 

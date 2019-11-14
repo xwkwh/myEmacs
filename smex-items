@@ -1,22 +1,22 @@
 
 ;; ----- smex-history -----
 (
- disable-theme
- my-line-theme
- describe-theme
- eval-buffer
+ package-install
+ debug-watch
+ message-info
+ message-tab
  my-buffer-face-mode-variable
- describe-font
- buffer-face-mode
+ package-autoremove
+ list-packages
 )
 
 ;; ----- smex-data -----
 (
  (vterm . 1)
- (eval-buffer . 31)
+ (eval-buffer . 33)
  (describe-mode . 1)
  (lsp . 28)
- (package-install . 37)
+ (package-install . 40)
  (vterm-toggle . 1)
  (ivy-switch-view . 1)
  (ivy-pop-view . 1)
@@ -35,7 +35,7 @@
  (cnfonts-edit-profile-without-ui . 1)
  (make-frame . 1)
  (describe-font . 22)
- (list-packages . 3)
+ (list-packages . 4)
  (pwd . 2)
  (buffer-menu . 1)
  (list-buffers . 1)
@@ -45,13 +45,13 @@
  (yank . 1)
  (magit-reflog-head . 1)
  (magit-find-file . 1)
- (describe-theme . 6)
+ (describe-theme . 7)
  (clippy-describe-function . 18)
  (clippy-describe-variable . 2)
- (lsp-mode . 5)
+ (lsp-mode . 7)
  (lsp-workspace-show-log . 2)
  (version . 2)
- (load-theme . 7)
+ (load-theme . 34)
  (toggle-frame-fullscreen . 26)
  (switch-to-buffer . 1)
  (maximize-window . 2)
@@ -73,8 +73,8 @@
  (magit-blame-quit . 4)
  (magit-blame-mode . 2)
  (yas-minor-mode . 1)
- (message-tab . 1)
- (text-scale-adjust . 2)
+ (message-tab . 3)
+ (text-scale-adjust . 7)
  (lsp-find-references . 2)
  (end-of-line . 104)
  (org-sort . 1)
@@ -84,7 +84,14 @@
  (set-face-font . 1)
  (set-frame-font . 12)
  (buffer-face-mode . 3)
- (my-buffer-face-mode-variable . 3)
+ (my-buffer-face-mode-variable . 5)
  (my-line-theme . 1)
  (disable-theme . 1)
+ (text-scale-decrease . 7)
+ (text-scale-mode . 1)
+ (lsp-mode-menu . 1)
+ (godef-jump . 1)
+ (package-autoremove . 1)
+ (message-info . 1)
+ (debug-watch . 1)
 )
