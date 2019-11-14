@@ -2,12 +2,12 @@
 ;; ----- smex-history -----
 (
  package-install
+ lsp-ui-mode
+ ivy-posframe-mode
+ ido-switch-buffer
+ smex
+ customize-group
  debug-watch
- message-info
- message-tab
- my-buffer-face-mode-variable
- package-autoremove
- list-packages
 )
 
 ;; ----- smex-data -----
@@ -16,13 +16,13 @@
  (eval-buffer . 33)
  (describe-mode . 1)
  (lsp . 28)
- (package-install . 40)
+ (package-install . 43)
  (vterm-toggle . 1)
  (ivy-switch-view . 1)
  (ivy-pop-view . 1)
  (butterfly . 2)
  (swiper . 5)
- (ivy-posframe-mode . 2)
+ (ivy-posframe-mode . 3)
  (recover-file . 2)
  (hs-minor-mode . 1)
  (hs-show-all . 1)
@@ -94,4 +94,8 @@
  (package-autoremove . 1)
  (message-info . 1)
  (debug-watch . 1)
+ (customize-group . 3)
+ (smex . 1)
+ (ido-switch-buffer . 1)
+ (lsp-ui-mode . 1)
 )
