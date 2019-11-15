@@ -1,22 +1,22 @@
 
 ;; ----- smex-history -----
 (
+ centaur-tabs-mode
+ toggle-debug-on-error
+ list-packages
+ version
  package-install
- lsp-ui-mode
- ivy-posframe-mode
- ido-switch-buffer
- smex
- customize-group
- debug-watch
+ toggle-debug-on-quit
+ package-autoremove
 )
 
 ;; ----- smex-data -----
 (
  (vterm . 1)
- (eval-buffer . 33)
+ (eval-buffer . 34)
  (describe-mode . 1)
  (lsp . 28)
- (package-install . 43)
+ (package-install . 52)
  (vterm-toggle . 1)
  (ivy-switch-view . 1)
  (ivy-pop-view . 1)
@@ -35,7 +35,7 @@
  (cnfonts-edit-profile-without-ui . 1)
  (make-frame . 1)
  (describe-font . 22)
- (list-packages . 4)
+ (list-packages . 8)
  (pwd . 2)
  (buffer-menu . 1)
  (list-buffers . 1)
@@ -50,7 +50,7 @@
  (clippy-describe-variable . 2)
  (lsp-mode . 7)
  (lsp-workspace-show-log . 2)
- (version . 2)
+ (version . 3)
  (load-theme . 34)
  (toggle-frame-fullscreen . 26)
  (switch-to-buffer . 1)
@@ -91,11 +91,14 @@
  (text-scale-mode . 1)
  (lsp-mode-menu . 1)
  (godef-jump . 1)
- (package-autoremove . 1)
+ (package-autoremove . 2)
  (message-info . 1)
  (debug-watch . 1)
  (customize-group . 3)
  (smex . 1)
  (ido-switch-buffer . 1)
  (lsp-ui-mode . 1)
+ (toggle-debug-on-quit . 1)
+ (toggle-debug-on-error . 3)
+ (centaur-tabs-mode . 2)
 )

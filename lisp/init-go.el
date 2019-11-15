@@ -17,7 +17,7 @@
 ;;(require 'auto-complete-config)
 ;;(require 'golint)
 					; (ac-config-default)
-(setq lsp-auto-configure nil)
+;; (setq lsp-auto-configure nil)
 (defun go-mode-setup ()
  ;; (go-eldoc-setup)
   (setq gofmt-command "goimports")
