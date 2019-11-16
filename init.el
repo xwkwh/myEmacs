@@ -23,8 +23,8 @@
 (require 'conf-modeline)
 (require 'init-go)          ;; golang相关
 (require 'conf-counsel)     ;; 搜索buffer文件
-;; (require 'conf-awesome-tab) ;; tab页
-(require 'conf-centaur-tabs)
+(require 'conf-awesome-tab) ;; tab页
+;; (require 'conf-centaur-tabs)
 (require 'conf-ivy)         ;; ivy
 (require 'conf-evil)        ;; vim操作
 (require 'conf-evil-symbol)
