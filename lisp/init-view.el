@@ -311,5 +311,34 @@
 (add-to-list 'find-file-not-found-functions 'my-create-non-existent-directory)
 
 
+
+
+;; ;; Display dividers between windows
+;; (setq window-divider-default-places t
+;;       window-divider-default-bottom-width 1
+;;       window-divider-default-right-width 1)
+;; (add-hook 'window-setup-hook #'window-divider-mode)
+
+
+;; (defconst sys/macp
+;;   (eq system-type 'darwin)
+;;   "Are we running on a Mac system?")
+
+
+;; (when sys/macp
+;;   ;; Render thinner fonts
+;;   (setq ns-use-thin-smoothing t)
+;;   ;; Don't open a file in a new frame
+;;   (setq ns-pop-up-frames nil))
+
+;; 终端中文乱码
+(set-terminal-coding-system 'utf-8)
+(modify-coding-system-alist 'process "*" 'utf-8)
+(setq default-process-coding-system '(utf-8 . utf-8))
+;; 解决文件目录的中文名乱码
+(setq-default pathname-coding-system 'utf-8)
+(set-file-name-coding-system 'utf-8)
+
+
 (provide 'init-view)
 
