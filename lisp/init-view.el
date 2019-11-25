@@ -266,13 +266,16 @@
 
 ;; (add-to-list'custom-theme-load-path "~/.emacs.d/theme/laguna-theme")
 ;; (load-theme 'laguna)
+; (add-to-list'custom-theme-load-path "~/.emacs.d/theme")
+;; (load-theme 'black)
+(load-theme 'dracula)
 
 ;; (load-theme 'chocolate)
 ;; (load-theme 'zerodark t)
 ;; Optionally setup the modeline
 ;; (zerodark-setup-modeline-format)
 
-(load-theme 'darktooth)
+;; (load-theme 'darktooth)
 ;; (load-theme 'dracula)
 ;; (require 'green-is-the-new-black-theme)
 
@@ -338,6 +341,9 @@
 ;; 解决文件目录的中文名乱码
 (setq-default pathname-coding-system 'utf-8)
 (set-file-name-coding-system 'utf-8)
+
+
+(which-func-mode 1)
 
 
 (provide 'init-view)

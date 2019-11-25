@@ -12,7 +12,8 @@
 (add-to-list 'load-path (expand-file-name "lisp" user-emacs-directory))
 
 
-(package-initialize)
+(when (version< emacs-version "27")
+  (package-initialize))
 
 (require 'conf-custom)
 
@@ -21,6 +22,7 @@
 (require 'init-view)        ;; 显示相关
 ;; (require 'fira-code-mode)
 (require 'conf-modeline)
+(require 'herald-the-mode-line)
 (require 'init-go)          ;; golang相关
 (require 'conf-counsel)     ;; 搜索buffer文件
 (require 'conf-awesome-tab) ;; tab页

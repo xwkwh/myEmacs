@@ -1,3 +1,6 @@
 [submodule "theme/laguna-theme"]
 	path = theme/laguna-theme
 	url = https://github.com/HenryNewcomer/laguna-theme.git
+[submodule "theme/darkplus-emacs"]
+	path = theme/darkplus-emacs
+	url = https://github.com/popcorn4dinner/darkplus-emacs.git

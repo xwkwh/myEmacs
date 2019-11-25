@@ -50,7 +50,9 @@
 ;; Fontify org-mode code blocks
 (setq org-src-fontify-natively t)
 
-
+(setq  org-todo-keywords
+		    '((sequence "TODO(t)" "DOING(i)"  "|" "DONE(d)")
+		      (sequence "⚑(T)" "🏴(I)"  "|" "✔(D)" )))
 
 
 (provide 'init-org)
