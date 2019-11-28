@@ -13,7 +13,10 @@
 (evil-leader/set-key "vj" 'magit-status) ;like dired-jump
 (evil-leader/set-key "va" 'vc-annotate)  ;like dired-jump
 (evil-leader/set-key "m" 'toggle-frame-fullscreen)  ;like dired-jump
-
+(evil-leader/set-key "l" 'ibuffer)
+(evil-leader/set-key "vc" 'vc-msg-show)
+(evil-leader/set-key "w" 'other-window)
+(evil-leader/set-key "1" 'delete-other-windows)
 ;; lsp查看方法被调用
 (evil-leader/set-key "u" 'lsp-find-references)
 (evil-leader/set-key "." 'vterm-toggle)
@@ -34,6 +37,19 @@ Replaces default behaviour of comment-dwim, when it inserts comment at the end o
 
 (global-set-key "\M-;" 'vmacs-comment-dwim-line)
 (global-set-key (kbd "C-.") 'vterm-toggle-cd)
+;; (global-set-key (kbd "C C") 'vterm-toggle)
+
+;; (general-create-definer my-local-leader-def
+;;   ;; :prefix my-local-leader
+;;   :prefix "C")
+
+;; (require 'general)
+;; ;; ** Mode Keybindings
+;; (my-local-leader-def
+;;   :states 'normal
+;;   "C" 'vterm-toggle
+;;   )
+
 ;; (global-set-key (kbd "C-C") 'vterm-toggle-cd)
 (define-key evil-normal-state-map (kbd "C-.") nil)
 

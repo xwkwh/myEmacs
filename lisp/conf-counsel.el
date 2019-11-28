@@ -198,7 +198,7 @@
             (setq pos nil)
           (setq pos (re-search-forward search-text nil t)))))))
 
-
+;; 全局搜索完湖过滤 C-c C-c
 (define-key ivy-occur-grep-mode-map (kbd "/") 'ivy-occur-hide-lines-not-matching)
 (define-key ivy-occur-grep-mode-map (kbd "z") 'ivy-occur-hide-lines-matching)
 
