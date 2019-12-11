@@ -4,10 +4,10 @@
 ;; You may delete these explanatory comments.
 
 (require 'package)
-;; (setq package-archives '(("gnu"   . "http://elpa.emacs-china.org/gnu/")
-;;			 ("melpa" . "http://elpa.emacs-china.org/melpa/")))
-(setq package-archives '(("gnu"   . "http://mirrors.tuna.tsinghua.edu.cn/elpa/gnu/")
-                         ("melpa" . "http://mirrors.tuna.tsinghua.edu.cn/elpa/melpa/")))
+(setq package-archives '(("gnu"   . "http://elpa.emacs-china.org/gnu/")
+			 ("melpa" . "http://elpa.emacs-china.org/melpa/")))
+;; (setq package-archives '(("gnu"   . "http://mirrors.tuna.tsinghua.edu.cn/elpa/gnu/")
+;;                          ("melpa" . "http://mirrors.tuna.tsinghua.edu.cn/elpa/melpa/")))
 
 (add-to-list 'load-path (expand-file-name "lisp" user-emacs-directory))
 
@@ -22,11 +22,11 @@
 (require 'init-view)        ;; 显示相关
 ;; (require 'fira-code-mode)
 (require 'conf-modeline)
-(require 'herald-the-mode-line)
 (require 'init-go)          ;; golang相关
+(require 'conf-jump)
 (require 'conf-counsel)     ;; 搜索buffer文件
-(require 'conf-awesome-tab) ;; tab页
-;; (require 'conf-centaur-tabs)
+;; (require 'conf-awesome-tab) ;; tab页
+(require 'conf-centaur-tabs)
 (require 'conf-ivy)         ;; ivy
 (require 'conf-evil)        ;; vim操作
 (require 'conf-evil-symbol)

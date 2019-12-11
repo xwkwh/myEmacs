@@ -268,14 +268,14 @@
 ;; (load-theme 'laguna)
 ; (add-to-list'custom-theme-load-path "~/.emacs.d/theme")
 ;; (load-theme 'black)
-(load-theme 'dracula)
+;; (load-theme 'dracula)
 
 ;; (load-theme 'chocolate)
 ;; (load-theme 'zerodark t)
 ;; Optionally setup the modeline
 ;; (zerodark-setup-modeline-format)
 
-;; (load-theme 'darktooth)
+(load-theme 'darktooth)
 ;; (load-theme 'dracula)
 ;; (require 'green-is-the-new-black-theme)
 
