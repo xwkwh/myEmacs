@@ -10,7 +10,7 @@
  '(initial-frame-alist (quote ((fullscreen . maximized))))
  '(package-selected-packages
    (quote
-    (scratch elisp-def bm dired-filetype-face diredfl dired-subtree counsel-etags counsel-gtags dumb-jump general vc-msg menu-bar-mode nil)))
+    (golden-ratio-scroll-screen dired-narrow scratch elisp-def bm dired-filetype-face diredfl dired-subtree counsel-etags counsel-gtags dumb-jump general vc-msg menu-bar-mode nil)))
  '(save-place-file "~/.emacs.d/cache/place")
  '(savehist-file "~/.emacs.d/cache/history")
  '(split-width-threshold 90)

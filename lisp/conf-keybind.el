@@ -276,7 +276,12 @@ Replaces default behaviour of comment-dwim, when it inserts comment at the end o
 (defun ct/quit-and-kill-auxiliary-windows ()
   "Kill buffer and its window on quitting"
   (local-set-key (kbd "q") 'kill-buffer-and-window))
-(add-hook 'special-mode 'ct/quit-and-kill-auxiliary-windows)
+;; q是关掉buffer 而不是离开窗口
+(add-hook 'special-mode-hook 'ct/quit-and-kill-auxiliary-windows)
 (add-hook 'compilation-mode-hook 'ct/quit-and-kill-auxiliary-windows)
+(add-hook 'dired-mode-hook 'ct/quit-and-kill-auxiliary-windows)
+(add-hook 'magit-status-mode-hook 'ct/quit-and-kill-auxiliary-windows)
+
+
 
 (provide 'conf-keybind)

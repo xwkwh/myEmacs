@@ -152,7 +152,6 @@
 
 
 ;;;;  窗口最大
-
 (setq display-buffer-alist
       '(
         ("^v?term.*"
