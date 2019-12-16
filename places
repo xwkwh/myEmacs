@@ -1,5 +1,7 @@
 ;;; -*- coding: utf-8 -*-
 (("/Users/xwk/org/todo.org" . 2602)
+ ("/Users/xwk/.emacs.d/init.el" . 274)
+ ("/Users/xwk/.emacs.d/places" . 349)
  ("/Users/xwk/Work.localized/王琦.txt" . 562)
  ("/Users/xwk/Work.localized/王琦.org" . 4062)
  ("/Users/xwk/Work.localized/text.org" . 2)
@@ -51,7 +53,6 @@
  ("/Users/xwk/.emacs.d/lisp/init-go.el" . 2184)
  ("/Users/xwk/gopath/src/gitlab.luojilab.com/igetserver/ledgers/api/noteline_endpoint.go" . 623)
  ("/Users/xwk/gopath/src/gitlab.luojilab.com/igetserver/ledgers/service/evernote/evernote_client.go" . 7088)
- ("/Users/xwk/.emacs.d/init.el" . 954)
  ("/Users/xwk/.emacs.d/elpa/github-modern-theme-20171109.1251/github-modern-theme-autoloads.el" . 626)
  ("/Users/xwk/.emacs.d/elpa/material-theme-20171123.1840/material-theme-autoloads.el" . 1117)
  ("/Users/xwk/.vimrc" . 828)

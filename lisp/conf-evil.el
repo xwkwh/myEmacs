@@ -152,7 +152,6 @@
 
 
 ;;;;  窗口最大
-
 (setq display-buffer-alist
       '(
         ("^v?term.*"
@@ -164,10 +163,16 @@
          )
         ("\\*ivy-occur.*"
          (display-buffer-same-window ))
+        ("scratch.*"
+         (display-buffer-same-window ))
         ;; default
         ;; (".*" (display-buffer-pop-up-window))
         ))
 
+(defun  my-scratch-hook()
+  (rename-buffer (concat "scratch" (buffer-name))))
+
+(add-hook 'scratch-create-buffer-hook 'my-scratch-hook)
 
 
 (evil-escape-mode)

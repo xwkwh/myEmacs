@@ -1,20 +1,20 @@
 
 ;; ----- smex-history -----
 (
+ go-import-add
+ lsp
+ package-install
+ gofmt-before-save
  vterm
  which-function-mode
  all-the-icons-insert
- all-the-icons-dired-mode
- all-the-icons-install-fonts
- package-install
- list-packages
 )
 
 ;; ----- smex-data -----
 (
  (vterm . 3)
  (vterm-toggle . 4)
- (package-install . 14)
+ (package-install . 16)
  (list-packages . 5)
  (emacs-version . 1)
  (toggle-frame-fullscreen . 1)
@@ -30,9 +30,11 @@
  (zerodark-setup-modeline-format . 1)
  (herald-the-mode-line . 3)
  (hidden-mode-line-mode . 2)
- (lsp . 3)
+ (lsp . 4)
  (all-the-icons-dired-mode . 4)
  (all-the-icons-install-fonts . 1)
  (all-the-icons-insert . 1)
  (which-function-mode . 1)
+ (gofmt-before-save . 2)
+ (go-import-add . 1)
 )

@@ -236,8 +236,28 @@
              "Use M-x hidden-mode-line-mode to make the mode-line appear."))))
 
 ;; If you want to hide the mode-line in every buffer by default
-(add-hook 'after-change-major-mode-hook 'hidden-mode-line-mode)
-(add-hook 'go-mode-hook 'hidden-mode-line-mode)
+;; (add-hook 'after-change-major-mode-hook 'hidden-mode-line-mode)
+;; (add-hook 'go-mode-hook 'hidden-mode-line-mode)
+
+
+;;;###autoload
+(defun hide-mode-line ()
+  "Show the modeline in the minibuffer.
+Use case: when the modeline is to short for its content this
+command reveals the other lines."
+  (interactive)
+  (message
+   "%s"
+   (format-mode-line
+    (or mode-line-format
+        ;; {{{ a little hack to go together with hidden-mode-line-mode.
+        ;;
+        (when (and (boundp 'hidden-mode-line-mode) hidden-mode-line-mode)
+                                        ; this is supposed to be the mode line
+                                        ; format hidden via hidden-mode-line-mode.
+          hide-mode-line)
+        ;; }}}
+        ))))
 
 
 

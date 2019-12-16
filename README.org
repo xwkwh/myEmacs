@@ -5,12 +5,35 @@ Thanks to [[https://github.com/jixiuf][jixiuf]]
 - M Shorthand for the meta-key (bound to cmd on my mac settings)
 - S Shorthand for the shift-key
 ** General
+- C-h k 快捷键帮助
+- C-h f 方法帮助
+- C-h v 变量帮助
 ** File
+- C-x C-f Open file
 ** Windows
+- C-x o(SPC w) other-window
+- C-x 1 (SPC 1) delete other window (only current window)
 ** Git
+*** magit 
+- SPC vj magit status
+- b 分支相关
+  - bb 切换分支
+  - bn 创建分支
+- x checkout
+- s stage
+- cc commit
+  - C-c C-c 完成commit
+  - C-c C-k 退出commit
+- O reset到某个commit
+- AA  Cherry pick 
 ** Text
+- SPC g rg搜索
+  - C-c C-c 将当前搜索出来的结果保存在一个buffer
+    - z 过滤掉相关关键词
+    - / 选择相关关键词结果
+- C-; iedit批量编辑
 ** Org
 - 表格分割线
   - 表格末尾 C-c -
   - 新起一行，对齐后输入 "|-" tab
-- 
+- <s Tab 插入代码块
