@@ -97,6 +97,10 @@
             (read-from-minibuffer (format
                                    "%s args: "
                                    (car (split-string counsel-ag-command))))))
+  (let ((line (buffer-substring-no-properties
+               (line-beginning-position) (line-end-position))))
+    (bm-bookmark-add line nil t)        ;跳转前在原处加一个书签
+    )
     (counsel-rg  input default-directory extra-rg-args
                  (concat "rg in " (abbreviate-file-name default-directory)))))
 
