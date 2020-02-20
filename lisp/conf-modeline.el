@@ -237,7 +237,7 @@
 
 ;; If you want to hide the mode-line in every buffer by default
 ;; (add-hook 'after-change-major-mode-hook 'hidden-mode-line-mode)
-;; (add-hook 'go-mode-hook 'hidden-mode-line-mode)
+(add-hook 'markdown-mode-hook 'hidden-mode-line-mode)
 
 
 ;;;###autoload

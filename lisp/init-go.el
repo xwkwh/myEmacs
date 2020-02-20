@@ -77,10 +77,16 @@
             (setq truncate-lines t)
             (setq indent-tabs-mode t)
             (setq tab-width 4)))
-(setq lsp-auto-guess-root t) ; Detect project root
+;; (setq lsp-auto-guess-root t) ; Detect project root
 (add-hook 'prog-mode-hook 'lsp-mode)
 
 
+
+(lsp-register-custom-settings
+ '(("gopls.completeUnimported" t t)
+   ("gopls.staticcheck" t t)))
+
+(add-to-list 'lsp-file-watch-ignored "[/\\\\]\\vendor$")
 
 
 (provide 'init-go)

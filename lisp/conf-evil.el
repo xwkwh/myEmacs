@@ -1,5 +1,6 @@
 
 (setq-default  evil-symbol-word-search t )             ;# search for symbol not word
+(setq evil-disable-insert-state-bindings t)
 (require 'evil)
 
 (evil-set-initial-state 'vterm-mode 'insert)
@@ -155,7 +156,7 @@
 (setq display-buffer-alist
       '(
         ("^v?term.*"
-         (display-buffer-pop-up-window)
+	 (display-buffer-reuse-window display-buffer-at-bottom)
          ;; (inhibit-same-window . t)
          ;; (reusable-frames . nil)
          (side . bottom)

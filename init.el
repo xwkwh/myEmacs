@@ -32,6 +32,7 @@
 (require 'conf-evil-symbol)
 (require 'init-org)         ;; org mode
 (require 'conf-dired)       ;; 文件目录操作
+(require 'vmacs-dired-single)  ;确保只有一个dired buffer的存在
 (require 'conf-projectile)
 (require 'conf-git)         ;; git 版本控制 magit的配置
 (require 'conf-iedit)

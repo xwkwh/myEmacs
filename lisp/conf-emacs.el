@@ -37,6 +37,7 @@
 (setq auto-save-visited-interval 30)
 (setq auto-save-visited-mode t)
 (setq backup-directory-alist '((".*" . "~/.emacs.d/cache/backup_files/")))
+;; (setq auto-save-file-name-transforms '((".*" "~/.emacs.d/cache/backup_files/" t)))
 
 
 (setq custom-file (concat user-emacs-directory "lisp/conf-custom.el"))

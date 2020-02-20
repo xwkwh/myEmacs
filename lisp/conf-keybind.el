@@ -21,6 +21,10 @@
 (evil-leader/set-key "u" 'lsp-find-references)
 (evil-leader/set-key "." 'vterm-toggle)
 (evil-leader/set-key "," 'counsel-imenu) ;; 查看当前文件的方法和变量列表
+
+(evil-leader/set-key "k" 'kill-current-buffer)
+
+
 ;;代码注释工作，如果有选中区域，则注释或者反注释这个区域
 ;;如果，没选中区域，则注释或者注释当前行，如果光标在行末，则在行末添加或删除注释
 ;;;###autoload
@@ -37,7 +41,7 @@ Replaces default behaviour of comment-dwim, when it inserts comment at the end o
 
 (global-set-key "\M-;" 'vmacs-comment-dwim-line)
 (global-set-key (kbd "C-.") 'vterm-toggle-cd)
-;; (global-set-key (kbd "C C") 'vterm-toggle)
+(global-set-key (kbd "s-.") 'vterm-toggle)
 
 ;; (general-create-definer my-local-leader-def
 ;;   ;; :prefix my-local-leader
@@ -73,7 +77,7 @@ Replaces default behaviour of comment-dwim, when it inserts comment at the end o
           (term-send-raw-string "\^D")
           (term-send-raw-string "\^\\"))
         (when (derived-mode-p 'vterm-mode)
-          (vterm-send-ctrl-c))
+          (vterm-send-C-c))
         (kill-process proc)))))
 (defun vmacs-vterm-hook()
   (let ((p (get-buffer-process (current-buffer))))
@@ -86,7 +90,7 @@ Replaces default behaviour of comment-dwim, when it inserts comment at the end o
 
 
 (define-key vterm-mode-map (kbd "s-t")   #'vterm)
-(defun vmacs-auto-exit(buf)
+(defun vmacs-auto-exit(buf event)
   (when buf (kill-buffer buf)))
 
 (add-hook 'vterm-exit-functions #'vmacs-auto-exit)
@@ -106,8 +110,12 @@ Replaces default behaviour of comment-dwim, when it inserts comment at the end o
 (global-set-key (kbd "C-b") 'golden-ratio-scroll-screen-down) ;M-v
 (define-key evil-motion-state-map (kbd "C-d") nil)
 (define-key evil-motion-state-map (kbd "C-b") nil)
+(define-key evil-motion-state-map (kbd "C-a") nil)
+(define-key evil-motion-state-map (kbd "C-e") nil)
 (define-key evil-insert-state-map (kbd "C-b") nil)
 (define-key evil-insert-state-map (kbd "C-d") nil)
+(define-key evil-insert-state-map (kbd "C-a") nil)
+(define-key evil-insert-state-map (kbd "C-e") nil)
 
 (define-key evil-normal-state-map "m" nil)
 (define-key evil-normal-state-map "s" nil)
