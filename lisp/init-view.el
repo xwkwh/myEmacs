@@ -55,7 +55,9 @@
 		 ;; (font . "Space Mono-22")
 		 ;; (font . "Hack-22")
 		 ;; (font . "Envy Code R-20")
-		 (font . "Source Code Pro 20")
+		 (font . "Source Code Pro 18")
+		 ;; (font . "Sarasa Mono CL-20")
+		 ;; (font . "JetBrains Mono 20")
 		 ;; (font . "fantasque sans mono-20")
 		 )
 		))
@@ -275,7 +277,9 @@
 ;; Optionally setup the modeline
 ;; (zerodark-setup-modeline-format)
 
-(load-theme 'darktooth)
+ ;; (load-theme 'darktooth)
+;; (load-theme 'sanityinc-tomorrow-eighties)
+(load-theme 'sanityinc-tomorrow-bright)
 ;; (load-theme 'dracula)
 ;; (require 'green-is-the-new-black-theme)
 

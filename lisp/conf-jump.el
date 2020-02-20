@@ -12,7 +12,7 @@
 ;; (vmacs-leader "," 'bm-previous)  ;space, 回到上一个书签
 
 (define-key evil-normal-state-map (kbd "C-o") 'bm-previous)
-(define-key evil-normal-state-map (kbd "C-i") 'bm-next)
+;; (define-key evil-normal-state-map (kbd "C-i") 'bm-next)
 
 (require 'bm)
 (setq-default
@@ -102,7 +102,7 @@
   (interactive "P")
   (let ((line (buffer-substring-no-properties
                (line-beginning-position) (line-end-position))))
-    (bm-bookmark-add line nil t)        ;跳转前在原处加一个书签
+    (bm-bookmark-add line nil nil)        ;跳转前在原处加一个书签
     (cl-case major-mode
       (emacs-lisp-mode
        (elisp-def-mode 1)
@@ -127,6 +127,13 @@
   (setq this-command 'goto-definition))
 
 (define-key evil-motion-state-map "gd" 'goto-definition)
+(require 'cc-mode)
+(define-key c-mode-map (kbd "C-d") nil)
+
+
+(use-package ccls
+  :hook ((c-mode c++-mode objc-mode cuda-mode) .
+         (lambda () (require 'ccls) (lsp))))
 
 
 (provide 'conf-jump)

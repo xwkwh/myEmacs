@@ -104,13 +104,13 @@
 (define-key dired-mode-map  (kbd "C-s") 'dired-narrow) ;dired-narrow-fuzzyxs
 
 
-(require 'dired-single)
+;; (require 'dired-single)
 ;; // 单个buffer
 (setq dired-recursive-copies 'always)
 (setq dired-recursive-deletes 'always)
 (setq dired-dwim-target t)
 
-(put 'dired-find-alternate-file 'disabled nil)
+;; (put 'dired-find-alternate-file 'disabled nil)
 ;; (with-eval-after-load 'dired
 ;;     (define-key dired-mode-map (kbd "RET") 'dired-find-alternate-file)
 ;;     (define-key dired-mode-map (kbd "u") (lambda () (interactive) (find-alternate-file ".."))))  ; was dired-up-directory)
