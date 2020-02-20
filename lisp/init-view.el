@@ -55,7 +55,7 @@
 		 ;; (font . "Space Mono-22")
 		 ;; (font . "Hack-22")
 		 ;; (font . "Envy Code R-20")
-		 (font . "Source Code Pro 18")
+		 (font . "Source Code Pro 20")
 		 ;; (font . "Sarasa Mono CL-20")
 		 ;; (font . "JetBrains Mono 20")
 		 ;; (font . "fantasque sans mono-20")
@@ -239,29 +239,31 @@
 ;; (load-theme 'zenburn t)
 ;; (load-theme 'hc-zenburn t)
 
-;; (require 'doom-themes)
+(require 'doom-themes)
 
-;; ;; Global settings (defaults)
-;; (setq doom-themes-enable-bold t    ; if nil, bold is universally disabled
-;;       doom-themes-enable-italic t) ; if nil, italics is universally disabled
+;; Global settings (defaults)
+(setq doom-themes-enable-bold t )   ; if nil, bold is universally disabled
+(setq doom-themes-enable-italic t) ; if nil, italics is universally disabled
 
-;; ;; Load the theme (doom-one, doom-molokai, etc); keep in mind that each theme
-;; ;; may have their own settings.
-;; ;; (load-theme 'doom-one t)
-;; (load-theme 'doom-vibrant t)
+;; Load the theme (doom-one, doom-molokai, etc); keep in mind that each theme
+;; may have their own settings.
+;; (load-theme 'doom-one t)
+(load-theme 'doom-tomorrow-night t)	
+;; (load-theme 'doom-acario-dark t)
+;; (load-theme 'doom-dark+ t)
+;; (load-theme 'doom-material t)
 
-;; ;; Enable flashing mode-line on errors
-;; (doom-themes-visual-bell-config)
+;; Enable flashing mode-line on errors
+ (doom-themes-visual-bell-config)
 
-;; ;; Enable custom neotree theme (all-the-icons must be installed!)
+;; Enable custom neotree theme (all-the-icons must be installed!)
 ;; (doom-themes-neotree-config)
-;; ;; or for treemacs users
-;; (setq doom-themes-treemacs-theme "doom-colors") ; use the colorful treemacs theme
-;; (doom-themes-treemacs-config)
+;; or for treemacs users
+(setq doom-themes-treemacs-theme "doom-colors") ; use the colorful treemacs theme
+(doom-themes-treemacs-config)
 
 ;; Corrects (and improves) org-mode's native fontification.
-;; (doom-themes-org-config)
-
+(doom-themes-org-config)
 
 (global-hl-line-mode)
 
@@ -277,18 +279,17 @@
 ;; Optionally setup the modeline
 ;; (zerodark-setup-modeline-format)
 
- ;; (load-theme 'darktooth)
+;; (load-theme 'darktooth)
 ;; (load-theme 'sanityinc-tomorrow-eighties)
-(load-theme 'sanityinc-tomorrow-bright)
+;; (load-theme 'sanityinc-tomorrow-bright)	
 ;; (load-theme 'dracula)
 ;; (require 'green-is-the-new-black-theme)
 
 ;; (load-theme 'nimbus t)
 
-
+(set-frame-font "Source Code Pro 20" nil t)
 
 (setq ns-use-native-fullscreen nil)
-
 
 ;; TODO Don't highlight matches with jump-char - it's distracting
 (setq jump-char-lazy-highlight-face nil)

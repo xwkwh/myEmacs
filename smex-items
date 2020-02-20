@@ -1,20 +1,20 @@
 
 ;; ----- smex-history -----
 (
- go-import-add
+ company-posframe-mode
+ lsp-mode
+ emacs-lisp-mode
  lsp
- package-install
- gofmt-before-save
- vterm
- which-function-mode
- all-the-icons-insert
+ lsp-toggle-symbol-highlight
+ flycheck-mode
+ lsp-describe-session
 )
 
 ;; ----- smex-data -----
 (
  (vterm . 3)
  (vterm-toggle . 4)
- (package-install . 16)
+ (package-install . 21)
  (list-packages . 5)
  (emacs-version . 1)
  (toggle-frame-fullscreen . 1)
@@ -24,17 +24,25 @@
  (toggle-debug-on-error . 1)
  (java-mode . 1)
  (org-mode . 1)
- (load-theme . 11)
+ (load-theme . 12)
  (laguna . 2)
  (ibuffer . 1)
  (zerodark-setup-modeline-format . 1)
  (herald-the-mode-line . 3)
  (hidden-mode-line-mode . 2)
- (lsp . 4)
+ (lsp . 7)
  (all-the-icons-dired-mode . 4)
- (all-the-icons-install-fonts . 1)
+ (all-the-icons-install-fonts . 2)
  (all-the-icons-insert . 1)
  (which-function-mode . 1)
  (gofmt-before-save . 2)
  (go-import-add . 1)
+ (customize-face . 2)
+ (set-frame-font . 1)
+ (lsp-describe-session . 1)
+ (flycheck-mode . 1)
+ (lsp-toggle-symbol-highlight . 1)
+ (lsp-mode . 3)
+ (emacs-lisp-mode . 1)
+ (company-posframe-mode . 2)
 )

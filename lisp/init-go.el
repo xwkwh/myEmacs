@@ -40,7 +40,11 @@
 
 (global-company-mode 1)
 
-(company-posframe-mode 1)
+;; (company-posframe-mode 1)
+;; (require 'desktop) ;this line is needed.
+;; (push '(company-posframe-mode . nil)
+;;       desktop-minor-mode-table)
+
 (setq company-lsp-cache-candidates 'auto)
 
 (define-key company-active-map (kbd "C-s") #'company-filter-candidates)
