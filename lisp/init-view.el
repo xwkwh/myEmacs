@@ -15,10 +15,21 @@
   (setq dashboard-startup-banner nil)
   (setq dashboard-items
         '((recents . 9)
-          (projects . 3)
+          (projects . 5)
           (agenda . 5)))
   ;; (setq dashboard-items-default-length 10)
 )
+;; Content is not centered by default. To center, set
+;; (setq dashboard-center-content t)
+
+;; To disable shortcut "jump" indicators for each section, set
+(setq dashboard-show-shortcuts t)
+
+(setq dashboard-set-heading-icons t)
+(setq dashboard-set-file-icons t)
+
+(setq show-week-agenda-p t)
+
 
 (require 'popup)
 (setq clippy-tip-show-function #'clippy-popup-tip-show)
@@ -46,6 +57,7 @@
 		 (left . 0)
 		 (top . 0)
 		 (alpha . 98)
+		 (border-width . 0)
 		 (foreground-color . "#eeeeec")
 		 (background-color . "#202020") ;;
 		 (background-mode . dark)
@@ -102,91 +114,6 @@
 ;; ｺｺｺｺｺｺｺｺｺｺｺｺｺｺｺｺｺｺｺｺｺｺｺｺｺｺｺｺｺｺｺｺｺｺｺｺｺｺｺｺ|
 ;; 까까까까까까까까까까까까까까까까까까까까|
 
-;; (create-fontset-from-fontset-spec
-;;    "-apple-Menlo-medium-normal-normal-*-12-*-*-*-m-0-fontset-mymac,
-;;  ascii:-apple-Menlo-medium-normal-normal-*-12-*-*-*-m-0-iso10646-1,
-;; han:-*-PingFang SC-normal-normal-normal-*-14-*-*-*-p-0-iso10646-1,
-;; cjk-misc:-*-PingFang SC-normal-normal-normal-*-14-*-*-*-p-0-iso10646-1,
-;; kana:-*-PingFang SC-normal-normal-normal-*-30-*-*-*-p-0-iso10646-1,
-;; hangul:-*-Apple SD Gothic Neo-normal-normal-normal-*-16-*-*-*-p-0-iso10646-1")
-;; (add-to-list 'default-frame-alist '(font . "fontset-mymac"))
-;; (set-frame-font "fontset-mymac" )
-
-
-;; (setq buffer-file-coding-system 'utf-8)
-;; (prefer-coding-system 'utf-8)
-;; (add-to-list 'default-frame-alist '(font . "Noto Sans Mono-16"))
-;; (set-frame-font "Noto Sans Mono-16" 16)
-;; (set-default-font "Noto Sans Mono-16" 16） ;
-
-;; (defun create-frame-font-mac()          ;emacs 若直接启动 启动时调用此函数似乎无效
-;;   (set-face-attribute
-;;    'default nil :font "Menlo 12")
-;;   ;; Chinese Font
-;;   (dolist (charset '( han symbol cjk-misc bopomofo)) ;script 可以通过C-uC-x=查看当前光标下的字的信息
-;;     (set-fontset-font (frame-parameter nil 'font)
-;;                       charset
-;;                       (font-spec :family "PingFang SC" :size 14)))
-
-;;   (set-fontset-font (frame-parameter nil 'font)
-;;                     'kana                 ;script ｺｺｺｺｺｺｺｺｺｺｺｺｺｺｺｺｺｺｺｺｺｺｺｺｺｺｺｺｺｺｺｺｺｺｺｺｺｺｺｺ
-;;                     (font-spec :family "Hiragino Sans" :size 14))
-;;   (set-fontset-font (frame-parameter nil 'font)
-;;                     'hangul               ;script 까까까까까까까까까까까까까까까까까까까까
-;;                     (font-spec :family "Apple SD Gothic Neo" :size 16))
-
-;;   )
-;; (when (and (equal system-type 'darwin) (window-system))
-;;   (add-hook 'after-init-hook 'create-frame-font-mac))
-
-;; (defun create-frame-font-w32()          ;emacs 若直接启动 启动时调用此函数似乎无效
-;;   (set-face-attribute
-;;    'default nil :font "Courier New 10")
-;;   ;; Chinese Font
-;;   (dolist (charset '( han symbol cjk-misc bopomofo)) ;script 可以通过C-uC-x=查看当前光标下的字的信息
-;;     (set-fontset-font (frame-parameter nil 'font)
-;;                       charset
-;;                       (font-spec :family "新宋体" :size 16)))
-
-;;   (set-fontset-font (frame-parameter nil 'font)
-;;                     'kana                 ;script ｺｺｺｺｺｺｺｺｺｺｺｺｺｺｺｺｺｺｺｺｺｺｺｺｺｺｺｺｺｺｺｺｺｺｺｺｺｺｺｺ
-;;                     (font-spec :family "MS Mincho" :size 16))
-;;   (set-fontset-font (frame-parameter nil 'font)
-;;                     'hangul               ;script 까까까까까까까까까까까까까까까까까까까까
-;;                     (font-spec :family "GulimChe" :size 16)))
-
-;; (when (and (equal system-type 'windows-nt) (window-system))
-;;   (add-hook 'after-init-hook 'create-frame-font-w32))
-
-;; (defun  emacs-daemon-after-make-frame-hook(&optional f) ;emacsclient 打开的窗口相关的设置
-;;   ;; (when (fboundp 'tool-bar-mode) (tool-bar-mode -1))
-;;   ;; (when (fboundp 'scroll-bar-mode) (scroll-bar-mode -1))
-;;   ;; (when (fboundp 'menu-bar-mode) (menu-bar-mode -1))
-;;   (with-selected-frame f
-;;     (when (window-system)
-;;       (when (equal system-type 'darwin) (create-frame-font-mac))
-;;       (when (equal system-type 'windows-nt) (create-frame-font-w32))
-;;       ;; (set-frame-position f 160 80)
-;;       ;; (set-frame-size f 140 50)
-;;       ;; (set-frame-parameter f 'alpha 85)
-;;       ;; (raise-frame)
-;;       )))
-
-;; (add-hook 'after-make-frame-functions 'emacs-daemon-after-make-frame-hook)
-
-;;;;;;;;;;;;;
-
-;;;###autoload
-;; (defun create-frame-font-big-mac()          ;emacs 若直接启动 启动时调用此函数似乎无效
-;;   (interactive)
-;;   (set-face-attribute
-;;    'default nil
-;;    :font
-;;    "Menlo 16"
-;;    :fontset "fontset-bigmac"))
-
-;; (create-frame-font-big-mac)
-
 ;; 窗口显示文件路径
 (setq frame-title-format '("%e " evil-mode-line-format "「"mode-line-buffer-identification "」("  (:propertize ("" mode-name) ) ") "   mode-line-misc-info   "%f  GNU/Emacs"))
 
@@ -209,7 +136,7 @@
 (defadvice load-theme (after run-after-load-theme-hook activate)
   "Run `after-load-theme-hook'."
   (run-hooks 'after-load-theme-hook))
-(add-hook 'after-load-theme-hook #'samray/set-mode-line-width)
+;; (add-hook 'after-load-theme-hook #'samray/set-mode-line-width)
 
 
 
@@ -232,12 +159,12 @@
      ("\\<\\(and\\|or\\|not\\)\\>" . font-lock-keyword-face)
      )))
 
-;; (load-theme 'spacemacs-dark t)
-;; (load-theme 'material t)
-;; (load-theme 'monokai t)
-;; (load-theme 'monokai-pro t)
+;;(load-theme 'spacemacs-dark t)
+;;(load-theme 'material t)
+;;(load-theme 'monokai t)
+;;(load-theme 'monokai-pro t)
 ;; (load-theme 'zenburn t)
-;; (load-theme 'hc-zenburn t)
+;;(load-theme 'hc-zenburn t)
 
 (require 'doom-themes)
 
@@ -350,6 +277,12 @@
 
 (which-func-mode 1)
 
+(show-paren-mode 1)
+
+
+(all-the-icons-ivy-rich-mode 1)
+(ivy-rich-mode 1)
+(all-the-icons-ibuffer-mode 1)
 
 (provide 'init-view)
 

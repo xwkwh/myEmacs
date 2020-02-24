@@ -104,7 +104,7 @@
 ;; (display-time-mode t)
 
 (require 'powerline-evil)
-(set-face-attribute 'powerline-evil-normal-face nil :background "dark green")
+;; (set-face-attribute 'powerline-evil-normal-face nil :background "dark green")
 
 
 ;;;;;;;;;;;;;;;;;;;;;;;;
@@ -201,11 +201,11 @@
 
 
 
-;; (set-face-foreground 'mode-line "white")
-(set-face-background 'mode-line "black")
+;; (set-face-foreground 'mode-line "white") 
+;; (set-face-background 'mode-line "black")
 
 
-(my-line-theme)
+;; (my-line-theme)
 
 
 ;; (zerodark-setup-modeline-format)
@@ -260,5 +260,9 @@ command reveals the other lines."
         ))))
 
 
+
+(require 'doom-modeline)
+(doom-modeline-mode 1)
+(require 'all-the-icons)
 
 (provide 'conf-modeline)

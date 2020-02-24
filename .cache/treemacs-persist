@@ -1,0 +1,5 @@
+* Default
+** lisp
+ - path :: ~/.emacs.d/lisp
+** label
+ - path :: ~/gopath/src/gitlab.luojilab.com/igetserver/label

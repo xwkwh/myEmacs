@@ -160,4 +160,6 @@
 
 (define-key dired-mode-map "i" 'wdired-change-to-wdired-mode)
 
+(add-hook 'dired-mode-hook 'all-the-icons-dired-mode)
+
 (provide 'conf-dired)

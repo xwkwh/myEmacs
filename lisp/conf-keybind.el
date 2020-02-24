@@ -23,7 +23,7 @@
 (evil-leader/set-key "," 'counsel-imenu) ;; 查看当前文件的方法和变量列表
 
 (evil-leader/set-key "k" 'kill-current-buffer)
-
+(evil-leader/set-key "t" 'neotree-toggle)
 
 ;;代码注释工作，如果有选中区域，则注释或者反注释这个区域
 ;;如果，没选中区域，则注释或者注释当前行，如果光标在行末，则在行末添加或删除注释
@@ -288,8 +288,6 @@ Replaces default behaviour of comment-dwim, when it inserts comment at the end o
 (add-hook 'special-mode-hook 'ct/quit-and-kill-auxiliary-windows)
 (add-hook 'compilation-mode-hook 'ct/quit-and-kill-auxiliary-windows)
 (add-hook 'dired-mode-hook 'ct/quit-and-kill-auxiliary-windows)
-(add-hook 'magit-status-mode-hook 'ct/quit-and-kill-auxiliary-windows)
-
 
 
 (provide 'conf-keybind)

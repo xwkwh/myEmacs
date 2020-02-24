@@ -17,24 +17,28 @@
 
 (require 'conf-custom)
 
+
+
+
 (require 'init-elpa)        ;; 暂时没用 purcell上烤的
 (require 'init-utils)       ;; too
 (require 'init-view)        ;; 显示相关
 ;; (require 'fira-code-mode)
 (require 'conf-modeline)
 (require 'init-go)          ;; golang相关
+(require 'conf-git)         ;; git 版本控制 magit的配置
+(require 'conf-evil)        ;; vim操作
+(require 'conf-evil-symbol)
 (require 'conf-jump)
+(require 'conf-tree)
 (require 'conf-counsel)     ;; 搜索buffer文件
 ;; (require 'conf-awesome-tab) ;; tab页
 (require 'conf-centaur-tabs)
 (require 'conf-ivy)         ;; ivy
-(require 'conf-evil)        ;; vim操作
-(require 'conf-evil-symbol)
 (require 'init-org)         ;; org mode
 (require 'conf-dired)       ;; 文件目录操作
 (require 'vmacs-dired-single)  ;确保只有一个dired buffer的存在
 (require 'conf-projectile)
-(require 'conf-git)         ;; git 版本控制 magit的配置
 (require 'conf-iedit)
 (require 'conf-keybind)     ;; 键位绑定
 ;; (require 'init-themes)
