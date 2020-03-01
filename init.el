@@ -15,14 +15,15 @@
 (when (version< emacs-version "27")
   (package-initialize))
 
+
+
 (require 'conf-custom)
 
-
+(require 'init-view)        ;; 显示相关
 
 
 (require 'init-elpa)        ;; 暂时没用 purcell上烤的
 (require 'init-utils)       ;; too
-(require 'init-view)        ;; 显示相关
 ;; (require 'fira-code-mode)
 (require 'conf-modeline)
 (require 'init-go)          ;; golang相关
@@ -46,4 +47,4 @@
 (require 'conf-emacs) ;; emacs 的其他配置
 
 
-(put 'dired-find-alternate-file 'disabled nil)
+

@@ -2,8 +2,12 @@
 (require 'evil-magit)
 
 
-(evil-define-key evil-magit-state magit-mode-map "q" 'kill-buffer-and-window)
+(evil-define-key evil-magit-state magit-mode-map "q" 'my/quit-magit-buffer)
 
+(defun my/quit-magit-buffer()
+  (interactive)
+	  (magit-mode-bury-buffer t)
+			      )
 
 
 (setq-default
