@@ -1,20 +1,20 @@
 
 ;; ----- smex-history -----
 (
- eval-buffer
+ mermaid-mode
  package-install
+ eval-buffer
  load-theme
  magit-mode-bury-buffer
  kill-buffer-and-window
  ibuffer
- man
 )
 
 ;; ----- smex-data -----
 (
  (vterm . 3)
  (vterm-toggle . 4)
- (package-install . 38)
+ (package-install . 40)
  (list-packages . 5)
  (emacs-version . 1)
  (toggle-frame-fullscreen . 1)
@@ -69,4 +69,5 @@
  (man . 1)
  (kill-buffer-and-window . 1)
  (magit-mode-bury-buffer . 1)
+ (mermaid-mode . 1)
 )
