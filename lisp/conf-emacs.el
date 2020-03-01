@@ -43,5 +43,5 @@
 (setq custom-file (concat user-emacs-directory "lisp/conf-custom.el"))
 
 (fset 'yes-or-no-p 'y-or-n-p) ;; 把Yes用y代替
-
+(flymake-mode -1)
 (provide 'conf-emacs)

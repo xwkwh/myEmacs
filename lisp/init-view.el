@@ -58,9 +58,9 @@
 		 (top . 0)
 		 (alpha . 98)
 		 (border-width . 0)
-		 (foreground-color . "#eeeeec")
-		 (background-color . "#202020") ;;
-		 (background-mode . dark)
+		 ;; (foreground-color . "#eeeeec")
+		 ;; (background-color . "#202020") ;;
+		 ;; (background-mode . dark)
 		 ;; (font . "Ubuntu Mono-22")
 		 ;; (font . "Fira Code-20")
 		 ;; (font . "DejaVu Sans Mono-13")
@@ -175,7 +175,7 @@
 ;; Load the theme (doom-one, doom-molokai, etc); keep in mind that each theme
 ;; may have their own settings.
 ;; (load-theme 'doom-one t)
-(load-theme 'doom-tomorrow-night t)	
+(load-theme 'doom-tomorrow-night t)	;
 ;; (load-theme 'doom-acario-dark t)
 ;; (load-theme 'doom-dark+ t)
 ;; (load-theme 'doom-material t)
@@ -184,7 +184,7 @@
  (doom-themes-visual-bell-config)
 
 ;; Enable custom neotree theme (all-the-icons must be installed!)
-;; (doom-themes-neotree-config)
+(doom-themes-neotree-config)
 ;; or for treemacs users
 (setq doom-themes-treemacs-theme "doom-colors") ; use the colorful treemacs theme
 (doom-themes-treemacs-config)
@@ -193,6 +193,8 @@
 (doom-themes-org-config)
 
 (global-hl-line-mode)
+
+(set-face-attribute hl-line-face nil :underline nil)
 
 
 ;; (add-to-list'custom-theme-load-path "~/.emacs.d/theme/laguna-theme")
@@ -213,6 +215,8 @@
 ;; (require 'green-is-the-new-black-theme)
 
 ;; (load-theme 'nimbus t)
+
+;; (set-face-attribute hl-line-face nil :underline nil)
 
 (set-frame-font "Source Code Pro 20" nil t)
 
@@ -283,6 +287,9 @@
 (all-the-icons-ivy-rich-mode 1)
 (ivy-rich-mode 1)
 (all-the-icons-ibuffer-mode 1)
+
+
+(setq inhibit-compacting-font-caches t)
 
 (provide 'init-view)
 

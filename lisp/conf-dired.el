@@ -162,4 +162,8 @@
 
 (add-hook 'dired-mode-hook 'all-the-icons-dired-mode)
 
+
+(setq ls-lisp-use-insert-directory-program nil)
+(require 'ls-lisp)
+
 (provide 'conf-dired)
