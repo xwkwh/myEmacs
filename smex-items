@@ -1,20 +1,20 @@
 
 ;; ----- smex-history -----
 (
+ package-install
+ hexl-mode
  customize-group
  customize-themes
  custom-theme-visit-theme
  load-theme
  flymake-mode
- lsp
- emacs-version
 )
 
 ;; ----- smex-data -----
 (
  (vterm . 3)
  (vterm-toggle . 4)
- (package-install . 24)
+ (package-install . 29)
  (list-packages . 8)
  (emacs-version . 2)
  (toggle-frame-fullscreen . 1)
@@ -56,4 +56,5 @@
  (customize-group . 5)
  (customize-themes . 4)
  (custom-theme-visit-theme . 2)
+ (hexl-mode . 1)
 )
