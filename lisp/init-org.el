@@ -54,5 +54,11 @@
 		    '((sequence "TODO(t)" "DOING(i)"  "|" "DONE(d)")
 		      (sequence "⚑(T)" "🏴(I)"  "|" "✔(D)" )))
 
+(org-babel-do-load-languages 'org-babel-load-languages
+    '(
+        (shell . t)
+								(emacs-lisp . t)
+    )
+)
 
 (provide 'init-org)
