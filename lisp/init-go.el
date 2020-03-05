@@ -79,7 +79,6 @@
             (setq go-packages-function 'go-packages-go-list)
             (add-hook 'before-save-hook 'gofmt-before-save)
             (setq truncate-lines t)
-            (setq indent-tabs-mode t)
             (setq tab-width 4)
 	    ))
 ;; (setq lsp-auto-guess-root t) ; Detect project root

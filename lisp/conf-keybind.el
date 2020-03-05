@@ -289,5 +289,6 @@ Replaces default behaviour of comment-dwim, when it inserts comment at the end o
 (add-hook 'compilation-mode-hook 'ct/quit-and-kill-auxiliary-windows)
 (add-hook 'dired-mode-hook 'ct/quit-and-kill-auxiliary-windows)
 
+(global-set-key (kbd "C-x C-e") 'eval-print-last-sexp)
 
 (provide 'conf-keybind)
