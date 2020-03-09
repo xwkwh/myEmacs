@@ -1,24 +1,22 @@
 
 ;; ----- smex-history -----
 (
+ list-packages
  package-install
- hexl-mode
- customize-group
+ go-mode
+ makefile-mode
+ eval-buffer
  customize-themes
  custom-theme-visit-theme
- mermaid-mode
- package-install
- load-theme
- flymake-mode
 )
 
 ;; ----- smex-data -----
 (
  (vterm . 3)
  (vterm-toggle . 4)
- (package-install . 29)
- (list-packages . 8)
- (emacs-version . 2)
+ (package-install . 41)
+ (list-packages . 6)
+ (emacs-version . 1)
  (toggle-frame-fullscreen . 1)
  (eval-defun . 3)
  (eval-buffer . 29)
@@ -70,15 +68,10 @@
  (counsel-fzf . 2)
  (man . 1)
  (kill-buffer-and-window . 1)
- (kill-buffer . 1)
- (dashboard-refresh-buffer . 1)
- (scratch . 2)
- (markdown-mode . 1)
- (global-hl-line-mode . 1)
- (underline-region . 2)
- (flymake-mode . 3)
- (customize-group . 5)
- (customize-themes . 4)
- (custom-theme-visit-theme . 2)
- (hexl-mode . 1)
+ (magit-mode-bury-buffer . 1)
+ (mermaid-mode . 1)
+ (customize-themes . 2)
+ (custom-theme-visit-theme . 1)
+ (makefile-mode . 5)
+ (go-mode . 14)
 )

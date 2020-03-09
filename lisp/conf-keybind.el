@@ -8,7 +8,6 @@
 (evil-leader/set-key  "ff" 'dired)
 (evil-leader/set-key  "ft" #'(lambda()(interactive)(let ((default-directory "/tmp/"))(call-interactively 'counsel-find-file))))
 (evil-leader/set-key  "fh" #'(lambda()(interactive)(let ((default-directory "~"))(call-interactively 'counsel-find-file))))
-(evil-leader/set-key  "fg" #'(lambda()(interactive)(let ((default-directory "~/gopath/src/gitlab.luojilab.com/igetserver"))(call-interactively 'counsel-find-file))))
 (evil-leader/set-key "g" 'vmacs-counsel-rg) ;; 搜索当前目录下 根据单词 + 空格
 (evil-leader/set-key "vj" 'magit-status) ;like dired-jump
 (evil-leader/set-key "va" 'vc-annotate)  ;like dired-jump
