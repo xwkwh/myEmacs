@@ -2,24 +2,24 @@
 ;; ----- smex-history -----
 (
  list-packages
- package-install
- go-mode
- makefile-mode
  eval-buffer
- customize-themes
- custom-theme-visit-theme
+ lsp
+ getenv
+ lsp-mode
+ tramp-cleanup-this-connection
+ tramp-cleanup-connection
 )
 
 ;; ----- smex-data -----
 (
  (vterm . 3)
  (vterm-toggle . 4)
- (package-install . 41)
- (list-packages . 6)
+ (package-install . 43)
+ (list-packages . 9)
  (emacs-version . 1)
  (toggle-frame-fullscreen . 1)
  (eval-defun . 3)
- (eval-buffer . 29)
+ (eval-buffer . 31)
  (magit . 1)
  (toggle-debug-on-error . 1)
  (java-mode . 1)
@@ -30,7 +30,7 @@
  (zerodark-setup-modeline-format . 1)
  (herald-the-mode-line . 3)
  (hidden-mode-line-mode . 2)
- (lsp . 7)
+ (lsp . 14)
  (all-the-icons-dired-mode . 5)
  (all-the-icons-install-fonts . 4)
  (all-the-icons-insert . 1)
@@ -42,7 +42,7 @@
  (lsp-describe-session . 1)
  (flycheck-mode . 1)
  (lsp-toggle-symbol-highlight . 1)
- (lsp-mode . 3)
+ (lsp-mode . 5)
  (emacs-lisp-mode . 1)
  (company-posframe-mode . 2)
  (pwd . 1)
@@ -74,4 +74,12 @@
  (custom-theme-visit-theme . 1)
  (makefile-mode . 5)
  (go-mode . 14)
+ (describe-font . 1)
+ (getenv . 5)
+ (lsp-log-io-mode . 1)
+ (scratch . 3)
+ (vterm-toggle-cd . 2)
+ (vterm-toggle-insert-cd . 4)
+ (tramp-cleanup-connection . 1)
+ (tramp-cleanup-this-connection . 2)
 )

@@ -4,7 +4,11 @@
   (setq exec-path-from-shell-variables '("PATH"
 					 "GOPATH"
 					 "GOROOT"
-					 "GOBIN"))
+					 "GOBIN"
+					 "GOPROXY"
+					 "GOPRIVATE"
+					 "GO111MODULE"
+					 "GOSUMDB"))
   (exec-path-from-shell-initialize))
 
 
@@ -88,7 +92,8 @@
 
 (lsp-register-custom-settings
  '(("gopls.completeUnimported" t t)
-   ("gopls.staticcheck" t t)))
+   ("gopls.staticcheck" t t)
+   ))
 
 (add-to-list 'lsp-file-watch-ignored "[/\\\\]\\vendor$")
 

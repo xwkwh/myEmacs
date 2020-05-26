@@ -67,17 +67,7 @@ Replaces default behaviour of comment-dwim, when it inserts comment at the end o
 
 (require 'vterm)
 (require 'vterm-toggle)
-(defun vmacs-kill-buffer-hook()
-  (when (funcall vterm-toggle--vterm-buffer-p-function)
-    (let ((proc (get-buffer-process (current-buffer))))
-      (when (process-live-p proc)
-        (when (derived-mode-p 'term-mode)
-          (term-send-raw-string "\^C")
-          (term-send-raw-string "\^D")
-          (term-send-raw-string "\^\\"))
-        (when (derived-mode-p 'vterm-mode)
-          (vterm-send-C-c))
-        (kill-process proc)))))
+
 (defun vmacs-vterm-hook()
   (let ((p (get-buffer-process (current-buffer))))
     (when p
@@ -85,7 +75,7 @@ Replaces default behaviour of comment-dwim, when it inserts comment at the end o
 
 (add-hook 'vterm-mode-hook 'vmacs-vterm-hook)
 
-(add-hook 'kill-buffer-hook 'vmacs-kill-buffer-hook)
+;; (add-hook 'kill-buffer-hook 'vmacs-kill-buffer-hook)
 
 
 (define-key vterm-mode-map (kbd "s-t")   #'vterm)

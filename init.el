@@ -7,7 +7,23 @@
 (setq package-archives '(("gnu"   . "http://elpa.emacs-china.org/gnu/")
 			 ("melpa" . "http://elpa.emacs-china.org/melpa/")))
 ;; (setq package-archives '(("gnu"   . "http://mirrors.tuna.tsinghua.edu.cn/elpa/gnu/")
-;;                          ("melpa" . "http://mirrors.tuna.tsinghua.edu.cn/elpa/melpa/")))
+;;                       ("melpa" . "http://mirrors.tuna.tsinghua.edu.cn/elpa/melpa/")))
+
+;; (setq package-archives '(("gnu"   . "http://mirrors.163.com/elpa/gnu/")
+;;                        ("melpa" . "http://mirrors.163.com/elpa/melpa/")))
+
+
+;; (setq package-archives '(("gnu"   . "http://mirrors.cloud.tencent.com/elpa/gnu/")
+;; 			("org"  .  "http://mirrors.cloud.tencent.com/elpa/org/")
+;;                          ("melpa" . "http://mirrors.cloud.tencent.com/elpa/melpa/")))
+(setq url-using-proxy t)
+(setq url-proxy-services '(("http" . "127.0.0.1:12639")))
+
+;; (setq url-proxy-services
+;;    '(
+;;      ("http" . "http://127.0.0.1:12639")
+;;      ("https" . "http://127.0.0.1:12639")))
+
 
 (add-to-list 'load-path (expand-file-name "lisp" user-emacs-directory))
 
@@ -48,3 +64,4 @@
 
 
 
+(put 'dired-find-alternate-file 'disabled nil)
