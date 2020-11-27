@@ -68,10 +68,22 @@ Replaces default behaviour of comment-dwim, when it inserts comment at the end o
 (require 'vterm)
 (require 'vterm-toggle)
 
+(setq vterm-toggle-fullscreen-p t)
+
 (defun vmacs-vterm-hook()
   (let ((p (get-buffer-process (current-buffer))))
     (when p
       (set-process-query-on-exit-flag p nil))))
+
+(defun vmacs-kill-buffer-hook()
+  (let ((proc (get-buffer-process (current-buffer))))
+    (when (and (derived-mode-p 'vterm-mode)
+               (process-live-p proc))
+      (vterm-send-C-c)
+      (kill-process proc))))
+
+(add-hook 'kill-buffer-hook 'vmacs-kill-buffer-hook)
+
 
 (add-hook 'vterm-mode-hook 'vmacs-vterm-hook)
 
@@ -106,6 +118,11 @@ Replaces default behaviour of comment-dwim, when it inserts comment at the end o
 (define-key evil-insert-state-map (kbd "C-a") nil)
 (define-key evil-insert-state-map (kbd "C-e") nil)
 
+(define-key c++-mode-map (kbd "C-d") nil)
+(define-key c-mode-base-map (kbd "C-d") nil)
+
+
+
 (define-key evil-normal-state-map "m" nil)
 (define-key evil-normal-state-map "s" nil)
 (define-key evil-motion-state-map "sv" 'evil-visual-char) ;==v开始选中区域
@@ -120,6 +137,8 @@ Replaces default behaviour of comment-dwim, when it inserts comment at the end o
 ;; 选中区域后 交换当前光标点，
 (define-key evil-visual-state-map "x" 'exchange-point-and-mark)
 (define-key evil-visual-state-map "X" 'evil-visual-exchange-corners)
+
+(global-set-key (kbd "M-l") 'goto-line)
 
 
 

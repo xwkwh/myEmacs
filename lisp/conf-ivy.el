@@ -17,10 +17,10 @@
 
 
 (setq ivy-posframe-display-functions-alist
-      '((swiper          . nil)
-	(counsel-rg      . nil)
+      '((swiper          . ivy-display-function-fallback)
+	(counsel-rg      .  ivy-display-function-fallback)
 	(complete-symbol . ivy-posframe-display-at-point)
-	(counsel-M-x     . nil)
+	(counsel-M-x     .  ivy-display-function-fallback)
 	(dired-mode    .  ivy-posframe-display-at-window-center)
 	(t               . ivy-posframe-display-at-window-center))
       )

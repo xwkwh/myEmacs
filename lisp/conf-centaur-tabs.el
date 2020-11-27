@@ -1,9 +1,25 @@
+(require 'centaur-tabs)
+
 (setq-default centaur-tabs-hide-tabs-hooks   nil)
 (setq-default centaur-tabs-cycle-scope 'tabs)
 (setq-default centaur-tabs-display-sticky-function-name nil)
-(setq-default centaur-tabs-style "zigzag")
+;; (setq-default centaur-tabs-style "zigzag")
+;; (setq centaur-tabs-style "bar")
+;; (setq centaur-tabs-set-icons t)
+;; (setq centaur-tabs-plain-icons t)
+;; (setq centaur-tabs-set-bar 'over)
 
-(require 'centaur-tabs)
+ (setq centaur-tabs-style "bar"
+	  centaur-tabs-height 32
+	  centaur-tabs-set-icons t
+	  centaur-tabs-set-modified-marker t
+	  ;; centaur-tabs-show-navigation-buttons t
+	  centaur-tabs-set-bar 'under
+	  x-underline-at-descent-line t)
+(centaur-tabs-group-by-projectile-project)
+(centaur-tabs-group-buffer-groups)
+
+
 (global-set-key  (kbd "s-n") 'centaur-tabs-forward)
 (global-set-key  (kbd "s-C-M-n") 'centaur-tabs-forward)
 (global-set-key  (kbd "s-p") 'centaur-tabs-backward)

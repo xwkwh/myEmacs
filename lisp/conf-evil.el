@@ -156,16 +156,18 @@
 (setq display-buffer-alist
       '(
         ("^v?term.*"
-	 (display-buffer-reuse-window display-buffer-at-bottom)
+	 ;; (display-buffer-reuse-window display-buffer-at-bottom)
          ;; (inhibit-same-window . t)
          ;; (reusable-frames . nil)
-         (side . bottom)
+         ;; (side . bottom)
          ;; (window-height . 1)
          )
         ("\\*ivy-occur.*"
          (display-buffer-same-window ))
         ("scratch.*"
          (display-buffer-same-window ))
+	(".*org"
+	 (display-buffer-same-window))
         ;; default
         ;; (".*" (display-buffer-pop-up-window))
         ))

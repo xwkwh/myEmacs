@@ -1,4 +1,3 @@
-
 (setq-default 
    inhibit-startup-screen t;隐藏启动显示画面
    display-line-numbers 'relative
@@ -16,7 +15,7 @@
   (setq dashboard-items
         '((recents . 9)
           (projects . 5)
-          (agenda . 5)))
+          (agenda . 10)))
   ;; (setq dashboard-items-default-length 10)
 )
 ;; Content is not centered by default. To center, set
@@ -56,7 +55,7 @@
 		 (width . 1.00)
 		 (left . 0)
 		 (top . 0)
-		 (alpha . 98)
+		 (alpha . 88)
 		 (border-width . 0)
 		 ;; (foreground-color . "#eeeeec")
 		 ;; (background-color . "#202020") ;;
@@ -290,6 +289,17 @@
 
 
 (setq inhibit-compacting-font-caches t)
+
+(setq frame-resize-pixelwise t)
+
+;; (use-package helpful
+;;   :defer t
+;;   :bind (("C-h f" . helpful-function)
+;;          ("C-h v" . helpful-variable)
+;;          ("C-h s" . helpful-symbol)
+;;          ("C-h k" . helpful-key))
+;; )
+
 
 (provide 'init-view)
 

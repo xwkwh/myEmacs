@@ -40,6 +40,8 @@
 
 (require 'init-elpa)        ;; 暂时没用 purcell上烤的
 (require 'init-utils)       ;; too
+
+;; (require 'init-macros)
 ;; (require 'fira-code-mode)
 (require 'conf-modeline)
 (require 'init-go)          ;; golang相关

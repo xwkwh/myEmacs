@@ -35,8 +35,8 @@
   (local-set-key (kbd "M-.") 'godef-jump))
 (add-hook 'go-mode-hook 'go-mode-setup)
 
-
-(require 'lsp-clients)
+(require 'lsp-mode)
+;(require 'lsp-client)
 
 
 					; (add-hook 'go-mode-hook 'vmacs-go-mode-hook)
@@ -84,9 +84,22 @@
             (add-hook 'before-save-hook 'gofmt-before-save)
             (setq truncate-lines t)
             (setq tab-width 4)
+	    (flymake-mode nil)
 	    ))
 ;; (setq lsp-auto-guess-root t) ; Detect project root
 (add-hook 'prog-mode-hook 'lsp-mode)
+
+
+;; (setf tramp-default-method "ssh")
+;; (setf tramp-encoding-shell "/bin/zsh")
+
+(lsp-register-client
+    (make-lsp-client :new-connection (lsp-tramp-connection (lambda() (cons "gopls" lsp-gopls-server-args)))
+                     :major-modes '(go-mode)
+                     :remote? t
+		     :priority 10
+                     :server-id 'gols-remote))
+
 
 
 
