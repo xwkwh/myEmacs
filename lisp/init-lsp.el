@@ -111,4 +111,4 @@
 (add-to-list 'lsp-file-watch-ignored "[/\\\\]\\vendor$")
 
 
-(provide 'init-go)
+(provide 'init-lsp)

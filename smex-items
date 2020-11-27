@@ -1,20 +1,20 @@
 
 ;; ----- smex-history -----
 (
+ package-install
  scratch
  lsp
  flymake-mode
  eval-buffer
  org-capture
  list-packages
- isearch-forward
 )
 
 ;; ----- smex-data -----
 (
  (vterm . 10)
  (vterm-toggle . 5)
- (package-install . 60)
+ (package-install . 61)
  (list-packages . 14)
  (emacs-version . 1)
  (toggle-frame-fullscreen . 1)

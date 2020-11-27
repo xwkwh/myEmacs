@@ -3,6 +3,7 @@
 (setq evil-disable-insert-state-bindings t)
 (require 'evil)
 
+;; 设置一些mode的初始state
 (evil-set-initial-state 'vterm-mode 'insert)
 (evil-set-initial-state 'bm-show-mode 'insert)
 (evil-set-initial-state 'diff-mode 'normal)
@@ -15,13 +16,15 @@
 (evil-set-initial-state 'vc-dir-mode 'normal)
 (evil-set-initial-state 'vc-git-log-view-mode 'normal)
 (evil-set-initial-state 'vc-svn-log-view-mode 'normal)
-;; (evil-set-initial-state 'erlang-shell-mode 'normal)
 (evil-set-initial-state 'org-agenda-mode 'normal)
 (evil-set-initial-state 'minibuffer-inactive-mode 'normal)
 (evil-set-initial-state 'ivy-occur-mode 'normal)
 (evil-set-initial-state 'ivy-occur-grep-mode 'normal)
 (evil-set-initial-state 'grep-mode 'normal)
 (evil-set-initial-state 'Info-mode 'motion)
+(evil-set-initial-state 'rg-mode 'normal)
+(evil-set-initial-state 'help-mode 'normal)
+
 
 (add-to-list 'evil-overriding-maps '(vc-annotate-mode-map . nil))
 ;; evil-overriding-maps中的按键绑定 优先级高于evil-mode
@@ -185,4 +188,5 @@
 
 
 
+;; (evil-leader/set-key "g" 'vmacs-counsel-rg) ;; 搜索当前目录下 根据单词 + 空格
 (provide 'conf-evil)

@@ -38,22 +38,26 @@
 (require 'init-view)        ;; 显示相关
 
 
-(require 'init-elpa)        ;; 暂时没用 purcell上烤的
-(require 'init-utils)       ;; too
+;; (require 'init-elpa)        ;; 暂时没用 purcell上烤的
+ ;; (require 'init-utils)       ;; too
 
 ;; (require 'init-macros)
 ;; (require 'fira-code-mode)
 (require 'conf-modeline)
-(require 'init-go)          ;; golang相关
+(require 'init-lsp)          ;; lsp 相关
 (require 'conf-git)         ;; git 版本控制 magit的配置
+
 (require 'conf-evil)        ;; vim操作
+
+(require 'conf-rg)
+
 (require 'conf-evil-symbol)
 (require 'conf-jump)
 (require 'conf-tree)
-(require 'conf-counsel)     ;; 搜索buffer文件
+;; (require 'conf-counsel)     ;; 搜索buffer文件
 ;; (require 'conf-awesome-tab) ;; tab页
 (require 'conf-centaur-tabs)
-(require 'conf-ivy)         ;; ivy
+;; (require 'conf-ivy)         ;; ivy
 (require 'init-org)         ;; org mode
 (require 'conf-dired)       ;; 文件目录操作
 (require 'vmacs-dired-single)  ;确保只有一个dired buffer的存在

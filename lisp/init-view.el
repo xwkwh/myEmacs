@@ -55,7 +55,7 @@
 		 (width . 1.00)
 		 (left . 0)
 		 (top . 0)
-		 (alpha . 88)
+		 (alpha . 95)
 		 (border-width . 0)
 		 ;; (foreground-color . "#eeeeec")
 		 ;; (background-color . "#202020") ;;

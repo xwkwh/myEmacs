@@ -144,18 +144,13 @@
 ;; Make dired less verbose
 ;; (add-hook 'dired-mode-hook (lambda () (dired-hide-details-mode 1)))
 
-;; (add-ho;; ok 'dired-mode-hook (lambda () (diredfl-mode 1)))
-;; (after-load 'dired
-;;     (diredfl-global-mode)
-;;     (require 'dired-x))
-;; Move files between split panes
 ;; (setq dired-dwim-target t)
 
 (set-face-foreground 'dired-directory "green")
 
 (require 'dired-filetype-face)
 
- (after-load 'dired
+ (with-eval-after-load 'dired
    (add-hook 'dired-mode-hook 'diff-hl-dired-mode))
 
 (define-key dired-mode-map "i" 'wdired-change-to-wdired-mode)
