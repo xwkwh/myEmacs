@@ -3,6 +3,7 @@
 ;; just comment it out by adding a semicolon to the start of the line.
 ;; You may delete these explanatory comments.
 
+
 (require 'package)
 (setq package-archives '(("gnu"   . "http://elpa.emacs-china.org/gnu/")
 			 ("melpa" . "http://elpa.emacs-china.org/melpa/")))
@@ -24,14 +25,19 @@
 ;;      ("http" . "http://127.0.0.1:12639")
 ;;      ("https" . "http://127.0.0.1:12639")))
 
+(add-to-list 'load-path (expand-file-name "conf" user-emacs-directory))
 
-(add-to-list 'load-path (expand-file-name "lisp" user-emacs-directory))
+(defvar lazy-load-dir (concat user-emacs-directory "lazy"))
+(add-to-list 'load-path lazy-load-dir)
+(require 'conf-lazy-load)               ;autoload相关，加快emacs启动速度
 
 
-(when (version< emacs-version "27")
-  (package-initialize))
+(when (< emacs-major-version 27) (package-initialize))
 
+(require 'conf-lazy-load)               ;autoload相关，加快emacs启动速度
 
+(require 'conf-minibuffer)
+(require 'conf-icomplete)
 
 (require 'conf-custom)
 

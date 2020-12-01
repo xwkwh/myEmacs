@@ -188,5 +188,5 @@
 
 
 
-;; (evil-leader/set-key "g" 'vmacs-counsel-rg) ;; 搜索当前目录下 根据单词 + 空格
+(evil-leader/set-key "g" 'vmacs-counsel-rg) ;; 搜索当前目录下 根据单词 + 空格
 (provide 'conf-evil)

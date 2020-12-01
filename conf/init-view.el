@@ -1,7 +1,11 @@
 (setq-default 
-   inhibit-startup-screen t;隐藏启动显示画面
-   display-line-numbers 'relative
-   )
+ inhibit-startup-screen t;隐藏启动显示画面
+ display-line-numbers 'relative
+ initial-buffer-choice t                ;默认打开scratch buffer
+ initial-major-mode 'emacs-lisp-mode ;scratch init mode
+ initial-scratch-message nil;关闭scratch消息提示
+ 
+ )
 
 (require 'use-package)
 (use-package dashboard

@@ -1,6 +1,8 @@
 
 (evil-leader/set-key "b" 'evil-search-highlight-persist-remove-all)
-(evil-leader/set-key "SPC"   'ivy-switch-buffer)
+;; (evil-leader/set-key "SPC"   'ivy-switch-buffer)
+(evil-leader/set-key "SPC"   'vmacs-switch-buffer)
+
 (autoload 'dired-jump "dired-x" "dired-jump" t)
 (evil-leader/set-key "j" 'dired-jump) ;; 跳到当前目录文件
 (evil-leader/set-key "s" 'evil-write-all) ;; 保存全部  

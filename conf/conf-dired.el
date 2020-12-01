@@ -161,4 +161,6 @@
 (setq ls-lisp-use-insert-directory-program nil)
 (require 'ls-lisp)
 
+(require 'vmacs-dired-history)
+
 (provide 'conf-dired)
