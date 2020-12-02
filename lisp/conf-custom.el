@@ -9,19 +9,17 @@
    (vector "#000000" "#d54e53" "#b9ca4a" "#e7c547" "#7aa6da" "#c397d8" "#70c0b1" "#eaeaea"))
  '(beacon-color "#d54e53")
  '(custom-safe-themes
-   (quote
-    ("88049c35e4a6cedd4437ff6b093230b687d8a1fb65408ef17bfcf9b7338734f6" default)))
+   '("88049c35e4a6cedd4437ff6b093230b687d8a1fb65408ef17bfcf9b7338734f6" default))
  '(electric-pair-mode t)
  '(fci-rule-color "#424242")
- '(flycheck-color-mode-line-face-to-color (quote mode-line-buffer-id))
- '(frame-background-mode (quote dark))
- '(initial-frame-alist (quote ((fullscreen . maximized))))
+ '(flycheck-color-mode-line-face-to-color 'mode-line-buffer-id)
+ '(frame-background-mode 'dark)
+ '(initial-frame-alist '((fullscreen . maximized)))
  '(menu-bar-mode nil)
  '(org-agenda-files nil)
  '(package-selected-packages
-   (quote
-    (icomplete-vertical rg ox-hugo yaml-mode helpful leetcode protobuf-mode protocols miniedit lua-mode json-mode ox-gfm ivy-prescient company-prescient prescient zenburn-theme spaceline-all-the-icons all-the-icons-gnus all-the-icons-ibuffer all-the-icons-ivy-rich neotree doom-modeline doom org-bullets color-theme-sanityinc-tomorrow graphviz-dot-mode smex ccls golden-ratio-scroll-screen dired-narrow scratch elisp-def bm dired-filetype-face diredfl dired-subtree counsel-etags counsel-gtags dumb-jump general vc-msg menu-bar-mode nil)))
- '(pdf-view-midnight-colors (quote ("#FDF4C1" . "#282828")))
+   '(ob-go rg ox-hugo yaml-mode helpful leetcode protobuf-mode protocols miniedit lua-mode json-mode ox-gfm ivy-prescient company-prescient prescient zenburn-theme spaceline-all-the-icons all-the-icons-gnus all-the-icons-ibuffer all-the-icons-ivy-rich neotree doom-modeline doom org-bullets color-theme-sanityinc-tomorrow graphviz-dot-mode smex ccls golden-ratio-scroll-screen dired-narrow scratch elisp-def bm dired-filetype-face diredfl dired-subtree counsel-etags counsel-gtags dumb-jump general vc-msg menu-bar-mode nil))
+ '(pdf-view-midnight-colors '("#FDF4C1" . "#282828"))
  '(pos-tip-background-color "#36473A")
  '(pos-tip-foreground-color "#FFFFC8")
  '(save-place-file "~/.emacs.d/cache/place")
@@ -31,8 +29,7 @@
  '(tramp-persistency-file-name "~/.emacs.d/cache/tramp")
  '(vc-annotate-background nil)
  '(vc-annotate-color-map
-   (quote
-    ((20 . "#d54e53")
+   '((20 . "#d54e53")
      (40 . "#e78c45")
      (60 . "#e7c547")
      (80 . "#b9ca4a")
@@ -49,7 +46,7 @@
      (300 . "#d54e53")
      (320 . "#e78c45")
      (340 . "#e7c547")
-     (360 . "#b9ca4a"))))
+     (360 . "#b9ca4a")))
  '(vc-annotate-very-old-color nil)
  '(window-divider-mode nil))
 (custom-set-faces

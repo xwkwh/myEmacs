@@ -56,6 +56,7 @@
                           "\*lsp-log\*"
                           "\*tramp"
                           "\*ccls"
+                          "*EGLOT "
                           "\*vc"
                           "\*xref"
                           "\*Completions\*"

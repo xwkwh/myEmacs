@@ -26,11 +26,15 @@
 ;;      ("https" . "http://127.0.0.1:12639")))
 
 (add-to-list 'load-path (expand-file-name "conf" user-emacs-directory))
+ (when (eq system-type 'darwin)
+       (require 'exec-path-from-shell)
+     (exec-path-from-shell-initialize))
 
 (defvar lazy-load-dir (concat user-emacs-directory "lazy"))
 (add-to-list 'load-path lazy-load-dir)
 (require 'conf-lazy-load)               ;autoload相关，加快emacs启动速度
 
+(require 'conf-macro)
 
 (when (< emacs-major-version 27) (package-initialize))
 
@@ -40,20 +44,26 @@
 (require 'conf-icomplete)
 
 (require 'conf-custom)
+(require 'conf-evil)        ;; vim操作
+
+(require 'conf-tags)                    ;ctags gtags 相关，代码跳转
+;; (with-eval-after-load 'eglot (define-key eglot-mode-map (kbd "C-h .") 'eglot-help-at-point))
+(require 'conf-company-mode)            ;补全
+(with-eval-after-load 'go-mode (require 'conf-program-golang))
+(with-eval-after-load 'python (require 'conf-program-python))
+(with-eval-after-load 'cc-mode (require 'conf-program-objc))
 
 (require 'init-view)        ;; 显示相关
 
+(icomplete-vertical-mode)
 
-;; (require 'init-elpa)        ;; 暂时没用 purcell上烤的
- ;; (require 'init-utils)       ;; too
 
 ;; (require 'init-macros)
 ;; (require 'fira-code-mode)
 (require 'conf-modeline)
-(require 'init-lsp)          ;; lsp 相关
+;; (require 'init-lsp)          ;; lsp 相关
 (require 'conf-git)         ;; git 版本控制 magit的配置
 
-(require 'conf-evil)        ;; vim操作
 
 (require 'conf-rg)
 
