@@ -1,40 +1,14 @@
 ;;; -*- lexical-binding: t; -*-
 (eval-when-compile (require 'cl-macs) (require 'cl-seq))
 (require 'recentf)
-(declare-function magit-toplevel "magit")
-(autoload 'magit-toplevel "magit" "magit toplevel " nil)
-
-(defmacro vmacs-files (prompt files )
-  "Open `recent-list' item in a new buffer.
-The user's $HOME directory is abbreviated as a tilde."
-  `(let* (
-          ;; (icomplete-compute-delay 0)    ;do not delay
-          ;; (icomplete-separator "\n")
-          ;; (icomplete-prospects-height 8)
-          ;; (icomplete-delay-completions-threshold 1000000)
-          ;; (completion-styles '( prescient )) ;flex
-          (buf-or-file (completing-read ,prompt ,files nil t)))
-     (unless (string-blank-p buf-or-file)
-       (if-let ((buf (get-buffer buf-or-file)))
-           (pop-to-buffer-same-window buf)
-         (find-file buf-or-file)))))
-;; (require 'magit)
-
-(defun vmacs-switch-buffer--cands()
-  (let ((bufs (vmacs-buffers))
-        (recentf (vmacs-recentf))
-        (gitfiles (vmacs--git-files)))
-    (append bufs recentf vmacs-dired-history gitfiles)))
-
-
-(defun vmacs-recentf ()
-  (mapcar #'abbreviate-file-name recentf-list ))
+(require 'consult nil t)
+(require 'magit)
 
 (defvar git-repos-files-cache (make-hash-table :test 'equal))
-(defun vmacs--git-files (&optional n)
+(defun vmacs--git-files (&optional n dir )
   "Append git files as virtual buffer"
   (let (result-list
-        (default-directory default-directory)
+        (default-directory (or dir default-directory))
         (magit-repos (mapcar 'car magit-repository-directories))
         list git-dir)
     (unless (file-remote-p default-directory)
@@ -61,6 +35,35 @@ The user's $HOME directory is abbreviated as a tilde."
             (setq result-list (append result-list list))))))
     result-list))
 
+
+;;;###autoload
+(defvar vmacs-consult--source-git
+  `(:name     "GitFile"
+              :narrow   ?g
+              :category file
+              :face     consult-file
+              :history  file-name-history
+              :action   ,#'consult--file-action
+              :items
+              ,(lambda ()
+                 (require 'lazy-buffer)
+                 (append (vmacs--git-files 0 "~/repos/vmacs")
+                         (vmacs--git-files 0 "~/repos/dotfiles")
+                         (vmacs--git-files 1 nil))))
+  "Recent file candidate source for `consult-buffer'.")
+
+;;;###autoload
+(defvar vmacs-consult--source-dired
+  `(:name     "Dired"
+              :narrow   ?d
+              :category file
+              :face     consult-file
+              :history  vmacs-dired-history
+              :action   ,#'consult--file-action
+              :items
+              ,(lambda()(require 'vmacs-dired-history) vmacs-dired-history))
+  "Recent dired candidate source for `consult-buffer'.")
+
 ;;
 (setq vmacs-ignore-buffers
       (list
@@ -79,11 +82,6 @@ The user's $HOME directory is abbreviated as a tilde."
   '(help-mode compilation-mode log-view-mode log-edit-mode
               org-agenda-mode magit-revision-mode ibuffer-mode))
 
-(defun vmacs-buffers()
-  (cl-remove-if
-   #'vmacs-filter
-   (mapcar (lambda(buf) (propertize (buffer-name buf) 'face 'shadow))
-           (buffer-list))))
 
 (defun vmacs-filter(buf &optional ignore-buffers)
   (cl-find-if
@@ -91,19 +89,7 @@ The user's $HOME directory is abbreviated as a tilde."
      (string-match-p f-or-r buf))
    (or ignore-buffers vmacs-ignore-buffers)))
 
-;;;###autoload
-(defun vmacs-switch-buffer ()
-  "Open `recent-list' item in a new buffer.
-The user's $HOME directory is abbreviated as a tilde."
-  (interactive)
-  (vmacs-files "Open: " (vmacs-switch-buffer--cands)))
 
-;;;###autoload
-(defun vmacs-git-files ()
-  "Open `recent-list' item in a new buffer.
-The user's $HOME directory is abbreviated as a tilde."
-  (interactive)
-  (vmacs-files "Git Files: " (vmacs--git-files 0)))
 
 (defun bury-boring-windows(&optional bury-cur-win-if-boring)
   "close boring *Help* windows with `C-g'"

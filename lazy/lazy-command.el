@@ -10,18 +10,16 @@
   (require 'saveplace)
   (require  'log-edit)
   (require  'org)
-  (require  'term)
-  ;; (require  'helm)
   (require  'ibuffer)
   (require  'log-view)
   (require 'cc-mode)
   (require 'lazy-camelize)
-  (require 'hippie-exp))
+  ;;(require 'hippie-exp)
+  )
 
 (declare-function org-end-of-line "org")
 (declare-function org-beginning-of-line "org")
 (declare-function org-kill-line "org")
-(declare-function term-send-raw "term")
 (declare-function upcase-first-char "lazy-camelize")
 
 ;;;###autoload
@@ -76,7 +74,6 @@ Move point to beginning-of-line ,if point was already at that position,
   move point to first non-whitespace character. "
   (interactive)
   (cond
-   ((derived-mode-p 'term-mode) (term-bol nil))
    ((derived-mode-p 'vterm-mode)
     (vterm-beginning-of-line))
    ((derived-mode-p 'eshell-mode)
@@ -344,7 +341,7 @@ Move point to end-of-line ,if point was already at that position,
            (boundp 'server-buffer-clients)
            server-buffer-clients)
       (server-edit))
-     ((vmacs-term-mode-p)
+     ((derived-mode-p 'eshell-mode 'term-mode 'shell-mode 'vterm-mode)
       (kill-this-buffer)
       ;; (vterm-toggle-hide )
       ;; (vmacs-add-to-killed-file-list)
@@ -662,6 +659,18 @@ end tell" (expand-file-name default-directory))))
      case-fold-search t ;nil=case sensitive
      evil-ex-search-case 'insensitive)
     (message "case insensitive")))
+
+;;;###autoload
+(defun consult-hide-lines ()
+  (interactive)
+  (consult-focus-lines nil (consult--completion-filter 'consult-location nil) "! "))
+
+;;;###autoload
+(defun consult-reset-lines ()
+  (interactive)
+  (consult-focus-lines t))
+
+
 ;; ;; this macro works
 ;; ;; (macroexpand '(with-mode-on icomplete-mode (message "ss")))
 ;; (defmacro with-mode-on (mode &rest body)

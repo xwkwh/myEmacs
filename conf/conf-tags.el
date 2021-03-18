@@ -10,10 +10,26 @@
   (add-hook 'before-save-hook #'eglot-organize-imports 30 t)
   (add-hook 'before-save-hook #'eglot-format-buffer 20 t))
 
+(defun projectile-project-find-function (dir)
+  (let* ((root (projectile-project-root dir)))
+    (and root (cons 'transient root))))
+
+(with-eval-after-load 'project
+  (add-to-list 'project-find-functions 'projectile-project-find-function))
+
+
+(setq evil-goto-definition-functions
+      '(evil-goto-definition-xref evil-goto-definition-imenu evil-goto-definition-semantic evil-goto-definition-search))
+
 ;; :documentHighlightProvider 禁用高亮光标下的单词
 (setq eglot-ignored-server-capabilites '(:documentHighlightProvider))
 (dolist (mod '(python-mode-hook c++-mode-hook go-mode-hook c-mode-hook ))
   (add-hook mod 'vmacs-lsp-hook))
+
+(require 'eglot)
+;; (add-to-list 'eglot-server-programs '((c++-mode c-mode) "clangd"))
+(require 'ccls)
+(setq ccls-executable "/usr/local/bin/ccls")
 
 (define-key evil-normal-state-map "gf" 'evil-jump-forward)
 (define-key evil-normal-state-map "gb" 'evil-jump-backward)
@@ -143,6 +159,33 @@ Will jump to the definition if only one is found."
            (eglot--dbind ((Command) command arguments) command
              (eglot-execute-command server (intern command) arguments))))))))
 
+(add-to-list 'eglot-server-programs '(cc-mode . ("ccls"
 
+						"--init"
+
+						"{
+
+\"clang\": {
+
+\"extraArgs\": [
+
+\"-isystem/usr/local/include\",
+
+\"-isystem/Library/Developer/CommandLineTools/usr/bin/../include/c++/v1\",
+
+\"-isystem/Library/Developer/CommandLineTools/usr/lib/clang/11.0.3/include\",
+
+\"-isystem/Library/Developer/CommandLineTools/SDKs/MacOSX.sdk/usr/include\",
+
+\"-isystem/Library/Developer/CommandLineTools/usr/include\",
+
+\"-isystem/Library/Developer/CommandLineTools/SDKs/MacOSX.sdk/System/Library/Frameworks\"
+
+]
+
+
+}
+
+}")))
 
 (provide 'conf-tags)

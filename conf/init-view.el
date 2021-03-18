@@ -303,7 +303,10 @@
 ;;          ("C-h s" . helpful-symbol)
 ;;          ("C-h k" . helpful-key))
 ;; )
-
+(require 'display-fill-column-indicator nil t)
+(when (featurep 'display-fill-column-indicator)
+  (add-hook 'find-file-hook #'display-fill-column-indicator--turn-on))
+(setq-default fill-column 128)
 
 (provide 'init-view)
 

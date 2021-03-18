@@ -52,7 +52,7 @@
 ;; (vmacs-leader "<lwindow>" 'ivy-switch-buffer) ;for windows
 (global-set-key (kbd "C-x b") 'ivy-switch-buffer)
 (global-set-key (kbd "C-x C-b") 'ivy-switch-buffer)
-(global-set-key (kbd "C-x g") 'vmacs-counsel-rg)
+;; (global-set-key (kbd "C-x g") 'vmacs-counsel-rg)
 
 
 (define-key ivy-minibuffer-map (kbd "C-c C-c") 'ivy-occur)

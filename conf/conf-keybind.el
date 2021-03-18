@@ -1,15 +1,21 @@
 
 (evil-leader/set-key "b" 'evil-search-highlight-persist-remove-all)
 ;; (evil-leader/set-key "SPC"   'ivy-switch-buffer)
-(evil-leader/set-key "SPC"   'vmacs-switch-buffer)
+;; (evil-leader/set-key "SPC"   'vmacs-switch-buffer)
+(evil-leader/set-key " "   'consult-buffer)
 
 (autoload 'dired-jump "dired-x" "dired-jump" t)
 (evil-leader/set-key "j" 'dired-jump) ;; 跳到当前目录文件
 (evil-leader/set-key "s" 'evil-write-all) ;; 保存全部  
 ;; (evil-leader/set-key  "ff" 'counsel-find-file)
 (evil-leader/set-key  "ff" 'dired)
-(evil-leader/set-key  "ft" #'(lambda()(interactive)(let ((default-directory "/tmp/"))(call-interactively 'counsel-find-file))))
-(evil-leader/set-key  "fh" #'(lambda()(interactive)(let ((default-directory "~"))(call-interactively 'counsel-find-file))))
+;; (vmacs-leader (kbd "ff") 'find-file-at-point)
+(evil-leader/set-key  "ft" #'(lambda()(interactive)(let ((default-directory "/tmp/"))(call-interactively 'find-file))))
+(evil-leader/set-key  "fh" #'(lambda()(interactive)(let ((default-directory "~"))(call-interactively 'find-file))))
+
+;; (vmacs-leader (kbd "fh") #'(lambda()(interactive)(let ((default-directory "~/"))(call-interactively 'find-file))))
+;; (vmacs-leader (kbd "ft") #'(lambda()(interactive)(let ((default-directory "/tmp/"))(call-interactively 'find-file))))
+
 (evil-leader/set-key "vj" 'magit-status) ;like dired-jump
 (evil-leader/set-key "va" 'vc-annotate)  ;like dired-jump
 (evil-leader/set-key "m" 'toggle-frame-fullscreen)  ;like dired-jump

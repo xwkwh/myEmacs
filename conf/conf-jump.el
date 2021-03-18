@@ -11,7 +11,7 @@
 
 ;; (vmacs-leader "," 'bm-previous)  ;space, 回到上一个书签
 
-(define-key evil-normal-state-map (kbd "C-o") 'bm-previous)
+;; (define-key evil-normal-state-map (kbd "C-o") 'bm-previous)
 ;; (define-key evil-normal-state-map (kbd "C-i") 'bm-next)
 
 (require 'bm)
@@ -126,7 +126,7 @@
 
   (setq this-command 'goto-definition))
 
-(define-key evil-motion-state-map "gd" 'goto-definition)
+;; (define-key evil-motion-state-map "gd" 'goto-definition)
 (require 'cc-mode)
 (define-key c-mode-map (kbd "C-d") nil)
 

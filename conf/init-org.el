@@ -70,6 +70,8 @@
  'org-babel-load-languages
  '((go . t)))
 
+ (require 'org-tempo)
+
 
 ;; (use-package general
 ;;   :init

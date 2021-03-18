@@ -9,7 +9,8 @@
   (require  'ibuffer)
   (require  'log-view)
   (require 'cc-mode)
-  (require 'hippie-exp))
+  ;; (require 'hippie-exp)
+  )
 
 ;; (require 'clang-format)
 
@@ -78,7 +79,7 @@
     (if (and mark-active)
         (if (member major-mode '(c-mode c++-mode))
             (progn
-              (call-interactively #'lsp-format-region)
+              (call-interactively #'eglot-format)
               (deactivate-mark))
           (indent-region (region-beginning) (region-end)))
       (if (or indent-tabs-mode
