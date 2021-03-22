@@ -36,7 +36,7 @@
 (add-hook 'go-mode-hook 'go-mode-setup)
 
 
-(require 'lsp-clients)
+;;(require 'lsp-clients)
 
 
 					; (add-hook 'go-mode-hook 'vmacs-go-mode-hook)
@@ -88,7 +88,7 @@
 ;; (setq lsp-auto-guess-root t) ; Detect project root
 (add-hook 'prog-mode-hook 'lsp-mode)
 
-
+(require 'lsp-mode)
 
 (lsp-register-custom-settings
  '(("gopls.completeUnimported" t t)
