@@ -1,35 +1,26 @@
 ;;; -*- coding:utf-8 -*-
+
 (setq eglot-confirm-server-initiated-edits nil)
-(setq eglot-autoshutdown nil)
-(setq eglot-sync-connect 0)
-(defun vmacs-lsp-hook()
-  ;; (lsp-deferred)
-  (eglot-ensure)
-  ;; (add-hook 'before-save-hook #'lsp-organize-imports 10 t)
-  ;; (add-hook 'before-save-hook #'lsp-format-buffer 20 t)
-  (add-hook 'before-save-hook #'eglot-organize-imports 30 t)
-  (add-hook 'before-save-hook #'eglot-format-buffer 20 t))
-
-(defun projectile-project-find-function (dir)
-  (let* ((root (projectile-project-root dir)))
-    (and root (cons 'transient root))))
-
-(with-eval-after-load 'project
-  (add-to-list 'project-find-functions 'projectile-project-find-function))
-
-
-(setq evil-goto-definition-functions
-      '(evil-goto-definition-xref evil-goto-definition-imenu evil-goto-definition-semantic evil-goto-definition-search))
-
 ;; :documentHighlightProvider 禁用高亮光标下的单词
 (setq eglot-ignored-server-capabilites '(:documentHighlightProvider))
-(dolist (mod '(python-mode-hook c++-mode-hook go-mode-hook c-mode-hook ))
-  (add-hook mod 'vmacs-lsp-hook))
+(defun vmacs-eglot-organize-imports() (call-interactively 'eglot-code-action-organize-imports))
+(defun vmacs-lsp-hook()
+  ;; The depth of -10 places this before eglot's willSave notification,
+  ;; so that that notification reports the actual contents that will be saved.
+  (hs-minor-mode 1)
+  (add-hook 'before-save-hook #'vmacs-eglot-organize-imports -9 t);before hook有时无效，只好After
+  (add-hook 'before-save-hook #'eglot-format-buffer -10 t))
 
-(require 'eglot)
-;; (add-to-list 'eglot-server-programs '((c++-mode c-mode) "clangd"))
-(require 'ccls)
-(setq ccls-executable "/usr/local/bin/ccls")
+(dolist (mod '(python-mode-hook c++-mode-hook go-mode-hook c-mode-hook ))
+  (add-hook mod #'eglot-ensure)
+  (add-hook mod #'vmacs-lsp-hook))
+
+(dolist (mod '(go-mode-hook)) (add-hook mod 'vmacs-lsp-hook))
+(with-eval-after-load 'eglot
+  ;; brew install llvm
+  ;;clangd https://clangd.llvm.org/installation.html
+  ;; ln -s ~/myproject/compile_commands.json ~/myproject-build/
+  (add-to-list 'eglot-server-programs '((c++-mode c-mode) "/usr/local/opt/llvm/bin/clangd")))
 
 (define-key evil-normal-state-map "gf" 'evil-jump-forward)
 (define-key evil-normal-state-map "gb" 'evil-jump-backward)
@@ -43,149 +34,31 @@
 (define-key evil-motion-state-map "gR" 'eglot-rename)
 (define-key evil-motion-state-map "gr" 'xref-find-references)
 (define-key evil-motion-state-map "gc" 'eglot-find-declaration)
-(define-key evil-motion-state-map "gi" 'eglot-find-implementation)
+(define-key evil-normal-state-map "gi" 'eglot-find-implementation)
 (define-key evil-motion-state-map "gt" 'eglot-find-typeDefinition)
 (define-key evil-motion-state-map "gs" 'eglot-reconnect)
 (define-key evil-normal-state-map "gh" 'eglot-code-actions)
+(define-key evil-normal-state-map "gp" 'evil-project-find-regexp)
+(define-key evil-normal-state-map "gP" 'project-or-external-find-file)
+;;
 ;; ;; (define-key evil-motion-state-map "gd" 'evil-goto-definition);evil default,see evil-goto-definition-functions
 ;; (define-key evil-motion-state-map "gi" 'lsp-find-implementation)
 ;; (define-key evil-motion-state-map "gR" 'lsp-rename)
-(setq evil-goto-definition-functions
-      '(evil-goto-definition-xref evil-goto-definition-imenu evil-goto-definition-semantic evil-goto-definition-search))
+(defun evil-project-find-regexp( &optional string _pos)
+  (interactive)
+  (when current-prefix-arg (setq string (project--read-regexp)))
+  (project-find-regexp (or string (regexp-quote (thing-at-point 'symbol)))))
 
+(setq evil-goto-definition-functions
+      '(evil-goto-definition-xref  evil-project-find-regexp evil-goto-definition-imenu evil-goto-definition-semantic evil-goto-definition-search))
 
 (with-eval-after-load 'xref
-  ;; ;; (define-key xref--xref-buffer-mode-map (kbd "j") #'xref-next-line)
-  ;; ;; (define-key xref--xref-buffer-mode-map (kbd "k") #'xref-prev-line)
-  ;; (define-key xref--xref-buffer-mode-map (kbd "r") #'xref-query-replace-in-results)
-  ;; (define-key xref--xref-buffer-mode-map (kbd "TAB") #'xref-goto-xref)
-  ;; (define-key xref--xref-buffer-mode-map (kbd "<return>")  #'xref-quit-and-goto-xref)
-  ;; (define-key xref--xref-buffer-mode-map (kbd "RET")  #'xref-quit-and-goto-xref)
-
-  (setq xref-show-xrefs-function 'completing-read-xref-show-defs)
-  (setq xref-show-definitions-function 'completing-read-xref-show-defs)
-
-  (defun completing-read-xref-make-collection (xrefs)
-    "Transform XREFS into a collection for display via `completing-read'."
-    (let ((collection nil))
-      (dolist (xref xrefs)
-        (with-slots (summary location) xref
-          (let* ((line (xref-location-line location))
-                 (file (xref-location-group location))
-                 (candidate
-                  (concat
-                   (propertize
-                    (concat
-                     (file-name-nondirectory file)
-                     (if (integerp line)
-                         (format ":%d: " line)
-                       ": "))
-                    'face 'compilation-info)
-                   summary)))
-            (push `(,candidate . ,location) collection))))
-      (nreverse collection)))
-
-  (defun completing-xref-show-xrefs (fetcher alist)
-    "Show the list of xrefs returned by FETCHER and ALIST via completing-read."
-    ;; call the original xref--show-xref-buffer so we can be used with
-    ;; dired-do-find-regexp-and-replace etc which expects to use the normal xref
-    ;; results buffer but then bury it and delete the window containing it
-    ;; immediately since we don't want to see it - see #2
-    (let* ((xrefs (if (functionp fetcher)
-                      ;; Emacs 27
-                      (or (assoc-default 'fetched-xrefs alist)
-                          (funcall fetcher))
-                    fetcher))
-           (buffer (xref--show-xref-buffer fetcher alist)))
-      (quit-window)
-      (let* ((orig-buf (current-buffer))
-             (orig-pos (point))
-             (cands (completing-read-xref-make-collection xrefs))
-             (candidate (completing-read "xref: "  cands nil t ))
-             done)
-        (setq candidate (assoc candidate cands))
-        (condition-case err
-            (let* ((marker (xref-location-marker (cdr candidate)))
-                   (buf (marker-buffer marker)))
-              (with-current-buffer buffer
-                (select-window
-                 ;; function signature changed in
-                 ;; 2a973edeacefcabb9fd8024188b7e167f0f9a9b6
-                 (if (version< emacs-version "26.0.90")
-                     (xref--show-pos-in-buf marker buf t)
-                   (xref--show-pos-in-buf marker buf)))))
-          (user-error (message (error-message-string err)))))
-      ;; honor the contact of xref--show-xref-buffer by returning its original
-      ;; return value
-      buffer))
-
-  (defun completing-read-xref-show-defs (fetcher alist)
-    "Show the list of definitions returned by FETCHER and ALIST via completing-read.
-Will jump to the definition if only one is found."
-    (let ((xrefs (funcall fetcher)))
-      (cond
-       ((not (cdr xrefs))
-        (xref-pop-to-location (car xrefs)
-                              (assoc-default 'display-action alist)))
-       (t
-        (completing-xref-show-xrefs fetcher
-                                    (cons (cons 'fetched-xrefs xrefs)
-                                          alist))))))
-
-  )
+  (setq xref-search-program 'ripgrep)     ;project-find-regexp
+  (when (functionp 'xref-show-definitions-completing-read)
+    (setq xref-show-definitions-function 'xref-show-definitions-completing-read)
+    (setq xref-show-xrefs-function 'xref-show-definitions-completing-read)))
 
 
-(defun eglot-organize-imports ()
-  "Offer to execute code actions `source.organizeImports'."
-  (interactive)
-  (unless (eglot--server-capable :codeActionProvider)
-    (eglot--error "Server can't execute code actions!"))
-  (let* ((server (eglot--current-server-or-lose))
-         (actions (jsonrpc-request
-                   server
-                   :textDocument/codeAction
-                   (list :textDocument (eglot--TextDocumentIdentifier))))
-         (action (cl-find-if
-                  (jsonrpc-lambda (&key kind &allow-other-keys)
-                    (string-equal kind "source.organizeImports" ))
-                  actions)))
-    (when action
-      (eglot--dcase action
-        (((Command) command arguments)
-         (eglot-execute-command server (intern command) arguments))
-        (((CodeAction) edit command)
-         (when edit (eglot--apply-workspace-edit edit))
-         (when command
-           (eglot--dbind ((Command) command arguments) command
-             (eglot-execute-command server (intern command) arguments))))))))
 
-(add-to-list 'eglot-server-programs '(cc-mode . ("ccls"
-
-						"--init"
-
-						"{
-
-\"clang\": {
-
-\"extraArgs\": [
-
-\"-isystem/usr/local/include\",
-
-\"-isystem/Library/Developer/CommandLineTools/usr/bin/../include/c++/v1\",
-
-\"-isystem/Library/Developer/CommandLineTools/usr/lib/clang/11.0.3/include\",
-
-\"-isystem/Library/Developer/CommandLineTools/SDKs/MacOSX.sdk/usr/include\",
-
-\"-isystem/Library/Developer/CommandLineTools/usr/include\",
-
-\"-isystem/Library/Developer/CommandLineTools/SDKs/MacOSX.sdk/System/Library/Frameworks\"
-
-]
-
-
-}
-
-}")))
 
 (provide 'conf-tags)

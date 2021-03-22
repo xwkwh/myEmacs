@@ -37,7 +37,26 @@
 
 (when (eq system-type 'darwin) (require 'conf-macos))
 (with-eval-after-load 'iedit (require 'conf-iedit))
+(require 'conf-common)
+(with-eval-after-load 'org (require 'conf-org))
+(require 'conf-yasnippet)               ;模版系统
+(with-eval-after-load 'compile (require 'conf-compile))
+(with-eval-after-load 'cc-mode (require 'conf-program-objc))
+(with-eval-after-load 'go-mode (require 'conf-program-golang))
+(with-eval-after-load 'python (require 'conf-program-python))
 
+(setq exec-path-from-shell-variables '("PATH" "MANPATH" "GOROOT" "GOPATH" "EDITOR" "PYTHONPATH" "LC_ALL" "LANG" "GOPROXY" "GOPRIVATE" "GO111MODULE" "GOSUMDB"))
+
+;; (when (memq window-system '(mac ns x))
+;;   (setq exec-path-from-shell-variables '("PATH"
+;;                   "GOPATH"
+;;                   "GOROOT"
+;;                   "GOBIN"))
+;;   (exec-path-from-shell-initialize))
+(exec-path-from-shell-initialize)
+
+
+;;==============jixiuf======================
 
 (require 'conf-minibuffer)
 (require 'conf-icomplete)
@@ -49,9 +68,6 @@
 (require 'conf-tags)                    ;ctags gtags 相关，代码跳转
 ;; (with-eval-after-load 'eglot (define-key eglot-mode-map (kbd "C-h .") 'eglot-help-at-point))
 (require 'conf-company-mode)            ;补全
-(with-eval-after-load 'go-mode (require 'conf-program-golang))
-(with-eval-after-load 'python (require 'conf-program-python))
-(with-eval-after-load 'cc-mode (require 'conf-program-objc))
 
 (require 'init-view)        ;; 显示相关
 
@@ -75,7 +91,7 @@
 ;; (require 'conf-awesome-tab) ;; tab页
 (require 'conf-centaur-tabs)
 ;; (require 'conf-ivy)         ;; ivy
-(require 'init-org)         ;; org mode
+(require 'conf-org-toby)         ;; org mode
 (require 'conf-dired)       ;; 文件目录操作
 (require 'vmacs-dired-single)  ;确保只有一个dired buffer的存在
 (require 'conf-projectile)

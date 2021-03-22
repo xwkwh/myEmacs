@@ -1,43 +1,43 @@
 ;; https://github.com/saibing/tools
 ;; go get  golang.org/x/tools/cmd/gopls
-(setq exec-path-from-shell-check-startup-files nil) ;
-
-(when (memq window-system '(mac ns x))
-  (setq exec-path-from-shell-variables '("PATH"
-					 "GOPATH"
-					 "GOROOT"
-					 "GOBIN"
-					 "GOPROXY"
-					 "GOPRIVATE"
-					 "GO111MODULE"
-					 "GOSUMDB"))
- 
-  (exec-path-from-shell-initialize))
 
 ;; go install golang.org/x/tools/cmd/goimports
-(let ((gopath (getenv "GOPATH")))
-  (when
-      (dolist (path  (parse-colon-path gopath))
-        (setq exec-path (delete-dups  (cons (concat path  "/bin") exec-path))))))
+;; (let ((gopath (getenv "GOPATH")))
+;;   (when
+;;       (dolist (path  (parse-colon-path gopath))
+;;         (setq exec-path (delete-dups  (cons (concat path  "/bin") exec-path))))))
 
-(when (executable-find "gofmt")
-  (setq-default gofmt-command (executable-find "gofmt")))
-(when (executable-find "goimports")
-  (setq-default gofmt-command (executable-find "goimports")))
+;; (when (executable-find "gofmt") (setq-default gofmt-command (executable-find "gofmt")))
+;; (when (executable-find "goimports") (setq-default gofmt-command (executable-find "goimports")))
+
 (add-hook 'go-mode-hook 'vmacs-go-mode-hook)
-
-
 (defun vmacs-go-mode-hook()
+  (evil-collection-define-key 'normal 'go-mode-map "gd" )
+
   (setq eglot-workspace-configuration
+        ;; https://github.com/golang/tools/blob/master/gopls/doc/emacs.md
         '((:gopls . (:usePlaceholders t :completeUnimported  t ;; :staticcheck t
-                                      ))))
-  ;; (add-hook 'before-save-hook #'gofmt 20 t)
-  ;; (add-hook 'before-save-hook #'lsp-organize-imports 20 t)
-  (setq require-final-newline nil)
-  (modify-syntax-entry ?_  "_" (syntax-table)) ;还是让 "_" 作为symbol，还不是word
+                                      :directoryFilters ["-vendor"]
+                                      ;; :buildFlags ["-mod=readonly"]
+                                      :allowImplicitNetworkAccess t
+                                      :experimentalWorkspaceModule  t
+                                      :allowModfileModifications t))))
+  ;; (setq require-final-newline nil)
+  ;; (modify-syntax-entry ?_  "_" (syntax-table)) ;还是让 "_" 作为symbol，还不是word
   (local-set-key (kbd "C-c i") 'go-goto-imports)
   (local-set-key (kbd "C-c g") 'golang-setter-getter))
 
+
+(require 'project)
+
+(defun project-find-go-module (dir)
+  (when-let ((root (locate-dominating-file dir "go.mod")))
+    (cons 'go-module root)))
+
+(cl-defmethod project-root ((project (head go-module)))
+  (cdr project))
+
+(add-hook 'project-find-functions #'project-find-go-module)
 
 (provide 'conf-program-golang)
 

@@ -1,4 +1,3 @@
-
 (require 'org)
 
 ;; Remove the markup characters, i.e., "/text/" becomes (italized) "text"
@@ -16,7 +15,7 @@
 ;; Turn on visual-line-mode for Org-mode only
 ;; Also install "adaptive-wrap" from elpa
 ;; (add-hook 'org-mode-hook 'turn-on-visual-line-mode)
-;; 
+;;
 
 ;; (eval-after-load "org"
 ;;   '(require 'ox-md nil t))
@@ -56,15 +55,15 @@
 (setq org-src-fontify-natively t)
 
 (setq  org-todo-keywords
-		    '((sequence "TODO(t)" "DOING(i)"  "|" "DONE(d)")
-		      (sequence "⚑(T)" "🏴(I)"  "|" "✔(D)" )))
+            '((sequence "TODO(t)" "DOING(i)"  "|" "DONE(d)")
+              (sequence "⚑(T)" "🏴(I)"  "|" "✔(D)" )))
 
 (org-babel-do-load-languages 'org-babel-load-languages
-			     '(
-			       (shell . t)
-			       (emacs-lisp . t)
-			       )
-			     )
+                 '(
+                   (shell . t)
+                   (emacs-lisp . t)
+                   )
+                 )
 (require 'ob-go)
 (org-babel-do-load-languages
  'org-babel-load-languages
@@ -174,8 +173,8 @@ See `org-capture-templates' for more information."
                  (file+headline "~/Dropbox/Write/blog/orgpost/0000-posts.org" "INBOX")
                  (function org-hugo-new-subtree-post-capture-template))))
 
-;; (global-set-key "av" 'org-capture)	
+;; (global-set-key "av" 'org-capture)
 ;; (global-set-key (kbd "C-c a") 'org-agenda)
 
 
-(provide 'init-org)
+(provide 'conf-org-toby)
