@@ -37,8 +37,7 @@ Thanks to [[https://github.com/jixiuf][jixiuf]]
   - 表格末尾 C-c -
   - 新起一行，对齐后输入 "|-" tab
 - <s Tab 插入代码块
-
- 
+- C-c ' 编辑代码
 ** Fix Mark:
 
 *** c-u c-x = 查看当前字体
