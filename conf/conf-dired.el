@@ -1,3 +1,7 @@
+;;; Code:
+;;; -*- coding:utf-8 -*-
+;;; 一些命令注释
+
 ;;q        quit
 ;; f <RET> open file 打开文件
 ;; o       open file other window 在另一个窗口中打开文件
@@ -87,80 +91,98 @@
 ;;与*类似但不相同的"?" 表示对mark的文件"分别" 运行这个命令
 ;;; image-dired
 
-(require 'savehist)
-(add-to-list 'savehist-additional-variables 'ivy-dired-history-variable)
-(savehist-mode 1)
+(setq-default
+ image-dired-db-file (concat user-emacs-directory "cache/image-dired/image-dired_db" )
+ image-dired-dir (concat user-emacs-directory "cache/image-dired/image-dired" )
+ image-dired-gallery-dir (concat user-emacs-directory "cache/image-dired/image-dired-gallery")
+ image-dired-main-image-directory (concat user-emacs-directory "cache/image" )
+ image-dired-temp-image-file (concat user-emacs-directory "cache/image-dired-tmp")
+ thumbs-thumbsdir (concat user-emacs-directory "cache/thumbs-dir")
 
+ dired-recursive-copies 'always         ;让 dired 可以递归的拷贝和删除目录。
+ dired-recursive-deletes 'always       ;always表示不加询问
+ dired-dwim-target t                   ;Dired试着猜处默认的目标目录
+ dired-listing-switches "-alht"
+ )
 
-(require 'ivy-dired-history)
+;; (if (equal system-type 'gnu/linux)
+;;     (setq dired-listing-switches "--time-style=+%y-%m-%d/%H:%M  --group-directories-first -alhG")
+;;   (setq dired-listing-switches "-alhG"))
+;; (when (eq system-type 'darwin)
+;;   ;; macos 使用emacs自带的ls-lisp来展示文件目录，
+;;   ;; 下文用到lazy-dired-sort 进行排序时，mac自带的ls有些参数不支持
+;;   (require 'ls-lisp)
+;;   (setq-default ls-lisp-use-insert-directory-program nil))
 
-
-(define-key dired-mode-map "," 'dired)  ;;
-
-
-(define-key dired-mode-map "u" 'dired-up-directory) ;上层目录
-
-(define-key dired-mode-map  "/" 'dired-narrow) ;dired-narrow-fuzzy
-(define-key dired-mode-map  (kbd "C-s") 'dired-narrow) ;dired-narrow-fuzzyxs
-
-
-;; (require 'dired-single)
-;; // 单个buffer
-(setq dired-recursive-copies 'always)
-(setq dired-recursive-deletes 'always)
-(setq dired-dwim-target t)
-
-;; (put 'dired-find-alternate-file 'disabled nil)
-;; (with-eval-after-load 'dired
-;;     (define-key dired-mode-map (kbd "RET") 'dired-find-alternate-file)
-;;     (define-key dired-mode-map (kbd "u") (lambda () (interactive) (find-alternate-file ".."))))  ; was dired-up-directory)
-
-
-;; (require 'ls-lisp)
-;; (setq ls-lisp-use-insert-directory-program nil)
-;; (setq ls-lisp-verbosity nil)
-
-
-;; dired 目录排序			       
-(defun custom-dired-sort-dir-first ()
-  "Dired sort hook to list directories first."
-  (save-excursion
-    (let (buffer-read-only)
-      (forward-line 2) ;; beyond dir. header
-      (sort-regexp-fields t "^.*$" "[ ]*." (point) (point-max))))
-  (and (featurep 'xemacs)
-       (fboundp 'dired-insert-set-properties)
-       (dired-insert-set-properties (point-min) (point-max)))
-  (set-buffer-modified-p nil)
+;;(setq directory-free-space-args "-Pkh")
+;;u原来绑定为unmark ,可以使用它的另一个绑定"*u"来完成
+(require 'dired)
+(evil-collection-define-key 'normal 'dired-mode-map
+  "u" 'dired-up-directory ;上层目录
+  ;; 只显示匹配的文件 do filter  "/" 只显示匹配的文件
+  "/" 'consult-focus-lines
+  (kbd "C-s") 'consult-focus-lines
+  "z"  'consult-hide-lines
+  ;; 第一次跳到文件名处，C-aC-a才跳到行首，再次则跳回
+  ;; C-gC-g 退出编辑或C-cC-c保存修改
+  ;; "i" 'wdired-change-to-wdired-mode
+  "\M-o" 'dired-omit-mode ;不显示一些不重要的文件
+  "L" 'dired-add-to-load-path-or-load-it
+  "v" 'add-dir-local-variable
+  "," 'dired
+  "f" 'open-in-filemanager
+  "r" 'revert-buffer
   )
-(add-hook 'dired-after-readin-hook 'custom-dired-sort-dir-first)
+(with-eval-after-load 'wdired (evil-set-initial-state 'wdired-mode 'insert))
 
-(use-package dired-subtree
-  :defer t
-  :bind (:map dired-mode-map
-              ("TAB" . dired-subtree-cycle)))
+;; wdired == writable dired
+;; i后 进入可以对dired文件名 权限等可以修改的mode，同时evil-mode 可进行evil-insert-state
+(setq-default wdired-allow-to-change-permissions t);; writable 时,不仅可以改文件名,还可以改权限
 
 
-;; Make dired less verbose
-;; (add-hook 'dired-mode-hook (lambda () (dired-hide-details-mode 1)))
+(with-eval-after-load 'wdired
+  (define-key wdired-mode-map (kbd "C-g") 'wdired-abort-changes))
 
-;; (setq dired-dwim-target t)
+;;; dired-x 增强的dired功能
+(with-eval-after-load 'dired-x
+  (add-hook 'dired-mode-hook 'dired-omit-mode);;M-o toggle 是否显示忽略的文件
+  ;; 默认这些后缀的文件 不显示，M-o后才显示
+  (setq dired-omit-files (concat dired-omit-files "\\|^.*~$\\|^#.*#$\\|^\\.svn$\\|.DS_Store\\|\\.ccls-cache"))
+  )
 
-(set-face-foreground 'dired-directory "green")
-
+(with-eval-after-load 'dired-aux (add-to-list 'dired-compress-files-alist '("\\.tgz\\'" . "tar -c %i | gzip -c9 > %o")))
+;; 根据后缀名对文件进行着色
 (require 'dired-filetype-face)
+;; 实现按文件大小 时间 扩展名 名称排序，默认绑定在s上如ss 按size排序
+;;; 排序
+;;;do sorting
+;; 1. s s 按照文件大小排序。
+;; 2. s x 按照文件扩展名排序。
+;; 3. s t 按照文件访问时间排序。
+;; 4. s n 按照文件名称的字母顺序排序。
+;; 5. s C-s 原来的s 功能 ,C=u s C-s 可手动编辑ls 的命令
+(require 'lazy-dired-sort)
+(require 'vmacs-dired-single)           ;确保只有一个dired buffer的存在
 
- (with-eval-after-load 'dired
-   (add-hook 'dired-mode-hook 'diff-hl-dired-mode))
-
-(define-key dired-mode-map "i" 'wdired-change-to-wdired-mode)
-
-(add-hook 'dired-mode-hook 'all-the-icons-dired-mode)
-
-
-(setq ls-lisp-use-insert-directory-program nil)
-(require 'ls-lisp)
-
+;; 绑定之后，你访问过的dired都会被记录住，当你copy rename 及打开dired时，可以从这些
+;; 已访问的目录中筛选以方便快速访问
+(setq vmacs-dired-history-max 500)
 (require 'vmacs-dired-history)
 
+(require 'dired-async nil t)
+
+(defun dired-next-line (arg)
+  (interactive "^p")
+  (beginning-of-line)
+  (forward-line arg)
+  (while (and (not (eobp)) (not (bobp)) (invisible-p (point)))
+    (forward-line arg))
+  (dired-move-to-filename))
+
 (provide 'conf-dired)
+
+;; Local Variables:
+;; coding: utf-8
+;; End:
+
+;;; conf-dired.el ends here.

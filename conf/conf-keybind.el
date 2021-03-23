@@ -1,12 +1,11 @@
-
 (evil-leader/set-key "b" 'evil-search-highlight-persist-remove-all)
 ;; (evil-leader/set-key "SPC"   'ivy-switch-buffer)
 ;; (evil-leader/set-key "SPC"   'vmacs-switch-buffer)
-(evil-leader/set-key " "   'consult-buffer)
+;; (evil-leader/set-key " "   'consult-buffer)
 
 (autoload 'dired-jump "dired-x" "dired-jump" t)
 (evil-leader/set-key "j" 'dired-jump) ;; 跳到当前目录文件
-(evil-leader/set-key "s" 'evil-write-all) ;; 保存全部  
+(evil-leader/set-key "s" 'evil-write-all) ;; 保存全部
 ;; (evil-leader/set-key  "ff" 'counsel-find-file)
 (evil-leader/set-key  "ff" 'dired)
 ;; (vmacs-leader (kbd "ff") 'find-file-at-point)
@@ -112,8 +111,8 @@ Replaces default behaviour of comment-dwim, when it inserts comment at the end o
   (hs-toggle-hiding)
   )
 (evil-leader/set-key "/" 'my-comment-code) ;; 代码折叠
- 
-(global-set-key (kbd "C-d") 'golden-ratio-scroll-screen-up) 
+
+(global-set-key (kbd "C-d") 'golden-ratio-scroll-screen-up)
 
 (global-set-key (kbd "C-b") 'golden-ratio-scroll-screen-down) ;M-v
 (define-key evil-motion-state-map (kbd "C-d") nil)

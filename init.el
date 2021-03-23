@@ -45,29 +45,51 @@
 (with-eval-after-load 'go-mode (require 'conf-program-golang))
 (with-eval-after-load 'python (require 'conf-program-python))
 
-(setq exec-path-from-shell-variables '("PATH" "MANPATH" "GOROOT" "GOPATH" "EDITOR" "PYTHONPATH" "LC_ALL" "LANG" "GOPROXY" "GOPRIVATE" "GO111MODULE" "GOSUMDB"))
+(when (eq system-type 'darwin)
+  (require 'exec-path-from-shell)
+  (exec-path-from-shell-initialize))
+(require 'exec-path-from-shell)
+(setq exec-path-from-shell-check-startup-files nil) ;
+(when (memq window-system '(mac ns x))
+  (setq exec-path-from-shell-variables '("PATH"
+                                         "GOPATH"
+                                         "GOROOT"
+                                         "GOBIN"
+                                         "GOPROXY"
+                                         "GOPRIVATE"
+                                         "GO111MODULE"
+                                         "GOSUMDB"))
+  (exec-path-from-shell-initialize))
 
-;; (when (memq window-system '(mac ns x))
-;;   (setq exec-path-from-shell-variables '("PATH"
-;;                   "GOPATH"
-;;                   "GOROOT"
-;;                   "GOBIN"))
-;;   (exec-path-from-shell-initialize))
-(exec-path-from-shell-initialize)
+(with-eval-after-load 'dired (require 'conf-dired)) ;emacs文件浏览器，directory 管理理
+(require 'conf-wgrep)
 
+(require 'conf-centaur-tabs)
+(require 'conf-tags)                    ;ctags gtags 相关，代码跳转
+(require 'conf-company-mode)            ;补全
+(with-eval-after-load 'magit (require 'conf-magit))
+
+(global-undo-tree-mode t)
+(global-font-lock-mode)
+(transient-mark-mode 1)
+(save-place-mode t)
+(savehist-mode 1)
+(recentf-mode 1)
+(run-with-idle-timer 300 t 'vmacs-idle-timer) ;idle 300=5*60s
+(require 'conf-vterm)
 
 ;;==============jixiuf======================
 
-(require 'conf-minibuffer)
-(require 'conf-icomplete)
+;; (require 'conf-minibuffer)
+;; (require 'conf-icomplete)
 
-(require 'conf-custom)
+;; (require 'conf-custom)
 
 (require 'conf-evil-toby)        ;; vim操作
 
 (require 'conf-tags)                    ;ctags gtags 相关，代码跳转
 ;; (with-eval-after-load 'eglot (define-key eglot-mode-map (kbd "C-h .") 'eglot-help-at-point))
-(require 'conf-company-mode)            ;补全
+;; (require 'conf-company-mode)            ;补全
 
 (require 'init-view)        ;; 显示相关
 
@@ -89,10 +111,10 @@
 (require 'conf-tree)
 ;; (require 'conf-counsel)     ;; 搜索buffer文件
 ;; (require 'conf-awesome-tab) ;; tab页
-(require 'conf-centaur-tabs)
+(require 'conf-centaur-tabs-toby)
 ;; (require 'conf-ivy)         ;; ivy
 (require 'conf-org-toby)         ;; org mode
-(require 'conf-dired)       ;; 文件目录操作
+(require 'conf-dired-toby)       ;; 文件目录操作
 (require 'vmacs-dired-single)  ;确保只有一个dired buffer的存在
 (require 'conf-projectile)
 (require 'conf-iedit-toby)
@@ -100,13 +122,6 @@
 ;; (require 'init-themes)
 
 (require 'conf-emacs) ;; emacs 的其他配置
-
-(global-undo-tree-mode t)
-(global-font-lock-mode)
-(transient-mark-mode 1)
-(save-place-mode t)
-(savehist-mode 1)
-(recentf-mode 1)
 
 
 

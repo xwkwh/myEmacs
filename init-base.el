@@ -28,7 +28,7 @@
 (require 'conf-icomplete)
 ;; (require 'conf-keybind)
 ;; custom-set-variables custom-set-faces 相关配置存放在custom-file指定的文件内
-(setq custom-file (concat user-emacs-directory "conf/custom-file.el"))
+(setq custom-file (concat user-emacs-directory "conf/conf-custom.el"))
 (require 'conf-custom)
 ;; (require 'vmacs-theme)
 
