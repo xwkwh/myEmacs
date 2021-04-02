@@ -68,11 +68,11 @@
 (define-key transient-edit-map   "q" 'transient-quit-one)
 (define-key transient-sticky-map "q" 'transient-quit-seq)
 (evil-collection-define-key 'normal 'magit-mode-map
-  "v"  'magit-push
+       "v"  'magit-push
        "C-w"  evil-window-map
+       "q"  'my/quit-magit-buffer
        "gw" 'toggle-diff-whitespace
        "gm"  'magit-toggle-margin)
-
 
 (defun vmacs-magit-mode-hook()
   ;; (require 'magit-backup)

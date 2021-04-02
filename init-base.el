@@ -24,6 +24,7 @@
 
 (require 'conf-package)
 (require 'conf-lazy-load)               ;autoload相关，加快emacs启动速度
+(require 'init-view)        ;; 显示相关
 (require 'conf-minibuffer)
 (require 'conf-icomplete)
 ;; (require 'conf-keybind)

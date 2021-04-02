@@ -1,7 +1,7 @@
 ;; (require 'evil-magit)                   ;
 
 
-(evil-define-key evil-magit-state magit-mode-map "q" 'my/quit-magit-buffer)
+;; (evil-define-key evil-magit-state magit-mode-map "q" 'my/quit-magit-buffer)
 
 (defun my/quit-magit-buffer()
   (interactive)

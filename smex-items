@@ -2,12 +2,12 @@
 ;; ----- smex-history -----
 (
  getenv
- pwd
  list-packages
  eval-buffer
  lsp
  lsp-mode
  tramp-cleanup-this-connection
+ tramp-cleanup-connection
 )
 
 ;; ----- smex-data -----
@@ -45,7 +45,7 @@
  (lsp-mode . 5)
  (emacs-lisp-mode . 1)
  (company-posframe-mode . 2)
- (pwd . 2)
+ (pwd . 1)
  (treemacs . 11)
  (treemacs-quit . 1)
  (treemacs-delete . 1)
@@ -75,7 +75,7 @@
  (makefile-mode . 5)
  (go-mode . 14)
  (describe-font . 1)
- (getenv . 11)
+ (getenv . 7)
  (lsp-log-io-mode . 1)
  (scratch . 3)
  (vterm-toggle-cd . 2)
