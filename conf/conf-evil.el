@@ -23,7 +23,7 @@
  evil-want-visual-char-semi-exclusive t ; 当v 选择到行尾时是否包含换行符
  evil-want-C-w-delete nil
  evil-want-abbrev-expand-on-insert-exit nil
- evil-want-C-i-jump nil
+ ;; evil-want-C-i-jump nil
  evil-cross-lines t
  evil-want-fine-undo t                  ;undo更细化,否则从N->I->N 中所有的修改作为一个undo
  evil-symbol-word-search t              ;# search for symbol not word
@@ -323,7 +323,7 @@ execute emacs native `repeat' default binding to`C-xz'"
 
 ;; (global-set-key (kbd "C-c C-c") 'vmacs-smart-double-ctrl-c)
 (define-key evil-normal-state-map (kbd "M-o") 'toggle-camelize)
-(define-key evil-motion-state-map (kbd "C-o") nil)
+;; (define-key evil-motion-state-map (kbd "C-o") nil)
 
 (evil-declare-motion 'golden-ratio-scroll-screen-down)
 (evil-declare-motion 'golden-ratio-scroll-screen-up)

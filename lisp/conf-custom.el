@@ -17,13 +17,12 @@
  '(initial-frame-alist '((fullscreen . maximized)))
  '(org-agenda-files nil)
  '(package-selected-packages
-   '(rg ox-hugo yaml-mode helpful leetcode protobuf-mode protocols miniedit lua-mode json-mode ox-gfm ivy-prescient company-prescient prescient zenburn-theme spaceline-all-the-icons all-the-icons-gnus all-the-icons-ibuffer all-the-icons-ivy-rich neotree doom-modeline doom org-bullets color-theme-sanityinc-tomorrow graphviz-dot-mode smex ccls golden-ratio-scroll-screen dired-narrow scratch elisp-def bm dired-filetype-face diredfl dired-subtree counsel-etags counsel-gtags dumb-jump general vc-msg nil))
+   '(embark-consult rg ox-hugo yaml-mode helpful leetcode protobuf-mode protocols miniedit lua-mode json-mode ox-gfm ivy-prescient company-prescient prescient zenburn-theme spaceline-all-the-icons all-the-icons-gnus all-the-icons-ibuffer all-the-icons-ivy-rich neotree doom-modeline doom org-bullets color-theme-sanityinc-tomorrow graphviz-dot-mode smex ccls golden-ratio-scroll-screen dired-narrow scratch elisp-def bm dired-filetype-face diredfl dired-subtree counsel-etags counsel-gtags dumb-jump general vc-msg nil))
  '(pdf-view-midnight-colors '("#FDF4C1" . "#282828"))
  '(pos-tip-background-color "#36473A")
  '(pos-tip-foreground-color "#FFFFC8")
  '(save-place-file "~/.emacs.d/cache/place")
  '(savehist-file "~/.emacs.d/cache/history")
- '(show-paren-mode t)
  '(split-width-threshold 90)
  '(tool-bar-mode nil)
  '(tramp-persistency-file-name "~/.emacs.d/cache/tramp")
@@ -54,7 +53,6 @@
  ;; If you edit it by hand, you could mess it up, so be careful.
  ;; Your init file should contain only one such instance.
  ;; If there is more than one, they won't work right.
- '(default ((t (:family "Source Code Pro" :foundry "nil" :slant normal :weight normal :height 200 :width normal))))
  '(evil-search-highlight-persist-highlight-face ((t (:background "dark cyan"))))
  '(font-lock-done-face ((t (:foreground "Green" :box (:line-width 2 :color "grey75" :style released-button) :height 1.2))) t)
  '(font-lock-todo-face ((t (:foreground "Red" :box (:line-width 2 :color "grey75" :style released-button) :height 1.2))) t)

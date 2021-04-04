@@ -104,3 +104,14 @@
 ;;   "q" 'my/quit-magit-buffer)
 (evil-collection-define-key 'normal 'magit-mode-map
   "q" 'my/quit-magit-buffer)
+(evil-collection-define-key 'normal 'grep-mode-map
+   "/" #'consult-focus-lines
+   "z" #'consult-hide-lines
+   "r" #'consult-reset-lines
+   "i" #'evil-insert-state)
+
+(defun enable-wgrep-when-entry-insert()
+  (when (derived-mode-p  'rg-mode 'grep-mode 'embark-collect-mode)
+    (require 'wgrep) (wgrep-change-to-wgrep-mode)))
+
+(add-hook 'evil-insert-state-entry-hook 'enable-wgrep-when-entry-insert)

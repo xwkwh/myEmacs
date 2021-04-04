@@ -182,12 +182,7 @@
 (add-hook 'scratch-create-buffer-hook 'my-scratch-hook)
 
 
-(evil-escape-mode)
-(setq-default evil-escape-key-sequence "jk")
-
-
-
-
-
-(evil-leader/set-key "g" 'vmacs-counsel-rg) ;; 搜索当前目录下 根据单词 + 空格
+;; (evil-escape-mode)
+;; (setq-default evil-escape-key-sequence "jk")
+;; (evil-leader/set-key "g" 'vmacs-counsel-rg) ;; 搜索当前目录下 根据单词 + 空格
 (provide 'conf-evil-toby)
