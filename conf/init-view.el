@@ -1,10 +1,10 @@
-(setq-default 
+(setq-default
  inhibit-startup-screen t;隐藏启动显示画面
  display-line-numbers 'relative
  initial-buffer-choice t                ;默认打开scratch buffer
  initial-major-mode 'emacs-lisp-mode ;scratch init mode
  initial-scratch-message nil;关闭scratch消息提示
- 
+
  )
 
 (require 'use-package)
@@ -51,8 +51,8 @@
 (scroll-bar-mode -1)
 
 ;直接emacs命令打开的窗口相关设置,不要在这里设置字体，否则daemon 启动时字体有可能没创建好，会导致字体设置失败
-(setq-default window-system-default-frame-alist                 
-	      '( 
+(setq-default window-system-default-frame-alist
+          '(
 		(ns ;; if frame created on mac
 		 (height . 0.98)
 		 ;; (width . 0.98)
@@ -83,7 +83,7 @@
    (setq buffer-face-mode-face '(:family "Ubuntu Mono" :width semi-condensed))
    (buffer-face-mode))
 
- ;; Set default font faces 
+ ;; Set default font faces
 (add-hook 'org-mode-hook 'my-buffer-face-mode-variable)
 
 
@@ -133,7 +133,7 @@
 (defun samray/set-mode-line-width ()
   "Set mode line width, it is so cool."
   (set-face-attribute 'mode-line nil
-		      :box '(:line-height 0)))
+              :box '(:line-height 0)))
 (defvar after-load-theme-hook nil
   "Hook run after a color theme is loaded using `load-theme'.")
 (defadvice load-theme (after run-after-load-theme-hook activate)
@@ -213,7 +213,7 @@
 
 ;; (load-theme 'darktooth)
 ;; (load-theme 'sanityinc-tomorrow-eighties)
-;; (load-theme 'sanityinc-tomorrow-bright)	
+;; (load-theme 'sanityinc-tomorrow-bright)
 ;; (load-theme 'dracula)
 ;; (require 'green-is-the-new-black-theme)
 
@@ -306,7 +306,6 @@
 (require 'display-fill-column-indicator nil t)
 (when (featurep 'display-fill-column-indicator)
   (add-hook 'find-file-hook #'display-fill-column-indicator--turn-on))
-(setq-default fill-column 128)
+(setq-default fill-column 120)
 
 (provide 'init-view)
-

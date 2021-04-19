@@ -59,7 +59,6 @@
 
 (require 'conf-evil-toby)        ;; vim操作
 
-(require 'conf-tags)                    ;ctags gtags 相关，代码跳转
 ;; (with-eval-after-load 'eglot (define-key eglot-mode-map (kbd "C-h .") 'eglot-help-at-point))
 ;; (require 'conf-company-mode)            ;补全
 
@@ -94,6 +93,8 @@
 
 (require 'conf-emacs) ;; emacs 的其他配置
 
+
+(require 'gotests)
 ;; (evil-collection-define-key 'unimpaired 'magit-mode-map
 ;;   "q" 'my/quit-magit-buffer)
 ;; (evil-define-key 'normal 'magit-mode-map

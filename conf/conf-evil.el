@@ -12,10 +12,10 @@
 (setq-default
  evil-want-keybinding nil
 
- ;; evil-search-module 'isearch        ;可以用C-w yank word
+ evil-search-module 'isearch        ;可以用C-w yank word
  evil-undo-system 'undo-tree
  evil-disable-insert-state-bindings t
- evil-search-module 'evil-search        ;可以用gn 命令，需要取舍
+ ;; evil-search-module 'evil-search        ;可以用gn 命令，需要取舍
 ;; gn 命令的用法 / search 之后，可以用dgn 或cgn 对search到的第一个内容进行处理，然后用.去重复之
  evil-ex-search-highlight-all t
  evil-ex-search-persistent-highlight nil
@@ -55,7 +55,7 @@
 (defun vmacs-calc-hook()
   (require 'calc-bin)
   ;; 默认calc 的移位移位操作是接32位的， 可以bw(calc-word-size) 来改成64位
-  (calc-word-size 128))
+  (calc-word-size 120))
 
 (add-hook 'calc-mode-hook 'vmacs-calc-hook)
 

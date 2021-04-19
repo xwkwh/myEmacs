@@ -29,6 +29,7 @@
 (setq company-require-match nil)      ;不为nil的话，则如果输入的内容导致无匹配的选项，则不允许此输入
 (define-key company-active-map (kbd "C-e") #'company-other-backend)
 (define-key company-active-map (kbd "C-s") #'company-filter-candidates)
+(define-key company-active-map (kbd "<C-return>") #'company-complete-selection)
 
 (make-variable-buffer-local 'company-backends)
 

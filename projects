@@ -1,2 +1,6 @@
 ;;; -*- lisp-data -*-
-(("~/.emacs.d/"))
+(("~/workspace/gowork/predict/predict/")
+ ("~/workspace/gowork/novelrecaccess/")
+ ("~/workspace/gowork/original_feature/")
+ ("~/workspace/gowork/novel-rerank/")
+ ("~/.emacs.d/"))
