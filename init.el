@@ -55,14 +55,12 @@
 ;; (require 'conf-minibuffer)
 ;; (require 'conf-icomplete)
 
-;; (require 'conf-custom)
 
 (require 'conf-evil-toby)        ;; vim操作
 
 ;; (with-eval-after-load 'eglot (define-key eglot-mode-map (kbd "C-h .") 'eglot-help-at-point))
 ;; (require 'conf-company-mode)            ;补全
 
-(require 'init-view)        ;; 显示相关
 
 (icomplete-vertical-mode)
 

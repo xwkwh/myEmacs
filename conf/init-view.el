@@ -1,52 +1,24 @@
-(setq-default
- inhibit-startup-screen t;隐藏启动显示画面
- display-line-numbers 'relative
- initial-buffer-choice t                ;默认打开scratch buffer
- initial-major-mode 'emacs-lisp-mode ;scratch init mode
- initial-scratch-message nil;关闭scratch消息提示
-
- )
-
 (require 'use-package)
-(use-package dashboard
-  :ensure
-  :init
-  (dashboard-setup-startup-hook)
-  :config
-  (setq dashboard-banner-logo-title "Happy Emacs")
-  ;; (setq dashboard-startup-banner "~/.emacs.d/go.png")
-  (setq dashboard-startup-banner nil)
-  (setq dashboard-items
-        '((recents . 9)
-          (projects . 5)
-          (agenda . 10)))
-  ;; (setq dashboard-items-default-length 10)
-)
-;; Content is not centered by default. To center, set
-;; (setq dashboard-center-content t)
 
+(dashboard-setup-startup-hook)
+;; (setq dashboard-banner-logo-title "Happy Emacs")
+;; (setq dashboard-startup-banner "~/.emacs.d/go.png")
+(setq dashboard-startup-banner nil)
+;; (setq dashboard-items-default-length 10)
+(dashboard-setup-startup-hook)
+(setq dashboard-items
+      '((recents . 9)
+        (projects . 5)
+        (agenda . 10)))
 ;; To disable shortcut "jump" indicators for each section, set
 (setq dashboard-show-shortcuts t)
-
 (setq dashboard-set-heading-icons t)
 (setq dashboard-set-file-icons t)
-
-(setq show-week-agenda-p t)
-
 
 (require 'popup)
 (setq clippy-tip-show-function #'clippy-popup-tip-show)
 
-
-;; (require 'cnfonts)
-;; ;; 让 cnfonts 随着 Emacs 自动生效。
-;; (cnfonts-enable) ;
-;; 让 spacemacs mode-line 中的 Unicode 图标正确显示。
-;; (cnfonts-set-spacemacs-fallback-fonts)
-;; (setq cnfonts-use-face-font-rescale t)
-
 ;; 隐藏状态栏
-(tool-bar-mode -1)
 (menu-bar-mode -1)
 (scroll-bar-mode -1)
 
@@ -117,10 +89,6 @@
 ;; ｺｺｺｺｺｺｺｺｺｺｺｺｺｺｺｺｺｺｺｺｺｺｺｺｺｺｺｺｺｺｺｺｺｺｺｺｺｺｺｺ|
 ;; 까까까까까까까까까까까까까까까까까까까까|
 
-;; 窗口显示文件路径
-(setq frame-title-format '("%e " evil-mode-line-format "「"mode-line-buffer-identification "」("  (:propertize ("" mode-name) ) ") "   mode-line-misc-info   "%f  GNU/Emacs"))
-
-
 ;; 修改evil line
 (setq evil-mode-line-format '(before . mode-line-front-space))
 (setq evil-normal-state-tag   (propertize "[Normal]")
@@ -140,8 +108,6 @@
   "Run `after-load-theme-hook'."
   (run-hooks 'after-load-theme-hook))
 ;; (add-hook 'after-load-theme-hook #'samray/set-mode-line-width)
-
-
 
 
 (defface font-lock-todo-face nil
@@ -284,7 +250,7 @@
 
 (which-func-mode 1)
 
-(show-paren-mode 1)
+;; (show-paren-mode 1)
 
 
 (all-the-icons-ivy-rich-mode 1)
@@ -292,20 +258,8 @@
 (all-the-icons-ibuffer-mode 1)
 
 
-(setq inhibit-compacting-font-caches t)
+;; (setq inhibit-compacting-font-caches t)
 
-(setq frame-resize-pixelwise t)
-
-;; (use-package helpful
-;;   :defer t
-;;   :bind (("C-h f" . helpful-function)
-;;          ("C-h v" . helpful-variable)
-;;          ("C-h s" . helpful-symbol)
-;;          ("C-h k" . helpful-key))
-;; )
-(require 'display-fill-column-indicator nil t)
-(when (featurep 'display-fill-column-indicator)
-  (add-hook 'find-file-hook #'display-fill-column-indicator--turn-on))
 (setq-default fill-column 120)
 
 (provide 'init-view)

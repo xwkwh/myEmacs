@@ -24,9 +24,9 @@
 ;; (setq which-key-idle-delay 10000)
 ;; (setq which-key-idle-secondary-delay 0.05)
 ;; (which-key-mode)
-  
 
-(setq 
+
+(setq
  backup-by-copying t    ;自动备份
  delete-old-versions t ; 自动删除旧的备份文件
  kept-new-versions 10   ; 保留最近的6个备份文件
@@ -40,7 +40,7 @@
 ;; (setq auto-save-file-name-transforms '((".*" "~/.emacs.d/cache/backup_files/" t)))
 
 
-(setq custom-file (concat user-emacs-directory "lisp/conf-custom.el"))
+;; (setq custom-file (concat user-emacs-directory "lisp/conf-custom.el"))
 
 (fset 'yes-or-no-p 'y-or-n-p) ;; 把Yes用y代替
 (flymake-mode -1)

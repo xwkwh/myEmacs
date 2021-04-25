@@ -65,7 +65,6 @@
 ;; (define-key global-map [(control meta ?r)] 'org-agenda)
 
 (setq-default
- ;; inhibit-startup-screen t;隐藏启动显示画面
  calendar-date-style 'iso
  calendar-day-abbrev-array ["七" "一" "二" "三" "四" "五" "六"]
  calendar-day-name-array ["七" "一" "二" "三" "四" "五" "六"]
