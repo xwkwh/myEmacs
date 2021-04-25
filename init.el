@@ -51,19 +51,7 @@
 (require 'conf-vterm)
 
 ;;==============jixiuf======================
-
-;; (require 'conf-minibuffer)
-;; (require 'conf-icomplete)
-
-
 (require 'conf-evil-toby)        ;; vim操作
-
-;; (with-eval-after-load 'eglot (define-key eglot-mode-map (kbd "C-h .") 'eglot-help-at-point))
-;; (require 'conf-company-mode)            ;补全
-
-
-(icomplete-vertical-mode)
-
 
 ;; (require 'init-macros)
 ;; (require 'fira-code-mode)
@@ -75,7 +63,7 @@
 ;; (require 'conf-rg)
 
 ;; (require 'conf-counsel)     ;; 搜索buffer文件
-(require 'conf-evil-symbol)
+;; (require 'conf-evil-symbol)
 (require 'conf-jump)
 (require 'conf-tree)
 ;; (require 'conf-counsel)     ;; 搜索buffer文件

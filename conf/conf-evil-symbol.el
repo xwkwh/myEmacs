@@ -21,6 +21,7 @@
 (define-key evil-inner-text-objects-map "e" 'evil-inner-symbol)
 
 
+
 ;;;###autoload
 (evil-define-motion evil-forward-symbol-begin(count)
   "Move to the end of the COUNT-th next symbol."

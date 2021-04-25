@@ -195,7 +195,6 @@
 (setq jump-char-lazy-highlight-face nil)
 
 (recentf-mode 1)
-(setq recentf-max-saved-items 100) ;; just 20 is too recent
 
 ;; Save minibuffer history
 (savehist-mode 1)
