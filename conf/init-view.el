@@ -63,15 +63,15 @@
 (set-language-environment "UTF-8")
 (set-default-coding-systems 'utf-8)
 ; 字体
-(create-fontset-from-fontset-spec
- (concat "-*-*-*-*-*--*-*-*-*-*-*-fontset-bigmac"
-	 ",han:PingFang SC:size=20"
-	 ",symbol:PingFang SC:size=20"
-	 ",cjk-misc:PingFang SC:size=20"
-         ",bopomofo:PingFang SC:size=20"
-         ",kana:Hiragino Sans:size=20"
-         ",hangul:Apple SD Gothic Neo:size=23"
-         ",latin:Menlo"))
+;; (create-fontset-from-fontset-spec
+;;  (concat "-*-*-*-*-*--*-*-*-*-*-*-fontset-bigmac"
+;;   ",han:PingFang SC:size=20"
+;;   ",symbol:PingFang SC:size=20"
+;;   ",cjk-misc:PingFang SC:size=20"
+;;          ",bopomofo:PingFang SC:size=20"
+;;          ",kana:Hiragino Sans:size=20"
+;;          ",hangul:Apple SD Gothic Neo:size=23"
+;;          ",latin:Menlo"))
 ;;;;;;;;;;;;;;;
 
 
@@ -259,6 +259,9 @@
 
 ;; (setq inhibit-compacting-font-caches t)
 
+(require 'display-fill-column-indicator nil t)
+(when (featurep 'display-fill-column-indicator)
+  (add-hook 'find-file-hook #'display-fill-column-indicator--turn-on))
 (setq-default fill-column 120)
 
 (provide 'init-view)

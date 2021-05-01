@@ -173,8 +173,18 @@ See `org-capture-templates' for more information."
                  (file+headline "~/Dropbox/Write/blog/orgpost/0000-posts.org" "INBOX")
                  (function org-hugo-new-subtree-post-capture-template))))
 
-;; (global-set-key "av" 'org-capture)
-;; (global-set-key (kbd "C-c a") 'org-agenda)
+(defun vmacs-org-symbol()
+  (push '("[X]" . ?☑) prettify-symbols-alist)
+  (push '("[ ]" . ?☐) prettify-symbols-alist)
+  (prettify-symbols-mode 1)
+  )
+(add-hook 'org-mode-hook #'vmacs-org-symbol)
+
+(font-lock-add-keywords
+ 'org-mode
+ `(("^[ \t]*\\(?:[-+*]\\|[0-9]+[).]\\)[ \t]+\\(\\(?:\\[@\\(?:start:\\)?[0-9]+\\][ \t]*\\)?\\[\\(?:X\\|\\([0-9]+\\)/\\2\\)\\][^\n]*\n\\)" 1 'org-headline-done prepend))
+ 'append)
+
 
 
 (provide 'conf-org-toby)

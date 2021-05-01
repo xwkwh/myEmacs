@@ -79,23 +79,14 @@
 
 (require 'conf-emacs) ;; emacs 的其他配置
 
+(icomplete-vertical-mode)
 
-(require 'gotests)
-;; (evil-collection-define-key 'unimpaired 'magit-mode-map
-;;   "q" 'my/quit-magit-buffer)
-;; (evil-define-key 'normal 'magit-mode-map
-;;   "q" 'my/quit-magit-buffer)
-;; (evil-define-key 'normal 'magit-status-mode-map
-;;   "q" 'my/quit-magit-buffer)
-;; (evil-collection-define-key 'normal 'magit-status-mode-map
-;;   "q" 'my/quit-magit-buffer)
+
+(require 'gotests) ;; go test
+
 (evil-collection-define-key 'normal 'magit-mode-map
   "q" 'my/quit-magit-buffer)
-(evil-collection-define-key 'normal 'grep-mode-map
-   "/" #'consult-focus-lines
-   "z" #'consult-hide-lines
-   "r" #'consult-reset-lines
-   "i" #'evil-insert-state)
+
 
 (defun enable-wgrep-when-entry-insert()
   (when (derived-mode-p  'rg-mode 'grep-mode 'embark-collect-mode)
