@@ -47,8 +47,9 @@
        (window-configuration-to-register :vc-annotate-fullscreen)
        ad-do-it
        (delete-other-windows))
-     (define-key vc-annotate-mode-map (kbd "q") 'vc-annotate-quit)
+     (define-key vc-annotate-mode-map (kbd "q") #'vc-annotate-quit)
      (define-key vc-annotate-mode-map (kbd "j") nil)
+     (evil-define-key 'normal vc-annotate-mode-map (kbd "q") #'vc-annotate-quit)
      )
 (set-default 'magit-diff-refine-hunk t)
 

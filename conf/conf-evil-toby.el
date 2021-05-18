@@ -8,7 +8,7 @@
 (evil-set-initial-state 'diff-mode 'normal)
 (evil-set-initial-state 'git-rebase-mode 'normal)
 (evil-set-initial-state 'package-menu-mode 'normal)
-(evil-set-initial-state 'vc-annotate-mode 'normal)
+;; (evil-set-initial-state 'vc-annotate-mode 'normal)
 (evil-set-initial-state 'Custom-mode 'normal)
 (evil-set-initial-state 'erc-mode 'normal)
 (evil-set-initial-state 'ibuffer-mode 'normal)
@@ -25,7 +25,7 @@
 (evil-set-initial-state 'help-mode 'normal)
 
 
-(add-to-list 'evil-overriding-maps '(vc-annotate-mode-map . nil))
+;; (add-to-list 'evil-overriding-maps '(vc-annotate-mode-map . nil))
 ;; evil-overriding-maps中的按键绑定 优先级高于evil-mode
 (add-to-list 'evil-overriding-maps '(vc-git-log-view-mode-map . nil))
 (add-to-list 'evil-overriding-maps '(vc-svn-log-view-mode-map . nil))

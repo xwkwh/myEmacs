@@ -85,7 +85,8 @@
 (require 'gotests) ;; go test
 
 (evil-collection-define-key 'normal 'magit-mode-map
-  "q" 'my/quit-magit-buffer)
+  "q" #'my/quit-magit-buffer)
+
 
 
 (defun enable-wgrep-when-entry-insert()
@@ -93,3 +94,30 @@
     (require 'wgrep) (wgrep-change-to-wgrep-mode)))
 
 (add-hook 'evil-insert-state-entry-hook 'enable-wgrep-when-entry-insert)
+
+(evil-collection-define-key 'normal 'vc-annotate-mode-map
+  "q" #'vmacs-kill-buffer-dwim)
+
+(evil-collection-define-key 'insert 'vc-annotate-mode-map
+  "q" #'vmacs-kill-buffer-dwim)
+
+
+(defvar my-intercept-mode-map (make-sparse-keymap)
+  "High precedence keymap.")
+
+(define-minor-mode my-intercept-mode
+  "Global minor mode for higher precedence evil keybindings."
+  :global t)
+
+(my-intercept-mode)
+
+(dolist (state '(normal visual insert))
+  (evil-make-intercept-map
+   ;; NOTE: This requires an evil version from 2018-03-20 or later
+   (evil-get-auxiliary-keymap my-intercept-mode-map state t t)
+   state))
+
+(evil-define-key 'normal my-intercept-mode-map
+  (kbd "SPC f") 'find-file
+  (kbd "q") #'vmacs-kill-buffer-dwim
+  )
