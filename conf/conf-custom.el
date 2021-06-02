@@ -9,7 +9,7 @@
    (vector "#000000" "#d54e53" "#b9ca4a" "#e7c547" "#7aa6da" "#c397d8" "#70c0b1" "#eaeaea"))
  '(beacon-color "#d54e53")
  '(custom-safe-themes
-   '("88049c35e4a6cedd4437ff6b093230b687d8a1fb65408ef17bfcf9b7338734f6" default))
+   '("0f7fa4835d02a927d7d738a0d2d464c38be079913f9d4aba9c97f054e67b8db9" "88049c35e4a6cedd4437ff6b093230b687d8a1fb65408ef17bfcf9b7338734f6" default))
  '(electric-pair-mode t)
  '(fci-rule-color "#424242")
  '(flycheck-color-mode-line-face-to-color 'mode-line-buffer-id)
@@ -17,7 +17,7 @@
  '(initial-frame-alist '((fullscreen . maximized)))
  '(org-agenda-files nil)
  '(package-selected-packages
-   '(rg ox-hugo yaml-mode helpful leetcode protobuf-mode protocols miniedit lua-mode json-mode ox-gfm ivy-prescient company-prescient prescient zenburn-theme spaceline-all-the-icons all-the-icons-gnus all-the-icons-ibuffer all-the-icons-ivy-rich neotree doom-modeline doom org-bullets color-theme-sanityinc-tomorrow graphviz-dot-mode smex ccls golden-ratio-scroll-screen dired-narrow scratch elisp-def bm dired-filetype-face diredfl dired-subtree counsel-etags counsel-gtags dumb-jump general vc-msg nil))
+   '(git-link flycheck modus-vivendi-theme rg ox-hugo yaml-mode helpful leetcode protobuf-mode protocols miniedit lua-mode json-mode ox-gfm ivy-prescient company-prescient prescient zenburn-theme spaceline-all-the-icons all-the-icons-gnus all-the-icons-ibuffer all-the-icons-ivy-rich neotree doom-modeline doom org-bullets color-theme-sanityinc-tomorrow graphviz-dot-mode smex ccls golden-ratio-scroll-screen dired-narrow scratch elisp-def bm dired-filetype-face diredfl dired-subtree counsel-etags counsel-gtags dumb-jump general vc-msg nil))
  '(pdf-view-midnight-colors '("#FDF4C1" . "#282828"))
  '(pos-tip-background-color "#36473A")
  '(pos-tip-foreground-color "#FFFFC8")

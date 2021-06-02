@@ -22,22 +22,23 @@
                                       :allowImplicitNetworkAccess t
                                       :experimentalWorkspaceModule  t
                                       :allowModfileModifications t))))
+  ;; (setq flycheck-mode t)
   ;; (setq require-final-newline nil)
   ;; (modify-syntax-entry ?_  "_" (syntax-table)) ;还是让 "_" 作为symbol，还不是word
   (local-set-key (kbd "C-c i") 'go-goto-imports)
   (local-set-key (kbd "C-c g") 'golang-setter-getter))
 
 
-(require 'project)
+;; (require 'project)
 
-(defun project-find-go-module (dir)
-  (when-let ((root (locate-dominating-file dir "go.mod")))
-    (cons 'go-module root)))
+;; (defun project-find-go-module (dir)
+;;   (when-let ((root (locate-dominating-file dir "go.mod")))
+;;     (cons 'go-module root)))
 
-(cl-defmethod project-root ((project (head go-module)))
-  (cdr project))
+;; (cl-defmethod project-root ((project (head go-module)))
+;;   (cdr project))
 
-(add-hook 'project-find-functions #'project-find-go-module)
+;; (add-hook 'project-find-functions #'project-find-go-module)
 
 (provide 'conf-program-golang)
 

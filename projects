@@ -1,5 +1,6 @@
 ;;; -*- lisp-data -*-
 (("~/workspace/gowork/novelrecaccess/")
+ ("~/.emacs.d/")
  ("~/gopath/pkg/mod/git.code.oa.com/trpc-go/trpc-go@v0.6.1/")
  ("~/workspace/gowork/novel-rerank/")
  ("~/workspace/gowork/predict/predict/")
@@ -10,5 +11,4 @@
  ("~/workspace/gowork/novelroughrankserver/")
  ("~/workspace/gowork/trpc-log-atta/")
  ("~/gopath/pkg/mod/git.code.oa.com/trpcprotocol/mtt/primaryengine_interface@v1.1.2/")
- ("~/workspace/gowork/original_feature/")
- ("~/.emacs.d/"))
+ ("~/workspace/gowork/original_feature/"))

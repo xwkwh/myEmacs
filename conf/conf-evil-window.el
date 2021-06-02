@@ -77,6 +77,8 @@
          )
         ("\\*Annotate .*"
          (display-buffer-same-window ))
+        ("scratch.*"
+         (display-buffer-same-window ))
         ;; default
         ;; (".*" (display-buffer-pop-up-window))
         )

@@ -37,7 +37,9 @@
 
 
 (icomplete-mode 1)
-(require 'icomplete-vertical nil t)
+;; (require 'icomplete-vertical nil t)
+
+(icomplete-vertical-mode 1)
 
 (define-key icomplete-minibuffer-map (kbd "RET") 'icomplete-fido-ret)
 (define-key icomplete-minibuffer-map (kbd "C-m") 'icomplete-fido-ret)
@@ -53,6 +55,8 @@
 
 (when (require 'embark nil t)
   (when (require 'marginalia nil t) (marginalia-mode 1))
+  ;; (setq marginalia-margin-min 18)
+
   (setq embark-collect-initial-view-alist '((t . list)))
   (global-set-key (kbd "C-o") 'embark-act)
   (define-key icomplete-minibuffer-map (kbd "C-o") 'embark-act)
@@ -118,30 +122,39 @@
                               (propertize "\n" 'face '(:height 1)))))
     ad-do-it))
 
-(defun vmacs-icomplete-mode-hook()
-  (if (cl-find this-command '(consult-ripgrep-root-symbol
-                              consult-ripgrep-default-symbol
-                              yank-pop consult-imenu consult-line
-                              consult-ripgrep execute-extended-command
-                              project-switch-project vmacs-magit-status-list
-                              project-or-external-find-file
-                              consult-ripgrep-default consult-grep
-                              evil-project-find-regexp
-                              magit-status
-                              xref-find-references
-                              dired consult-buffer consult-buffer-other-window))
-      (progn
-        (when (boundp icomplete-vertical-mode)(icomplete-vertical-mode 1))
-        (setq-local icomplete-separator "\n")
-        (setq-local icomplete-prospects-height 15))
-    ;; (when (boundp icomplete-vertical-mode)(icomplete-vertical-mode -1))
-    ;; https://unicode-table.com/cn/sets/arrow-symbols/
-    ;; (setq-local icomplete-separator (propertize " ☚ " 'face  '(foreground-color . "lightgreen")))
-    (setq-local icomplete-separator (propertize " ☯ " 'face  '(foreground-color . "lightgreen")))
-    (setq-local icomplete-prospects-height 2)))
+;; (defun vmacs-icomplete-mode-hook()
+;;   (if (cl-find this-command '(consult-ripgrep-root-symbol
+;;                               consult-ripgrep-default-symbol
+;;                               yank-pop consult-imenu consult-line
+;;                               consult-ripgrep execute-extended-command
+;;                               project-switch-project vmacs-magit-status-list
+;;                               project-or-external-find-file
+;;                               consult-ripgrep-default consult-grep
+;;                               evil-project-find-regexp
+;;                               describe-function
+;;                               describe-variable
+;;                               magit-status
+;;                               xref-find-references
+;;                               dired consult-buffer consult-buffer-other-window))
+;;       (progn
+;;         (when (boundp icomplete-vertical-mode)(icomplete-vertical-mode 1))
+;;         (setq-local icomplete-separator "\n")
+;;         (setq-local icomplete-prospects-height 15))
+;;     ;; (when (boundp icomplete-vertical-mode)(icomplete-vertical-mode -1))
+;;     ;; https://unicode-table.com/cn/sets/arrow-symbols/
+;;     ;; (setq-local icomplete-separator (propertize " ☚ " 'face  '(foreground-color . "lightgreen")))
+;;     (setq-local icomplete-separator (propertize " ☯ " 'face  '(foreground-color . "lightgreen")))
+;;     (setq-local icomplete-prospects-height 2)))
 
-(add-hook 'icomplete-minibuffer-setup-hook #'vmacs-icomplete-mode-hook)
+;; (add-hook 'icomplete-minibuffer-setup-hook #'vmacs-icomplete-mode-hook)
 
+(defun vmacs-icomplete()
+  (setq-local truncate-lines t)
+  ;;  remove the truncated lines indicator
+  ;; (setq-default fringe-indicator-alist (assq-delete-all 'truncation fringe-indicator-alist))
+  )
+
+(add-hook 'icomplete-minibuffer-setup-hook #'vmacs-icomplete)
 
 (provide 'conf-icomplete)
 

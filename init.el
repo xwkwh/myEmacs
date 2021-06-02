@@ -51,73 +51,61 @@
 (require 'conf-vterm)
 
 ;;==============jixiuf======================
+;;==============上面和xiuf相同,下面逐步淘汰======================
+
 (require 'conf-evil-toby)        ;; vim操作
-
-;; (require 'init-macros)
-;; (require 'fira-code-mode)
 (require 'conf-modeline)
-;; (require 'init-lsp)          ;; lsp 相关
-(require 'conf-git)         ;; git 版本控制 magit的配置
-
-
-;; (require 'conf-rg)
-
-;; (require 'conf-counsel)     ;; 搜索buffer文件
-;; (require 'conf-evil-symbol)
+(require 'conf-git)              ;; git 版本控制 magit的配置
 (require 'conf-jump)
 (require 'conf-tree)
-;; (require 'conf-counsel)     ;; 搜索buffer文件
-;; (require 'conf-awesome-tab) ;; tab页
 (require 'conf-centaur-tabs-toby)
-;; (require 'conf-ivy)         ;; ivy
 (require 'conf-org-toby)         ;; org mode
 (require 'conf-dired-toby)       ;; 文件目录操作
-(require 'vmacs-dired-single)  ;确保只有一个dired buffer的存在
+(require 'vmacs-dired-single)    ;; 确保只有一个dired buffer的存在
 (require 'conf-projectile)
 (require 'conf-iedit-toby)
-(require 'conf-keybind)     ;; 键位绑定
+(require 'conf-keybind)          ;; 键位绑定
+(require 'conf-emacs)            ;; emacs 的其他配置
 
-(require 'conf-emacs) ;; emacs 的其他配置
-
-(icomplete-vertical-mode)
-
-
-(require 'gotests) ;; go test
+(require 'gotests)               ;; go test
 
 (evil-collection-define-key 'normal 'magit-mode-map
   "q" #'my/quit-magit-buffer)
 
 
+;; (evil-collection-define-key 'normal 'vc-annotate-mode-map
+;;   "q" #'vmacs-kill-buffer-dwim)
 
-(defun enable-wgrep-when-entry-insert()
-  (when (derived-mode-p  'rg-mode 'grep-mode 'embark-collect-mode)
-    (require 'wgrep) (wgrep-change-to-wgrep-mode)))
-
-(add-hook 'evil-insert-state-entry-hook 'enable-wgrep-when-entry-insert)
-
-(evil-collection-define-key 'normal 'vc-annotate-mode-map
-  "q" #'vmacs-kill-buffer-dwim)
-
-(evil-collection-define-key 'insert 'vc-annotate-mode-map
-  "q" #'vmacs-kill-buffer-dwim)
+;; (evil-collection-define-key 'insert 'vc-annotate-mode-map
+;;   "q" #'vmacs-kill-buffer-dwim)
 
 
-(defvar my-intercept-mode-map (make-sparse-keymap)
-  "High precedence keymap.")
+;; (defvar my-intercept-mode-map (make-sparse-keymap)
+;;   "High precedence keymap.")
 
-(define-minor-mode my-intercept-mode
-  "Global minor mode for higher precedence evil keybindings."
-  :global t)
+;; (define-minor-mode my-intercept-mode
+;;   "Global minor mode for higher precedence evil keybindings."
+;;   :global t)
 
-(my-intercept-mode)
+;; (my-intercept-mode)
 
-(dolist (state '(normal visual insert))
-  (evil-make-intercept-map
-   ;; NOTE: This requires an evil version from 2018-03-20 or later
-   (evil-get-auxiliary-keymap my-intercept-mode-map state t t)
-   state))
+;; (dolist (state '(normal visual insert))
+;;   (evil-make-intercept-map
+;;    ;; NOTE: This requires an evil version from 2018-03-20 or later
+;;    (evil-get-auxiliary-keymap my-intercept-mode-map state t t)
+;;    state))
 
-(evil-define-key 'normal my-intercept-mode-map
-  (kbd "SPC f") 'find-file
-  (kbd "q") #'vmacs-kill-buffer-dwim
-  )
+;; (evil-define-key 'normal my-intercept-mode-map
+;;   (kbd "SPC f") 'find-file
+;;   (kbd "q") #'vmacs-kill-buffer-dwim
+;;   )
+
+
+
+
+;; (add-hook 'go-mode-hook 'toby-go-mode-hook)
+;; (defun toby-go-mode-hook()
+;;   (setq eldoc-mode nil)
+;;   )
+
+;; (add-hook #'eglot--managed-mode-hook #'toby-go-mode-hook)
