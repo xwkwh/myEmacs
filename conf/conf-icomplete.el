@@ -156,6 +156,7 @@
 
 (add-hook 'icomplete-minibuffer-setup-hook #'vmacs-icomplete)
 
+
 (provide 'conf-icomplete)
 
 ;; Local Variables:

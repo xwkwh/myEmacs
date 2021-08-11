@@ -15,7 +15,7 @@
 
 (add-hook 'find-file-hooks 'find-file-vendor-read-only) ;;
 
-(setq auto-save-visited-interval 15)
+(setq auto-save-visited-interval 5)
 (setq auto-save-visited-mode t)
 (setq backup-directory-alist '((".*" . "~/.emacs.d/cache/backup_files/")))
 

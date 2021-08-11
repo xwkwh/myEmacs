@@ -264,4 +264,8 @@
   (add-hook 'find-file-hook #'display-fill-column-indicator--turn-on))
 (setq-default fill-column 120)
 
+;; (load-theme 'timu-spacegrey t)
+
+
+
 (provide 'init-view)

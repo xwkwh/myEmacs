@@ -30,6 +30,7 @@
 (define-key company-active-map (kbd "C-e") #'company-other-backend)
 (define-key company-active-map (kbd "C-s") #'company-filter-candidates)
 (define-key company-active-map (kbd "<C-return>") #'company-complete-selection)
+(define-key company-active-map (kbd "C-h") nil)
 
 (make-variable-buffer-local 'company-backends)
 

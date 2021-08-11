@@ -21,17 +21,6 @@
   (require 'exec-path-from-shell)
   (exec-path-from-shell-initialize))
 (require 'exec-path-from-shell)
-(setq exec-path-from-shell-check-startup-files nil) ;
-(when (memq window-system '(mac ns x))
-  (setq exec-path-from-shell-variables '("PATH"
-                                         "GOPATH"
-                                         "GOROOT"
-                                         "GOBIN"
-                                         "GOPROXY"
-                                         "GOPRIVATE"
-                                         "GO111MODULE"
-                                         "GOSUMDB"))
-  (exec-path-from-shell-initialize))
 
 (with-eval-after-load 'dired (require 'conf-dired)) ;emacs文件浏览器，directory 管理理
 (require 'conf-wgrep)
@@ -54,24 +43,26 @@
 ;;==============上面和xiuf相同,下面逐步淘汰======================
 
 (require 'conf-evil-toby)        ;; vim操作
-(require 'conf-modeline)
+; (require 'conf-modeline)
 (require 'conf-git)              ;; git 版本控制 magit的配置
-(require 'conf-jump)
-(require 'conf-tree)
+;; (require 'conf-jump)
+;; (require 'conf-tree)
 (require 'conf-centaur-tabs-toby)
 (require 'conf-org-toby)         ;; org mode
 (require 'conf-dired-toby)       ;; 文件目录操作
-(require 'vmacs-dired-single)    ;; 确保只有一个dired buffer的存在
-(require 'conf-projectile)
+;; (require 'vmacs-dired-single)    ;; 确保只有一个dired buffer的存在
 (require 'conf-iedit-toby)
 (require 'conf-keybind)          ;; 键位绑定
 (require 'conf-emacs)            ;; emacs 的其他配置
+(global-set-key (kbd "C-;") 'iedit-mode)
 
 (require 'gotests)               ;; go test
 
 (evil-collection-define-key 'normal 'magit-mode-map
   "q" #'my/quit-magit-buffer)
 
+(setq-default mode-line-format nil)
+(setq mode-line-format nil)
 
 ;; (evil-collection-define-key 'normal 'vc-annotate-mode-map
 ;;   "q" #'vmacs-kill-buffer-dwim)
@@ -109,3 +100,4 @@
 ;;   )
 
 ;; (add-hook #'eglot--managed-mode-hook #'toby-go-mode-hook)
+;; (set-face-background 'minibuffer-prompt "white")

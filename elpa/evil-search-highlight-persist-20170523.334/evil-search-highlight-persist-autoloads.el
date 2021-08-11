@@ -13,17 +13,21 @@
 (autoload 'evil-search-highlight-persist "evil-search-highlight-persist" "\
 Keep the highlights persist after a search
 
+If called interactively, enable Evil-Search-Highlight-Persist
+mode if ARG is positive, and disable it if ARG is zero or
+negative.  If called from Lisp, also enable the mode if ARG is
+omitted or nil, and toggle it if ARG is `toggle'; disable the
+mode otherwise.
+
 \(fn &optional ARG)" t nil)
 
 (autoload 'turn-on-search-highlight-persist "evil-search-highlight-persist" "\
-Enable search-highlight-persist in the current buffer.
-
-\(fn)" nil nil)
+Enable search-highlight-persist in the current buffer." nil nil)
 
 (autoload 'turn-off-search-highlight-persist "evil-search-highlight-persist" "\
-Disable evil-search-highlight-persist in the current buffer.
+Disable evil-search-highlight-persist in the current buffer." nil nil)
 
-\(fn)" nil nil)
+(put 'global-evil-search-highlight-persist 'globalized-minor-mode t)
 
 (defvar global-evil-search-highlight-persist nil "\
 Non-nil if Global Evil-Search-Highlight-Persist mode is enabled.

@@ -99,11 +99,11 @@
 
 
 
-(require 'powerline)
-;; (powerline-evil-vim-color-theme)  
+; (require 'powerline)
+;; (powerline-evil-vim-color-theme)
 ;; (display-time-mode t)
 
-(require 'powerline-evil)
+; (require 'powerline-evil)
 ;; (set-face-attribute 'powerline-evil-normal-face nil :background "dark green")
 
 
@@ -129,7 +129,7 @@
                           (lhs (list (let ((evil-face (powerline-evil-face)))
                                        (if evil-mode
                                            (powerline-raw (powerline-evil-tag) evil-face)))
-				     (powerline-raw "%f" mode-line 'l)
+                     (powerline-raw "%f" mode-line 'l)
                                      ;; (powerline-buffer-id `(mode-line-buffer-id ,mode-line) 'l)
                                      ;; (powerline-raw "[" mode-line 'l)
                                      ;; (powerline-major-mode mode-line)
@@ -155,14 +155,14 @@
                                      ;;       (concat (powerline-raw "[" mode-line 'l)
                                      ;;               (powerline-raw (format "%s / %s" backend (vc-working-revision buffer-file-name backend)))
                                      ;;               (powerline-raw "]" mode-line)))))
-			       ))
+                   ))
                           (rhs (list
-				     ;; (powerline-raw '(10 "%i"))
+                     ;; (powerline-raw '(10 "%i"))
                                      ;; (powerline-raw global-mode-string mode-line 'r)
                                      ;; (powerline-raw "%l," mode-line 'l)
                                      ;; (powerline-raw (format-mode-line '(10 "%c")))
-				     (powerline-raw (replace-regexp-in-string  "%" "%%" (format-mode-line '(-3 "%p"))) mode-line 'r)
-				     (powerline-raw vc-mode mode-line 'r)
+                     (powerline-raw (replace-regexp-in-string  "%" "%%" (format-mode-line '(-3 "%p"))) mode-line 'r)
+                     (powerline-raw vc-mode mode-line 'r)
 				)))
                      (concat (powerline-render lhs)
                              (powerline-fill mode-line (powerline-width rhs))
@@ -171,37 +171,37 @@
 ;; (get-text-property 0 'face nil)
 ;; ;;; 自定义 mode line
 ;; (setq-default mode-line-format '(
-;; 				 "%e"
-;; 				 (:eval
-;; 				  (window-numbering-get-number-string))
-;; 				 ;; mode-line-front-space
-;; 				 ;; mode-line-mule-info
-;; 				 ;; mode-line-client
-;; 				 ;; mode-line-modified -- show buffer change or not
-;; 				 ;; mode-line-remote -- no need to indicate this specially
-;; 				 ;; mode-line-frame-identification -- this is for text-mode emacs only
-;; 				 ;; "["
-;; 				 ;; mode-name
-;; 				 ;; ":"
-;; 				 mode-line-buffer-identification
-;; 				 "%f"
-;; 				 ;; "]"
-;; 				 " "
-;; 				 mode-line-position
-;; 				 (vc-mode vc-mode)
-;; 				 " "
-;; 				 ;; mode-line-modes -- move major-name above
-;; 				 ;; "["
-;; 				 ;; minor-mode-alist
-;; 				 ;; "]"
-;; 				 ;; mode-line-misc-info
-;; 				 ;; mode-line-end-spaces
-;; 				 ))
+;;               "%e"
+;;               (:eval
+;;                (window-numbering-get-number-string))
+;;               ;; mode-line-front-space
+;;               ;; mode-line-mule-info
+;;               ;; mode-line-client
+;;               ;; mode-line-modified -- show buffer change or not
+;;               ;; mode-line-remote -- no need to indicate this specially
+;;               ;; mode-line-frame-identification -- this is for text-mode emacs only
+;;               ;; "["
+;;               ;; mode-name
+;;               ;; ":"
+;;               mode-line-buffer-identification
+;;               "%f"
+;;               ;; "]"
+;;               " "
+;;               mode-line-position
+;;               (vc-mode vc-mode)
+;;               " "
+;;               ;; mode-line-modes -- move major-name above
+;;               ;; "["
+;;               ;; minor-mode-alist
+;;               ;; "]"
+;;               ;; mode-line-misc-info
+;;               ;; mode-line-end-spaces
+;;               ))
 
 
 
 
-;; (set-face-foreground 'mode-line "white") 
+;; (set-face-foreground 'mode-line "white")
 ;; (set-face-background 'mode-line "black")
 
 
@@ -261,8 +261,8 @@ command reveals the other lines."
 
 
 
-(require 'doom-modeline)
-(doom-modeline-mode 1)
+;; (require 'doom-modeline)
+;; (doom-modeline-mode 1)
 (require 'all-the-icons)
 
 (provide 'conf-modeline)

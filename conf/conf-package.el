@@ -15,22 +15,22 @@
 (or (file-exists-p package-user-dir) (package-refresh-contents))
 ;; (package-initialize)
 
-;; (defun ensure-package-installed (packages)
-;;   "Assure every package is installed, ask for installation if it’s not.
+(defun ensure-package-installed (packages)
+  "Assure every package is installed, ask for installation if it’s not.
 
-;; Return a list of installed packages or nil for every skipped package."
-;;   (mapcar
-;;    (lambda (package)
-;;      ;; (package-installed-p 'evil)
-;;      (if (package-installed-p package)
-;;          nil
-;;        (if (y-or-n-p (format "Package %s is missing. Install it? " package))
-;;            (package-install package)
-;;          package)))
-;;    packages))
+Return a list of installed packages or nil for every skipped package."
+  (mapcar
+   (lambda (package)
+     ;; (package-installed-p 'evil)
+     (if (package-installed-p package)
+         nil
+       (if (y-or-n-p (format "Package %s is missing. Install it? " package))
+           (package-install package)
+         package)))
+   packages))
 
 
-;; (add-hook 'after-init-hook (lambda() (ensure-package-installed package-selected-packages)))
+(add-hook 'after-init-hook (lambda() (ensure-package-installed package-selected-packages)))
 
 
 (setq url-using-proxy t)
@@ -38,6 +38,7 @@
 
 
 (add-to-list 'load-path (expand-file-name "conf" user-emacs-directory))
+
  (when (eq system-type 'darwin)
        (require 'exec-path-from-shell)
      (exec-path-from-shell-initialize))

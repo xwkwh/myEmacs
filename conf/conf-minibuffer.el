@@ -61,27 +61,27 @@ Monospaced font whihc is fixed idth and height is recommended."
 (setq mini-frame-resize-max-height max-mini-window-height)
 (setq mini-frame-completions-focus 'minibuffer)
 (setq mini-frame-internal-border-color "gray70")
-(when (and (not noninteractive) (require 'mini-frame nil t)) ;batch 模式下miniframe 有问题
-  ;; (setq mini-frame-ignore-commands nil)
-  (add-to-list 'mini-frame-ignore-commands 'dired-narrow)
-  (add-to-list 'mini-frame-ignore-commands 'vmacs-rg-rerun-change-regex)
-  (add-to-list 'mini-frame-ignore-commands 'vmacs-rg-rerun-hide-matched)
+; (when (and (not noninteractive) (require 'mini-frame nil t)) ;batch 模式下miniframe 有问题
+  ; ;; (setq mini-frame-ignore-commands nil
+  ; (add-to-list 'mini-frame-ignore-commands 'dired-narrow)
+  ; (add-to-list 'mini-frame-ignore-commands 'vmacs-rg-rerun-change-regex)
+  ; (add-to-list 'mini-frame-ignore-commands 'vmacs-rg-rerun-hide-matched)
 
 
-  (setq mini-frame-show-parameters
-        '((top . 0.4)
-          (width . 1.0)
-          (left . 0.5)
-          (min-height .  5)
-          (height . 15)
-          (minibuffer-exit . t)
-          (font . "Sarasa Mono CL-12")
-          (alpha . 100)
-          ;; (left-fringe . 10 )
-          (cursor-color . "Yellow")
-          (background-color . "#2a3a4a")
-          (background-mode . 'dark)))
-  (mini-frame-mode 1))
+  ; (setq mini-frame-show-parameters
+        ; '((top . 0.4)
+          ; (width . 1.0)
+          ; (left . 0.5)
+          ; (min-height .  5)
+          ; (height . 15)
+          ; (minibuffer-exit . t)
+          ; (font . "Source Code Pro 16")
+          ; (alpha . 100)
+          ; ;; (left-fringe . 10 )
+          ; (cursor-color . "Yellow")
+          ; (background-color . "#2a3a4a")
+          ; (background-mode . 'dark)))
+  ; (mini-frame-mode 1))
 
 
 
