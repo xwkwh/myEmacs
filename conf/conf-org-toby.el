@@ -36,14 +36,20 @@
 ;; Various preferences
 ;; (setq org-log-done t
 ;;       org-edit-timestamp-down-means-later t
-;;       org-hide-emphasis-markers t
 ;;       org-catch-invisible-edits 'show
 ;;       org-export-coding-system 'utf-8
 ;;       org-fast-tag-selection-single-key 'expert
 ;;       org-html-validation-link nil
 ;;       org-export-kill-product-buffer-when-displayed t
 ;;       org-tags-column 80)
-(setq org-ellipsis "⤵")
+;; (setq org-ellipsis "⤵")
+(setq org-ellipsis " ▼ ")
+
+  (setq org-superstar-item-bullet-alist
+        '((?* . ?•)
+          (?+ . ?➤)
+          (?- . ?•)))
+
 (setq org-src-tab-acts-natively t)
 
 (add-hook 'org-mode-hook 'org-bullets-mode)
@@ -69,7 +75,7 @@
  'org-babel-load-languages
  '((go . t)))
 
- (require 'org-tempo)
+ ;; (require 'org-tempo)
 
 
 ;; (use-package general
@@ -177,6 +183,13 @@ See `org-capture-templates' for more information."
   (push '("[X]" . ?☑) prettify-symbols-alist)
   (push '("[ ]" . ?☐) prettify-symbols-alist)
   (prettify-symbols-mode 1)
+  (org-indent-mode)
+  (setq line-spacing 0.1
+        org-pretty-entities t
+        org-startup-indented t
+        org-adapt-indentation nil)
+  (org-superstar-mode +1)
+  (variable-pitch-mode +1)
   )
 (add-hook 'org-mode-hook #'vmacs-org-symbol)
 
@@ -187,6 +200,6 @@ See `org-capture-templates' for more information."
 
 (setq org-html-checkbox-type 'unicode)
 
-
+(setq-default org-enforce-todo-dependencies t)
 
 (provide 'conf-org-toby)

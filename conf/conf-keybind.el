@@ -1,4 +1,5 @@
-(evil-leader/set-key "b" 'evil-search-highlight-persist-remove-all)
+;; (evil-leader/set-key "b" 'evil-search-highlight-persist-remove-all)
+(vmacs-leader (kbd "b") 'evil-ex-nohighlight)
 
 (autoload 'dired-jump "dired-x" "dired-jump" t)
 (evil-leader/set-key "j" 'dired-jump) ;; 跳到当前目录文件
@@ -127,6 +128,19 @@ Replaces default behaviour of comment-dwim, when it inserts comment at the end o
 (define-key c-mode-base-map (kbd "C-d") nil)
 
 
+(define-key help-mode-map "h" 'backward-char)
+(define-key help-mode-map "l" 'forward-char)
+(define-key help-mode-map "j" 'next-line)
+(define-key help-mode-map "k" 'previous-line)
+
+(require 'snake)
+(define-key snake-mode-map "h" 'snake-move-left)
+(define-key snake-mode-map "l" 'snake-move-right)
+(define-key snake-mode-map "j" 'snake-move-down)
+(define-key snake-mode-map "k" 'snake-move-up)
+
+
+
 
 (define-key evil-normal-state-map "m" nil)
 (define-key evil-normal-state-map "s" nil)
@@ -189,5 +203,6 @@ Replaces default behaviour of comment-dwim, when it inserts comment at the end o
 (add-hook 'dired-mode-hook 'ct/quit-and-kill-auxiliary-windows)
 
 (global-set-key (kbd "C-x C-e") 'eval-print-last-sexp)
+
 
 (provide 'conf-keybind)

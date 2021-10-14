@@ -1,7 +1,7 @@
 ;;; -*- lisp-data -*-
 (("~/.emacs.d/")
- ("~/workspace/myEmacs/")
  ("~/vmacs/")
+ ("~/workspace/myEmacs/")
  ("~/workspace/gowork/novelrecaccess/")
  ("~/gopath/pkg/mod/git.code.oa.com/trpc-go/trpc-go@v0.6.1/")
  ("~/workspace/gowork/novel-rerank/")

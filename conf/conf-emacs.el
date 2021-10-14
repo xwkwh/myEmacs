@@ -3,21 +3,17 @@
 ;; (setq make-backup-files nil)
 ;; (setq debug-on-error t)
 ;; (scroll-bar-mode -1)
-(save-place-mode t)
-(global-auto-revert-mode t)
+;; (global-auto-revert-mode t)
 
 ;; vendor 不需修改
-(defun find-file-vendor-read-only ()
-  (when (string-match "/vendor/" (buffer-file-name))
-    (read-only-mode 1)
-    )
-  )
+;; (defun find-file-vendor-read-only ()
+;;   (when (string-match "/vendor/" (buffer-file-name))
+;;     (read-only-mode 1)
+;;     )
+;;   )
 
-(add-hook 'find-file-hooks 'find-file-vendor-read-only) ;;
+;; (add-hook 'find-file-hooks 'find-file-vendor-read-only) ;;
 
-(setq auto-save-visited-interval 5)
-(setq auto-save-visited-mode t)
-(setq backup-directory-alist '((".*" . "~/.emacs.d/cache/backup_files/")))
 
 ;; (flymake-mode -1)
 (provide 'conf-emacs)

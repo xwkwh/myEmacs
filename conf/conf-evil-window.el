@@ -13,7 +13,8 @@
 
 ;; 尽量保证光标所在的窗口最大
 ;; 黄金分隔 多窗口操作时
-(golden-ratio-mode 1)
+(golden-ratio-mode -1)
+
 ;; Work with ediff and helm
 (setq golden-ratio-adjust-factor 0.91)
 (setq golden-ratio-extra-commands
@@ -69,6 +70,8 @@
          (display-buffer-same-window )
          (inhibit-same-window . nil))
         ("\\*rg\\*"
+         (display-buffer-same-window ))
+         ("\\*Embark Collect"
          (display-buffer-same-window ))
          ("\\*Embark "
          (display-buffer-same-window ))

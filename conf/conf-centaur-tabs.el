@@ -35,6 +35,7 @@
                           "\*Helm"
                           "\*company-documentation\*"
                           "\*helm"
+                          "\*eaf"
                           "\*eldoc"
                           "\*Launch "
                           "*dap-"

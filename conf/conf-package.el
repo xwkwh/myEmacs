@@ -33,8 +33,8 @@ Return a list of installed packages or nil for every skipped package."
 (add-hook 'after-init-hook (lambda() (ensure-package-installed package-selected-packages)))
 
 
-(setq url-using-proxy t)
-(setq url-proxy-services '(("http" . "127.0.0.1:12639")))
+;; (setq url-using-proxy t)
+;; (setq url-proxy-services '(("http" . "127.0.0.1:12639")))
 
 
 (add-to-list 'load-path (expand-file-name "conf" user-emacs-directory))

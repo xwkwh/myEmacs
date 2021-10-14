@@ -1,4 +1,4 @@
- ;;; Code:
+;;; Code:
 (require 'icomplete)
 
 ;; (setq icomplete-max-delay-chars 3)
@@ -9,37 +9,68 @@
 (setq icomplete-in-buffer t)
 (setq icomplete-tidy-shadowed-file-names t)
 
-(setq icomplete-prospects-height 2)
-(setq icomplete-separator (propertize " ☯" 'face  '(foreground-color . "SlateBlue1")))
-;; (setq icomplete-separator (propertize " \n☯" 'face  '(foreground-color . "SlateBlue1")))
+(setq icomplete-prospects-height 30)
+;; (concat
+;;                                      (propertize "\n" 'face '(:height 1))
+;;                                      (propertize " " 'face '(:inherit vertical-border :underline t :height 1)
+;;                                                  'display '(space :align-to right))
+;;                                      (propertize "\n" 'face '(:height 1)))
+(setq icomplete-separator (propertize " ☚ " 'face  '(foreground-color . "lightgreen")))
 
 (setq completion-styles '(basic partial-completion substring initials  flex))
 
 (when (require 'orderless nil t)
-  (setq completion-styles (cons 'orderless completion-styles)) ;把orderless放到completion-styles 开头
+  (setq completion-styles '(basic partial-completion initials orderless))
   ;; 默认按空格开隔的每个关键字支持regexp/literal/initialism 3种算法
   (setq orderless-matching-styles '(orderless-regexp orderless-literal orderless-initialism ))
-  (defun without-if-$! (pattern _index _total)
-    (when (or (string-prefix-p "$" pattern) ;如果以! 或$ 开头，则表示否定，即不包含此关键字
-              (string-prefix-p "!" pattern))
-      `(orderless-without-literal . ,(substring pattern 1))))
-  (defun flex-if-comma (pattern _index _total) ;如果以逗号结尾，则以flex 算法匹配此组件
-    (when (string-suffix-p "," pattern)
-      `(orderless-flex . ,(substring pattern 0 -1))))
-  (defun literal-if-= (pattern _index _total) ;如果以=结尾，则以literal  算法匹配此关键字
-    (when (or (string-suffix-p "=" pattern)
-              (string-suffix-p "-" pattern)
-              (string-suffix-p ";" pattern))
-      `(orderless-literal . ,(substring pattern 0 -1))))
-  (setq orderless-style-dispatchers '(literal-if-= flex-if-comma without-if-$!)))
+    ;; Recognizes the following patterns:
+  ;; * ;flex flex;
+  ;; * =literal literal=
+  ;; * `initialism initialism`
+  ;; * !without-literal without-literal!
+  ;; * .ext (file extension)
+  ;; * regexp$ (regexp matching at end)
+  (defun vmacs-orderless-dispatch (pattern _index _total)
+    (cond
+     ;; Ensure that $ works with Consult commands, which add disambiguation suffixes
+     ((string-suffix-p "$" pattern) `(orderless-regexp . ,(concat (substring pattern 0 -1) "[\x100000-\x10FFFD]*$")))
+     ;; File extensions
+     ((string-match-p "\\`\\.." pattern) `(orderless-regexp . ,(concat "\\." (substring pattern 1) "[\x100000-\x10FFFD]*$")))
+     ;; Ignore single !
+     ((string= "!" pattern) `(orderless-literal . ""))
+     ;; Without literal
+     ((string-prefix-p "!" pattern) `(orderless-without-literal . ,(substring pattern 1)))
+     ((string-suffix-p "!" pattern) `(orderless-without-literal . ,(substring pattern 0 -1)))
+     ((string-prefix-p "@" pattern) `(orderless-without-literal . ,(substring pattern 1)))
+     ((string-suffix-p "@" pattern) `(orderless-without-literal . ,(substring pattern 0 -1)))
+     ;; Initialism matching
+     ((string-prefix-p "`" pattern) `(orderless-initialism . ,(substring pattern 1)))
+     ((string-suffix-p "`" pattern) `(orderless-initialism . ,(substring pattern 0 -1)))
+     ;; Literal matching
+     ((string-prefix-p "=" pattern) `(orderless-literal . ,(substring pattern 1)))
+     ((string-suffix-p "=" pattern) `(orderless-literal . ,(substring pattern 0 -1)))
+     ((string-prefix-p "," pattern) `(orderless-literal . ,(substring pattern 1)))
+     ((string-suffix-p "," pattern) `(orderless-literal . ,(substring pattern 0 -1)))
+     ;; Flex matching
+     ((string-prefix-p ";" pattern) `(orderless-flex . ,(substring pattern 1)))
+     ((string-suffix-p ";" pattern) `(orderless-flex . ,(substring pattern 0 -1)))))
+  (setq orderless-style-dispatchers '(vmacs-orderless-dispatch)))
 
+;; 支持拼间首字母过滤中文， 不必切输入法
+(defun completion--regex-pinyin (str)
+  (require 'pinyinlib)
+  (orderless-regexp (pinyinlib-build-regexp-string str)))
+(add-to-list 'orderless-matching-styles 'completion--regex-pinyin)
 
 
 
 (icomplete-mode 1)
-;; (require 'icomplete-vertical nil t)
-
 (icomplete-vertical-mode 1)
+
+(setq icomplete-prospects-height 20)
+(setq icomplete-vertical-prospects-height 20)
+
+;; (setq icomplete-scroll t)
 
 (define-key icomplete-minibuffer-map (kbd "RET") 'icomplete-fido-ret)
 (define-key icomplete-minibuffer-map (kbd "C-m") 'icomplete-fido-ret)
@@ -59,11 +90,19 @@
 
   (setq embark-collect-initial-view-alist '((t . list)))
   (global-set-key (kbd "C-o") 'embark-act)
-  (define-key icomplete-minibuffer-map (kbd "C-o") 'embark-act)
-  (define-key icomplete-minibuffer-map (kbd "C-o") 'embark-act)
-  (define-key icomplete-minibuffer-map (kbd "C-c C-o") 'embar-collect)
+  (define-key icomplete-minibuffer-map (kbd "C-o") #'embark-act)
+  ;; (global-set-key (kbd "M-.") #'embark-dwim)
+  ;; (evil-define-key 'normal 'global (kbd "M-.") #'embark-dwim)
+  (define-key icomplete-minibuffer-map (kbd "C-c C-o") 'embark-collect-snapshot)
   (define-key icomplete-minibuffer-map (kbd "C-c C-c") 'embark-export)
-  (define-key icomplete-minibuffer-map (kbd "C-c C-e") 'embark-live-occur)
+  (setf (alist-get 'xref-location embark-exporters-alist) #'vmacs-embark-consult-export-grep)
+  (defun vmacs-embark-consult-export-grep(lines)
+    (let* ((default-directory (car xref--project-root-memo))
+           (file (car (split-string (car lines) ":")))
+           (search-root (locate-dominating-file default-directory file)))
+      (when search-root
+        (setq default-directory search-root))
+      (embark-consult-export-grep lines)))
   (defun vmacs-embark-collect-mode-hook ()
     (evil-local-mode)
     (evil-define-key 'normal 'local "/" #'consult-focus-lines)
@@ -75,18 +114,18 @@
 (defun vmacs-minibuffer-space ()
   (interactive)
   (require 'consult)
-  (if (and (string-prefix-p consult-async-default-split (minibuffer-contents))
-           (= 2 (length (split-string (minibuffer-contents) consult-async-default-split))))
-      (insert consult-async-default-split)
-    (when (looking-back consult-async-default-split) (delete-char -1))
+  (if (and (string-prefix-p "#" (minibuffer-contents))
+           (= 2 (length (split-string (minibuffer-contents) "#"))))
+      (insert "#")
+    (when (looking-back "#") (delete-char -1))
     (insert " ")))
 
-(define-key icomplete-minibuffer-map (kbd "SPC") 'vmacs-minibuffer-space)
+;; (define-key icomplete-minibuffer-map (kbd "SPC") 'vmacs-minibuffer-space)
 
 (setq consult-project-root-function #'vc-root-dir)
 (with-eval-after-load 'consult
   (with-eval-after-load 'embark (require 'embark-consult nil t))
-  (setq consult-ripgrep-command (format "%s %s"consult-ripgrep-command " -z"))
+  (setq consult-ripgrep-args (format "%s %s"consult-ripgrep-args " -z"))
   (add-to-list 'consult-buffer-sources 'vmacs-consult--source-dired t)
   (add-to-list 'consult-buffer-sources 'vmacs-consult--source-git t)
   (setq consult-config `((consult-buffer :preview-key ,(kbd "C-v")) ;disable auto preview for consult-buffer
@@ -97,8 +136,11 @@
 (vmacs-leader (kbd "ft") (vmacs-defun find-file-tmp (let ((default-directory "/tmp/"))(call-interactively 'find-file))))
 (setq ffap-machine-p-known 'accept)  ; no pinging
 ;; (vmacs-leader (kbd "ff") (icomplete-horizontal find-file  (find-file-at-point)))
-(vmacs-leader (kbd "ff") #'find-file-at-point)
+(vmacs-leader (kbd "ff") #'find-file)
+(global-set-key (kbd "C-x C-f") #'find-file-at-point)
 (vmacs-leader (kbd "fc") #'(lambda()(interactive) (find-file (expand-file-name "http.txt" dropbox-dir))))
+(autoload #'mu4e-headers-search-bookmark  "mu4e" t)
+(vmacs-leader (kbd "i") #'(lambda()(interactive) (mu4e-headers-search-bookmark)(mu4e)))
 
 (vmacs-leader " " 'consult-buffer)
 (vmacs-leader "fo" 'consult-buffer-other-window)
@@ -113,41 +155,6 @@
 (global-set-key (kbd "<help> a") 'consult-apropos)
 (vmacs-leader (kbd "wi") 'consult-imenu)
 
-(defadvice yank-pop (around icomplete-mode (arg) activate)
-  (interactive "p")
-  (let ((icomplete-separator (concat
-                              (propertize "\n" 'face '(:height 1))
-                              (propertize " " 'face '(:inherit vertical-border :underline t :height 1)
-                                          'display '(space :align-to right))
-                              (propertize "\n" 'face '(:height 1)))))
-    ad-do-it))
-
-;; (defun vmacs-icomplete-mode-hook()
-;;   (if (cl-find this-command '(consult-ripgrep-root-symbol
-;;                               consult-ripgrep-default-symbol
-;;                               yank-pop consult-imenu consult-line
-;;                               consult-ripgrep execute-extended-command
-;;                               project-switch-project vmacs-magit-status-list
-;;                               project-or-external-find-file
-;;                               consult-ripgrep-default consult-grep
-;;                               evil-project-find-regexp
-;;                               describe-function
-;;                               describe-variable
-;;                               magit-status
-;;                               xref-find-references
-;;                               dired consult-buffer consult-buffer-other-window))
-;;       (progn
-;;         (when (boundp icomplete-vertical-mode)(icomplete-vertical-mode 1))
-;;         (setq-local icomplete-separator "\n")
-;;         (setq-local icomplete-prospects-height 15))
-;;     ;; (when (boundp icomplete-vertical-mode)(icomplete-vertical-mode -1))
-;;     ;; https://unicode-table.com/cn/sets/arrow-symbols/
-;;     ;; (setq-local icomplete-separator (propertize " ☚ " 'face  '(foreground-color . "lightgreen")))
-;;     (setq-local icomplete-separator (propertize " ☯ " 'face  '(foreground-color . "lightgreen")))
-;;     (setq-local icomplete-prospects-height 2)))
-
-;; (add-hook 'icomplete-minibuffer-setup-hook #'vmacs-icomplete-mode-hook)
-
 (defun vmacs-icomplete()
   (setq-local truncate-lines t)
   ;;  remove the truncated lines indicator
@@ -155,7 +162,6 @@
   )
 
 (add-hook 'icomplete-minibuffer-setup-hook #'vmacs-icomplete)
-
 
 (provide 'conf-icomplete)
 

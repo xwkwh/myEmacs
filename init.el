@@ -1,26 +1,39 @@
 (load "~/.emacs.d/init-base.el")
+
 (when (< emacs-major-version 27) (package-initialize))
+
+
 (when (member system-type '(gnu/linux darwin)) (require 'conf-sudo))
 (require 'conf-space-tab)
 (eval-after-load 'ibuffer '(require 'conf-ibuffer)) ;绑定在space l 上，用于列出当前打开的哪些文件
+(with-eval-after-load 'protobuf-mode (require 'conf-program-protobuf))
+(with-eval-after-load 'css-mode (require 'conf-css))
+(with-eval-after-load 'lua (require 'conf-program-lua))
+
+(with-eval-after-load 'sql (require 'conf-sql))
+
+
 (require 'conf-evil) ;; evil jixiuf
 ;; mac 上处理evil-mode 与中文输入法
 (require 'conf-evil-window)       ;窗口
+(require 'conf-evil-clipboard)
 
 (when (eq system-type 'darwin) (require 'conf-macos))
 (with-eval-after-load 'iedit (require 'conf-iedit))
 (require 'conf-common)
 (with-eval-after-load 'org (require 'conf-org))
+
 (require 'conf-yasnippet)               ;模版系统
 (with-eval-after-load 'compile (require 'conf-compile))
 (with-eval-after-load 'cc-mode (require 'conf-program-objc))
 (with-eval-after-load 'go-mode (require 'conf-program-golang))
 (with-eval-after-load 'python (require 'conf-program-python))
 
+
 (when (eq system-type 'darwin)
   (require 'exec-path-from-shell)
   (exec-path-from-shell-initialize))
-(require 'exec-path-from-shell)
+;; (require 'exec-path-from-shell)
 
 (with-eval-after-load 'dired (require 'conf-dired)) ;emacs文件浏览器，directory 管理理
 (require 'conf-wgrep)
@@ -38,6 +51,10 @@
 (recentf-mode 1)
 (run-with-idle-timer 300 t 'vmacs-idle-timer) ;idle 300=5*60s
 (require 'conf-vterm)
+  (require 'server)
+  (unless (server-running-p) (server-start))
+  (when (> emacs-major-version 27) (load-theme 'modus-vivendi))
+
 
 ;;==============jixiuf======================
 ;;==============上面和xiuf相同,下面逐步淘汰======================
@@ -47,13 +64,12 @@
 (require 'conf-git)              ;; git 版本控制 magit的配置
 ;; (require 'conf-jump)
 ;; (require 'conf-tree)
-(require 'conf-centaur-tabs-toby)
+;; (require 'conf-centaur-tabs-toby)
 (require 'conf-org-toby)         ;; org mode
 (require 'conf-dired-toby)       ;; 文件目录操作
 ;; (require 'vmacs-dired-single)    ;; 确保只有一个dired buffer的存在
 (require 'conf-iedit-toby)
 (require 'conf-keybind)          ;; 键位绑定
-(require 'conf-emacs)            ;; emacs 的其他配置
 (global-set-key (kbd "C-;") 'iedit-mode)
 
 (require 'gotests)               ;; go test
@@ -63,6 +79,8 @@
 
 (setq-default mode-line-format nil)
 (setq mode-line-format nil)
+
+; ===================
 
 ;; (evil-collection-define-key 'normal 'vc-annotate-mode-map
 ;;   "q" #'vmacs-kill-buffer-dwim)
@@ -101,3 +119,5 @@
 
 ;; (add-hook #'eglot--managed-mode-hook #'toby-go-mode-hook)
 ;; (set-face-background 'minibuffer-prompt "white")
+(require 'highlight-parentheses)
+(add-hook 'prog-mode-hook #'highlight-parentheses-mode)

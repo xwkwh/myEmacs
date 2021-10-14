@@ -5,12 +5,18 @@
  ;; slow ,if t
  magit-diff-refine-hunk nil  ;'all, This is super useful when only a single identifier/word is changed all over the place
  magit-diff-highlight-hunk-body nil
+ magit-keep-region-overlay t
  magit-log-arguments  '("-n256" "--graph" "--decorate" "--follow") ;加了--follow ,rename的log也能看到
- magit-display-buffer-function 'magit-display-buffer-fullframe-status-v1
+ magit-display-buffer-function 'magit-display-buffer-fullcolumn-status-v1
  magit-diff-section-arguments '("--ignore-space-at-eol" "--ignore-blank-lines" "--no-ext-diff") ;do not set this ;use  toggle-diff-whitespace to toggle
  magit-section-highlight-hook nil       ;不必hightlight,光标移动的时候，默认会显示当前section区域
- magit-section-unhighlight-hook nil)                         ;
+ magit-section-unhighlight-hook nil)
 (define-key magit-mode-map (kbd "M-w") 'magit-copy-section-value)
+
+
+;; recent commit always expand when i open magit status
+(setf (alist-get 'unpushed magit-section-initial-visibility-alist) 'show)
+
 (defun vmacs-magit-status-list()
   (interactive)
   (let (list)
@@ -105,6 +111,18 @@
     ad-do-it
     (unless (equal magit-buffer-file-name (buffer-file-name prev-buffer))
       (kill-buffer prev-buffer))))
+
+
+(defun vmacs-magit-find-file-at-point ()
+  "View FILE from REV at point."
+  (interactive)
+  (let ((file (magit-current-file))
+        (rev (or (magit-branch-or-commit-at-point)
+                 (magit-get-current-branch))))
+    (if (and file rev )
+        (magit-find-file rev file)
+      (call-interactively #'magit-find-file))))
+
 
 (vmacs-leader (kbd "vm") 'vmacs-magit-blob-toggle) ;类似于time machine
 (define-key magit-blob-mode-map (kbd "M-n") 'magit-blob-next)

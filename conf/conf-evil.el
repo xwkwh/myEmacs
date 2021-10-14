@@ -15,15 +15,15 @@
  evil-search-module 'isearch        ;可以用C-w yank word
  evil-undo-system 'undo-tree
  evil-disable-insert-state-bindings t
- ;; evil-search-module 'evil-search        ;可以用gn 命令，需要取舍
+ evil-search-module 'evil-search        ;可以用gn 命令，需要取舍
 ;; gn 命令的用法 / search 之后，可以用dgn 或cgn 对search到的第一个内容进行处理，然后用.去重复之
  evil-ex-search-highlight-all t
- evil-ex-search-persistent-highlight nil
+ evil-ex-search-persistent-highlight t
  evil-toggle-key "<f15>"                ;用不到了 绑定到一个不常用的键,在emacs与normal间切换
  evil-want-visual-char-semi-exclusive t ; 当v 选择到行尾时是否包含换行符
  evil-want-C-w-delete nil
  evil-want-abbrev-expand-on-insert-exit nil
- ;; evil-want-C-i-jump nil
+ evil-want-C-i-jump nil
  evil-cross-lines t
  evil-want-fine-undo t                  ;undo更细化,否则从N->I->N 中所有的修改作为一个undo
  evil-symbol-word-search t              ;# search for symbol not word
@@ -55,7 +55,7 @@
 (defun vmacs-calc-hook()
   (require 'calc-bin)
   ;; 默认calc 的移位移位操作是接32位的， 可以bw(calc-word-size) 来改成64位
-  (calc-word-size 120))
+  (calc-word-size 128))
 
 (add-hook 'calc-mode-hook 'vmacs-calc-hook)
 
@@ -93,6 +93,7 @@
 (add-hook 'org-capture-mode-hook 'evil-insert-state)
 ;; 设置一些mode的初始state
 (evil-set-initial-state 'log-edit-mode 'insert)
+(evil-set-initial-state 'org-msg-edit-mode 'insert)
 (evil-set-initial-state 'org-agenda-mode 'normal)
 
 
@@ -297,8 +298,6 @@ execute emacs native `repeat' default binding to`C-xz'"
 (define-key evil-normal-state-map "\\" 'just-one-space-or-delete-horizontal-space)
 
 
-(global-set-key (kbd "C-s") 'evil-search-forward)
-(global-set-key (kbd "C-r") 'evil-search-backward)
 (vmacs-leader (kbd "y") 'evil-paste-before) ;default P
 
 ;; 默认visual选中即复制到剪切版，去掉这个功能
@@ -427,8 +426,8 @@ execute emacs native `repeat' default binding to`C-xz'"
 (global-set-key (kbd "<f18>") 'evil-insert-state) ;mac karabiner用来控制输入法
 (define-key isearch-mode-map (kbd "<f18>") 'evil-insert-state) ;详见isearch-pre-command-hook
 (global-set-key (kbd "<f16>") 'vmacs-toggle-input-method)
-(global-set-key (kbd "<f19>") nil) ;mac karabiner用来控制输入法 ,rime f19 send escape
-(define-key isearch-mode-map (kbd "<f19>") nil) ;详见isearch-pre-command-hook
+(global-set-key (kbd "<f19>") #'ignore) ;mac karabiner用来控制输入法 ,rime f19 send escape
+(define-key isearch-mode-map (kbd "<f19>") #'ignore) ;详见isearch-pre-command-hook
 (defun vmacs-toggle-input-method ()
   "when toggle on input method, switch to evil-insert-state if possible.
 when toggle off input method, switch to evil-normal-state if current state is evil-insert-state"
