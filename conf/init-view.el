@@ -198,7 +198,6 @@
 (recentf-mode 1)
 
 ;; Save minibuffer history
-(savehist-mode 1)
 (setq history-length 1000)
 
 ;; Undo/redo window configuration with C-c <left>/<right>

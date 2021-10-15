@@ -60,14 +60,9 @@
 ;;==============上面和xiuf相同,下面逐步淘汰======================
 
 (require 'conf-evil-toby)        ;; vim操作
-; (require 'conf-modeline)
 (require 'conf-git)              ;; git 版本控制 magit的配置
-;; (require 'conf-jump)
-;; (require 'conf-tree)
-;; (require 'conf-centaur-tabs-toby)
 (require 'conf-org-toby)         ;; org mode
 (require 'conf-dired-toby)       ;; 文件目录操作
-;; (require 'vmacs-dired-single)    ;; 确保只有一个dired buffer的存在
 (require 'conf-iedit-toby)
 (require 'conf-keybind)          ;; 键位绑定
 (global-set-key (kbd "C-;") 'iedit-mode)
@@ -82,42 +77,5 @@
 
 ; ===================
 
-;; (evil-collection-define-key 'normal 'vc-annotate-mode-map
-;;   "q" #'vmacs-kill-buffer-dwim)
-
-;; (evil-collection-define-key 'insert 'vc-annotate-mode-map
-;;   "q" #'vmacs-kill-buffer-dwim)
-
-
-;; (defvar my-intercept-mode-map (make-sparse-keymap)
-;;   "High precedence keymap.")
-
-;; (define-minor-mode my-intercept-mode
-;;   "Global minor mode for higher precedence evil keybindings."
-;;   :global t)
-
-;; (my-intercept-mode)
-
-;; (dolist (state '(normal visual insert))
-;;   (evil-make-intercept-map
-;;    ;; NOTE: This requires an evil version from 2018-03-20 or later
-;;    (evil-get-auxiliary-keymap my-intercept-mode-map state t t)
-;;    state))
-
-;; (evil-define-key 'normal my-intercept-mode-map
-;;   (kbd "SPC f") 'find-file
-;;   (kbd "q") #'vmacs-kill-buffer-dwim
-;;   )
-
-
-
-
-;; (add-hook 'go-mode-hook 'toby-go-mode-hook)
-;; (defun toby-go-mode-hook()
-;;   (setq eldoc-mode nil)
-;;   )
-
-;; (add-hook #'eglot--managed-mode-hook #'toby-go-mode-hook)
-;; (set-face-background 'minibuffer-prompt "white")
 (require 'highlight-parentheses)
 (add-hook 'prog-mode-hook #'highlight-parentheses-mode)
