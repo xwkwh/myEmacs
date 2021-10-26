@@ -33,16 +33,16 @@
   (local-set-key (kbd "C-c f") #'gofmt)
   (local-set-key (kbd "C-c g") 'golang-setter-getter))
 
-(setq-default eglot-workspace-configuration
-              ;; https://github.com/golang/tools/blob/master/gopls/doc/emacs.md
-              '((:gopls .
-                        ((usePlaceholders . t)
-                         (completeUnimported . t) ;; :staticcheck t
-                                            (directoryFilters . ["-vendor"])
-                                            (buildFlags . ["-mod=mod"])
-                                            (allowImplicitNetworkAccess . t)
-                                            (experimentalWorkspaceModule  . t)
-                                            (allowModfileModifications . t)))))
+;; (setq-default eglot-workspace-configuration
+;;               ;; https://github.com/golang/tools/blob/master/gopls/doc/emacs.md
+;;               '((:gopls .
+;;                         ((usePlaceholders . t)
+;;                          (completeUnimported . t) ;; :staticcheck t
+;;                                             (directoryFilters . ["-vendor"])
+;;                                             (buildFlags . ["-mod=mod"])
+;;                                             (allowImplicitNetworkAccess . t)
+;;                                             (experimentalWorkspaceModule  . t)
+;;                                             (allowModfileModifications . t)))))
 
 ;; (require 'project)
 

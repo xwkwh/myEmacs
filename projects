@@ -1,10 +1,10 @@
 ;;; -*- lisp-data -*-
 (("~/.emacs.d/")
+ ("~/workspace/gowork/novel-rerank/")
  ("~/vmacs/")
  ("~/workspace/myEmacs/")
  ("~/workspace/gowork/novelrecaccess/")
  ("~/gopath/pkg/mod/git.code.oa.com/trpc-go/trpc-go@v0.6.1/")
- ("~/workspace/gowork/novel-rerank/")
  ("~/workspace/gowork/predict/predict/")
  ("~/workspace/gowork/predict/predict_utils/model/")
  ("~/workspace/gowork/predict/predict_utils/")
