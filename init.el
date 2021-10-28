@@ -67,7 +67,6 @@
 (require 'conf-keybind)          ;; 键位绑定
 (global-set-key (kbd "C-;") 'iedit-mode)
 
-(require 'gotests)               ;; go test
 
 (evil-collection-define-key 'normal 'magit-mode-map
   "q" #'my/quit-magit-buffer)
@@ -76,6 +75,3 @@
 (setq mode-line-format nil)
 
 ; ===================
-
-(require 'highlight-parentheses)
-(add-hook 'prog-mode-hook #'highlight-parentheses-mode)

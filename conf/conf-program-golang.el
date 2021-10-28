@@ -63,6 +63,7 @@
 
 (setq flycheck-golangci-lint-config "~/standards/go/.golangci.yml")
 
+(require 'gotests)               ;; go test
 
 (provide 'conf-program-golang)
 

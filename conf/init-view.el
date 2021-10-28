@@ -1,19 +1,23 @@
 (require 'use-package)
 
 (dashboard-setup-startup-hook)
-;; (setq dashboard-banner-logo-title "Happy Emacs")
-;; (setq dashboard-startup-banner "~/.emacs.d/go.png")
-(setq dashboard-startup-banner nil)
+(setq dashboard-banner-logo-title nil)
+(setq dashboard-startup-banner "~/.emacs.d/theme/motorcycle.png")
+;; (setq dashboard-startup-banner nil)
 ;; (setq dashboard-items-default-length 10)
 (dashboard-setup-startup-hook)
 (setq dashboard-items
       '((recents . 9)
         (projects . 5)
-        (agenda . 10)))
+        (agenda . 5)))
 ;; To disable shortcut "jump" indicators for each section, set
 (setq dashboard-show-shortcuts t)
 (setq dashboard-set-heading-icons t)
 (setq dashboard-set-file-icons t)
+(setq dashboard-center-content t)
+(setq dashboard-set-init-info nil)
+;; (setq dashboard-filter-agenda-entry 'dashboard-no-filter-agenda)
+
 
 (require 'popup)
 (setq clippy-tip-show-function #'clippy-popup-tip-show)
@@ -266,5 +270,7 @@
 
 
 
+(require 'highlight-parentheses)
+(add-hook 'prog-mode-hook #'highlight-parentheses-mode)
 
 (provide 'init-view)
