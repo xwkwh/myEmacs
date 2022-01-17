@@ -1,14 +1,6 @@
 ;; https://github.com/saibing/tools
 ;; go get  golang.org/x/tools/cmd/gopls
 
-;; go install golang.org/x/tools/cmd/goimports
-;; (let ((gopath (getenv "GOPATH")))
-;;   (when
-;;       (dolist (path  (parse-colon-path gopath))
-;;         (setq exec-path (delete-dups  (cons (concat path  "/bin") exec-path))))))
-
-;; (when (executable-find "gofmt") (setq-default gofmt-command (executable-find "gofmt")))
-;; (when (executable-find "goimports") (setq-default gofmt-command (executable-find "goimports")))
 
 (add-hook 'go-mode-hook 'vmacs-go-mode-hook)
 (defun vmacs-go-mode-hook()
@@ -18,12 +10,17 @@
   (setq eglot-workspace-configuration
         ;; https://github.com/golang/tools/blob/master/gopls/doc/emacs.md
         '((:gopls . (:usePlaceholders t :completeUnimported  t :staticcheck t
+                                      :semanticTokens t
                                       :directoryFilters ["-vendor"]
+                                      :analyses  (:unusedparams t :unusedwrite t)
+                                      :annotations (:bounds t :escape t :inline t :nil t)
+                                      :allExperiments t
+                                      :experimentalWorkspaceModule t
                                       ;; :buildFlags ["-mod=readonly"]
                                       :allowImplicitNetworkAccess t
-                                      :experimentalWorkspaceModule  t
                                       :allowModfileModifications t))))
-   (add-hook 'before-save-hook 'gofmt-before-save nil t)
+
+  (add-hook 'before-save-hook 'gofmt-before-save nil t)
   ;; (add-hook 'before-save-hook #'gofmt)
   ;; (setq flycheck-mode t)
   ;; (setq require-final-newline nil)
@@ -33,16 +30,16 @@
   (local-set-key (kbd "C-c f") #'gofmt)
   (local-set-key (kbd "C-c g") 'golang-setter-getter))
 
-;; (setq-default eglot-workspace-configuration
-;;               ;; https://github.com/golang/tools/blob/master/gopls/doc/emacs.md
-;;               '((:gopls .
-;;                         ((usePlaceholders . t)
-;;                          (completeUnimported . t) ;; :staticcheck t
-;;                                             (directoryFilters . ["-vendor"])
-;;                                             (buildFlags . ["-mod=mod"])
-;;                                             (allowImplicitNetworkAccess . t)
-;;                                             (experimentalWorkspaceModule  . t)
-;;                                             (allowModfileModifications . t)))))
+(setq-default eglot-workspace-configuration
+              ;; https://github.com/golang/tools/blob/master/gopls/doc/emacs.md
+              '((:gopls .
+                        ((usePlaceholders . t)
+                         (completeUnimported . t) ;; :staticcheck t
+                         (directoryFilters . ["-vendor"])
+                         (buildFlags . ["-mod=mod"])
+                         (allowImplicitNetworkAccess . t)
+                         (experimentalWorkspaceModule  . t)
+                         (allowModfileModifications . t)))))
 
 ;; (require 'project)
 

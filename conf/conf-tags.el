@@ -17,11 +17,16 @@
   (add-hook mod #'vmacs-lsp-hook))
 
 (dolist (mod '(go-mode-hook)) (add-hook mod 'vmacs-lsp-hook))
-(with-eval-after-load 'eglot
-  ;; brew install llvm
-  ;;clangd https://clangd.llvm.org/installation.html
-  ;; ln -s ~/myproject/compile_commands.json ~/myproject-build/
-  (add-to-list 'eglot-server-programs '((c++-mode c-mode) "/usr/local/opt/llvm/bin/clangd")))
+;; (with-eval-after-load 'eglot
+;;   ;; brew install llvm
+;;   ;;clangd https://clangd.llvm.org/installation.html
+;;   ;; ln -s ~/myproject/compile_commands.json ~/myproject-build/
+;;   (add-to-list 'eglot-server-programs '((c++-mode c-mode) "/usr/local/opt/llvm/bin/clangd")))
+(require 'eglot)
+(add-to-list 'eglot-server-programs '((c++-mode c-mode) "clangd"))
+(add-hook 'c-mode-hook 'eglot-ensure)
+(add-hook 'c++-mode-hook 'eglot-ensure)
+
 
 (define-key evil-normal-state-map "gf" 'evil-jump-forward)
 (define-key evil-normal-state-map "gb" 'evil-jump-backward)

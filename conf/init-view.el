@@ -28,30 +28,28 @@
 
 ;直接emacs命令打开的窗口相关设置,不要在这里设置字体，否则daemon 启动时字体有可能没创建好，会导致字体设置失败
 (setq-default window-system-default-frame-alist
-          '(
-		(ns ;; if frame created on mac
-		 (height . 0.98)
-		 ;; (width . 0.98)
-		 (width . 1.00)
-		 (left . 0)
-		 (top . 0)
-		 (alpha . 95)
-		 (border-width . 0)
-		 ;; (foreground-color . "#eeeeec")
-		 ;; (background-color . "#202020") ;;
-		 ;; (background-mode . dark)
-		 ;; (font . "Ubuntu Mono-22")
-		 ;; (font . "Fira Code-20")
-		 ;; (font . "DejaVu Sans Mono-13")
-		 ;; (font . "Space Mono-22")
-		 ;; (font . "Hack-22")
-		 ;; (font . "Envy Code R-20")
-		 (font . "Source Code Pro 20")
-		 ;; (font . "Sarasa Mono CL-20")
-		 ;; (font . "JetBrains Mono 20")
-		 ;; (font . "fantasque sans mono-20")
-		 )
-		))
+              '(
+                (ns ;; if frame created on mac
+                 (height . 0.98)
+                 (width . 1.00)
+                 (left . 0)
+                 (top . 0)
+                 (alpha . 88)
+                 (border-width . 0)
+                 (ns-appearance . dark)
+                 ;; (background-mode . dark)
+                 ;; (font . "Ubuntu Mono-22")
+                 ;; (font . "Fira Code-20")
+                 ;; (font . "DejaVu Sans Mono-13")
+                 ;; (font . "Space Mono-22")
+                 ;; (font . "Hack-22")
+                 ;; (font . "Envy Code R-20")
+                 (font . "Source Code Pro 20")
+                 ;; (font . "Sarasa Mono CL-20")
+                 ;; (font . "JetBrains Mono 20")
+                 ;; (font . "fantasque sans mono-20")
+                 )
+                ))
 ;; Use variable width font faces in current buffer
 (defun my-buffer-face-mode-variable ()
    "Set font to a variable width (proportional) fonts in current buffer"
@@ -66,17 +64,6 @@
 ;;(mac-auto-operator-composition-mode)
 (set-language-environment "UTF-8")
 (set-default-coding-systems 'utf-8)
-; 字体
-;; (create-fontset-from-fontset-spec
-;;  (concat "-*-*-*-*-*--*-*-*-*-*-*-fontset-bigmac"
-;;   ",han:PingFang SC:size=20"
-;;   ",symbol:PingFang SC:size=20"
-;;   ",cjk-misc:PingFang SC:size=20"
-;;          ",bopomofo:PingFang SC:size=20"
-;;          ",kana:Hiragino Sans:size=20"
-;;          ",hangul:Apple SD Gothic Neo:size=23"
-;;          ",latin:Menlo"))
-;;;;;;;;;;;;;;;
 
 
 ;; https://github.com/jixiuf/vmacs/blob/master/conf/custom-file.el

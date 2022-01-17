@@ -148,6 +148,13 @@ Replaces default behaviour of comment-dwim, when it inserts comment at the end o
 (define-key evil-motion-state-map "sm" 'evil-visual-line) ;==V 开始行选中
 ;; 因为C-v用于滚屏，故mv==原vim的C-v
 (define-key evil-normal-state-map "mv" 'evil-visual-block) ;==vim.C-v 开始矩形操作，然后移动位置，就可得到选区
+(define-key evil-motion-state-map "mv" 'evil-visual-block) ;==vim.C-v 开始矩形操作，然后移动位置，就可得到选区
+(define-key evil-motion-state-map "m" nil)
+(define-key evil-normal-state-map (kbd "C-.") nil)
+
+
+
+
 
 (define-key evil-visual-state-map "n" 'rectangle-number-lines) ;C-xrN
 
@@ -203,6 +210,80 @@ Replaces default behaviour of comment-dwim, when it inserts comment at the end o
 (add-hook 'dired-mode-hook 'ct/quit-and-kill-auxiliary-windows)
 
 (global-set-key (kbd "C-x C-e") 'eval-print-last-sexp)
+
+
+
+(define-key evil-normal-state-map "m" nil)
+(define-key evil-normal-state-map "s" nil)
+(define-key evil-motion-state-map "sv" 'evil-visual-char) ;==v开始选中区域
+(define-key evil-motion-state-map "sm" 'evil-visual-line) ;==V 开始行选中
+;; 因为C-v用于滚屏，故mv==原vim的C-v
+(define-key evil-normal-state-map "mv" 'evil-visual-block) ;==vim.C-v 开始矩形操作，然后移动位置，就可得到选区
+(define-key evil-motion-state-map "mv" 'evil-visual-block) ;==vim.C-v 开始矩形操作，然后移动位置，就可得到选区
+(define-key evil-motion-state-map "m" nil)
+(define-key evil-normal-state-map (kbd "C-.") nil)
+
+
+
+
+
+(define-key evil-visual-state-map "n" 'rectangle-number-lines) ;C-xrN
+
+(global-set-key  (kbd "C-2") 'set-mark-command)
+
+;; 选中区域后 交换当前光标点，
+(define-key evil-visual-state-map "x" 'exchange-point-and-mark)
+(define-key evil-visual-state-map "X" 'evil-visual-exchange-corners)
+
+(global-set-key (kbd "M-l") 'goto-line)
+
+(defvar boring-window-modes
+  '(help-mode compilation-mode log-view-mode log-edit-mode
+              org-agenda-mode magit-revision-mode ibuffer-mode))
+
+
+(defun vmacs-filter(buf ignore-buffers)
+  (cl-find-if
+   (lambda (f-or-r)
+     (if (functionp f-or-r)
+         (funcall f-or-r buf)
+       (string-match-p f-or-r buf)))
+   ignore-buffers))
+
+(defun bury-boring-windows(&optional bury-cur-win-if-boring)
+  "close boring *Help* windows with `C-g'"
+  (let ((opened-windows (window-list))
+        (cur-buf-win (get-buffer-window)))
+    (dolist (win opened-windows)
+      (with-current-buffer (window-buffer win)
+        (when (or (memq  major-mode boring-window-modes)
+                  (vmacs-filter (buffer-name) ivy-ignore-buffers))
+          (when (and (>  (length (window-list)) 1)
+                     (or bury-cur-win-if-boring
+                         (not (equal cur-buf-win win)))
+                     (delete-window win))))))))
+
+
+(defadvice keyboard-quit (before bury-boring-windows activate)
+  (let ((win (active-minibuffer-window)))
+    (when (windowp win)
+      (switch-to-buffer (window-buffer win))))
+
+  (when (equal last-command 'keyboard-quit)
+    (bury-boring-windows )))
+
+(defun ct/quit-and-kill-auxiliary-windows ()
+  "Kill buffer and its window on quitting"
+  (local-set-key (kbd "q") 'kill-buffer-and-window))
+;; q是关掉buffer 而不是离开窗口
+(add-hook 'special-mode-hook 'ct/quit-and-kill-auxiliary-windows)
+(add-hook 'compilation-mode-hook 'ct/quit-and-kill-auxiliary-windows)
+(add-hook 'dired-mode-hook 'ct/quit-and-kill-auxiliary-windows)
+
+(global-set-key (kbd "C-x C-e") 'eval-print-last-sexp)
+
+
+
 
 
 (provide 'conf-keybind)

@@ -209,7 +209,7 @@ execute emacs native `repeat' default binding to`C-xz'"
 (define-key evil-motion-state-map (kbd "C-d") nil)
 (define-key evil-motion-state-map (kbd "C-f") nil)
 (define-key evil-motion-state-map  (kbd "RET") nil) ;
-;; (define-key evil-motion-state-map (kbd "C-e") nil)
+(define-key evil-motion-state-map (kbd "C-e") nil)
 ;; (define-key evil-normal-state-map  (kbd "RET") nil) ;
 ;; (define-key evil-normal-state-map  (kbd "M-.") nil)
 

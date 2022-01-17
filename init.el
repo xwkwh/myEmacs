@@ -74,4 +74,20 @@
 (setq-default mode-line-format nil)
 (setq mode-line-format nil)
 
+(setq gnus-button-url 'browse-url-generic
+      browse-url-generic-program "chromium"
+      browse-url-browser-function gnus-button-url)
+
+(setq
+ browse-url-browser-function 'eww-browse-url ; Use eww as the default browser
+ shr-use-fonts  nil                          ; No special fonts
+ shr-use-colors nil                          ; No colours
+ shr-indentation 2                           ; Left-side margin
+ shr-width 70  )                              ; Fold text to 70 columns
+(require 'org-web-tools)
+(require 'google-c-style)
+(add-hook 'c-mode-common-hook 'google-set-c-style)
+(add-hook 'c-mode-common-hook 'google-make-newline-indent)
+
+
 ; ===================
