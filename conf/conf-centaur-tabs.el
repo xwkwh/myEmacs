@@ -155,22 +155,6 @@ first."
 (add-hook 'centaur-tabs-mode-hook #'vmacs-awesometab-hook)
 
 
-;; ;; Copied from s.el
-;; (defadvice centaur-tabs-truncate-string (around vmacs-tab activate)
-;;   "If S is longer than LEN, cut it down and add ELLIPSIS to the end.
-
-;; The resulting string, including ellipsis, will be LEN characters
-;; long.
-
-;; When not specified, ELLIPSIS defaults to ‘...’."
-;;   (declare (pure t) (side-effect-free t))
-;;   (unless ellipsis (setq ellipsis ""))
-;;   (setq ad-return-value
-;;         (if (> (length s) len)
-;;             (format "%s%s" (substring s 0 (- len (length ellipsis))) ellipsis)
-;;           s)))
-
-
 (setq
 	  centaur-tabs-set-icons t
 	  centaur-tabs-set-modified-marker t
