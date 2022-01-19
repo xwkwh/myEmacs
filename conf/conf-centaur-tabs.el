@@ -33,8 +33,7 @@
                           "\*Launch "
                           "*dap-"
                           ))
-                     (buffer-name))
-     "Debug")
+                     (buffer-name)) "Debug")
     ((string-match-p (rx (or
                           "\*Async-native-compile-log\*"
                           "\*Helm"
@@ -80,8 +79,8 @@
      "Emacs")
     ;; ((not (vmacs-show-tabbar-p)) nil)
     (t "Common"))))
-(setq centaur-tabs-adjust-buffer-order 'left)
-(centaur-tabs-enable-buffer-reordering)
+;; (setq centaur-tabs-adjust-buffer-order 'left)
+;; (centaur-tabs-enable-buffer-reordering)
 (setq centaur-tabs-label-fixed-length 30)
 (centaur-tabs-mode t)
 
@@ -147,12 +146,12 @@ first."
              (save-current-buffer
                (switch-to-buffer sibling)))))))
 
-(defun vmacs-awesometab-hook()
-  ;; 直接去除自动选下一个tab的hook,让它默认
-  (remove-hook 'kill-buffer-hook 'centaur-tabs-buffer-track-killed)
-  (add-hook 'kill-buffer-hook 'vmacs-centaur-tabs-buffer-track-killed)
-  )
-(add-hook 'centaur-tabs-mode-hook #'vmacs-awesometab-hook)
+;; (defun vmacs-awesometab-hook()
+;;   ;; 直接去除自动选下一个tab的hook,让它默认
+;;   (remove-hook 'kill-buffer-hook 'centaur-tabs-buffer-track-killed)
+;;   (add-hook 'kill-buffer-hook 'vmacs-centaur-tabs-buffer-track-killed)
+;;   )
+;; (add-hook 'centaur-tabs-mode-hook #'vmacs-awesometab-hook)
 
 
 (setq
