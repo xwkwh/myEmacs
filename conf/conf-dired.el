@@ -102,8 +102,12 @@
  dired-recursive-copies 'always         ;让 dired 可以递归的拷贝和删除目录。
  dired-recursive-deletes 'always       ;always表示不加询问
  dired-dwim-target t                   ;Dired试着猜处默认的目标目录
- dired-listing-switches "-alht"
+ dired-listing-switches "-alhtG"
+ dired-kill-when-opening-new-dired-buffer t
  )
+
+(when (string= system-type "darwin")
+  (setq dired-use-ls-dired nil))
 
 ;; (if (equal system-type 'gnu/linux)
 ;;     (setq dired-listing-switches "--time-style=+%y-%m-%d/%H:%M  --group-directories-first -alhG")
@@ -129,7 +133,7 @@
   "\M-o" 'dired-omit-mode ;不显示一些不重要的文件
   "L" 'dired-add-to-load-path-or-load-it
   "v" 'add-dir-local-variable
-  "," 'dired
+  "," 'consult-dir
   "f" 'open-in-filemanager
   "r" 'revert-buffer
   )
@@ -166,8 +170,8 @@
 
 ;; 绑定之后，你访问过的dired都会被记录住，当你copy rename 及打开dired时，可以从这些
 ;; 已访问的目录中筛选以方便快速访问
-(setq vmacs-dired-history-max 500)
-(require 'vmacs-dired-history)
+;; (setq vmacs-dired-history-max 500)
+;; (require 'vmacs-dired-history)
 
 (require 'dired-async nil t)
 

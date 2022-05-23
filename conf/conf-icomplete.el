@@ -124,12 +124,34 @@
 
 (setq consult-project-root-function #'vc-root-dir)
 (with-eval-after-load 'consult
-  (with-eval-after-load 'embark (require 'embark-consult nil t))
+  (with-eval-after-load 'embark
+    (require 'embark-consult nil t)
+    (setf (alist-get 'xref-location embark-exporters-alist) #'vmacs-embark-consult-export-grep)
+    (setf (alist-get 'consult-grep embark-exporters-alist) #'vmacs-embark-consult-export-grep)
+    (defun vmacs-embark-consult-export-grep(lines)
+      (dolist (buf (buffer-list))
+        (when (string-prefix-p "*grep" (buffer-name buf))
+          (kill-buffer buf)))
+      (let* ((default-directory default-directory)
+             dir file)
+        (cl-find-if
+         (lambda (line)
+           (setq file (car (split-string line ":")))
+           (unless (file-name-absolute-p file)
+             (setq dir (locate-dominating-file default-directory file))
+             (when dir (setq default-directory dir)))
+           ) lines)
+        (embark-consult-export-grep lines)
+        ))
+    )
+  (add-hook 'embark-after-export-hook #'(lambda()(rename-buffer "*grep*" t)))
+
   (setq consult-ripgrep-args (format "%s %s"consult-ripgrep-args " -z"))
-  (add-to-list 'consult-buffer-sources 'vmacs-consult--source-dired t)
+  ;; (add-to-list 'consult-buffer-sources 'vmacs-consult--source-dired t)
   (add-to-list 'consult-buffer-sources 'vmacs-consult--source-git t)
   (setq consult-config `((consult-buffer :preview-key ,(kbd "C-v")) ;disable auto preview for consult-buffer
-                        )))
+                         )))
+
 
 
 (vmacs-leader (kbd "fh") (vmacs-defun find-file-home (let ((default-directory "~/"))(call-interactively 'find-file))))
@@ -154,6 +176,37 @@
 (global-set-key (kbd "C-c C-s") 'consult-line)
 (global-set-key (kbd "<help> a") 'consult-apropos)
 (vmacs-leader (kbd "wi") 'consult-imenu)
+
+
+;; Track opened directories
+(defun recentf-track-opened-dir ()
+  (and default-directory
+       (recentf-add-file default-directory)))
+
+(add-hook 'dired-mode-hook #'recentf-track-opened-dir)
+
+;; Track closed directories
+(advice-add 'recentf-track-closed-file :override
+            (defun recentf-track-closed-advice ()
+              (cond (buffer-file-name (recentf-remove-if-non-kept buffer-file-name))
+                    ((equal major-mode 'dired-mode)
+                     (recentf-remove-if-non-kept default-directory)))))
+
+;; (require 'consult-dired-history)
+(setq-default consult-dir-sources
+              '(consult-dir--source-default
+                consult-dir--source-recentf
+                consult-dir--source-project
+                consult-dir--source-bookmark))
+
+
+(define-key minibuffer-local-completion-map (kbd "C-M-s-j") #'consult-dir)
+(define-key minibuffer-local-completion-map (kbd "C-M-s-l") #'consult-dir-jump-file) ;locate
+(define-key global-map (kbd "C-x d") #'consult-dir)
+(setq consult-dir-shadow-filenames nil)
+(setq consult-dir-default-command #'(lambda () (interactive)(dired default-directory)))
+(setq consult-dir-default-command #'consult-dir-dired)
+
 
 (defun vmacs-icomplete()
   (setq-local truncate-lines t)

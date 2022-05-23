@@ -1,3 +1,39 @@
+(defvar poem-file "~/.emacs.d/cache/poem.json")
+(defvar poem-cache nil)
+
+(defun poem-update ()
+  "Download poem from `jinrishici.com`"
+  (let ((url-request-extra-headers
+    '(("X-User-Token" . "FRxxhlAYg8JbQpdr7xIeHNpew7b2vLIr"))))
+    (ignore-errors
+      (url-retrieve
+       "https://v2.jinrishici.com/sentence"
+       (lambda (status)
+    (write-region url-http-end-of-headers (point-max) poem-file)))))
+  (setq poem-cache nil))
+
+(defun poem-get (prop)
+  "Get poem from cache file, PROP can be 'content, 'origin"
+  (ignore-errors
+    (if poem-cache
+        (alist-get prop poem-cache)
+      (with-temp-buffer
+        (insert-file-contents poem-file)
+        (let ((data (alist-get 'data (json-read))))
+          (setq poem-cache data)
+          (alist-get prop data))))))
+
+(defun poem-get-formatted ()
+  (let* ((poem (poem-get 'origin))
+         (lines (alist-get 'content poem))
+         (content (mapconcat #'identity lines "\n")))
+    (format "%s\n%s · %s\n%s"
+            (alist-get 'title poem)
+            (alist-get 'dynasty poem)
+            (alist-get 'author poem)
+            content)))
+(poem-update)
+
 (defvar  dropbox-dir (expand-file-name "~/Documents/dropbox"))
 (when (equal system-type 'darwin)
   (when (or (not (file-exists-p dropbox-dir))
@@ -6,6 +42,7 @@
 
 ;; (when (not (file-exists-p dropbox-dir)) (make-directory dropbox-dir t))
 
+(when (boundp 'pixel-scroll-precision-mode) (pixel-scroll-precision-mode 1))
 (setq-default
  inhibit-startup-screen t;隐藏启动显示画面
  initial-scratch-message nil;关闭scratch消息提示
@@ -14,10 +51,13 @@
  ;; initial-buffer-choice "~/"
 
 
+
  use-dialog-box nil           ;不使用对话框进行（是，否 取消） 的选择，而是用minibuffer
  ;; frame-title-format "%b  [%I] %f  GNU/Emacs" ;标题显示文件名，而不是默认的username@localhost
  ;; frame-title-format '("%e " evil-mode-line-format "「"mode-line-buffer-identification "」("  (:propertize ("" mode-name) ) ") "   mode-line-misc-info   "%f  GNU/Emacs")
-frame-title-format  '((:eval (if (buffer-file-name) (abbreviate-file-name (buffer-file-name)) "%b")))
+;; frame-title-format  '((:eval (if (buffer-file-name) (abbreviate-file-name (buffer-file-name)) "%b")))
+ frame-title-format '("%e" (:eval (poem-get 'content)) "%e " evil-mode-line-format "「"mode-line-buffer-identification "」("  (:propertize ("" mode-name) ) ") "   mode-line-misc-info   "%f  GNU/Emacs")
+
 
 
 
@@ -57,7 +97,7 @@ frame-title-format  '((:eval (if (buffer-file-name) (abbreviate-file-name (buffe
  ;; find-file-visit-truename t
 
  send-mail-function 'sendmail-send-it
- mail-addrbook-file (expand-file-name "mail_address" dropbox-dir)
+ ;; mail-addrbook-file (expand-file-name "mail_address" dropbox-dir)
 
  ;; after this shell-command can use zsh alias
  ;; shell-file-name "zsh"
@@ -71,15 +111,33 @@ frame-title-format  '((:eval (if (buffer-file-name) (abbreviate-file-name (buffe
                     "/TAGS$" "java_base.tag" ".erlang.cookie" "xhtml-loader.rnc" "COMMIT_EDITMSG")
  recentf-max-saved-items 300
  ring-bell-function 'ignore
- savehist-additional-variables '(vmacs-dired-history magit-repository-directories kill-ring)
+ savehist-additional-variables '(corfu-history magit-repository-directories kill-ring)
  ;;when meet long line ,whether to wrap it
  truncate-lines t ;一行过长时 是否wrap显示
  display-line-numbers 'absolute
+ fill-column 100
  tramp-adb-prompt "^\\(?:[[:digit:]]*|?\\)?\\(?:[[:alnum:]-]*@[[:alnum:]]*[^#\\$]*\\)?[#\\$][[:space:]]" ;加了一个  "-"
  tramp-shell-prompt-pattern (concat "\\(?:^\\|\r\\)" "[^]#@$%>\n]*#?[]#$@%>] *\\(\e\\[[0-9;]*[a-zA-Z-.] *\\)*")
  tramp-default-method "ssh" ;Faster than the default scp
  tramp-verbose 1
+ ;; TODO ?
+ ;; find-function-C-source-directory "~/repos/emacs/src/"
  )
+;; Increase undo limits. Why?
+;; .. ability to go far back in history can be useful, modern systems have sufficient memory.
+;; Limit of 64mb.
+(setq undo-limit 6710886400)
+;; Strong limit of 1.5x (96mb)
+(setq undo-strong-limit 100663296)
+;; Outer limit of 10x (960mb).
+;; Note that the default is x100), but this seems too high.
+(setq undo-outer-limit 1006632960)
+(with-eval-after-load 'vundo
+  (setq vundo-roll-back-on-quit nil)
+  (setq vundo-glyph-alist vundo-unicode-symbols))
+
+;; (setq undo-tree-history-directory-alist '(("." . "~/.emacs.d/cache/undo")))
+
 ;; (require 'display-fill-column-indicator nil t)
 ;; (when (featurep 'display-fill-column-indicator)
   ;; (add-hook 'find-file-hook #'display-fill-column-indicator--turn-on))
@@ -99,6 +157,7 @@ frame-title-format  '((:eval (if (buffer-file-name) (abbreviate-file-name (buffe
 (setq-default auto-mode-alist
       (append
        '(("\\.pyx" . python-mode)
+         ("zsh" . sh-mode)
          ("SConstruct" . python-mode)
          ("\\.yml$" . yaml-mode)
          ("\\.yaml$" . yaml-mode)
@@ -186,6 +245,22 @@ frame-title-format  '((:eval (if (buffer-file-name) (abbreviate-file-name (buffe
 (vmacs-leader (kbd "x,") 'goto-last-change-reverse)
 
 (with-eval-after-load 'cc-mode (define-key c-mode-base-map ";" 'vmacs-append-semicolon-at-eol))
+
+;; Quick edit (for use with hammerspoon quick edit)
+(defun meain/quick-edit-end ()
+  "Util function to be executed on qed completion."
+  (interactive)
+  (mark-whole-buffer)
+  (call-interactively 'kill-ring-save)
+  (kill-current-buffer))
+(defun meain/quick-edit ()
+  "Util function for use with hammerspoon quick edit functionality."
+  (interactive)
+  (let ((qed-buffer-name (concat "*scratch*" )))
+    (switch-to-buffer (generate-new-buffer qed-buffer-name t))
+    (sit-for 0.01)
+    (evil-paste-after 1)
+    (gfm-mode)))
 
 ;; (global-set-key (kbd "C-x C-e") 'eval-print-last-sexp)
 

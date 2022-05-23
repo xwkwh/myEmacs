@@ -1,6 +1,8 @@
 ;;; -*- lisp-data -*-
-(("~/workspace/myEmacs/")
- ("~/.emacs.d/")
+(("~/.emacs.d/")
+ ("~/workspace/gowork/novelroughrankserver/")
+ ("~/workspace/trs/feature_extractor/")
+ ("~/workspace/myEmacs/")
  ("~/vmacs/")
  ("~/workspace/gowork/novel-rerank/")
  ("~/workspace/gowork/novelrecaccess/")
@@ -10,7 +12,6 @@
  ("~/workspace/gowork/predict/predict_utils/")
  ("~/workspace/gowork/predict/feature_report/")
  ("~/workspace/gowork/novel_user_feature_proxy_server/")
- ("~/workspace/gowork/novelroughrankserver/")
  ("~/workspace/gowork/trpc-log-atta/")
  ("~/gopath/pkg/mod/git.code.oa.com/trpcprotocol/mtt/primaryengine_interface@v1.1.2/")
  ("~/workspace/gowork/original_feature/"))

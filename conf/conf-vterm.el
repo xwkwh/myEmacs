@@ -8,7 +8,7 @@
 (setq-default vterm-keymap-exceptions '("C-c" "C-x" "C-u" "C-g" "C-h" "M-x" "M-o" "C-y"  "M-y"))
 (setq-default vterm-max-scrollback (- 20000 42))
 (setq-default vterm-enable-manipulate-selection-data-by-osc52 t)
-(setq-default vterm-module-cmake-args " -DUSE_SYSTEM_LIBVTERM=no ")
+(setq-default vterm-module-cmake-args " -DUSE_SYSTEM_LIBVTERM=yes ")
 (setq vterm-toggle-cd-auto-create-buffer t)
 (setq-default vterm-clear-scrollback-when-clearing t)
 (setq-default term-prompt-regexp "^[^#$%>\n]*[#$%>] *") ;默认regex 相当于没定义，term-bol无法正常中转到开头处
@@ -70,6 +70,7 @@
 (define-key vterm-mode-map (kbd "s-C-M-u") 'vterm-toggle)
 (define-key vterm-mode-map (kbd "C-c C-g")   #'vterm--self-insert)
 (define-key vterm-mode-map (kbd "s-v")   #'vterm-yank)
+(define-key vterm-mode-map (kbd "C-q")   #'vterm-send-next-key)
 
 ;; C－s 停止滚屏 C-q恢复滚屏
 (define-key vterm-mode-map [(control return)]   #'vterm-toggle-insert-cd)

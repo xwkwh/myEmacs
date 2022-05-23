@@ -64,16 +64,18 @@
             '((sequence "TODO(t)" "DOING(i)"  "|" "DONE(d)")
               (sequence "⚑(T)" "🏴(I)"  "|" "✔(D)" )))
 
-(org-babel-do-load-languages 'org-babel-load-languages
-                 '(
-                   (shell . t)
-                   (emacs-lisp . t)
-                   )
-                 )
 (require 'ob-go)
-(org-babel-do-load-languages
- 'org-babel-load-languages
- '((go . t)))
+(require 'ob-C)
+
+(org-babel-do-load-languages 'org-babel-load-languages
+                             '(
+                               (shell . t)
+                               (emacs-lisp . t)
+                               (go . t)
+                               (C . t)
+                               (sql . t)
+                               )
+                             )
 
  ;; (require 'org-tempo)
 

@@ -40,10 +40,10 @@
 
 (require 'conf-centaur-tabs)
 (require 'conf-tags)                    ;ctags gtags 相关，代码跳转
-(require 'conf-company-mode)            ;补全
+;; (require 'conf-company-mode)            ;补全
+(require 'conf-corfu)
 ;; (with-eval-after-load 'magit (require 'conf-magit))
 
-(global-undo-tree-mode t)
 (global-font-lock-mode)
 (transient-mark-mode 1)
 (save-place-mode t)
@@ -95,3 +95,8 @@
 (setq inferior-lisp-program "/usr/local/bin/sbcl")
 (setq slime-contribs '(slime-fancy))
 (require 'slime-autoloads)
+(put 'upcase-region 'disabled nil)
+
+
+
+;; (setq undo-tree-history-directory-alist '(("." . "~/.emacs.d/undo")))

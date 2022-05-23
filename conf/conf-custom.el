@@ -25,7 +25,7 @@
  '(initial-frame-alist '((fullscreen . maximized)))
  '(org-agenda-files nil)
  '(package-selected-packages
-   '(slime org-web-tools vterm-toggle use-package org-superstar vterm highlight-parentheses pinyinlib osx-dictionary centaur-tabs orderless marginalia embark-consult embark eglot go-mode all-the-icons-dired consult projectile magit iedit ob-go verb diff-hl evil-search-highlight-persist evil-leader undo-tree yasnippet golden-ratio evil-collection evil flycheck-golangci-lint timu-spacegrey-theme git-link flycheck rg ox-hugo yaml-mode helpful leetcode protobuf-mode protocols miniedit lua-mode json-mode ox-gfm ivy-prescient company-prescient prescient spaceline-all-the-icons all-the-icons-gnus all-the-icons-ibuffer all-the-icons-ivy-rich neotree doom org-bullets color-theme-sanityinc-tomorrow graphviz-dot-mode smex ccls golden-ratio-scroll-screen dired-narrow scratch elisp-def bm dired-filetype-face diredfl dired-subtree counsel-etags counsel-gtags dumb-jump general vc-msg use-package smooth-scrolling exec-path-from-shell dashboard))
+   '(kind-icon corfu vundo consult-dir flatbuffers-mode timu-spacegrey-theme slime org-web-tools vterm-toggle use-package org-superstar vterm highlight-parentheses pinyinlib osx-dictionary centaur-tabs orderless marginalia embark-consult embark eglot go-mode all-the-icons-dired consult projectile magit iedit ob-go verb diff-hl evil-search-highlight-persist evil-leader undo-tree yasnippet golden-ratio evil-collection evil flycheck-golangci-lint git-link flycheck rg ox-hugo yaml-mode helpful leetcode protobuf-mode protocols miniedit lua-mode json-mode ox-gfm ivy-prescient company-prescient prescient spaceline-all-the-icons all-the-icons-gnus all-the-icons-ibuffer all-the-icons-ivy-rich neotree doom org-bullets color-theme-sanityinc-tomorrow graphviz-dot-mode smex ccls golden-ratio-scroll-screen dired-narrow scratch elisp-def bm dired-filetype-face diredfl dired-subtree counsel-etags counsel-gtags dumb-jump general vc-msg use-package smooth-scrolling exec-path-from-shell dashboard))
  '(pdf-view-midnight-colors '("#FDF4C1" . "#282828"))
  '(pos-tip-background-color "#36473A")
  '(pos-tip-foreground-color "#FFFFC8")
@@ -66,6 +66,7 @@
  '(font-lock-done-face ((t (:foreground "Green" :box (:line-width 2 :color "grey75" :style released-button) :height 1.2))) t)
  '(font-lock-todo-face ((t (:foreground "Red" :box (:line-width 2 :color "grey75" :style released-button) :height 1.2))) t)
  '(ivy-current-match ((t (:inherit highlight :background "#076678" :foreground "#FDF4C1")))))
+
 
 
 

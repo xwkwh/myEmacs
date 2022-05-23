@@ -81,7 +81,7 @@
  ;; org-deadline-string "DEADLINE:"
  ;; org-scheduled-string "SCHEDULED:"
  org-time-stamp-formats  '("<%Y-%m-%d 周%u>" . "<%Y-%m-%d 周%u %H:%M>")
- org-agenda-files  (list (expand-file-name "todo.txt" dropbox-dir))
+ ; org-agenda-files  (list (expand-file-name "todo.txt" dropbox-dir))
  org-deadline-warning-days 5;;最后期限到达前5天即给出警告
  org-agenda-show-all-dates t
  org-agenda-skip-deadline-if-done t

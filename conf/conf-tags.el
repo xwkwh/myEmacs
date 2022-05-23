@@ -1,7 +1,9 @@
 ;;; -*- coding:utf-8 -*-
 
 (setq eglot-confirm-server-initiated-edits nil)
+(setq eglot-autoshutdown nil)
 (setq eglot-sync-connect 0)
+(setq eglot-events-buffer-size 0)
 (setq eglot-extend-to-xref t)
 ;; :documentHighlightProvider 禁用高亮光标下的单词
 ;; (setq eglot-ignored-server-capabilites '(:documentHighlightProvider))
@@ -28,14 +30,15 @@
 (add-hook 'c-mode-hook 'eglot-ensure)
 (add-hook 'c++-mode-hook 'eglot-ensure)
 
+(remove-hook 'flatbuffers-mode-hook 'eglot-ensure)
 
-(define-key evil-normal-state-map "gf" 'evil-jump-forward)
-(define-key evil-normal-state-map "gb" 'evil-jump-backward)
 (define-key evil-normal-state-map "gn" 'next-error)
 (define-key evil-normal-state-map "gp" 'previous-error)
 (vmacs-leader (kbd ",") 'evil-jump-backward)  ;space, 回到上一个书签
 (vmacs-leader (kbd ".") 'evil-jump-forward)      ;space. 下一个书签
 
+(define-key evil-normal-state-map "gp" #'evil-project-find-regexp)
+(define-key evil-normal-state-map "gP" #'project-or-external-find-file)
 (define-key evil-motion-state-map "g." 'evil-jump-to-tag) ;对 xref-find-definitions 进行了包装
 ;; (define-key evil-motion-state-map "gr" 'lsp-find-references)
 (define-key evil-motion-state-map "gR" #'eglot-rename)
@@ -46,8 +49,6 @@
 (define-key evil-motion-state-map "gt" #'eglot-find-typeDefinition)
 (define-key evil-motion-state-map "gs" #'(lambda()(interactive)(call-interactively #'eglot-shutdown-all)(call-interactively #'eglot)))
 (define-key evil-normal-state-map "gh" #'eglot-code-actions)
-(define-key evil-normal-state-map "gp" #'evil-project-find-regexp)
-(define-key evil-normal-state-map "gP" #'project-or-external-find-file)
 ;;
 ;; ;; (define-key evil-motion-state-map "gd" 'evil-goto-definition);evil default,see evil-goto-definition-functions
 ;; (define-key evil-motion-state-map "gi" 'lsp-find-implementation)
