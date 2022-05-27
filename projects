@@ -1,8 +1,8 @@
 ;;; -*- lisp-data -*-
 (("~/.emacs.d/")
+ ("~/workspace/myEmacs/")
  ("~/workspace/gowork/novelroughrankserver/")
  ("~/workspace/trs/feature_extractor/")
- ("~/workspace/myEmacs/")
  ("~/vmacs/")
  ("~/workspace/gowork/novel-rerank/")
  ("~/workspace/gowork/novelrecaccess/")

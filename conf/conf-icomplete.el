@@ -6,10 +6,10 @@
 (setq icomplete-compute-delay 0)
 (setq icomplete-show-matches-on-no-input t)
 (setq icomplete-hide-common-prefix nil)
-(setq icomplete-in-buffer t)
+(setq icomplete-in-buffer nil)
 (setq icomplete-tidy-shadowed-file-names t)
 
-(setq icomplete-prospects-height 30)
+(setq icomplete-prospects-height 10)
 ;; (concat
 ;;                                      (propertize "\n" 'face '(:height 1))
 ;;                                      (propertize " " 'face '(:inherit vertical-border :underline t :height 1)
@@ -67,8 +67,9 @@
 (icomplete-mode 1)
 (icomplete-vertical-mode 1)
 
-(setq icomplete-prospects-height 20)
-(setq icomplete-vertical-prospects-height 20)
+;; TODO: xiuf没有 我可能用来显示buffer
+;; (setq icomplete-prospects-height 20)
+;; (setq icomplete-vertical-prospects-height 20)
 
 ;; (setq icomplete-scroll t)
 
@@ -83,26 +84,17 @@
 (define-key icomplete-minibuffer-map (kbd "C-e") #'(lambda(&optional argv)(interactive)(if (eolp) (call-interactively #'icomplete-fido-exit) (end-of-line))) )
 
 
-
 (when (require 'embark nil t)
   (when (require 'marginalia nil t) (marginalia-mode 1))
   ;; (setq marginalia-margin-min 18)
 
   (setq embark-collect-initial-view-alist '((t . list)))
-  (global-set-key (kbd "C-o") 'embark-act)
-  (define-key icomplete-minibuffer-map (kbd "C-o") #'embark-act)
-  ;; (global-set-key (kbd "M-.") #'embark-dwim)
-  ;; (evil-define-key 'normal 'global (kbd "M-.") #'embark-dwim)
+  (vmacs-define-key  'global (kbd "C-t") #'embark-act nil 'normal)
+
+  (define-key icomplete-minibuffer-map (kbd "C-t") 'embark-act)
+
   (define-key icomplete-minibuffer-map (kbd "C-c C-o") 'embark-collect-snapshot)
   (define-key icomplete-minibuffer-map (kbd "C-c C-c") 'embark-export)
-  (setf (alist-get 'xref-location embark-exporters-alist) #'vmacs-embark-consult-export-grep)
-  (defun vmacs-embark-consult-export-grep(lines)
-    (let* ((default-directory (car xref--project-root-memo))
-           (file (car (split-string (car lines) ":")))
-           (search-root (locate-dominating-file default-directory file)))
-      (when search-root
-        (setq default-directory search-root))
-      (embark-consult-export-grep lines)))
   (defun vmacs-embark-collect-mode-hook ()
     (evil-local-mode)
     (evil-define-key 'normal 'local "/" #'consult-focus-lines)
@@ -110,6 +102,7 @@
     (evil-define-key 'normal 'local "r" #'consult-reset-lines))
   (add-hook 'tabulated-list-mode-hook 'vmacs-embark-collect-mode-hook))
 
+(setq consult-async-split-style 'perl)
 
 (defun vmacs-minibuffer-space ()
   (interactive)
@@ -120,7 +113,7 @@
     (when (looking-back "#") (delete-char -1))
     (insert " ")))
 
-;; (define-key icomplete-minibuffer-map (kbd "SPC") 'vmacs-minibuffer-space)
+(define-key icomplete-minibuffer-map (kbd "SPC") 'vmacs-minibuffer-space)
 
 (setq consult-project-root-function #'vc-root-dir)
 (with-eval-after-load 'consult
@@ -160,17 +153,20 @@
 ;; (vmacs-leader (kbd "ff") (icomplete-horizontal find-file  (find-file-at-point)))
 (vmacs-leader (kbd "ff") #'find-file)
 (global-set-key (kbd "C-x C-f") #'find-file-at-point)
+(global-set-key (kbd "C-x r b") #'consult-bookmark)
+(global-set-key (kbd "C-x r x" ) #'consult-register)(global-set-key (kbd "C-x r b") #'consult-bookmark)
+
 (vmacs-leader (kbd "fc") #'(lambda()(interactive) (find-file (expand-file-name "http.txt" dropbox-dir))))
 (autoload #'mu4e-headers-search-bookmark  "mu4e" t)
-(vmacs-leader (kbd "i") #'(lambda()(interactive) (mu4e-headers-search-bookmark)(mu4e)))
+(vmacs-leader (kbd "i") #'(lambda()(interactive)(shell-command "killall mbsync") (mu4e-headers-search-bookmark)(mu4e)))
 
 (vmacs-leader " " 'consult-buffer)
 (vmacs-leader "fo" 'consult-buffer-other-window)
 (vmacs-leader "gG" #'consult-grep)
 (vmacs-leader "gg" (vmacs-defun consult-ripgrep-default (consult-ripgrep default-directory)))
 (vmacs-leader "gt" #'consult-ripgrep)
-(vmacs-leader "g." (vmacs-defun consult-ripgrep-default-symbol (consult-ripgrep default-directory (thing-at-point 'symbol))))
-(vmacs-leader "g," (vmacs-defun consult-ripgrep-root-symbol (consult-ripgrep(vc-root-dir) (thing-at-point 'symbol)) ))
+(vmacs-leader "g." (vmacs-defun consult-ripgrep-default-symbol (consult-ripgrep default-directory (concat "\\b" (thing-at-point 'symbol) "\\b"))))
+(vmacs-leader "g," (vmacs-defun consult-ripgrep-root-symbol (consult-ripgrep(vc-root-dir)  (concat "\\b" (thing-at-point 'symbol) "\\b"))))
 (vmacs-define-key  'global "g/" 'consult-focus-lines nil 'normal)
 (global-set-key [remap goto-line] 'consult-goto-line)
 (global-set-key (kbd "C-c C-s") 'consult-line)
@@ -204,9 +200,7 @@
 (define-key minibuffer-local-completion-map (kbd "C-M-s-l") #'consult-dir-jump-file) ;locate
 (define-key global-map (kbd "C-x d") #'consult-dir)
 (setq consult-dir-shadow-filenames nil)
-(setq consult-dir-default-command #'(lambda () (interactive)(dired default-directory)))
 (setq consult-dir-default-command #'consult-dir-dired)
-
 
 (defun vmacs-icomplete()
   (setq-local truncate-lines t)

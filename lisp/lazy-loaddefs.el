@@ -1,10 +1,9 @@
-;;; lazy-loaddefs.el --- automatically extracted autoloads
+;;; lazy-loaddefs.el --- automatically extracted autoloads  -*- lexical-binding: t -*-
 ;;
 ;;; Code:
 
 
-;;;### (autoloads nil "compile-dwim" "../lazy/compile-dwim.el" (24656
-;;;;;;  39456 514109 442000))
+;;;### (autoloads nil "compile-dwim" "../lazy/compile-dwim.el" "82c02b7ec250b2c2821efb5944b42665")
 ;;; Generated autoloads from ../lazy/compile-dwim.el
 
 (defvar compile-dwim-alist `((mxml (or (name . "\\.mxml$")) (compile-dwim-make) "firefox %n.swf") (objc (mode . objc-mode) compile-dwim-xcode:build compile-dwim-xcode:build-and-run) (lua (or (name . "\\.lua$") (mode . lua-mode)) "lua %n.lua" "lua %n.lua") (go (name . "_test\\.go$") "go test" compile-go-test-current) (go (or (name . "\\.go$") (mode . go-mode)) (compile-dwim-make) "go run %n.go") (as (or (name . "\\.as$") (mode . actionscript-mode)) (compile-dwim-make) "firefox %n.swf") (asm (or (name . "\\.s$") (mode . asm-mode)) "as -o %n.o %f;ld -o %n %n.o " "./%n") (erlang (or (name . "\\.erl$") (mode . erlang-mode)) (erlang-dired-emake) "erl  \"%f\"") (perl (or (name . "\\.pl$") (mode . cperl-mode)) "%i -wc \"%f\"" "%i \"%f\"") (csharp (or (name . "\\.cs$") (mode . csharp-mode)) "csc %f" "%n") (c (or (name . "\\.c$") (mode . c-mode)) "gcc -o %n %f" ,(if (equal system-type 'windows-nt) "%n" "./%n")) (c++ (or (name . "\\.cpp$") (mode . c++-mode)) ("g++ -o %n %f" "g++ -g -o %n %f") ,(if (equal system-type 'windows-nt) "%n" "./%n") "%n") (java (or (name . "\\.java$") (mode . java-mode)) "javac %f" "java %n" "%n.class") (python (or (name . "\\.py$") (mode . python-mode)) "python %f" "python %f") (javascript (or (name . "\\.js$") (mode . javascript-mode)) "smjs -f %f" "smjs -f %f") (tex (or (name . "\\.tex$") (name . "\\.ltx$") (mode . tex-mode) (mode . latex-mode)) "latex %f" "latex %f" "%n.dvi") (texinfo (name . "\\.texi$") (makeinfo-buffer) (makeinfo-buffer) "%.info") (sh (or (name . "\\.sh$") (mode . sh-mode)) "sh ./%f" "sh ./%f") (f99 (name . "\\.f90$") "f90 %f -o %n" "./%n" "%n") (f77 (name . "\\.[Ff]$") "f77 %f -o %n" "./%n" "%n") (php (or (name . "\\.php$") (mode . php-mode)) "php %f" "php %f") (elisp (or (name . "\\.el$") (mode . emacs-lisp-mode) (mode . lisp-interaction-mode)) (emacs-lisp-byte-compile) (emacs-lisp-byte-compile) "%fc")) "\
@@ -31,42 +30,55 @@ to the major mode.")
 \(fn FORCE &optional SENTINEL)" t nil)
 
 (autoload 'compile-dwim-run "compile-dwim" nil t nil)
+
+;;;### (autoloads "actual autoloads are elsewhere" "compile-dwim"
+;;;;;;  "../lazy/compile-dwim.el" (24665 22534 411231 217000))
+;;; Generated autoloads from ../lazy/compile-dwim.el
 
-(if (fboundp 'register-definition-prefixes) (register-definition-prefixes "compile-dwim" '("compile-dwim-" "vterm-compile")))
+(register-definition-prefixes "compile-dwim" '("compile-dwim-" "vterm-compile"))
+
+;;;***
 
 ;;;***
 
-;;;### (autoloads nil "lazy-buffer" "../lazy/lazy-buffer.el" (24656
-;;;;;;  39456 515420 841000))
+;;;### (autoloads nil "lazy-buffer" "../lazy/lazy-buffer.el" "7d2fbe762af55bf0fb59890e63e7161e")
 ;;; Generated autoloads from ../lazy/lazy-buffer.el
 
 (defvar vmacs-consult--source-git `(:name "GitFile" :narrow 103 :category file :face consult-file :history file-name-history :action ,#'consult--file-action :items ,(lambda nil (require 'lazy-buffer) (append (vmacs--git-files 0 "~/repos/vmacs") (vmacs--git-files 0 "~/repos/dotfiles") (vmacs--git-files 1 nil)))) "\
 Recent file candidate source for `consult-buffer'.")
 
-(defvar vmacs-consult--source-dired `(:name "Dired" :narrow 100 :category file :face consult-file :history vmacs-dired-history :action ,#'consult--file-action :items ,(lambda nil (require 'vmacs-dired-history) vmacs-dired-history)) "\
-Recent dired candidate source for `consult-buffer'.")
-
 (autoload 'vmacs-prev-buffer "lazy-buffer" nil t nil)
 
 (autoload 'vmacs-next-buffer "lazy-buffer" nil t nil)
+
+;;;### (autoloads "actual autoloads are elsewhere" "lazy-buffer"
+;;;;;;  "../lazy/lazy-buffer.el" (25221 59223 135944 676000))
+;;; Generated autoloads from ../lazy/lazy-buffer.el
 
-(if (fboundp 'register-definition-prefixes) (register-definition-prefixes "lazy-buffer" '("boring-window-modes" "git-repos-files-cache" "vmacs--git-files")))
+(register-definition-prefixes "lazy-buffer" '("boring-window-modes" "git-repos-files-cache" "vmacs--git-files"))
+
+;;;***
 
 ;;;***
 
 ;;;### (autoloads nil "lazy-camelize" "../lazy/lazy-camelize.el"
-;;;;;;  (24656 39456 516033 282000))
+;;;;;;  "7884267561ee0b5618f18b3efe301137")
 ;;; Generated autoloads from ../lazy/lazy-camelize.el
 
 (autoload 'toggle-camelize "lazy-camelize" "\
 hello_word <->HelloWorld" t nil)
+
+;;;### (autoloads "actual autoloads are elsewhere" "lazy-camelize"
+;;;;;;  "../lazy/lazy-camelize.el" (24665 22534 413563 830000))
+;;; Generated autoloads from ../lazy/lazy-camelize.el
 
-(if (fboundp 'register-definition-prefixes) (register-definition-prefixes "lazy-camelize" '("camelize" "mapcar-head" "s-lowercase" "un-camelcase-string" "upcase-first-char")))
+(register-definition-prefixes "lazy-camelize" '("camelize" "mapcar-head" "s-lowercase" "un-camelcase-string" "upcase-first-char"))
+
+;;;***
 
 ;;;***
 
-;;;### (autoloads nil "lazy-command" "../lazy/lazy-command.el" (24656
-;;;;;;  39456 516621 334000))
+;;;### (autoloads nil "lazy-command" "../lazy/lazy-command.el" "d071e43c320f51c804f7d9ff9c289c08")
 ;;; Generated autoloads from ../lazy/lazy-command.el
 
 (autoload 'vmacs-idle-timer "lazy-command" nil nil nil)
@@ -175,13 +187,18 @@ Refocus the minibuffer if it is waiting for input." t nil)
 (autoload 'consult-hide-lines "lazy-command" nil t nil)
 
 (autoload 'consult-reset-lines "lazy-command" nil t nil)
+
+;;;### (autoloads "actual autoloads are elsewhere" "lazy-command"
+;;;;;;  "../lazy/lazy-command.el" (25221 65051 522382 670000))
+;;; Generated autoloads from ../lazy/lazy-command.el
 
-(if (fboundp 'register-definition-prefixes) (register-definition-prefixes "lazy-command" '("vmacs-killed-file-list")))
+(register-definition-prefixes "lazy-command" '("vmacs-killed-file-list"))
+
+;;;***
 
 ;;;***
 
-;;;### (autoloads nil "lazy-dired" "../lazy/lazy-dired.el" (24656
-;;;;;;  39456 517765 617000))
+;;;### (autoloads nil "lazy-dired" "../lazy/lazy-dired.el" "d4278329e60ec313ca028158eb91e9ea")
 ;;; Generated autoloads from ../lazy/lazy-dired.el
 
 (autoload 'dired-add-to-load-path-or-load-it "lazy-dired" "\
@@ -190,16 +207,15 @@ if it is a el-file ,then `load' it" t nil)
 
 ;;;***
 
-;;;### (autoloads nil "lazy-dired-sort" "../lazy/lazy-dired-sort.el"
-;;;;;;  (24656 39456 517218 271000))
+;;;### (autoloads "actual autoloads are elsewhere" "lazy-dired-sort"
+;;;;;;  "../lazy/lazy-dired-sort.el" (24665 22534 415199 280000))
 ;;; Generated autoloads from ../lazy/lazy-dired-sort.el
 
-(if (fboundp 'register-definition-prefixes) (register-definition-prefixes "lazy-dired-sort" '("lazy-dired-sort")))
+(register-definition-prefixes "lazy-dired-sort" '("lazy-dired-sort"))
 
 ;;;***
 
-;;;### (autoloads nil "lazy-evil" "../lazy/lazy-evil.el" (24656 39456
-;;;;;;  519484 271000))
+;;;### (autoloads nil "lazy-evil" "../lazy/lazy-evil.el" "b5144e950150c56e1edc224ac9ee170f")
 ;;; Generated autoloads from ../lazy/lazy-evil.el
 
 (autoload 'evil-mark-defun "lazy-evil" "\
@@ -265,13 +281,19 @@ if not,it will call `evil-use-register' which default bind on `\"'
 \(fn &optional REGISTER-OR-COUNT)" t nil)
 
 (autoload 'vmacs-smart-double-ctrl-c "lazy-evil" nil t nil)
+
+;;;### (autoloads "actual autoloads are elsewhere" "lazy-evil" "../lazy/lazy-evil.el"
+;;;;;;  (24665 22534 417849 547000))
+;;; Generated autoloads from ../lazy/lazy-evil.el
 
-(if (fboundp 'register-definition-prefixes) (register-definition-prefixes "lazy-evil" '("evil-mark-funs-marker")))
+(register-definition-prefixes "lazy-evil" '("evil-mark-funs-marker"))
+
+;;;***
 
 ;;;***
 
 ;;;### (autoloads nil "lazy-evil-symbol" "../lazy/lazy-evil-symbol.el"
-;;;;;;  (24656 39456 518976 927000))
+;;;;;;  "ff735dc9034a92a03682db5ae656d08e")
 ;;; Generated autoloads from ../lazy/lazy-evil-symbol.el
  (autoload 'evil-forward-symbol-begin "lazy-evil-symbol" nil t)
  (autoload 'evil-backward-symbol-begin "lazy-evil-symbol" nil t)
@@ -280,8 +302,7 @@ if not,it will call `evil-use-register' which default bind on `\"'
 
 ;;;***
 
-;;;### (autoloads nil "lazy-golang" "../lazy/lazy-golang.el" (24656
-;;;;;;  39456 520195 771000))
+;;;### (autoloads nil "lazy-golang" "../lazy/lazy-golang.el" "5e16658dbd0e5a0a5a6a97f8f28d6724")
 ;;; Generated autoloads from ../lazy/lazy-golang.el
 
 (autoload 'golang-setter-getter "lazy-golang" "\
@@ -291,16 +312,14 @@ generate sets and gets for golang.
 
 ;;;***
 
-;;;### (autoloads nil "lazy-json" "../lazy/lazy-json.el" (24656 39456
-;;;;;;  520850 907000))
+;;;### (autoloads nil "lazy-json" "../lazy/lazy-json.el" "c9cb5ca11fed40ef2172423bb99a5565")
 ;;; Generated autoloads from ../lazy/lazy-json.el
 
 (autoload 'vmacs-json-pretty "lazy-json" nil t nil)
 
 ;;;***
 
-;;;### (autoloads nil "lazy-magit" "../lazy/lazy-magit.el" (24656
-;;;;;;  39456 521213 766000))
+;;;### (autoloads nil "lazy-magit" "../lazy/lazy-magit.el" "ca468302a703b2d7316a5397cb5f7c9c")
 ;;; Generated autoloads from ../lazy/lazy-magit.el
 
 (autoload 'toggle-diff-whitespace "lazy-magit" nil t nil)
@@ -311,10 +330,15 @@ generate sets and gets for golang.
 
 (autoload 'vmacs-magit-blob-toggle "lazy-magit" nil t nil)
 
+(autoload 'vmacs-magit-diff-range "lazy-magit" "\
+Show differences between two commits for current file.
+
+\(fn REV-OR-RANGE &optional ARGS FILES RANGE-P)" t nil)
+
 ;;;***
 
 ;;;### (autoloads nil "lazy-novel-mode" "../lazy/lazy-novel-mode.el"
-;;;;;;  (24656 39456 521929 68000))
+;;;;;;  "414113e504e4ae5f57d9b9c1ee64e202")
 ;;; Generated autoloads from ../lazy/lazy-novel-mode.el
 
 (autoload 'novel-fill "lazy-novel-mode" nil t nil)
@@ -324,17 +348,23 @@ generate sets and gets for golang.
 ;;;***
 
 ;;;### (autoloads nil "lazy-open-in-file-manager" "../lazy/lazy-open-in-file-manager.el"
-;;;;;;  (24656 39456 522279 79000))
+;;;;;;  "c92067f6592edb757a9d006a4a9b290e")
 ;;; Generated autoloads from ../lazy/lazy-open-in-file-manager.el
 
 (autoload 'open-in-filemanager "lazy-open-in-file-manager" nil t nil)
+
+;;;### (autoloads "actual autoloads are elsewhere" "lazy-open-in-file-manager"
+;;;;;;  "../lazy/lazy-open-in-file-manager.el" (24665 22534 423059
+;;;;;;  62000))
+;;; Generated autoloads from ../lazy/lazy-open-in-file-manager.el
 
-(if (fboundp 'register-definition-prefixes) (register-definition-prefixes "lazy-open-in-file-manager" '("reveal-in-osx-finder" "w32explore")))
+(register-definition-prefixes "lazy-open-in-file-manager" '("reveal-in-osx-finder" "w32explore"))
+
+;;;***
 
 ;;;***
 
-;;;### (autoloads nil "lazy-org" "../lazy/lazy-org.el" (24656 39456
-;;;;;;  522805 424000))
+;;;### (autoloads nil "lazy-org" "../lazy/lazy-org.el" "295b299a94b6f7993c504e99a2bbbd08")
 ;;; Generated autoloads from ../lazy/lazy-org.el
 
 (autoload 'vmacs-org-insert-image "lazy-org" "\
@@ -350,7 +380,7 @@ generate sets and gets for golang.
 ;;;***
 
 ;;;### (autoloads nil "lazy-program-objc" "../lazy/lazy-program-objc.el"
-;;;;;;  (24656 39456 523414 275000))
+;;;;;;  "9863d582ec16345826b2917e42415919")
 ;;; Generated autoloads from ../lazy/lazy-program-objc.el
 
 (autoload 'objc-surround "lazy-program-objc" nil t nil)
@@ -358,7 +388,7 @@ generate sets and gets for golang.
 ;;;***
 
 ;;;### (autoloads nil "lazy-program-protobuf" "../lazy/lazy-program-protobuf.el"
-;;;;;;  (24656 39456 523929 846000))
+;;;;;;  "32136551dad20366a5bf1d81ff45addc")
 ;;; Generated autoloads from ../lazy/lazy-program-protobuf.el
 
 (autoload 'protobuf-indent-align "lazy-program-protobuf" "\
@@ -370,33 +400,44 @@ bind`indent-region-function' to this function in protobuf-hook
 ;;;***
 
 ;;;### (autoloads nil "lazy-smart-tab" "../lazy/lazy-smart-tab.el"
-;;;;;;  (24656 39456 524702 296000))
+;;;;;;  "27fc489d55ba1296b44ce9d2bd67d7d2")
 ;;; Generated autoloads from ../lazy/lazy-smart-tab.el
 
 (autoload 'smart-tab "lazy-smart-tab" "\
 
 
 \(fn &optional ARG)" t nil)
+
+;;;### (autoloads "actual autoloads are elsewhere" "lazy-smart-tab"
+;;;;;;  "../lazy/lazy-smart-tab.el" (24665 22534 425610 31000))
+;;; Generated autoloads from ../lazy/lazy-smart-tab.el
 
-(if (fboundp 'register-definition-prefixes) (register-definition-prefixes "lazy-smart-tab" '("smart-tab-")))
+(register-definition-prefixes "lazy-smart-tab" '("smart-tab-"))
+
+;;;***
 
 ;;;***
 
-;;;### (autoloads nil "lazy-sudo" "../lazy/lazy-sudo.el" (24656 39456
-;;;;;;  525169 53000))
+;;;### (autoloads nil "lazy-sudo" "../lazy/lazy-sudo.el" "557430e1f9ebbb122d0fb74322c163a8")
 ;;; Generated autoloads from ../lazy/lazy-sudo.el
 
 (autoload 'toggle-read-only-file-with-sudo "lazy-sudo" "\
 
 
 \(fn &optional ARGV)" t nil)
+
+;;;### (autoloads "actual autoloads are elsewhere" "lazy-sudo" "../lazy/lazy-sudo.el"
+;;;;;;  (24665 22534 426251 902000))
+;;; Generated autoloads from ../lazy/lazy-sudo.el
 
-(if (fboundp 'register-definition-prefixes) (register-definition-prefixes "lazy-sudo" '("toggle-with-sudo-history-host-user-alist")))
+(register-definition-prefixes "lazy-sudo" '("toggle-with-sudo-history-host-user-alist"))
+
+;;;***
 
 ;;;***
 
 ;;;### (autoloads nil "lazy-version-control" "../lazy/lazy-version-control.el"
-;;;;;;  (24656 39456 526225 518000))
+;;;;;;  "89fa877913fde5f85dff06daf46a3c10")
 ;;; Generated autoloads from ../lazy/lazy-version-control.el
 
 (autoload 'log-view-ediff "lazy-version-control" "\
@@ -421,8 +462,7 @@ run vc command" t nil)
 
 ;;;***
 
-;;;### (autoloads nil "lazy-window" "../lazy/lazy-window.el" (24656
-;;;;;;  39456 526632 859000))
+;;;### (autoloads nil "lazy-window" "../lazy/lazy-window.el" "bd3e624adbdcb4b421bfdbdd394818a4")
 ;;; Generated autoloads from ../lazy/lazy-window.el
 
 (autoload 'vmacs-split-window-horizontally "lazy-window" nil t nil)
@@ -439,30 +479,46 @@ run vc command" t nil)
 
 (autoload 'vmacs-window-rotate "lazy-window" "\
 Rotates the windows according to the currenty cyclic ordering." t nil)
+
+;;;### (autoloads "actual autoloads are elsewhere" "lazy-window"
+;;;;;;  "../lazy/lazy-window.el" (24665 22534 428244 658000))
+;;; Generated autoloads from ../lazy/lazy-window.el
 
-(if (fboundp 'register-definition-prefixes) (register-definition-prefixes "lazy-window" '("split-window-status")))
+(register-definition-prefixes "lazy-window" '("split-window-status"))
+
+;;;***
 
 ;;;***
 
-;;;### (autoloads nil "mysql-query" "../lazy/mysql-query.el" (24656
-;;;;;;  39456 527700 780000))
+;;;### (autoloads "actual autoloads are elsewhere" "mysql-query"
+;;;;;;  "../lazy/mysql-query.el" (24665 22534 429803 190000))
 ;;; Generated autoloads from ../lazy/mysql-query.el
 
-(if (fboundp 'register-definition-prefixes) (register-definition-prefixes "mysql-query" '("mysql-")))
+(register-definition-prefixes "mysql-query" '("mysql-"))
 
 ;;;***
 
 ;;;### (autoloads nil "sqlparser-mysql-complete" "../lazy/sqlparser-mysql-complete.el"
-;;;;;;  (24656 39456 528773 496000))
+;;;;;;  "d3f5394bd7777c62199a7f9da56a1308")
 ;;; Generated autoloads from ../lazy/sqlparser-mysql-complete.el
 
 (autoload 'mysql-complete-minor-mode "sqlparser-mysql-complete" "\
 mode for editing mysql script
 
-If called interactively, enable Mysql-Complete minor mode if ARG
-is positive, and disable it if ARG is zero or negative.  If
-called from Lisp, also enable the mode if ARG is omitted or nil,
-and toggle it if ARG is `toggle'; disable the mode otherwise.
+This is a minor mode.  If called interactively, toggle the
+`Mysql-Complete minor mode' mode.  If the prefix argument is
+positive, enable the mode, and if it is zero or negative, disable
+the mode.
+
+If called from Lisp, toggle the mode if ARG is `toggle'.  Enable
+the mode if ARG is nil, omitted, or is a positive number.
+Disable the mode if ARG is a negative number.
+
+To check whether the minor mode is enabled in the current buffer,
+evaluate `mysql-complete-minor-mode'.
+
+The mode's hook is called both when the mode is enabled and when
+it is disabled.
 
 \(fn &optional ARG)" t nil)
 
@@ -474,24 +530,23 @@ reused . with `C-u' you can change the dbname.
 with `C-uC-u' you can use another new mysql connection
 
 \(fn &optional ARG)" t nil)
+
+;;;### (autoloads "actual autoloads are elsewhere" "sqlparser-mysql-complete"
+;;;;;;  "../lazy/sqlparser-mysql-complete.el" (24665 22534 431267
+;;;;;;  870000))
+;;; Generated autoloads from ../lazy/sqlparser-mysql-complete.el
 
-(if (fboundp 'register-definition-prefixes) (register-definition-prefixes "sqlparser-mysql-complete" '("mysql-co" "sqlparser-")))
+(register-definition-prefixes "sqlparser-mysql-complete" '("mysql-co" "sqlparser-"))
+
+;;;***
 
 ;;;***
 
-;;;### (autoloads nil "vmacs-dired-history" "../lazy/vmacs-dired-history.el"
-;;;;;;  (24656 39456 529473 273000))
-;;; Generated autoloads from ../lazy/vmacs-dired-history.el
-
-(if (fboundp 'register-definition-prefixes) (register-definition-prefixes "vmacs-dired-history" '("vmacs-dired-history")))
-
-;;;***
-
-;;;### (autoloads nil "vmacs-dired-single" "../lazy/vmacs-dired-single.el"
-;;;;;;  (24656 39456 530331 462000))
+;;;### (autoloads "actual autoloads are elsewhere" "vmacs-dired-single"
+;;;;;;  "../lazy/vmacs-dired-single.el" (24665 22534 432717 449000))
 ;;; Generated autoloads from ../lazy/vmacs-dired-single.el
 
-(if (fboundp 'register-definition-prefixes) (register-definition-prefixes "vmacs-dired-single" '("dired-mouse-find-alternate-file" "vmacs-dired-single-kill-other-dired")))
+(register-definition-prefixes "vmacs-dired-single" '("dired-mouse-find-alternate-file" "vmacs-dired-single-kill-other-dired"))
 
 ;;;***
 
@@ -500,6 +555,6 @@ with `C-uC-u' you can use another new mysql connection
 ;; version-control: never
 ;; no-byte-compile: t
 ;; no-update-autoloads: t
-;; coding: utf-8
+;; coding: utf-8-emacs-unix
 ;; End:
 ;;; lazy-loaddefs.el ends here

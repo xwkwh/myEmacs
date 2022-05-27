@@ -42,7 +42,7 @@
 (require 'conf-tags)                    ;ctags gtags 相关，代码跳转
 ;; (require 'conf-company-mode)            ;补全
 (require 'conf-corfu)
-;; (with-eval-after-load 'magit (require 'conf-magit))
+(with-eval-after-load 'magit (require 'conf-magit))
 
 (global-font-lock-mode)
 (transient-mark-mode 1)
@@ -60,7 +60,7 @@
 ;;==============上面和xiuf相同,下面逐步淘汰======================
 
 (require 'conf-evil-toby)        ;; vim操作
-(require 'conf-git)              ;; git 版本控制 magit的配置
+;; (require 'conf-git)              ;; git 版本控制 magit的配置
 (require 'conf-org-toby)         ;; org mode
 (require 'conf-dired-toby)       ;; 文件目录操作
 (require 'conf-iedit-toby)
@@ -68,8 +68,8 @@
 (global-set-key (kbd "C-;") 'iedit-mode)
 
 
-(evil-collection-define-key 'normal 'magit-mode-map
-  "q" #'my/quit-magit-buffer)
+;; (evil-collection-define-key 'normal 'magit-mode-map
+;;   "q" #'my/quit-magit-buffer)
 
 (setq-default mode-line-format nil)
 (setq mode-line-format nil)

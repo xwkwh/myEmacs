@@ -5,14 +5,14 @@
  ;; slow ,if t
  magit-diff-refine-hunk nil  ;'all, This is super useful when only a single identifier/word is changed all over the place
  magit-diff-highlight-hunk-body nil
- magit-keep-region-overlay t
+ magit-section-keep-region-overlay t
  magit-log-arguments  '("-n256" "--graph" "--decorate" "--follow") ;加了--follow ,rename的log也能看到
- magit-display-buffer-function 'magit-display-buffer-fullcolumn-status-v1
+ ;; magit-display-buffer-function 'magit-display-buffer-fullcolumn-most-v1
+ magit-display-buffer-function 'magit-display-buffer-fullframe-status-v1
  magit-diff-section-arguments '("--ignore-space-at-eol" "--ignore-blank-lines" "--no-ext-diff") ;do not set this ;use  toggle-diff-whitespace to toggle
  magit-section-highlight-hook nil       ;不必hightlight,光标移动的时候，默认会显示当前section区域
  magit-section-unhighlight-hook nil)
 (define-key magit-mode-map (kbd "M-w") 'magit-copy-section-value)
-
 
 ;; recent commit always expand when i open magit status
 (setf (alist-get 'unpushed magit-section-initial-visibility-alist) 'show)
@@ -57,11 +57,6 @@
 (transient-insert-suffix 'magit-pull "F" '("p" magit-fetch-from-pushremote))
 (transient-insert-suffix 'magit-pull "F" '("U" magit-fetch-from-upstream))
 
-;; (transient-append-suffix 'magit-fetch "f"
-;;      '("f" "Full from pushremote" magit-pull))
-
-;; (require 'evil-magit)
-(transient-insert-suffix 'magit-revert "o" '("_" "Revert no commit" magit-revert-no-commit))
 
 
 
@@ -73,12 +68,7 @@
 (define-key transient-map        "q" 'transient-quit-one)
 (define-key transient-edit-map   "q" 'transient-quit-one)
 (define-key transient-sticky-map "q" 'transient-quit-seq)
-(evil-collection-define-key 'normal 'magit-mode-map
-       "v"  'magit-push
-       "C-w"  evil-window-map
-       "q"  'my/quit-magit-buffer
-       "gw" 'toggle-diff-whitespace
-       "gm"  'magit-toggle-margin)
+
 
 (defun vmacs-magit-mode-hook()
   ;; (require 'magit-backup)
@@ -86,6 +76,12 @@
   ;; (magit-auto-revert-mode -1)
   ;; https://magit.vc/manual/magit/Wip-Modes.html
   (magit-wip-mode 1)                    ; magit-wip-log
+  (evil-collection-define-key 'normal 'magit-mode-map
+    "v"  'magit-push
+    "C-w"  evil-window-map
+    "gw" 'toggle-diff-whitespace
+    "gm"  'magit-toggle-margin)
+
   ;; brew install git-delta
   (let ((dir (abbreviate-file-name (file-truename (directory-file-name (magit-toplevel))))))
     (unless (file-remote-p dir)
@@ -113,16 +109,12 @@
       (kill-buffer prev-buffer))))
 
 
-(defun vmacs-magit-find-file-at-point ()
-  "View FILE from REV at point."
-  (interactive)
-  (let ((file (magit-current-file))
-        (rev (or (magit-branch-or-commit-at-point)
-                 (magit-get-current-branch))))
-    (if (and file rev )
-        (magit-find-file rev file)
-      (call-interactively #'magit-find-file))))
-
+;;在magit-log-buffer-file 产生的log buffer中
+;; return : 查看当前commit 的diff
+;; 有选择区域 则查看区域内的diff
+;; C-u 则打开当前对应的版本的文件
+(define-key magit-commit-section-map  [return] 'vmacs-magit-diff-range)
+(define-key magit-commit-section-map  [C-return] 'magit-show-commit) ;old return
 
 (vmacs-leader (kbd "vm") 'vmacs-magit-blob-toggle) ;类似于time machine
 (define-key magit-blob-mode-map (kbd "M-n") 'magit-blob-next)
