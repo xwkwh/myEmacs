@@ -86,4 +86,4 @@
 
 
 
-(provide 'conf-tags)
+(provide 'conf-lsp)

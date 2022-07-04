@@ -39,7 +39,7 @@
 (require 'conf-wgrep)
 
 (require 'conf-centaur-tabs)
-(require 'conf-tags)                    ;ctags gtags 相关，代码跳转
+(require 'conf-lsp)                    ;ctags gtags 相关，代码跳转
 ;; (require 'conf-company-mode)            ;补全
 (require 'conf-corfu)
 (with-eval-after-load 'magit (require 'conf-magit))
@@ -97,6 +97,9 @@
 (require 'slime-autoloads)
 (put 'upcase-region 'disabled nil)
 
+(setq leetcode-prefer-language "golang")
+(setq leetcode-save-solutions t)
+(setq leetcode-directory "~/leetcode")
 
 
 ;; (setq undo-tree-history-directory-alist '(("." . "~/.emacs.d/undo")))
