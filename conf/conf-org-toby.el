@@ -12,11 +12,6 @@
 (setq show-week-agenda-p t)
 
 
-;; Turn on visual-line-mode for Org-mode only
-;; Also install "adaptive-wrap" from elpa
-;; (add-hook 'org-mode-hook 'turn-on-visual-line-mode)
-;;
-
 ;; (eval-after-load "org"
 ;;   '(require 'ox-md nil t))
 
@@ -25,12 +20,6 @@
 
 (with-eval-after-load 'ox
   (require 'ox-hugo))
-
- ;; (use-package org-bullets
- ;;    :ensure t
- ;;    :config
- ;;    (setq org-bullets-bullet-list '("∙"))
- ;;    (add-hook 'org-mode-hook 'org-bullets-mode))
 
 
 ;; Various preferences
@@ -44,11 +33,10 @@
 ;;       org-tags-column 80)
 ;; (setq org-ellipsis "⤵")
 (setq org-ellipsis " ▼ ")
-
-  (setq org-superstar-item-bullet-alist
-        '((?* . ?•)
-          (?+ . ?➤)
-          (?- . ?•)))
+(setq org-superstar-item-bullet-alist
+      '((?* . ?•)
+        (?+ . ?➤)
+        (?- . ?•)))
 
 (setq org-src-tab-acts-natively t)
 
@@ -66,7 +54,6 @@
 
 (require 'ob-go)
 (require 'ob-C)
-
 (org-babel-do-load-languages 'org-babel-load-languages
                              '(
                                (shell . t)
@@ -76,17 +63,6 @@
                                (sql . t)
                                )
                              )
-
- ;; (require 'org-tempo)
-
-
-;; (use-package general
-;;   :init
-;;   (defalias 'gsetq #'general-setq)
-;;   (defalias 'gsetq-local #'general-setq-local)
-;;   (defalias 'gsetq-default #'general-setq-default))
-
-
 
 ;; (use-package org-agenda
 ;;   :defer t
@@ -187,11 +163,11 @@ See `org-capture-templates' for more information."
   (prettify-symbols-mode 1)
   (org-indent-mode)
   (setq line-spacing 0.1
-        org-pretty-entities t
+        ;; org-pretty-entities t
         org-startup-indented t
         org-adapt-indentation nil)
   (org-superstar-mode +1)
-  (variable-pitch-mode +1)
+  ;; (variable-pitch-mode +1)
   )
 (add-hook 'org-mode-hook #'vmacs-org-symbol)
 

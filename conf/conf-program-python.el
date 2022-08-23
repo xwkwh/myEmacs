@@ -1,4 +1,3 @@
-
 ;; brew install pyenv-virtualenv
 
 ;; brew install zlib
@@ -67,7 +66,6 @@
 ;; (defun set-python-path-from-shell-PYTHONPATH ()
 ;; (let ((path-from-shell (shell-command-to-string "$SHELL -i -c 'echo $PYTHONPATH'")))
 ;; (setenv "PYTHONPATH" path-from-shell)))
-
 
 
 

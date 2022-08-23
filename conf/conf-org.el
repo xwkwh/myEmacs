@@ -171,24 +171,24 @@
   ;; (create-frame-font-mac)
   ;; (create-frame-font-big-mac)
   )
-(defface vmacs-org-font
-  `((t :inherit default :height 1.2))
-  "The default font for vterm buffer.
-Monospaced font whihc is fixed idth and height is recommended."
-  :group 'vterm)
+;; (defface vmacs-org-font
+;;   `((t :inherit default :height 1.2))
+;;   "The default font for vterm buffer.
+;; Monospaced font whihc is fixed idth and height is recommended."
+;;   :group 'vterm)
 
-(defun vmacs-novel-mode-hook()
-  (vmacs-org-mode-hook)
-  ;; (create-frame-font-large-mac)
-  ;; 不起作用
-  (face-remap-add-relative 'default 'vmacs-org-font)
-  (evil-define-key 'normal 'local (kbd "gw") 'novel-fill)
-  ;; (local-set-key [(tab)]       'smart-tab)
-  ;; (local-set-key (kbd "TAB")   'smart-tab)
-  )
+;; (defun vmacs-novel-mode-hook()
+;;   (vmacs-org-mode-hook)
+;;   ;; (create-frame-font-large-mac)
+;;   ;; 不起作用
+;;   (face-remap-add-relative 'default 'vmacs-org-font)
+;;   (evil-define-key 'normal 'local (kbd "gw") 'novel-fill)
+;;   ;; (local-set-key [(tab)]       'smart-tab)
+;;   ;; (local-set-key (kbd "TAB")   'smart-tab)
+;;   )
 
 (add-hook 'org-mode-hook 'vmacs-org-mode-hook)
-(add-hook 'novel-mode-hook 'vmacs-novel-mode-hook)
+;; (add-hook 'novel-mode-hook 'vmacs-novel-mode-hook)
 
 
 

@@ -84,6 +84,8 @@
     (setq xref-show-xrefs-function 'xref-show-definitions-completing-read)))
 
 
+(pyvenv-activate "~/workspace/virtualenv/devel/")
 
+(setq python-shell-interpreter "/usr/local/bin/python3.7")
 
 (provide 'conf-lsp)
