@@ -1,10 +1,23 @@
-;;;; Emacs Bookmark Format Version 1 ;;;; -*- coding: utf-8-emacs -*- 
+;;;; Emacs Bookmark Format Version 1;;;; -*- coding: utf-8-emacs; mode: lisp-data -*-
 ;;; This format is meant to be slightly human-readable;
 ;;; nevertheless, you probably don't want to edit it.
 ;;; -*- End Of Bookmark File Format Version Stamp -*-
-(("org-capture-last-stored"
- (filename . "~/.notes")
- (front-context-string . "** TODO \n  [2020")
- (rear-context-string)
- (position . 9))
+(("gowork"
+ (filename . "~/workspace/gowork/")
+ (front-context-string . "video_position_d")
+ (rear-context-string . "2B Mar 22 14:46 ")
+ (position . 385)
+ (last-modified 25637 18520 520917 0))
+("cover"
+ (filename . "~/workspace/gowork/trpc_go_video_cover_exp_svr/")
+ (front-context-string . "common\n  drwxr-x")
+ (rear-context-string . "0B Jan  9 17:16 ")
+ (position . 344)
+ (last-modified 25600 21320 891846 0))
+("l5"
+ (filename . "~/mom.org")
+ (front-context-string . "\n  StatusConfPat")
+ (rear-context-string . "BindPort=7778\\n\\")
+ (position . 9343)
+ (last-modified 25573 59811 795911 0))
 )

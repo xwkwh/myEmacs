@@ -22,7 +22,7 @@
   :bind (:map dired-mode-map
               ("TAB" . dired-subtree-cycle)))
 
-(add-hook 'dired-mode-hook 'all-the-icons-dired-mode)
+;; (add-hook 'dired-mode-hook 'all-the-icons-dired-mode)
 
 
 (provide 'conf-dired-toby)

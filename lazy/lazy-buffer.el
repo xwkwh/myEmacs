@@ -3,6 +3,7 @@
 (require 'recentf)
 (require 'consult nil t)
 (require 'magit)
+(require 'magit-section)
 
 (defvar git-repos-files-cache (make-hash-table :test 'equal))
 (defun vmacs--git-files (&optional n dir )

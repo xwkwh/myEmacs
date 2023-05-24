@@ -1,3 +1,12 @@
+(message "Loading up Emacs...")
+(defun forge/report-startup-time ()
+  "Report startup time."
+  (interactive)
+  (message "Emacs is ready, finished loading after %.03fs."
+           (float-time (time-subtract after-init-time before-init-time))))
+
+(add-hook 'after-init-hook #'forge/report-startup-time)
+
 (load "~/.emacs.d/init-base.el")
 
 (when (< emacs-major-version 27) (package-initialize))
@@ -42,7 +51,10 @@
 (require 'conf-lsp)                    ;ctags gtags 相关，代码跳转
 ;; (require 'conf-company-mode)            ;补全
 (require 'conf-corfu)
+;; (require 'magit)
+(require 'magit-section)
 (with-eval-after-load 'magit (require 'conf-magit))
+;; (require 'conf-magit)
 
 (global-font-lock-mode)
 (transient-mark-mode 1)
@@ -103,3 +115,21 @@
 
 
 ;; (setq undo-tree-history-directory-alist '(("." . "~/.emacs.d/undo")))
+
+(setq scroll-step 1)
+(setq scroll-margin 5)
+(setq scroll-conservatively 101)
+
+(editorconfig-mode 1)
+
+
+;; (add-hook 'python-mode-hook
+;;       (lambda ()
+;;         (flycheck-mode)
+;;         (flymake-mode -1)
+;;         (setq flycheck-pylintrc "~/.pylintrc")))
+;; (setq python-check-command "flake8")
+;; (setq python-flymake-command "flake8")
+
+(setopt set-mark-command-repeat-pop t)
+(setopt confirm-kill-emacs 'yes-or-no-p)

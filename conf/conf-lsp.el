@@ -20,11 +20,17 @@
   (evil-define-key 'normal 'local "gs" #'eglot-reconnect)
   (evil-define-key 'normal 'local "gS" #'(lambda()(interactive)(call-interactively #'eglot-shutdown-all)(call-interactively #'eglot)))
   (evil-define-key 'normal 'local "gh" #'eglot-code-actions)
-  (unless (eq major-mode 'go-mode)      ;go 暂时用goimports,no block ui
-    ;; The depth of -10 places this before eglot's willSave notification,
-    ;; so that that notification reports the actual contents that will be saved.
-    (add-hook 'before-save-hook #'vmacs-eglot-organize-imports -9 t)
-    (add-hook 'before-save-hook #'eglot-format-buffer -10 t)))
+  ;; (unless (eq major-mode 'go-mode)      ;go 暂时用goimports,no block ui
+  ;; The depth of -10 places this before eglot's willSave notification,
+  ;; so that that notification reports the actual contents that will be saved.
+  (add-hook 'before-save-hook #'vmacs-eglot-organize-imports -9 t)
+  ;; (add-hook 'before-save-hook #'eglot-format-buffer -10 t)
+  )
+
+;; (add-hook 'eglot-managed-mode-hook (lambda ()
+;;                    (remove-hook 'flymake-diagnostic-functions 'eglot-flymake-backend)
+;;                    (flymake-eslint-enable)))
+(setq flycheck-pylintrc "~/.pylintrc")
 
 (dolist (mod '(python-mode-hook c++-mode-hook go-mode-hook c-mode-hook ))
   (add-hook mod #'vmacs-lsp-hook))
@@ -38,6 +44,9 @@
 (add-to-list 'eglot-server-programs '((c++-mode c-mode) "clangd"))
 (add-hook 'c-mode-hook 'eglot-ensure)
 (add-hook 'c++-mode-hook 'eglot-ensure)
+
+(add-to-list 'eglot-server-programs '((c++-mode c-mode) "clangd"))
+
 
 (remove-hook 'flatbuffers-mode-hook 'eglot-ensure)
 
@@ -84,8 +93,5 @@
     (setq xref-show-xrefs-function 'xref-show-definitions-completing-read)))
 
 
-(pyvenv-activate "~/workspace/virtualenv/devel/")
-
-(setq python-shell-interpreter "/usr/local/bin/python3.7")
 
 (provide 'conf-lsp)

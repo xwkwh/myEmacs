@@ -31,8 +31,8 @@
                                       :directoryFilters ["-vendor"]
                                       :analyses  (:unusedparams t :unusedwrite t)
                                       :annotations (:bounds t :escape t :inline t :nil t)
-                                      :allExperiments t
-                                      :experimentalWorkspaceModule t
+                                      ;; :allExperiments t
+                                      ;; :experimentalWorkspaceModule t
                                       ;; :buildFlags ["-mod=readonly"]
                                       :allowImplicitNetworkAccess t
                                       :allowModfileModifications t))))
@@ -48,12 +48,14 @@
               ;; https://github.com/golang/tools/blob/master/gopls/doc/emacs.md
               '((:gopls .
                         ((usePlaceholders . t)
-                         (completeUnimported . t) ;; :staticcheck t
+                         (completeUnimported . t)
+                         (staticcheck . t)
                          (directoryFilters . ["-vendor"])
                          (buildFlags . ["-mod=mod"])
                          (allowImplicitNetworkAccess . t)
-                         (experimentalWorkspaceModule  . t)
+                         ;; (experimentalWorkspaceModule  . t)
                          (allowModfileModifications . t)))))
+
 
 (require 'project)
 
@@ -77,7 +79,6 @@
 (require 'gotests)               ;; go test
 
 (provide 'conf-program-golang)
-
 ;; Local Variables:
 ;; coding: utf-8
 ;; End:

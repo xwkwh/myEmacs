@@ -263,6 +263,6 @@ command reveals the other lines."
 
 ;; (require 'doom-modeline)
 ;; (doom-modeline-mode 1)
-(require 'all-the-icons)
+;; (require 'all-the-icons)
 
 (provide 'conf-modeline)

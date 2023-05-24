@@ -67,8 +67,45 @@
 ;; (let ((path-from-shell (shell-command-to-string "$SHELL -i -c 'echo $PYTHONPATH'")))
 ;; (setenv "PYTHONPATH" path-from-shell)))
 
+(add-hook 'python-mode-hook
+      (lambda ()
+        (flycheck-mode)
+        (flymake-mode -1)
+        (setq fill-column 120)
+        ))
+(require 'eglot)
+;; (add-to-list 'eglot-server-programs '((python-mode python-ts-mode) "pyright"))
 
 
+;; python 开发
+;; 1. pyvenv work on 激活
+;; 2. gs eglot重新连接
+;; 3. shell pip install pkg
+(require 'pyvenv)
+(setenv "WORKON_HOME" "/Users/tobyguo/workspace/virtualenv/")
+;; Set correct Python interpreter
+(setq pyvenv-post-activate-hooks
+      (list
+       (lambda ()
+         (setq python-shell-interpreter (concat pyvenv-virtual-env
+                                                "bin/python3")))))
+(setq pyvenv-post-deactivate-hooks
+      (list
+       (lambda ()
+         (setq python-shell-interpreter "python3"))))
+(defun dd/conda-env-activate (name)
+  "Activate conda with pyvenv."
+  (interactive
+   (list
+    (completing-read "Work on: " (dd/conda-envs))))
+  (pyvenv-activate name))
+
+
+;; (add-hook python-mode-hook
+;;   (defun flymake-vale-load ()
+;;     (add-hook 'flymake-diagnostic-functions #'flymake-vale--checker nil t)
+;;     (remove-hook 'flymake-diagnostic-functions #')
+;;     ))
 
 (provide 'conf-program-python)
 

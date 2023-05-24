@@ -7,9 +7,8 @@
 ;; (setq dashboard-items-default-length 10)
 (dashboard-setup-startup-hook)
 (setq dashboard-items
-      '((recents . 9)
-        (projects . 5)
-        (agenda . 5)))
+      '((recents . 6)
+        (agenda . 12)))
 ;; To disable shortcut "jump" indicators for each section, set
 (setq dashboard-show-shortcuts t)
 (setq dashboard-set-heading-icons t)
@@ -238,14 +237,14 @@
 (set-file-name-coding-system 'utf-8)
 
 
-(which-func-mode 1)
+; (which-func-mode 1)
 
 ;; (show-paren-mode 1)
 
 
-(all-the-icons-ivy-rich-mode 1)
-(ivy-rich-mode 1)
-(all-the-icons-ibuffer-mode 1)
+; (all-the-icons-ivy-rich-mode 1)
+; (ivy-rich-mode 1)
+; (all-the-icons-ibuffer-mode 1)
 
 
 ;; (setq inhibit-compacting-font-caches t)
