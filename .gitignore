@@ -112,4 +112,4 @@ osx-dictionary-cli
 .DS_Store
 /eaf/               
 /.cache/
-
+org-persist

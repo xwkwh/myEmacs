@@ -2,7 +2,13 @@
 ;;; This format is meant to be slightly human-readable;
 ;;; nevertheless, you probably don't want to edit it.
 ;;; -*- End Of Bookmark File Format Version Stamp -*-
-(("gowork"
+(("contentpool"
+ (filename . "~/workspace/gowork/content_pool_listener/")
+ (front-context-string . "service\n  drwxr-")
+ (rear-context-string . "0B Jul 17 19:33 ")
+ (position . 169)
+ (last-modified 25782 20508 111366 0))
+("gowork"
  (filename . "~/workspace/gowork/")
  (front-context-string . "video_position_d")
  (rear-context-string . "2B Mar 22 14:46 ")
