@@ -1,16 +1,9 @@
-(message "Loading up Emacs...")
-(defun forge/report-startup-time ()
-  "Report startup time."
-  (interactive)
-  (message "Emacs is ready, finished loading after %.03fs."
-           (float-time (time-subtract after-init-time before-init-time))))
-
-(add-hook 'after-init-hook #'forge/report-startup-time)
-
-(load "~/.emacs.d/init-base.el")
-
 (when (< emacs-major-version 27) (package-initialize))
 
+(require 'conf-icomplete)
+;; (require 'conf-)
+
+(require 'init-view)        ;; 显示相关
 
 (when (member system-type '(gnu/linux darwin)) (require 'conf-sudo))
 (require 'conf-space-tab)
@@ -27,7 +20,7 @@
 (require 'conf-evil-window)       ;窗口
 (require 'conf-evil-clipboard)
 
-(when (eq system-type 'darwin) (require 'conf-macos))
+;; (when (eq system-type 'darwin) (require 'conf-macos))
 (with-eval-after-load 'iedit (require 'conf-iedit))
 (require 'conf-common)
 (with-eval-after-load 'org (require 'conf-org))
@@ -42,17 +35,15 @@
 (when (eq system-type 'darwin)
   (require 'exec-path-from-shell)
   (exec-path-from-shell-initialize))
-;; (require 'exec-path-from-shell)
-
 (with-eval-after-load 'dired (require 'conf-dired)) ;emacs文件浏览器，directory 管理理
+
 (require 'conf-wgrep)
 
-(require 'conf-centaur-tabs)
+;; (require 'conf-centaur-tabs)
+(require 'conf-tabs)
 (require 'conf-lsp)                    ;ctags gtags 相关，代码跳转
 ;; (require 'conf-company-mode)            ;补全
 (require 'conf-corfu)
-;; (require 'magit)
-(require 'magit-section)
 (with-eval-after-load 'magit (require 'conf-magit))
 ;; (require 'conf-magit)
 
@@ -62,10 +53,13 @@
 (savehist-mode 1)
 (recentf-mode 1)
 (run-with-idle-timer 300 t 'vmacs-idle-timer) ;idle 300=5*60s
+(require 'conf-tmp nil t)
+
 (require 'conf-vterm)
-  (require 'server)
-  (unless (server-running-p) (server-start))
-  (when (> emacs-major-version 27) (load-theme 'modus-vivendi))
+
+(require 'server)
+(unless (server-running-p) (server-start))
+(when (> emacs-major-version 27) (load-theme 'modus-vivendi))
 
 
 ;;==============jixiuf======================

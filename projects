@@ -1,6 +1,7 @@
 ;;; -*- lisp-data -*-
-(("~/workspace/pywork/trpc_py_image_intellcut/")
- ("~/vmacs/")
+(("~/vmacs/")
+ ("~/.emacs.d/")
+ ("~/workspace/pywork/trpc_py_image_intellcut/")
  ("~/workspace/pywork/trpc_py_edge_detection/")
  ("~/workspace/pywork/trpc_py_video_tail_detect/")
  ("~/workspace/myEmacs/")
@@ -8,7 +9,6 @@
  ("~/workspace/pywork/leef_framework/")
  ("/Users/tobyguo/")
  ("/Users/tobyguo/workspace/pywork/trpc_py_edge_detection/")
- ("~/.emacs.d/")
  ("/Users/tobyguo/workspace/myEmacs/")
  ("/Users/tobyguo/workspace/pywork/content_tools/")
  ("~/workspace/gowork/content_tools/")
