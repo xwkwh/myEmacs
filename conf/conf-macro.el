@@ -22,7 +22,7 @@
   (evil-define-key '(normal visual operator motion emacs) vmacs-leader-mode-map " " vmacs-space-leader-mode-map))
 
 (defmacro vmacs-leader (key cmd)
-  `(define-key vmacs-space-leader-mode-map ,key ,cmd))
+  `(define-key vmacs-space-leader-mode-map (kbd ,key) ,cmd))
 
 
 ;; (print (macroexpand-1 '(with-mode-off icomplete-vertical-mode  (find-file-at-point))))
@@ -57,6 +57,26 @@
     `(defun ,fun()
        (interactive)
        ,@body)))
+
+;; (global-set-key (kbd "C-c h") help-map)
+;; (define-key help-map (kbd "C-f") nil)
+;; (define-key help-map (kbd "C-m") nil)
+
+;; (defmacro vmacs-leader (key cmd)
+;;   `(global-set-key
+;;     (if (stringp ,key)
+;;         (kbd (concat "C-c " ,key))
+;;       (vconcat [3] ,key))               ;[3] =C-c ?
+;;     ,cmd))
+
+;; (defmacro vmacs-defun (fun-name &rest body)
+;;   (declare (indent defun)
+;;            (doc-string 3))
+;;   (let ((fun (intern (format "%s" fun-name))))
+;;     `(defun ,fun()
+;;        (interactive)
+;;        ,@body)))
+
 
 
 

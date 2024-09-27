@@ -161,7 +161,7 @@
 (autoload #'mu4e-headers-search-bookmark  "mu4e" t)
 (vmacs-leader (kbd "i") #'(lambda()(interactive)(shell-command "killall mbsync") (mu4e-headers-search-bookmark)(mu4e)))
 
-(vmacs-leader " " 'consult-buffer)
+(vmacs-leader "SPC" 'consult-buffer)
 (vmacs-leader "fo" 'consult-buffer-other-window)
 (vmacs-leader "gG" #'consult-grep)
 (vmacs-leader "gg" (vmacs-defun consult-ripgrep-default (consult-ripgrep default-directory)))

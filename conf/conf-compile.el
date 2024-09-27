@@ -10,15 +10,11 @@
 
 
   (define-key compilation-mode-map "g" nil)
+  (define-key compilation-mode-map "r" 'recompile)
   (define-key compilation-mode-map "C-o" nil)
-  (evil-define-key 'normal compilation-mode-map
-    "C-j" 'compilation-display-error        ;old C-o
-    "r" 'recompile))
-
-(global-set-key (kbd "C-c C-k") 'compile-dwim-run)
-(vmacs-leader (kbd "<f5>") 'compile-dwim-compile)
-(vmacs-leader (kbd "<f6>") 'compile-dwim-run)
-(vmacs-leader (kbd "<f7>") 'recompile)
+  ;; (require 'ansi-color)
+  (add-hook 'compilation-filter-hook 'ansi-color-compilation-filter)
+  )
 ;;                                ;
 
 

@@ -12,8 +12,79 @@
  '(auto-save-visited-mode t)
  '(backup-directory-alist '((".*" . "~/.emacs.d/cache/backup_files/")))
  '(beacon-color "#d54e53")
+ '(connection-local-criteria-alist
+   '(((:application tramp :protocol "kubernetes") tramp-kubernetes-connection-local-default-profile)
+     ((:application eshell) eshell-connection-default-profile)
+     ((:application tramp :protocol "flatpak")
+      tramp-container-connection-local-default-flatpak-profile
+      tramp-flatpak-connection-local-default-profile)
+     ((:application tramp :machine "localhost") tramp-connection-local-darwin-ps-profile)
+     ((:application tramp :machine "MacBook-Pro.local") tramp-connection-local-darwin-ps-profile)
+     ((:application tramp) tramp-connection-local-default-system-profile
+      tramp-connection-local-default-shell-profile)))
+ '(connection-local-profile-alist
+   '((tramp-flatpak-connection-local-default-profile
+      (tramp-remote-path "/app/bin" tramp-default-remote-path "/bin" "/usr/bin" "/sbin" "/usr/sbin"
+                         "/usr/local/bin" "/usr/local/sbin" "/local/bin" "/local/freeware/bin"
+                         "/local/gnu/bin" "/usr/freeware/bin" "/usr/pkg/bin" "/usr/contrib/bin"
+                         "/opt/bin" "/opt/sbin" "/opt/local/bin"))
+     (tramp-kubernetes-connection-local-default-profile
+      (tramp-config-check . tramp-kubernetes--current-context-data)
+      (tramp-extra-expand-args 97 (tramp-kubernetes--container (car tramp-current-connection)) 104
+                               (tramp-kubernetes--pod (car tramp-current-connection)) 120
+                               (tramp-kubernetes--context-namespace (car tramp-current-connection))))
+     (eshell-connection-default-profile (eshell-path-env-list))
+     (tramp-container-connection-local-default-flatpak-profile
+      (tramp-remote-path "/app/bin" tramp-default-remote-path "/bin" "/usr/bin" "/sbin" "/usr/sbin"
+                         "/usr/local/bin" "/usr/local/sbin" "/local/bin" "/local/freeware/bin"
+                         "/local/gnu/bin" "/usr/freeware/bin" "/usr/pkg/bin" "/usr/contrib/bin"
+                         "/opt/bin" "/opt/sbin" "/opt/local/bin"))
+     (tramp-connection-local-darwin-ps-profile
+      (tramp-process-attributes-ps-args "-acxww" "-o"
+                                        "pid,uid,user,gid,comm=abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ"
+                                        "-o" "state=abcde" "-o"
+                                        "ppid,pgid,sess,tty,tpgid,minflt,majflt,time,pri,nice,vsz,rss,etime,pcpu,pmem,args")
+      (tramp-process-attributes-ps-format (pid . number) (euid . number) (user . string)
+                                          (egid . number) (comm . 52) (state . 5) (ppid . number)
+                                          (pgrp . number) (sess . number) (ttname . string)
+                                          (tpgid . number) (minflt . number) (majflt . number)
+                                          (time . tramp-ps-time) (pri . number) (nice . number)
+                                          (vsize . number) (rss . number) (etime . tramp-ps-time)
+                                          (pcpu . number) (pmem . number) (args)))
+     (tramp-connection-local-busybox-ps-profile
+      (tramp-process-attributes-ps-args "-o"
+                                        "pid,user,group,comm=abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ"
+                                        "-o" "stat=abcde" "-o" "ppid,pgid,tty,time,nice,etime,args")
+      (tramp-process-attributes-ps-format (pid . number) (user . string) (group . string)
+                                          (comm . 52) (state . 5) (ppid . number) (pgrp . number)
+                                          (ttname . string) (time . tramp-ps-time) (nice . number)
+                                          (etime . tramp-ps-time) (args)))
+     (tramp-connection-local-bsd-ps-profile
+      (tramp-process-attributes-ps-args "-acxww" "-o"
+                                        "pid,euid,user,egid,egroup,comm=abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ"
+                                        "-o"
+                                        "state,ppid,pgid,sid,tty,tpgid,minflt,majflt,time,pri,nice,vsz,rss,etimes,pcpu,pmem,args")
+      (tramp-process-attributes-ps-format (pid . number) (euid . number) (user . string)
+                                          (egid . number) (group . string) (comm . 52)
+                                          (state . string) (ppid . number) (pgrp . number)
+                                          (sess . number) (ttname . string) (tpgid . number)
+                                          (minflt . number) (majflt . number) (time . tramp-ps-time)
+                                          (pri . number) (nice . number) (vsize . number)
+                                          (rss . number) (etime . number) (pcpu . number)
+                                          (pmem . number) (args)))
+     (tramp-connection-local-default-shell-profile (shell-file-name . "/bin/sh")
+                                                   (shell-command-switch . "-c"))
+     (tramp-connection-local-default-system-profile (path-separator . ":")
+                                                    (null-device . "/dev/null"))))
  '(custom-safe-themes
-   '("d2e0c53dbc47b35815315fae5f352afd2c56fa8e69752090990563200daae434" "feb8e98a8a99d78c837ce35e976ebcc97abbd8806507e8970d934bb7694aa6b3" "0ab2aa38f12640ecde12e01c4221d24f034807929c1f859cbca444f7b0a98b3a" "31f1723fb10ec4b4d2d79b65bcad0a19e03270fe290a3fc4b95886f18e79ac2f" "aca70b555c57572be1b4e4cec57bc0445dcb24920b12fb1fea5f6baa7f2cad02" "bd3b9675010d472170c5d540dded5c3d37d83b7c5414462737b60f44351fb3ed" "0f7fa4835d02a927d7d738a0d2d464c38be079913f9d4aba9c97f054e67b8db9" "88049c35e4a6cedd4437ff6b093230b687d8a1fb65408ef17bfcf9b7338734f6" default))
+   '("d2e0c53dbc47b35815315fae5f352afd2c56fa8e69752090990563200daae434"
+     "feb8e98a8a99d78c837ce35e976ebcc97abbd8806507e8970d934bb7694aa6b3"
+     "0ab2aa38f12640ecde12e01c4221d24f034807929c1f859cbca444f7b0a98b3a"
+     "31f1723fb10ec4b4d2d79b65bcad0a19e03270fe290a3fc4b95886f18e79ac2f"
+     "aca70b555c57572be1b4e4cec57bc0445dcb24920b12fb1fea5f6baa7f2cad02"
+     "bd3b9675010d472170c5d540dded5c3d37d83b7c5414462737b60f44351fb3ed"
+     "0f7fa4835d02a927d7d738a0d2d464c38be079913f9d4aba9c97f054e67b8db9"
+     "88049c35e4a6cedd4437ff6b093230b687d8a1fb65408ef17bfcf9b7338734f6" default))
  '(electric-pair-mode t)
  '(even-window-sizes t)
  '(fci-rule-color "#424242")
@@ -25,7 +96,19 @@
  '(initial-frame-alist '((fullscreen . maximized)))
  '(org-agenda-files nil)
  '(package-selected-packages
-   '(shell-maker markdown-mode lsp-pyright chatgpt-shell gptai consult-flycheck pylint editorconfig compat 0blayout dockerfile-mode pyvenv cape kind-icon corfu vundo consult-dir flatbuffers-mode timu-spacegrey-theme slime org-web-tools vterm-toggle use-package org-superstar vterm highlight-parentheses pinyinlib osx-dictionary centaur-tabs orderless marginalia embark-consult embark go-mode consult projectile magit iedit ob-go verb diff-hl evil-search-highlight-persist evil-leader undo-tree yasnippet golden-ratio evil-collection evil flycheck-golangci-lint git-link flycheck rg ox-hugo yaml-mode helpful leetcode protobuf-mode protocols miniedit lua-mode json-mode ox-gfm ivy-prescient company-prescient prescient neotree doom org-bullets color-theme-sanityinc-tomorrow graphviz-dot-mode smex golden-ratio-scroll-screen dired-narrow scratch elisp-def bm dired-filetype-face diredfl dired-subtree counsel-etags counsel-gtags dumb-jump general vc-msg use-package smooth-scrolling exec-path-from-shell dashboard))
+   '(0blayout blacken bm cape centaur-tabs chatgpt-shell color-theme-sanityinc-tomorrow
+              company-prescient compat conda consult consult-dir consult-flycheck corfu
+              counsel-etags counsel-gtags dashboard diff-hl dired-filetype-face dired-narrow
+              dired-subtree diredfl dockerfile-mode doom dumb-jump editorconfig elisp-def embark
+              embark-consult evil evil-collection evil-leader evil-search-highlight-persist
+              exec-path-from-shell flatbuffers-mode flycheck flycheck-golangci-lint general git-link
+              go-mode golden-ratio golden-ratio-scroll-screen gptai graphviz-dot-mode helpful
+              highlight-parentheses iedit ivy-prescient json-mode kind-icon leetcode lsp-pyright
+              lua-mode magit marginalia markdown-mode meow miniedit neotree ob-go orderless
+              org-bullets org-superstar org-web-tools osx-dictionary ox-gfm ox-hugo pinyinlib
+              prescient projectile protobuf-mode protocols pylint pyvenv rg scratch shell-maker
+              slime smex smooth-scrolling timu-spacegrey-theme undo-tree use-package use-package
+              vc-msg verb vterm vterm-toggle vundo yaml-mode yasnippet))
  '(pdf-view-midnight-colors '("#FDF4C1" . "#282828"))
  '(pos-tip-background-color "#36473A")
  '(pos-tip-foreground-color "#FFFFC8")
@@ -36,52 +119,17 @@
  '(tramp-persistency-file-name "~/.emacs.d/cache/tramp")
  '(vc-annotate-background nil)
  '(vc-annotate-color-map
-   '((20 . "#d54e53")
-     (40 . "#e78c45")
-     (60 . "#e7c547")
-     (80 . "#b9ca4a")
-     (100 . "#70c0b1")
-     (120 . "#7aa6da")
-     (140 . "#c397d8")
-     (160 . "#d54e53")
-     (180 . "#e78c45")
-     (200 . "#e7c547")
-     (220 . "#b9ca4a")
-     (240 . "#70c0b1")
-     (260 . "#7aa6da")
-     (280 . "#c397d8")
-     (300 . "#d54e53")
-     (320 . "#e78c45")
-     (340 . "#e7c547")
-     (360 . "#b9ca4a")))
+   '((20 . "#d54e53") (40 . "#e78c45") (60 . "#e7c547") (80 . "#b9ca4a") (100 . "#70c0b1")
+     (120 . "#7aa6da") (140 . "#c397d8") (160 . "#d54e53") (180 . "#e78c45") (200 . "#e7c547")
+     (220 . "#b9ca4a") (240 . "#70c0b1") (260 . "#7aa6da") (280 . "#c397d8") (300 . "#d54e53")
+     (320 . "#e78c45") (340 . "#e7c547") (360 . "#b9ca4a")))
  '(vc-annotate-very-old-color nil)
  '(warning-suppress-log-types
-   '(((flymake flymake.el))
-     (initialization)
-     (initialization)
-     (initialization)
-     (comp)
-     (comp)
-     (comp)
-     (comp)
-     (comp)
-     (comp)
-     (comp)
-     (comp)
-     (comp)))
+   '(((flymake flymake.el)) (initialization) (initialization) (initialization) (comp) (comp) (comp)
+     (comp) (comp) (comp) (comp) (comp) (comp)))
  '(warning-suppress-types
-   '((initialization)
-     (initialization)
-     (initialization)
-     (comp)
-     (comp)
-     (comp)
-     (comp)
-     (comp)
-     (comp)
-     (comp)
-     (comp)
-     (comp)))
+   '((initialization) (initialization) (initialization) (comp) (comp) (comp) (comp) (comp) (comp)
+     (comp) (comp) (comp)))
  '(window-divider-mode nil))
 (custom-set-faces
  ;; custom-set-faces was added by Custom.

@@ -76,6 +76,9 @@
 (require 'eglot)
 ;; (add-to-list 'eglot-server-programs '((python-mode python-ts-mode) "pyright"))
 
+(add-to-list 'eglot-server-programs '(python-mode . ("pyright-langserver" "--stdio")))
+
+
 
 ;; python 开发
 ;; 1. pyvenv work on 激活
@@ -106,6 +109,33 @@
 ;;     (add-hook 'flymake-diagnostic-functions #'flymake-vale--checker nil t)
 ;;     (remove-hook 'flymake-diagnostic-functions #')
 ;;     ))
+
+(setq conda-anaconda-home (expand-file-name "~/miniconda3"))
+(setq conda-env-home-directory (expand-file-name "~/miniconda3"))
+
+(conda-env-activate "py38")
+(setq python-shell-interpreter "~/miniconda3/envs/py38/bin/python3")
+(require 'blacken)
+(setq blacken-executable "~/miniconda3/envs/py38/bin/black")
+
+(defun my/blacken-buffer ()
+  (when (eq major-mode 'python-mode)
+    (blacken-buffer)))
+
+(defun my/python-mode-hook ()
+  (add-hook 'before-save-hook 'blacken-buffer nil 'local))
+
+;; (add-hook 'python-mode-hook 'my/python-mode-hook)
+
+(add-hook 'python-mode-hook (lambda () (add-hook 'before-save-hook #'my/blacken-buffer -100 t)))
+
+
+;; (add-hook 'python-mode-hook (lambda () (add-hook 'before-save-hook #'my/blacken-buffer)))
+
+;; (add-hook 'python-mode-hook (lambda () (add-hook 'before-save-hook #'my/blacken-buffer nil t)))
+
+
+
 
 (provide 'conf-program-python)
 
