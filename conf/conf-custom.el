@@ -105,10 +105,10 @@
               go-mode golden-ratio golden-ratio-scroll-screen gptai graphviz-dot-mode helpful
               highlight-parentheses iedit ivy-prescient json-mode kind-icon leetcode lsp-pyright
               lua-mode magit marginalia markdown-mode meow miniedit neotree ob-go orderless
-              org-bullets org-superstar org-web-tools osx-dictionary ox-gfm ox-hugo pinyinlib
-              prescient projectile protobuf-mode protocols pylint pyvenv rg scratch shell-maker
-              slime smex smooth-scrolling timu-spacegrey-theme undo-tree use-package use-package
-              vc-msg verb vterm vterm-toggle vundo yaml-mode yasnippet))
+              org-bullets org-make-toc org-superstar org-web-tools osx-dictionary ox-gfm ox-hugo
+              pinyinlib prescient projectile protobuf-mode protocols pylint pyvenv rg scratch
+              shell-maker slime smex smooth-scrolling timu-spacegrey-theme undo-tree use-package
+              use-package vc-msg verb vterm vterm-toggle vundo yaml-mode yasnippet))
  '(pdf-view-midnight-colors '("#FDF4C1" . "#282828"))
  '(pos-tip-background-color "#36473A")
  '(pos-tip-foreground-color "#FFFFC8")
