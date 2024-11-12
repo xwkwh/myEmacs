@@ -137,14 +137,14 @@
   (magit-add-section-hook 'magit-status-sections-hook 'magit-insert-assume-unchanged-files nil t)
 
 ;; 删除 magit-insert-bisect-output, magit-insert-bisect-rest 和 magit-insert-bisect-log
-(remove-hook 'magit-status-sections-hook 'magit-insert-bisect-output)
-(remove-hook 'magit-status-sections-hook 'magit-insert-bisect-rest)
-(remove-hook 'magit-status-sections-hook 'magit-insert-bisect-log)
-(remove-hook 'magit-status-sections-hook 'magit-insert-assume-unchanged-files)
-(remove-hook 'magit-status-sections-hook 'magit-insert-am-sequence)
-(remove-hook 'magit-status-sections-hook 'magit-insert-unpulled-from-upstream)
-(remove-hook 'magit-status-sections-hook 'magit-insert-unpulled-from-pushremote)
-(remove-hook 'magit-status-sections-hook 'magit-insert-sequencer-sequence)
+;; (remove-hook 'magit-status-sections-hook 'magit-insert-bisect-output)
+;; (remove-hook 'magit-status-sections-hook 'magit-insert-bisect-rest)
+;; (remove-hook 'magit-status-sections-hook 'magit-insert-bisect-log)
+;; (remove-hook 'magit-status-sections-hook 'magit-insert-assume-unchanged-files)
+;; (remove-hook 'magit-status-sections-hook 'magit-insert-am-sequence)
+;; (remove-hook 'magit-status-sections-hook 'magit-insert-unpulled-from-upstream)
+;; (remove-hook 'magit-status-sections-hook 'magit-insert-unpulled-from-pushremote)
+;; (remove-hook 'magit-status-sections-hook 'magit-insert-sequencer-sequence)
 
 (provide 'conf-magit)
 

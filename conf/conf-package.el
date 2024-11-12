@@ -3,8 +3,6 @@
   ;;       '(("melpa-cn" . "http://mirrors.163.com/elpa/melpa/")
   ;;         ("nognu-cn" . "http://mirrors.163.com/elpa/nongnu/")
   ;;         ("gnu-cn"   . "http://mirrors.163.com/elpa/gnu/")))
-;; (setq package-archives '(("gnu"   . "http://elpa.emacs-china.org/gnu/")
-;;           ("melpa" . "http://elpa.emacs-china.org/melpa/")))
 
 ;; (setq package-archives '(("gnu"   . "http://mirrors.cloud.tencent.com/elpa/gnu/")
 ;;          ("org"  .  "http://mirrors.cloud.tencent.com/elpa/org/")
@@ -17,34 +15,36 @@
         ("nognu-cn" .  "http://elpa.nongnu.org/nongnu/")
         ("gnu-cn"   .  "http://elpa.gnu.org/packages/")))
 
-
 (or (file-exists-p package-user-dir) (package-refresh-contents))
-;; (package-initialize)
-
-(defun ensure-package-installed (packages)
-  "Assure every package is installed, ask for installation if it’s not.
-
-Return a list of installed packages or nil for every skipped package."
-
-             (mapcar
-   (lambda (package)
-     ;; (package-installed-p 'evil)
-     (if (package-installed-p package)
-         nil
-       (if (y-or-n-p (format "Package %s is missing. Install it? " package))
-           (progn
-             (package-refresh-contents)
-             (package-install package)
-             )
-         package)))
-   packages))
+(when (< emacs-major-version 27) (package-initialize))
 
 
-(add-hook 'after-init-hook (lambda() (ensure-package-installed package-selected-packages)))
+;; (defun ensure-package-installed (packages)
+;;   "Assure every package is installed, ask for installation if it’s not.
+
+;; Return a list of installed packages or nil for every skipped package."
+
+;;              (mapcar
+;;    (lambda (package)
+;;      ;; (package-installed-p 'evil)
+;;      (if (package-installed-p package)
+;;          nil
+;;        (if (y-or-n-p (format "Package %s is missing. Install it? " package))
+;;            (progn
+;;              (package-refresh-contents)
+;;              (package-install package)
+;;              )
+;;          package)))
+;;    packages))
 
 
-;; (setq url-using-proxy t)
-;; (setq url-proxy-services '(("http" . "127.0.0.1:12639")))
+;; (add-hook 'after-init-hook (lambda() (ensure-package-installed
+;;                                       package-selected-packages)))
+
+(add-hook 'after-init-hook (lambda()
+                             (package-install-selected-packages t)
+                             (define-key package-menu-mode-map (kbd "C-c M /") 'consult-focus-lines)
+                             ))
 
 
 (add-to-list 'load-path (expand-file-name "conf" user-emacs-directory))

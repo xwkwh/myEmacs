@@ -1,5 +1,4 @@
 ;;; Code:
-;; (defvar vmacs-dumping-state nil)
 
 ;; ~/.emacs.d/conf/目录加到load-path中
 (add-to-list 'load-path (concat user-emacs-directory "conf/"))

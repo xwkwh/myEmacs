@@ -1,5 +1,3 @@
-(when (< emacs-major-version 27) (package-initialize))
-
 (require 'conf-icomplete)
 ;; (require 'conf-)
 
@@ -127,3 +125,19 @@
 
 (setopt set-mark-command-repeat-pop t)
 (setopt confirm-kill-emacs 'yes-or-no-p)
+
+(use-package blamer
+  :ensure t
+  :bind (("s-i" . blamer-show-commit-info)
+         ("C-c i" . blamer-show-posframe-commit-info))
+  :defer 20
+  :custom
+  (blamer-idle-time 0.3)
+  (blamer-min-offset 70)
+  :custom-face
+  (blamer-face ((t :foreground "#7a88cf"
+                    :background nil
+                    :height 140
+                    :italic t)))
+  :config
+  (global-blamer-mode 1))

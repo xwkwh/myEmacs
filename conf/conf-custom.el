@@ -13,7 +13,8 @@
  '(backup-directory-alist '((".*" . "~/.emacs.d/cache/backup_files/")))
  '(beacon-color "#d54e53")
  '(connection-local-criteria-alist
-   '(((:application tramp :protocol "kubernetes") tramp-kubernetes-connection-local-default-profile)
+   '(((:application vc-git) vc-git-connection-default-profile)
+     ((:application tramp :protocol "kubernetes") tramp-kubernetes-connection-local-default-profile)
      ((:application eshell) eshell-connection-default-profile)
      ((:application tramp :protocol "flatpak")
       tramp-container-connection-local-default-flatpak-profile
@@ -23,7 +24,8 @@
      ((:application tramp) tramp-connection-local-default-system-profile
       tramp-connection-local-default-shell-profile)))
  '(connection-local-profile-alist
-   '((tramp-flatpak-connection-local-default-profile
+   '((vc-git-connection-default-profile (vc-git--program-version))
+     (tramp-flatpak-connection-local-default-profile
       (tramp-remote-path "/app/bin" tramp-default-remote-path "/bin" "/usr/bin" "/sbin" "/usr/sbin"
                          "/usr/local/bin" "/usr/local/sbin" "/local/bin" "/local/freeware/bin"
                          "/local/gnu/bin" "/usr/freeware/bin" "/usr/pkg/bin" "/usr/contrib/bin"
@@ -96,19 +98,19 @@
  '(initial-frame-alist '((fullscreen . maximized)))
  '(org-agenda-files nil)
  '(package-selected-packages
-   '(0blayout blacken bm cape centaur-tabs chatgpt-shell color-theme-sanityinc-tomorrow
-              company-prescient compat conda consult consult-dir consult-flycheck corfu
-              counsel-etags counsel-gtags dashboard diff-hl dired-filetype-face dired-narrow
-              dired-subtree diredfl dockerfile-mode doom dumb-jump editorconfig elisp-def embark
-              embark-consult evil evil-collection evil-leader evil-search-highlight-persist
-              exec-path-from-shell flatbuffers-mode flycheck flycheck-golangci-lint general git-link
-              go-mode golden-ratio golden-ratio-scroll-screen gptai graphviz-dot-mode helpful
-              highlight-parentheses iedit ivy-prescient json-mode kind-icon leetcode lsp-pyright
-              lua-mode magit marginalia markdown-mode meow miniedit neotree ob-go orderless
-              org-bullets org-make-toc org-superstar org-web-tools osx-dictionary ox-gfm ox-hugo
-              pinyinlib prescient projectile protobuf-mode protocols pylint pyvenv rg scratch
-              shell-maker slime smex smooth-scrolling timu-spacegrey-theme undo-tree use-package
-              use-package vc-msg verb vterm vterm-toggle vundo yaml-mode yasnippet))
+   '(0blayout blacken blamer bm cape centaur-tabs chatgpt-shell color-theme-sanityinc-tomorrow
+              company-prescient conda consult-dir consult-flycheck corfu counsel-etags counsel-gtags
+              dashboard diff-hl dired-filetype-face dired-narrow dired-subtree diredfl
+              dockerfile-mode doom dumb-jump editorconfig elisp-def embark-consult evil-collection
+              evil-leader evil-search-highlight-persist exec-path-from-shell flatbuffers-mode
+              flycheck-golangci-lint general git-link go-mode golden-ratio
+              golden-ratio-scroll-screen gptai graphviz-dot-mode helpful highlight-parentheses iedit
+              ivy-prescient ivy-rich json-mode kind-icon leetcode lsp-pyright lua-mode magit
+              marginalia meow miniedit neotree ob-go orderless org-bullets org-make-toc
+              org-superstar org-web-tools osx-dictionary ox-gfm ox-hugo pinyinlib projectile
+              protobuf-mode protocols pylint pyvenv rg scratch slime smex smooth-scrolling
+              timu-spacegrey-theme undo-tree use-package vc-msg verb vterm-toggle vundo yaml-mode
+              yasnippet))
  '(pdf-view-midnight-colors '("#FDF4C1" . "#282828"))
  '(pos-tip-background-color "#36473A")
  '(pos-tip-foreground-color "#FFFFC8")

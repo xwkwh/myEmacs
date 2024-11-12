@@ -34,8 +34,9 @@
                                       ;; :allExperiments t
                                       ;; :experimentalWorkspaceModule t
                                       ;; :buildFlags ["-mod=readonly"]
-                                      :allowImplicitNetworkAccess t
-                                      :allowModfileModifications t))))
+                                      ;; :allowImplicitNetworkAccess t
+                                      ;; :allowModfileModifications t
+                                      ))))
 
   ;; (add-hook 'before-save-hook #'gofmt)
   ;; (setq flycheck-mode t)
@@ -52,15 +53,16 @@
                          (staticcheck . t)
                          (directoryFilters . ["-vendor"])
                          (buildFlags . ["-mod=mod"])
-                         (allowImplicitNetworkAccess . t)
+                         ;; (allowImplicitNetworkAccess . t)
                          ;; (experimentalWorkspaceModule  . t)
-                         (allowModfileModifications . t)))))
+                         ;; (allowModfileModifications . t)
+                         ))))
 
 
 (require 'project)
 
 (defun project-find-go-module (dir)
-  (when-let ((root (locate-dominating-file dir "go.mod")))
+  (when-let* ((root (locate-dominating-file dir "go.mod")))
     (cons 'go-module root)))
 
 (cl-defmethod project-root ((project (head go-module)))
