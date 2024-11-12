@@ -1,6 +1,6 @@
 ;;; -*- lisp-data -*-
-(("/Users/tobyguo/workspace/gowork/novelrecaccess/")
- ("/Users/tobyguo/workspace/gowork/trpc_go_video_cover_exp_svr/") ("/Users/tobyguo/vmacs/")
+(("/Users/tobyguo/vmacs/") ("/Users/tobyguo/workspace/gowork/novelrecaccess/")
+ ("/Users/tobyguo/workspace/gowork/trpc_go_video_cover_exp_svr/")
  ("/Users/tobyguo/workspace/gowork/experiments/") ("/Users/tobyguo/workspace/gowork/trs_roughrank/")
  ("/Users/tobyguo/workspace/gowork/filter_common_server/")
  ("/Users/tobyguo/workspace/gowork/trpc_go_video_intellcut_svr/")

@@ -1,3 +1,5 @@
+(when (> emacs-major-version 27) (load-theme 'modus-vivendi))
+
 (require 'conf-icomplete)
 ;; (require 'conf-)
 
@@ -57,7 +59,6 @@
 
 (require 'server)
 (unless (server-running-p) (server-start))
-(when (> emacs-major-version 27) (load-theme 'modus-vivendi))
 
 
 ;;==============jixiuf======================
