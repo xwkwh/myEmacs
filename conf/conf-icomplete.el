@@ -11,12 +11,13 @@
 ;; (setq completion-flex-nospace t)
 (setq completion-pcm-complete-word-inserts-delimiters t) ;partial-completion in completion-styles
 ;; (setq completion-pcm-word-delimiters "-_/:| ")
-(setq completion-auto-help t)         ;不主动弹出 *Completions*
+;; (setq completion-auto-help t)         ;不主动弹出 *Completions*
+(setq completion-auto-help nil)         ;不主动弹出 *Completions*
 (setq completions-format 'one-column)   ; *Completions* buffer M-v 跳到*Completions* buffer
 (setq completions-header-format nil)
-(setq max-mini-window-height 5)        ;selectrum-num-candidates-displayed 受影响
-(setq completions-max-height 5)
-(setq icomplete-prospects-height 5)
+(setq max-mini-window-height 10)        ;selectrum-num-candidates-displayed 受影响
+(setq completions-max-height 10)
+(setq icomplete-prospects-height 10)
 ;; (setq completion-auto-select nil)
 (setq completions-detailed t)
 (setq completion-show-help nil) ;*Completions* show help
@@ -71,7 +72,7 @@ Monospaced font whihc is fixed idth and height is recommended."
 ;; (setq icomplete-in-buffer nil)
 ;; (setq icomplete-tidy-shadowed-file-names t)
 
-;; (setq icomplete-prospects-height 10)
+(setq icomplete-prospects-height 10)
 ;; (concat
 ;;                                      (propertize "\n" 'face '(:height 1))
 ;;                                      (propertize " " 'face '(:inherit vertical-border :underline t :height 1)
@@ -94,19 +95,26 @@ Monospaced font whihc is fixed idth and height is recommended."
   (interactive)
   (completion-preview-hide)
   (indent-for-tab-command))
+
+;;;;;;;;;;;;;;;;;;; ==============================
+
 (define-key completion-preview-active-mode-map (kbd "C-n") #'vmacs-complete)
 (define-key completion-preview-active-mode-map (kbd "C-i") #'vmacs-complete)
 (define-key completion-preview-active-mode-map (kbd "C-o") #'completion-preview-complete)
-(define-key completion-preview-active-mode-map (kbd "C-m") #'completion-preview-insert)
+(define-key completion-preview-active-mode-map (kbd "C-j") #'completion-preview-insert)
 (define-key completion-preview-active-mode-map (kbd "C-s") #'completion-preview-next-candidate)
 (define-key completion-preview-active-mode-map (kbd "M-f") #'completion-preview-insert-word)
 (setq completion-preview-minimum-symbol-length nil)
+
+
 (setq completion-preview-completion-styles '(basic partial-completion initials orderless))
 (setq icomplete-tidy-shadowed-file-names t)
 (setq icomplete-separator (propertize " 👈 " 'face  '(foreground-color . "lightgreen")))
 
 
 (setq completion-styles '(basic partial-completion substring initials  flex))
+
+;;;;;;;;;;;;; =========================
 
 (when (require 'orderless nil t)
   (setq completion-styles '(basic partial-completion initials orderless))
@@ -162,7 +170,8 @@ Monospaced font whihc is fixed idth and height is recommended."
 ;; (setq icomplete-prospects-height 20)
 ;; (setq icomplete-vertical-prospects-height 20)
 
-;; (setq icomplete-scroll t)
+(setq icomplete-scroll t)
+
 
 (define-key icomplete-minibuffer-map (kbd "RET") 'icomplete-fido-ret)
 (define-key icomplete-minibuffer-map (kbd "C-m") 'icomplete-fido-ret)
@@ -318,13 +327,18 @@ Monospaced font whihc is fixed idth and height is recommended."
 (vmacs-leader (kbd "wi") 'consult-imenu)
 
 
+;; (defun vmacs-recentf-keep-p (file)
+;;   "Return non-nil if FILE should be kept in the recent list.
+;; It handles the case of remote files as well."
+;;   (cond
+;;    ((file-remote-p file nil t) (file-readable-p file))
+;;    ((file-remote-p file) nil)           ;不记录 tramp path
+;;    ((file-readable-p file))))
 (defun vmacs-recentf-keep-p (file)
-  "Return non-nil if FILE should be kept in the recent list.
-It handles the case of remote files as well."
+  "Return non-nil if FILE should be kept in the recent list."
   (cond
-   ((file-remote-p file nil t) (file-readable-p file))
-   ((file-remote-p file) nil)           ;不记录 tramp path
-   ((file-readable-p file))))
+   ((file-remote-p file))  ; 保留所有可读的远程文件
+   ((file-readable-p file))))                    ; 保留本地文件
 (setq recentf-keep '(vmacs-recentf-keep-p))
 
 ;; Track opened directories

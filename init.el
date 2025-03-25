@@ -1,7 +1,10 @@
 (when (> emacs-major-version 27) (load-theme 'modus-vivendi))
 
+
+
+;; (require 'conf-meow)
 (require 'conf-icomplete)
-;; (require 'conf-)
+
 
 (require 'init-view)        ;; 显示相关
 
@@ -52,10 +55,14 @@
 (save-place-mode t)
 (savehist-mode 1)
 (recentf-mode 1)
+(message "Recentf auto clean val: %s" recentf-auto-cleanup)
+
 (run-with-idle-timer 300 t 'vmacs-idle-timer) ;idle 300=5*60s
 (require 'conf-tmp nil t)
 
 (require 'conf-vterm)
+(require 'vterm-toggle)
+
 
 (require 'server)
 (unless (server-running-p) (server-start))
@@ -125,20 +132,6 @@
 ;; (setq python-flymake-command "flake8")
 
 (setopt set-mark-command-repeat-pop t)
-(setopt confirm-kill-emacs 'yes-or-no-p)
 
-(use-package blamer
-  :ensure t
-  :bind (("s-i" . blamer-show-commit-info)
-         ("C-c i" . blamer-show-posframe-commit-info))
-  :defer 20
-  :custom
-  (blamer-idle-time 0.3)
-  (blamer-min-offset 70)
-  :custom-face
-  (blamer-face ((t :foreground "#7a88cf"
-                    :background nil
-                    :height 140
-                    :italic t)))
-  :config
-  (global-blamer-mode 1))
+
+(require 'conf-tramp)

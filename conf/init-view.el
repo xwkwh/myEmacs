@@ -185,6 +185,10 @@
 ;; TODO Don't highlight matches with jump-char - it's distracting
 (setq jump-char-lazy-highlight-face nil)
 
+
+(setq recentf-auto-cleanup 'never)  ; 禁用启动时的自动清理
+;; (add-to-list 'recentf-keep '(file-remote-p)) ; 保留远程文件
+
 (recentf-mode 1)
 
 ;; Save minibuffer history

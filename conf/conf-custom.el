@@ -109,8 +109,8 @@
               marginalia meow miniedit neotree ob-go orderless org-bullets org-make-toc
               org-superstar org-web-tools osx-dictionary ox-gfm ox-hugo pinyinlib projectile
               protobuf-mode protocols pylint pyvenv rg scratch slime smex smooth-scrolling
-              timu-spacegrey-theme undo-tree use-package vc-msg verb vterm-toggle vundo yaml-mode
-              yasnippet))
+              timu-spacegrey-theme undo-tree use-package vc-msg verb vterm vterm-toggle vundo
+              yaml-mode yasnippet))
  '(pdf-view-midnight-colors '("#FDF4C1" . "#282828"))
  '(pos-tip-background-color "#36473A")
  '(pos-tip-foreground-color "#FFFFC8")
