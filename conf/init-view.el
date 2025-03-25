@@ -21,9 +21,6 @@
 (require 'popup)
 (setq clippy-tip-show-function #'clippy-popup-tip-show)
 
-;; 隐藏状态栏
-(menu-bar-mode -1)
-(scroll-bar-mode -1)
 
 ;直接emacs命令打开的窗口相关设置,不要在这里设置字体，否则daemon 启动时字体有可能没创建好，会导致字体设置失败
 (setq-default window-system-default-frame-alist
