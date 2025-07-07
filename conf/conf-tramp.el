@@ -1,3 +1,4 @@
+;;; -*- lexical-binding: t; -*-
 ;; 自动同步远程服务器的 PATH 环境变量
 
 (require 'tramp)

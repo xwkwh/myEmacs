@@ -127,7 +127,7 @@
 
 ;; (add-hook 'python-mode-hook 'my/python-mode-hook)
 
-(add-hook 'python-mode-hook (lambda () (add-hook 'before-save-hook #'my/blacken-buffer -100 t)))
+;; (add-hook 'python-mode-hook (lambda () (add-hook 'before-save-hook #'my/blacken-buffer -100 t)))
 
 
 ;; (add-hook 'python-mode-hook (lambda () (add-hook 'before-save-hook #'my/blacken-buffer)))

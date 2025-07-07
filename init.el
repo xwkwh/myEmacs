@@ -123,13 +123,6 @@
 (editorconfig-mode 1)
 
 
-;; (add-hook 'python-mode-hook
-;;       (lambda ()
-;;         (flycheck-mode)
-;;         (flymake-mode -1)
-;;         (setq flycheck-pylintrc "~/.pylintrc")))
-;; (setq python-check-command "flake8")
-;; (setq python-flymake-command "flake8")
 
 (setopt set-mark-command-repeat-pop t)
 

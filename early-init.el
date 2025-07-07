@@ -27,12 +27,12 @@
 ;; 禁用非必要组件
 (when (fboundp 'tool-bar-mode) (tool-bar-mode -1))
 (when (fboundp 'scroll-bar-mode) (scroll-bar-mode -1))
-(when (fboundp 'menu-bar-mode) (menu-bar-mode 0))
 
 (defvar file-name-handler-alist-old file-name-handler-alist)
 
 ;; ==== GC 恢复 ====
-(add-hook 'emacs-startup-hook
+;; (add-hook 'emacs-startup-hook
+(add-hook 'window-setup-hook
           (lambda ()
             (setq gc-cons-threshold (* 16 1024 1024)  ; 恢复为 16MB
                   gc-cons-percentage 0.1

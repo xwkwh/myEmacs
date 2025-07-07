@@ -24,7 +24,7 @@
 ;; (setq lsp-auto-configure nil)
 (defun go-mode-setup ()
  ;; (go-eldoc-setup)
-  (setq gofmt-command "goimports")
+  (setq gofmt-command " goimports")
   (setq compile-command "go build -v && go test -v && go vet")
   (define-key (current-local-map) "\C-c\C-c" 'compile)
   (add-hook 'before-save-hook 'gofmt-before-save)
@@ -84,8 +84,8 @@
             (add-hook 'before-save-hook 'gofmt-before-save)
             (setq truncate-lines t)
             (setq tab-width 4)
-	    (flymake-mode nil)
-	    ))
+        (flymake-mode nil)
+        ))
 ;; (setq lsp-auto-guess-root t) ; Detect project root
 (add-hook 'prog-mode-hook 'lsp-mode)
 
@@ -97,7 +97,7 @@
     (make-lsp-client :new-connection (lsp-tramp-connection (lambda() (cons "gopls" lsp-gopls-server-args)))
                      :major-modes '(go-mode)
                      :remote? t
-		     :priority 10
+             :priority 10
                      :server-id 'gols-remote))
 
 
