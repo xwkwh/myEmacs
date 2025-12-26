@@ -1,3 +1,4 @@
+;;; -*- lexical-binding: t; -*-
 (autoload #'viper-ex  "viper" t)
 (setq meow--kbd-kill-region "C-k")
 (setq meow-motion-remap-prefix "s-M-")

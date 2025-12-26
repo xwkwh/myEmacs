@@ -1,3 +1,4 @@
+;;; -*- lexical-binding: t; -*-
 (defvar vmacs-dump-process nil)
 (defvar vmacs-dump-buffer-name " *vmacs-dump*")
 (defvar vmacs-dump-directory "~/.emacs.d/cache/dump/")

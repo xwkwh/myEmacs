@@ -1,3 +1,4 @@
+;;; -*- lexical-binding: t; -*-
 ;; -*- lexical-binding: t -*-
 (setq enable-recursive-minibuffers t)        ;在minibuffer 中也可以再次使用minibuffer
 (setq history-delete-duplicates t)          ;minibuffer 删除重复历史

@@ -1,3 +1,4 @@
+;;; -*- lexical-binding: t; -*-
 (setq-default
  indent-tabs-mode nil                   ;用空格代替tab
  tab-width 4

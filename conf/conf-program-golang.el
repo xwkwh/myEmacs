@@ -1,3 +1,4 @@
+;;; -*- lexical-binding: t; -*-
 ;; https://github.com/saibing/tools
 ;; go get  golang.org/x/tools/cmd/gopls
 

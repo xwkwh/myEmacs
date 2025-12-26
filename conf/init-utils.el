@@ -1,3 +1,4 @@
+;;; -*- lexical-binding: t; -*-
 ;;; init-utils.el --- Elisp helper functions and commands -*- lexical-binding: t -*-
 ;;; Commentary:
 ;;; Code:

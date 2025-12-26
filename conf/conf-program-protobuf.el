@@ -1,3 +1,4 @@
+;;; -*- lexical-binding: t; -*-
 (defconst my-protobuf-style
   '((c-basic-offset . 4)
     (indent-tabs-mode . nil)))

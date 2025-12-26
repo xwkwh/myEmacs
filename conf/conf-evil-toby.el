@@ -1,3 +1,4 @@
+;;; -*- lexical-binding: t; -*-
 (require 'evil)
 
 (global-evil-leader-mode)

@@ -1,3 +1,4 @@
+;;; -*- lexical-binding: t; -*-
 ;; 不知道放在哪里的配置
 (setq org-startup-indented t)
 ;; (setq make-backup-files nil)

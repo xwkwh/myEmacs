@@ -1,3 +1,4 @@
+;;; -*- lexical-binding: t; -*-
 ;; org-mode 相关
 ;;(require 'ox-re-reveal)
 ;;(setq org-re-reveal-root (format "file://%sreveal.js-3.0.0" (expand-file-name user-emacs-directory)))

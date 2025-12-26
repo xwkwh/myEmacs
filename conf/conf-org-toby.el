@@ -1,3 +1,4 @@
+;;; -*- lexical-binding: t; -*-
 (require 'org)
 
 ;; Remove the markup characters, i.e., "/text/" becomes (italized) "text"

@@ -1,3 +1,4 @@
+;;; -*- lexical-binding: t; -*-
 ;; 窗口相关操作，
 ;; 当分屏时，默认的emacs是C-x 2 ,C-x 3 两个窗口中显示的内容都是同一个buffer
 ;; 此处则在新开的窗口中显示不同的buffer

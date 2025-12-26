@@ -1,3 +1,4 @@
+;;; -*- lexical-binding: t; -*-
 ;;; init-themes.el --- Defaults for themes -*- lexical-binding: t -*-
 ;;; Commentary:
 ;;; Code:

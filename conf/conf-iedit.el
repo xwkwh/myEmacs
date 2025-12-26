@@ -1,3 +1,4 @@
+;;; -*- lexical-binding: t; -*-
 ;;; Code:
 ;; C-u0 只限本函数内
 ;; C-u 恢复上次的iedit

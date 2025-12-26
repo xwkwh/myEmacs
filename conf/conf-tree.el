@@ -1,3 +1,4 @@
+;;; -*- lexical-binding: t; -*-
 (setq neo-theme (if (display-graphic-p) 'icons 'arrow))
 
 (evil-define-key 'normal neotree-mode-map (kbd "TAB") 'neotree-enter)

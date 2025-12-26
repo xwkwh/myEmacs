@@ -1,3 +1,4 @@
+;;; -*- lexical-binding: t; -*-
 (dumb-jump-mode)
 (add-hook 'c-mode-hook 'counsel-gtags-mode)
 (add-hook 'go-mode-hook 'counsel-gtags-mode)

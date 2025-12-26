@@ -1,3 +1,4 @@
+;;; -*- lexical-binding: t; -*-
 (defmacro vmacs-define-key (mode-map key cmd  &optional  feature state)
   "define-key in `eval-after-load' block. `feature' is the file name where defined `mode-map'"
   (if state

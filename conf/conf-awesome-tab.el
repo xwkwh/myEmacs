@@ -1,3 +1,4 @@
+;;; -*- lexical-binding: t; -*-
 (require 'awesome-tab) 
 (setq-default awesome-tab-cycle-scope 'tabs)
 (setq-default awesome-tab-display-sticky-function-name nil)

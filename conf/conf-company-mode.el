@@ -1,3 +1,4 @@
+;;; -*- lexical-binding: t; -*-
 (require 'company)
 ;; 调整默认backends
 (setq-default company-backends

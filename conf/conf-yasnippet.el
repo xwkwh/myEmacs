@@ -1,3 +1,4 @@
+;;; -*- lexical-binding: t; -*-
 ;; config for yasnippet
 (require 'yasnippet)
 ;; batch 模式下不启用yas

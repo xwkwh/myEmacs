@@ -1,3 +1,4 @@
+;;; -*- lexical-binding: t; -*-
 ;; 用sudo 打开当前编辑的文件或目录
 (global-set-key (kbd "C-c o") 'toggle-read-only-file-with-sudo)
 ;; su: or /sudo: on remote hosts

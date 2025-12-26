@@ -1,3 +1,4 @@
+;;; -*- lexical-binding: t; -*-
 (custom-set-variables
  ;; custom-set-variables was added by Custom.
  ;; If you edit it by hand, you could mess it up, so be careful.
@@ -13,7 +14,8 @@
  '(backup-directory-alist '((".*" . "~/.emacs.d/cache/backup_files/")))
  '(beacon-color "#d54e53")
  '(connection-local-criteria-alist
-   '(((:application vc-git) vc-git-connection-default-profile)
+   '(((:application tramp :machine "MacBook-Pro-2.local") tramp-connection-local-darwin-ps-profile)
+     ((:application vc-git) vc-git-connection-default-profile)
      ((:application tramp :protocol "kubernetes") tramp-kubernetes-connection-local-default-profile)
      ((:application eshell) eshell-connection-default-profile)
      ((:application tramp :protocol "flatpak")

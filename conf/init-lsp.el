@@ -1,3 +1,4 @@
+;;; -*- lexical-binding: t; -*-
 (setq exec-path-from-shell-check-startup-files nil) ;
 
 (when (memq window-system '(mac ns x))

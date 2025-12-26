@@ -1,3 +1,4 @@
+;;; -*- lexical-binding: t; -*-
 ;;; Code:
 
 (setq sql-input-ring-file-name "~/.emacs.d/cache/sql-cmd-hist")

@@ -1,3 +1,4 @@
+;;; -*- lexical-binding: t; -*-
 ;; Borrow from https://github.com/raxod502/radian/blob/bf23a07418b3d72a300b21dcdf9cb521423d9681/emacs/radian.el#L30-L49
 (defmacro nasy/protect-macros (&rest body)
   "Eval BODY, protecting macros from incorrect expansion.

@@ -1,3 +1,4 @@
+;;; -*- lexical-binding: t; -*-
 (add-hook 'js-mode-hook 'vmacs-js-mode-hook)
 (require 'hideshow)
 

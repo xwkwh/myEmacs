@@ -1,3 +1,4 @@
+;;; -*- lexical-binding: t; -*-
 ;; brew install pyenv-virtualenv
 
 ;; brew install zlib

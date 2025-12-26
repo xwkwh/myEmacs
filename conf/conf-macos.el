@@ -1,3 +1,4 @@
+;;; -*- lexical-binding: t; -*-
 (setq mac-command-modifier 'super)
 (setq mac-option-modifier 'meta)
 (setq-default initial-frame-alist

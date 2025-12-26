@@ -1,3 +1,4 @@
+;;; -*- lexical-binding: t; -*-
 ;; https://github.com/mbriggs/.emacs.d/blob/master/my-keymaps.el
 
 ;; http://dnquark.com/blog/2012/02/emacs-evil-ecumenicalism/

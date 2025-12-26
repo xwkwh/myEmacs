@@ -1,3 +1,4 @@
+;;; -*- lexical-binding: t; -*-
 ;;; -*- coding:utf-8 -*- -*- lexical-binding: t; -*-
 ;;ibuffer 的管理(列出所有打开的文件/buffer)
 ;;n p 上下，

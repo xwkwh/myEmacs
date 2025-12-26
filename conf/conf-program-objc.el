@@ -1,3 +1,4 @@
+;;; -*- lexical-binding: t; -*-
 ;; (declare-function helm-gtags-set-GTAGSLIBPATH-alist "helm-gtags")
 
 (add-hook 'objc-mode-hook 'vmacs-objc-mode-hook)

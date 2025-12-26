@@ -1,3 +1,4 @@
+;;; -*- lexical-binding: t; -*-
 ;;; Code:
 (require 'icomplete)
 (require 'recentf)

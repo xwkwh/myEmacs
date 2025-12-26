@@ -1,3 +1,4 @@
+;;; -*- lexical-binding: t; -*-
 (require 'package)
   ;; (setq package-archives
   ;;       '(("melpa-cn" . "http://mirrors.163.com/elpa/melpa/")

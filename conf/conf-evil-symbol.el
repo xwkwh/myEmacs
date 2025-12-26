@@ -1,3 +1,4 @@
+;;; -*- lexical-binding: t; -*-
 ;; e ,r 移动
 (define-key evil-normal-state-map "e" 'evil-forward-symbol-begin)
 (define-key evil-normal-state-map "r" 'evil-forward-symbol-end)

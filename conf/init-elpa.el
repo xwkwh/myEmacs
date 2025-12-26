@@ -1,3 +1,4 @@
+;;; -*- lexical-binding: t; -*-
 ;;; init-elpa.el --- Settings and helpers for package.el -*- lexical-binding: t -*-
 ;;; Commentary:
 ;;; Code:

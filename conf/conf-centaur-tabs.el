@@ -1,3 +1,4 @@
+;;; -*- lexical-binding: t; -*-
 (setq-default centaur-tabs-hide-tabs-hooks   nil)
 (setq-default centaur-tabs-cycle-scope 'tabs)
 (setq-default centaur-tabs-display-sticky-function-name nil)

@@ -1,3 +1,4 @@
+;;; -*- lexical-binding: t; -*-
 (require 'recentf)
 (recentf-mode)
 (require 'counsel)

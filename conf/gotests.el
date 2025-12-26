@@ -1,3 +1,4 @@
+;;; -*- lexical-binding: t; -*-
 ;;; gotests.el --- Emacs package for https://github.com/cweill/gotests 
 
 ;; Copyright (C) 2016  Damien Levin

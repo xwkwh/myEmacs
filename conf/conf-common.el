@@ -1,3 +1,4 @@
+;;; -*- lexical-binding: t; -*-
 (defvar poem-file "~/.emacs.d/cache/poem.json")
 (defvar poem-cache nil)
 

@@ -1,3 +1,4 @@
+;;; -*- lexical-binding: t; -*-
 (global-tab-line-mode t)
 (global-set-key  (kbd "C-,") 'vmacs-next-tab)
 (global-set-key  (kbd "C-.") 'vmacs-prev-tab)

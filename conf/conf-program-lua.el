@@ -1,3 +1,4 @@
+;;; -*- lexical-binding: t; -*-
 (add-hook 'lua-mode-hook 'vmacs-lua-mode-hook)
 
 (defun vmacs-lua-mode-hook()

@@ -1,3 +1,4 @@
+;;; -*- lexical-binding: t; -*-
 ;; https://github.com/dajva/rg.el
 ;; doc https://rgel.readthedocs.io
 ;; -g '!elpa' 不包含elpa

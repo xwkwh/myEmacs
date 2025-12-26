@@ -1,3 +1,4 @@
+;;; -*- lexical-binding: t; -*-
 ;;  (setq centaur-tabs-style "bar"
 ;;    centaur-tabs-height 32
 ;;    centaur-tabs-set-icons t

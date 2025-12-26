@@ -1,3 +1,4 @@
+;;; -*- lexical-binding: t; -*-
 ;; (evil-leader/set-key "b" 'evil-search-highlight-persist-remove-all)
 (vmacs-leader (kbd "b") 'evil-ex-nohighlight)
 

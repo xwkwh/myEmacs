@@ -1,3 +1,4 @@
+;;; -*- lexical-binding: t; -*-
 ;;; -*- coding:utf-8 -*-
 
 (setq eglot-confirm-server-initiated-edits nil)

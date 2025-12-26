@@ -1,3 +1,4 @@
+;;; -*- lexical-binding: t; -*-
 ;; (require 'ivy-dired-history)
 
 

@@ -1,3 +1,4 @@
+;;; -*- lexical-binding: t; -*-
 ;;; vmacs-single-dired.el --- Only Open One Dired Buffer.
 
 ;; Filename: vmacs-single-dired.el

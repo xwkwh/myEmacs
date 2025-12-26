@@ -1,4 +1,4 @@
-(when (> emacs-major-version 27) (load-theme 'modus-vivendi))
+(when (> emacs-major-version 27) (load-theme 'modus-vivendi-tinted))
 
 
 

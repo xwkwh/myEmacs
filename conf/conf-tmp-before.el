@@ -1,3 +1,4 @@
+;;; -*- lexical-binding: t; -*-
  (when (file-directory-p "~/repos/emacs-libvterm")
    (add-to-list 'load-path "~/repos/emacs-libvterm"))
  (when (file-directory-p "~/repos/Emacs-wgrep")

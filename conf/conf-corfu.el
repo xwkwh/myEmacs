@@ -1,3 +1,4 @@
+;;; -*- lexical-binding: t; -*-
 ;;; Code:
 (global-corfu-mode)
 (corfu-history-mode)

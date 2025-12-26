@@ -1,3 +1,4 @@
+;;; -*- lexical-binding: t; -*-
 (require 'use-package)
 
 (dashboard-setup-startup-hook)

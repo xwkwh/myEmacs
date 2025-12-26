@@ -1,3 +1,4 @@
+;;; -*- lexical-binding: t; -*-
 ;; brew install libvterm
 ;; https://github.com/akermu/emacs-libvterm
 ;; mkdir -p build
