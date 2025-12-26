@@ -1,5 +1,5 @@
 ;;; -*- lisp-data -*-
-(("/Users/tobyguo/vmacs/") ("/Users/tobyguo/.emacs.d/")
+(("/Users/tobyguo/workspace/myEmacs/") ("/Users/tobyguo/vmacs/") ("/Users/tobyguo/.emacs.d/")
  ("/Users/tobyguo/workspace/content_scripts/go/")
  ("/Users/tobyguo/workspace/gowork/trpc_go_video_intellcut_svr/")
  ("/Users/tobyguo/workspace/gowork/trpc_go_content_label_import_svr/")
@@ -37,10 +37,9 @@
  ("/Users/tobyguo/workspace/pywork/trpc_py_edge_detection/")
  ("/Users/tobyguo/workspace/pywork/video_topic_tags/")
  ("/Users/tobyguo/workspace/pywork/trpc_py_video_tail_detect/")
- ("/Users/tobyguo/workspace/myEmacs/")
  ("/Users/tobyguo/workspace/pywork/py_leef_video_tail_detect/")
  ("/Users/tobyguo/workspace/pywork/leef_framework/") ("/Users/tobyguo/")
- ("/Users/tobyguo/workspace/pywork/trpc_py_edge_detection/") ("/Users/tobyguo/workspace/myEmacs/")
+ ("/Users/tobyguo/workspace/pywork/trpc_py_edge_detection/")
  ("/Users/tobyguo/workspace/pywork/content_tools/")
  ("/Users/tobyguo/workspace/gowork/content_tools/")
  ("/Users/tobyguo/workspace/pywork/trpc_py_video_position_svr/")
