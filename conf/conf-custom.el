@@ -80,17 +80,8 @@
                                                    (shell-command-switch . "-c"))
      (tramp-connection-local-default-system-profile (path-separator . ":")
                                                     (null-device . "/dev/null"))))
- '(custom-safe-themes
-   '("d2e0c53dbc47b35815315fae5f352afd2c56fa8e69752090990563200daae434"
-     "feb8e98a8a99d78c837ce35e976ebcc97abbd8806507e8970d934bb7694aa6b3"
-     "0ab2aa38f12640ecde12e01c4221d24f034807929c1f859cbca444f7b0a98b3a"
-     "31f1723fb10ec4b4d2d79b65bcad0a19e03270fe290a3fc4b95886f18e79ac2f"
-     "aca70b555c57572be1b4e4cec57bc0445dcb24920b12fb1fea5f6baa7f2cad02"
-     "bd3b9675010d472170c5d540dded5c3d37d83b7c5414462737b60f44351fb3ed"
-     "0f7fa4835d02a927d7d738a0d2d464c38be079913f9d4aba9c97f054e67b8db9"
-     "88049c35e4a6cedd4437ff6b093230b687d8a1fb65408ef17bfcf9b7338734f6" default))
+ '(custom-safe-themes t)
  '(electric-pair-mode t)
- '(even-window-sizes t)
  '(fci-rule-color "#424242")
  '(flycheck-color-mode-line-face-to-color 'mode-line-buffer-id)
  '(frame-background-mode 'dark)
@@ -101,18 +92,17 @@
  '(org-agenda-files nil)
  '(package-selected-packages
    '(0blayout blacken blamer bm cape centaur-tabs chatgpt-shell color-theme-sanityinc-tomorrow
-              company-prescient conda consult-dir consult-flycheck corfu counsel-etags counsel-gtags
+              conda consult-dir consult-flycheck corfu 
               dashboard diff-hl dired-filetype-face dired-narrow dired-subtree diredfl
               dockerfile-mode doom dumb-jump editorconfig elisp-def embark-consult evil-collection
               evil-leader evil-search-highlight-persist exec-path-from-shell flatbuffers-mode
               flycheck-golangci-lint general git-link go-mode golden-ratio
               golden-ratio-scroll-screen gptai graphviz-dot-mode helpful highlight-parentheses iedit
-              ivy-prescient ivy-rich json-mode kind-icon leetcode lsp-pyright lua-mode magit
-              marginalia meow miniedit neotree ob-go orderless org-bullets org-make-toc
-              org-superstar org-web-tools osx-dictionary ox-gfm ox-hugo pinyinlib projectile
-              protobuf-mode protocols pylint pyvenv rg scratch slime smex smooth-scrolling
-              timu-spacegrey-theme undo-tree use-package vc-msg verb vterm vterm-toggle vundo
-              yaml-mode yasnippet))
+              json-mode kind-icon leetcode lsp-pyright lua-mode magit
+              marginalia meow miniedit neotree orderless org-bullets org-make-toc org-superstar
+              org-web-tools osx-dictionary ox-gfm ox-hugo pinyinlib projectile protobuf-mode
+              protocols pylint pyvenv rg scratch slime smex smooth-scrolling timu-spacegrey-theme
+              undo-tree use-package vc-msg verb vterm vterm-toggle vundo yaml-mode yasnippet))
  '(pdf-view-midnight-colors '("#FDF4C1" . "#282828"))
  '(pos-tip-background-color "#36473A")
  '(pos-tip-foreground-color "#FFFFC8")
@@ -128,23 +118,38 @@
      (220 . "#b9ca4a") (240 . "#70c0b1") (260 . "#7aa6da") (280 . "#c397d8") (300 . "#d54e53")
      (320 . "#e78c45") (340 . "#e7c547") (360 . "#b9ca4a")))
  '(vc-annotate-very-old-color nil)
- '(warning-suppress-log-types
-   '(((flymake flymake.el)) (initialization) (initialization) (initialization) (comp) (comp) (comp)
-     (comp) (comp) (comp) (comp) (comp) (comp)))
- '(warning-suppress-types
-   '((initialization) (initialization) (initialization) (comp) (comp) (comp) (comp) (comp) (comp)
-     (comp) (comp) (comp)))
- '(window-divider-mode nil))
+ '(warning-suppress-log-types '(((flymake flymake.el)) (initialization) (comp)))
+ '(warning-suppress-types '((initialization) (comp) (eglot)))
+ '(window-divider-default-bottom-width 1)
+ '(window-divider-default-places 'bottom-only)
+ '(window-divider-default-right-width 1)
+ '(window-divider-mode t)
+ '(xref-after-jump-hook '(recenter)) ;; xref跳转后居中显示
+ '(uniquify-buffer-name-style 'forward nil (uniquify))
+ '(scroll-bar-mode nil)
+ '(outline-minor-mode-cycle t)
+ '(outline-minor-mode-use-buttons 'in-margins)
+ '(magit-save-repository-buffers 'dontask)
+ '(magit-log-margin '(t "%y-%m-%d %H:%M " magit-log-margin-width t 6))
+ )
+
+
 (custom-set-faces
  ;; custom-set-faces was added by Custom.
  ;; If you edit it by hand, you could mess it up, so be careful.
  ;; Your init file should contain only one such instance.
  ;; If there is more than one, they won't work right.
+ '(cursor ((t (:background "chartreuse"))))
  '(eglot-highlight-symbol-face ((t (:inherit (bold highlight)))))
+ '(visible-mark-face1 ((t (:background "gold" :foreground "black"))))
  '(evil-search-highlight-persist-highlight-face ((t (:background "dark cyan"))))
+ '(font-lock-comment-face ((t (:inherit modus-themes-slant :slant italic))))
  '(font-lock-done-face ((t (:foreground "Green" :box (:line-width 2 :color "grey75" :style released-button) :height 1.2))) t)
  '(font-lock-todo-face ((t (:foreground "Red" :box (:line-width 2 :color "grey75" :style released-button) :height 1.2))) t)
- '(ivy-current-match ((t (:inherit highlight :background "#076678" :foreground "#FDF4C1")))))
+ '(gnus-summary-normal-ancient ((t (:extend t :foreground "gray"))))
+ '(region ((t (:extend t :foreground unspecified :background "#5a5a5a"))))
+ '(secondary-selection ((t (:extend t :foreground unspecified :background "#020202"))))
+ '(show-paren-match ((t (:foreground "SpringGreen3" :weight bold)))))
 
 
 

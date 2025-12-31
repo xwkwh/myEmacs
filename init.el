@@ -30,7 +30,7 @@
 (require 'conf-yasnippet)               ;模版系统
 (with-eval-after-load 'compile (require 'conf-compile))
 (with-eval-after-load 'cc-mode (require 'conf-program-objc))
-(with-eval-after-load 'go-mode (require 'conf-program-golang))
+(with-eval-after-load 'go-ts-mode (require 'conf-program-golang))
 (with-eval-after-load 'python (require 'conf-program-python))
 
 

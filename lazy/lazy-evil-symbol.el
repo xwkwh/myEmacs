@@ -1,3 +1,4 @@
+;; -*- lexical-binding: t -*-
 (eval-and-compile (require 'evil-macros))
 ;;;###autoload (autoload 'evil-forward-symbol-begin "lazy-evil-symbol" nil t)
 (evil-define-motion evil-forward-symbol-begin(count)

@@ -1,39 +1,4 @@
-;;; -*- lexical-binding: t; -*-
-(defvar poem-file "~/.emacs.d/cache/poem.json")
-(defvar poem-cache nil)
-
-(defun poem-update ()
-  "Download poem from `jinrishici.com`"
-  (let ((url-request-extra-headers
-    '(("X-User-Token" . "FRxxhlAYg8JbQpdr7xIeHNpew7b2vLIr"))))
-    (ignore-errors
-      (url-retrieve
-       "https://v2.jinrishici.com/sentence"
-       (lambda (status)
-    (write-region url-http-end-of-headers (point-max) poem-file)))))
-  (setq poem-cache nil))
-
-(defun poem-get (prop)
-  "Get poem from cache file, PROP can be 'content, 'origin"
-  (ignore-errors
-    (if poem-cache
-        (alist-get prop poem-cache)
-      (with-temp-buffer
-        (insert-file-contents poem-file)
-        (let ((data (alist-get 'data (json-read))))
-          (setq poem-cache data)
-          (alist-get prop data))))))
-
-(defun poem-get-formatted ()
-  (let* ((poem (poem-get 'origin))
-         (lines (alist-get 'content poem))
-         (content (mapconcat #'identity lines "\n")))
-    (format "%s\n%s · %s\n%s"
-            (alist-get 'title poem)
-            (alist-get 'dynasty poem)
-            (alist-get 'author poem)
-            content)))
-(poem-update)
+;; -*- lexical-binding: t -*-
 
 (defvar  dropbox-dir (expand-file-name "~/Documents/dropbox"))
 (when (equal system-type 'darwin)
@@ -41,7 +6,6 @@
             (not (file-symlink-p dropbox-dir)))
     (start-process "lndropbox" "*Messages*" "ln"  "-f" "-s" (expand-file-name "~/Library/Mobile Documents/com~apple~CloudDocs/") dropbox-dir)))
 
-;; (when (not (file-exists-p dropbox-dir)) (make-directory dropbox-dir t))
 
 (when (boundp 'pixel-scroll-precision-mode) (pixel-scroll-precision-mode 1))
 (setq-default
@@ -49,38 +13,20 @@
  initial-scratch-message nil;关闭scratch消息提示
  initial-major-mode 'emacs-lisp-mode ;scratch init mode
  initial-buffer-choice t                ;默认打开scratch buffer
- ;; initial-buffer-choice "~/"
 
-
+ treesit-max-buffer-size 107374182   ;100m
+ gnus-directory "~/maildir/news"
+ message-directory "~/maildir/"
 
  use-dialog-box nil           ;不使用对话框进行（是，否 取消） 的选择，而是用minibuffer
- ;; frame-title-format "%b  [%I] %f  GNU/Emacs" ;标题显示文件名，而不是默认的username@localhost
- ;; frame-title-format '("%e " evil-mode-line-format "「"mode-line-buffer-identification "」("  (:propertize ("" mode-name) ) ") "   mode-line-misc-info   "%f  GNU/Emacs")
-;; frame-title-format  '((:eval (if (buffer-file-name) (abbreviate-file-name (buffer-file-name)) "%b")))
- frame-title-format '("%e" (:eval (poem-get 'content)) "%e " evil-mode-line-format "「"mode-line-buffer-identification "」("  (:propertize ("" mode-name) ) ") "   mode-line-misc-info   "%f  GNU/Emacs")
-
-
-
-
-
-
- ;;  mode-line 上显示当前文件是什么系统的文件(windows 的换行符是\n\r)
- eol-mnemonic-dos "[w32]"
- eol-mnemonic-unix "[unix]"
- eol-mnemonic-mac "[mac]"
- eol-mnemonic-undecided "[?]"
- ;;(setq track-eol t) ;; 当光标在行尾上下移动的时候，始终保持在行尾。
- ;; (setq-default cursor-type 'bar);;光标显示为一竖线
+ frame-title-format '( "「" mode-line-buffer-identification "」["  (:propertize ("" mode-name) ) "] "   mode-line-misc-info   " GNU/Emacs<" (:eval (expand-file-name default-directory)) ">")
 
  ;;中键点击时的功能
  ;;不要在鼠标中键点击的那个地方插入剪贴板内容。
  ;;而是光标在什么地方,就在哪插入(这个时候光标点击的地方不一定是光标的所在位置)
 
  sentence-end "\\([。！？]\\|……\\|[.?!][]\"')}]*\\($\\|[ \t]\\)\\)[ \t\n]*"
- sentence-end-double-space nil         ;;设置 sentence-end 可以识别中文标点。不用在 fill 时在句号后插入两个空格。
-
-
- ;;(require 'tramp)
+ ;; sentence-end-double-space nil         ;;设置 sentence-end 可以识别中文标点。不用在 fill 时在句号后插入两个空格。
 
  remote-file-name-inhibit-cache 60 ;60s default 10s
  backup-by-copying t    ;自动备份
@@ -88,41 +34,41 @@
  kept-new-versions 10   ; 保留最近的6个备份文件
  kept-old-versions 10   ; 保留最早的2个备份文件
  version-control t    ; 多次备份
- ;; create-lockfiles nil
  vc-make-backup-files t
  ;; 备份文件统一放在 ~/.emacs.d/cache/backup_files,避免每个目录生成一些临时文件
  pulse-iterations 3
  large-file-warning-threshold (* 1024 1024 50)       ;打开大文件时不必警告
 
- ;; 改成true package 生成 autoload 有问题
- ;; find-file-visit-truename t
-
  send-mail-function 'sendmail-send-it
  ;; mail-addrbook-file (expand-file-name "mail_address" dropbox-dir)
-
- ;; after this shell-command can use zsh alias
- ;; shell-file-name "zsh"
- ;; shell-command-switch "-ic"
 
  ;;注意这两个变量是与recentf相关的,把它放在这里,是因为
  ;;觉得recentf与filecache作用有相通之处,
  ;;匹配这些表达示的文件，不会被加入到最近打开的文件中
  recentf-exclude  `("\\.elc$" ,(regexp-quote (concat user-emacs-directory "cache/" ))
+                     ,(regexp-quote "~/.cache/")
                     "/cache/recentf"
                     "/TAGS$" "java_base.tag" ".erlang.cookie" "xhtml-loader.rnc" "COMMIT_EDITMSG")
- recentf-max-saved-items 300
+ recentf-max-saved-items 1000
  ring-bell-function 'ignore
  savehist-additional-variables '(corfu-history magit-repository-directories kill-ring)
  ;;when meet long line ,whether to wrap it
  truncate-lines t ;一行过长时 是否wrap显示
  display-line-numbers 'absolute
+ long-line-threshold 1000
+ large-hscroll-threshold 1000
+ syntax-wholeline-max 1000
+
  fill-column 100
  tramp-adb-prompt "^\\(?:[[:digit:]]*|?\\)?\\(?:[[:alnum:]-]*@[[:alnum:]]*[^#\\$]*\\)?[#\\$][[:space:]]" ;加了一个  "-"
  tramp-shell-prompt-pattern (concat "\\(?:^\\|\r\\)" "[^]#@$%>\n]*#?[]#$@%>] *\\(\e\\[[0-9;]*[a-zA-Z-.] *\\)*")
+ comint-prompt-regexp "^[^#$%\n]*[#$%] *"  ;默认 regex 相当于没定义，term-bol 无法正常中转到开头处
+ shell-prompt-pattern "^[^#$%\n]*[#$%] *"  ;默认 regex 相当于没定义，term-bol 无法正常中转到开头处
  tramp-default-method "ssh" ;Faster than the default scp
  tramp-verbose 1
  ;; TODO ?
  ;; find-function-C-source-directory "~/repos/emacs/src/"
+ Man-notify-method 'bully
  )
 ;; Increase undo limits. Why?
 ;; .. ability to go far back in history can be useful, modern systems have sufficient memory.
@@ -137,70 +83,76 @@
   (setq vundo-roll-back-on-quit nil)
   (setq vundo-glyph-alist vundo-unicode-symbols))
 
-;; (setq undo-tree-history-directory-alist '(("." . "~/.emacs.d/cache/undo")))
-
-;; (require 'display-fill-column-indicator nil t)
-;; (when (featurep 'display-fill-column-indicator)
-  ;; (add-hook 'find-file-hook #'display-fill-column-indicator--turn-on))
-;; (when (boundp 'global-so-long-mode) (global-so-long-mode))
-
-;; path /Library/TeX/texbin
-(setq org-latex-pdf-process '("xelatex -interaction nonstopmode %f"
-                              "xelatex -interaction nonstopmode %f"))
 
 (fset 'yes-or-no-p 'y-or-n-p) ;; 把Yes用y代替
 
 ;;(put 'dired-find-alternate-file 'disabled nil)
 (put 'narrow-to-region 'disabled nil);; 启用narrow-to-region ,不再警告
 (put 'erase-buffer 'disabled nil)
+(put 'upcase-region 'disabled nil)
+(put 'downcase-region 'disabled nil)
+(with-eval-after-load 'markdown-ts-mode  (add-hook 'markdown-ts-mode-hook #'auto-fill-mode))
 ;; after-init-hook 所有配置文件都加载完之后才会运行此hook
 (add-to-list 'interpreter-mode-alist '("lua" . lua-mode))
+
 (setq-default auto-mode-alist
-      (append
-       '(("\\.pyx" . python-mode)
-         ("zsh" . sh-mode)
-         ("SConstruct" . python-mode)
-         ("\\.yml$" . yaml-mode)
-         ("\\.yaml$" . yaml-mode)
-         ("\\.lua$" . lua-mode)
-         ("\\.scpt\\'" . applescript-mode)
-         ("\\.applescript$" . applescript-mode)
-         ("crontab\\'" . crontab-mode)
-         ("\\.cron\\(tab\\)?\\'" . crontab-mode)
-         ("cron\\(tab\\)?\\."    . crontab-mode)
-         ("\\.mxml" . nxml-mode)
-         ("\\.as" . actionscript-mode)
-         ("\\.proto\\'" . protobuf-mode)
-         ("\\.thrift" . thrift-mode)
-         ("\\.md" . markdown-mode)
-         ("\\.\\(frm\\|bas\\|cls\\|vba\\|vbs\\)$" . visual-basic-mode)
+              (append
+               '(("\\.pyx" . python-mode)
+                 ("zsh" . sh-mode)
+                 ("SConstruct" . python-mode)
+                 ("\\.yml$" . yaml-ts-mode)
+                 ("authinfo.gpg" . authinfo-mode)
+                 ("\\.yaml$" . yaml-ts-mode)
+                 ("\\.lua$" . lua-ts-mode)
+                 ("\\.scpt\\'" . applescript-mode)
+                 ("\\.applescript$" . applescript-mode)
+                 ;; ("crontab\\'" . crontab-mode)
+                 ;; ("\\.cron\\(tab\\)?\\'" . crontab-mode)
+                 ;; ("cron\\(tab\\)?\\."    . crontab-mode)
+                 ("\\.mxml" . nxml-mode)
+                 ("\\.proto\\'" . protobuf-mode)
+                 ("\\.thrift" . thrift-mode)
+                 ("\\.md$" . markdown-ts-mode)
+                 ("\\.\\(frm\\|bas\\|cls\\|vba\\|vbs\\)$" . visual-basic-mode)
 
-         ("\\.go.txt$" . go-mode)
-         ("\\.go\\'" . go-mode)
+                 ("\\.rs$" . rust-ts-mode)
+                 ("\\.go.txt$" . go-ts-mode)
+                 ("\\.go\\'" . go-ts-mode)
+                 ("\\.java\\'" . java-ts-mode)
 
-         ("\\.yaws$" . nxml-mode)
+                 ("\\.yaws$" . nxml-mode)
 
-         ("\\.hrl$" . erlang-mode)
-         ("\\.erl$" . erlang-mode)
-         ("\\.rel$" . erlang-mode)
-         ("\\.app$" . erlang-mode)
-         ("\\.app.src$" . erlang-mode)
-         ("\\.ahk$\\|\\.AHK$" . xahk-mode)
-         ("\\.bat$"   . batch-mode)
-         ("\\.cmd$"   . batch-mode)
-         ("\\.pl$"   . cperl-mode)
-         ("\\.pm$"   . cperl-mode)
-         ("\\.perl$" . cperl-mode)
-         ("\\.sqlo$"  . oracle-mode)
-         ("\\.sqlm$"  . mysql-mode)
-         ("\\.sqlms$"  . sqlserver-mode)
-         ("\\.js$"  . js-mode)
-         ("\\.pac$" . js-mode)
-         ;; ("\\.js$"  . js3-mode)
-         ("\\.txt$" . novel-mode)
-         ("\\.mm$" . objc-mode)
-         )
-       auto-mode-alist))
+                 ("\\.hrl$" . erlang-mode)
+                 ("\\.erl$" . erlang-mode)
+                 ("\\.rel$" . erlang-mode)
+                 ("\\.app$" . erlang-mode)
+                 ("\\.app.src$" . erlang-mode)
+                 ("\\.ahk$\\|\\.AHK$" . ahk-mode)
+                 ("\\.bat$"   . batch-mode)
+                 ("\\.cmd$"   . batch-mode)
+                 ("\\.pl$"   . cperl-mode)
+                 ("\\.pm$"   . cperl-mode)
+                 ("\\.perl$" . cperl-mode)
+                 ("\\.sqlo$"  . oracle-mode)
+                 ("\\.sqlm$"  . mysql-mode)
+                 ("\\.sqlms$"  . sqlserver-mode)
+                 ("\\.js$"  . js-mode)
+                 ("\\.json$"  . json-ts-mode)
+                 ("\\.pac$" . js-mode)
+                 ;; ("\\.js$"  . js3-mode)
+                 ("\\.txt$" . org-mode)
+                 ("\\.mm$" . objc-mode)
+                 )
+               auto-mode-alist))
+
+(defun scratch-auto-set-major-mode (&optional arg)
+  (when (and (string= (buffer-name) "*scratch*")
+             (member this-command '(meep-clipboard-killring-yank yank )))
+    (set-auto-mode)
+    (setq-local write-contents-functions #'scratch-write-contents)
+    ))
+
+(advice-add 'yank :after #'scratch-auto-set-major-mode)
 
 (add-to-list 'magic-mode-alist
              `(,(lambda ()
@@ -215,35 +167,26 @@
 (add-to-list 'magic-mode-alist
              `(,(lambda ()
                   (looking-at "[ \t\n]*{[ \t\n]*\""))
-               . js-mode))
+               . json-ts-mode))
 (global-set-key "\C-j" 'open-line-or-new-line-dep-pos)
 (define-key lisp-interaction-mode-map "\C-j" 'open-line-or-new-line-dep-pos)
 
 (global-set-key (kbd "C-a") 'smart-beginning-of-line)
 (global-set-key (kbd "C-e") 'smart-end-of-line)
-(define-key evil-motion-state-map (kbd "C-a") 'smart-beginning-of-line)
-(define-key evil-motion-state-map (kbd "C-e") 'smart-end-of-line)
 
 (global-set-key "\C-k" 'vmacs-kill-region-or-line)
-(with-eval-after-load 'org
-  (define-key org-mode-map "\C-k" 'vmacs-kill-region-or-org-kill-line)
-  (define-key org-mode-map "\C-a" 'org-mode-smart-beginning-of-line)
-  (define-key org-mode-map "\C-e" 'org-mode-smart-end-of-line))
-
 
 (global-set-key "\M-;" 'vmacs-comment-dwim-line)
 
-(global-set-key "\C-x\C-v" 'switch-to-scratch-buffer)
+(global-set-key "\C-x\C-v" 'scratch-buffer)
 
-(global-set-key (kbd "C-c w") 'browse-url-at-point)
+(global-set-key (kbd "C-c w w") 'browse-url-at-point)
 
 
 ;;; goto-last change
 ;;快速跳转到当前buffer最后一次修改的位置 利用了undo定位最后一次在何处做了修改
 ;; (autoload 'goto-last-change "goto-last-change" "Set point to the position of the last change." t)
 (autoload 'goto-last-change-reverse "goto-chg.el" "goto last change reverse" t)
-(vmacs-leader (kbd "x/") 'goto-last-change)
-(vmacs-leader (kbd "x,") 'goto-last-change-reverse)
 
 (with-eval-after-load 'cc-mode (define-key c-mode-base-map ";" 'vmacs-append-semicolon-at-eol))
 
@@ -260,7 +203,7 @@
   (let ((qed-buffer-name (concat "*scratch*" )))
     (switch-to-buffer (generate-new-buffer qed-buffer-name t))
     (sit-for 0.01)
-    (evil-paste-after 1)
+    ;; (evil-paste-after 1)
     (gfm-mode)))
 
 ;; (global-set-key (kbd "C-x C-e") 'eval-print-last-sexp)

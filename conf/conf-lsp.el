@@ -25,7 +25,7 @@
   ;; The depth of -10 places this before eglot's willSave notification,
   ;; so that that notification reports the actual contents that will be saved.
   (add-hook 'before-save-hook #'vmacs-eglot-organize-imports -9 t)
-  ;; (add-hook 'before-save-hook #'eglot-format-buffer -10 t)
+  (add-hook 'before-save-hook #'eglot-format-buffer -10 t)
   )
 
 ;; (add-hook 'eglot-managed-mode-hook (lambda ()
@@ -33,7 +33,7 @@
 ;;                    (flymake-eslint-enable)))
 (setq flycheck-pylintrc "~/.pylintrc")
 
-(dolist (mod '(python-mode-hook c++-mode-hook go-mode-hook c-mode-hook ))
+(dolist (mod '(python-mode-hook c++-mode-hook go-mode-hook go-ts-mode-hook c-mode-hook ))
   (add-hook mod #'vmacs-lsp-hook))
 
 ;; (with-eval-after-load 'eglot
