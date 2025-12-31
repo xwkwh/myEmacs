@@ -1,12 +1,11 @@
 (when (> emacs-major-version 27) (load-theme 'modus-vivendi-tinted))
 
 
+(require 'init-view)        ;; 显示相关
 
 ;; (require 'conf-meow)
 (require 'conf-icomplete)
 
-
-(require 'init-view)        ;; 显示相关
 
 (when (member system-type '(gnu/linux darwin)) (require 'conf-sudo))
 (require 'conf-space-tab)
@@ -46,9 +45,11 @@
 (require 'conf-tabs)
 (require 'conf-lsp)                    ;ctags gtags 相关，代码跳转
 ;; (require 'conf-company-mode)            ;补全
-(require 'conf-corfu)
+;; (require 'conf-corfu)
 (with-eval-after-load 'magit (require 'conf-magit))
 ;; (require 'conf-magit)
+
+
 
 (global-font-lock-mode)
 (transient-mark-mode 1)
@@ -72,7 +73,6 @@
 ;;==============上面和xiuf相同,下面逐步淘汰======================
 
 (require 'conf-evil-toby)        ;; vim操作
-;; (require 'conf-git)              ;; git 版本控制 magit的配置
 (require 'conf-org-toby)         ;; org mode
 (require 'conf-dired-toby)       ;; 文件目录操作
 (require 'conf-iedit-toby)

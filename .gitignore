@@ -116,3 +116,4 @@ org-persist
 .codebuddy
 cd
 projects
+tree-sitter/
