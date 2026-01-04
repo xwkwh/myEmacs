@@ -80,12 +80,6 @@
 (global-set-key (kbd "C-;") 'iedit-mode)
 
 
-;; (evil-collection-define-key 'normal 'magit-mode-map
-;;   "q" #'my/quit-magit-buffer)
-
-;; (setq-default mode-line-format nil)
-;; (setq mode-line-format nil)
-
 (setq gnus-button-url 'browse-url-generic
       browse-url-generic-program "chromium"
       browse-url-browser-function gnus-button-url)
@@ -113,8 +107,6 @@
 (setq leetcode-save-solutions t)
 (setq leetcode-directory "~/leetcode")
 
-
-;; (setq undo-tree-history-directory-alist '(("." . "~/.emacs.d/undo")))
 
 (setq scroll-step 1)
 (setq scroll-margin 5)
