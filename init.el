@@ -83,8 +83,8 @@
 ;; (evil-collection-define-key 'normal 'magit-mode-map
 ;;   "q" #'my/quit-magit-buffer)
 
-(setq-default mode-line-format nil)
-(setq mode-line-format nil)
+;; (setq-default mode-line-format nil)
+;; (setq mode-line-format nil)
 
 (setq gnus-button-url 'browse-url-generic
       browse-url-generic-program "chromium"

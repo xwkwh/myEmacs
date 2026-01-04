@@ -19,7 +19,19 @@
  message-directory "~/maildir/"
 
  use-dialog-box nil           ;不使用对话框进行（是，否 取消） 的选择，而是用minibuffer
- frame-title-format '( "「" mode-line-buffer-identification "」["  (:propertize ("" mode-name) ) "] "   mode-line-misc-info   " GNU/Emacs<" (:eval (expand-file-name default-directory)) ">")
+ ns-use-proxy-icon nil        ;macOS: 去掉标题栏的文件图标
+ ;; frame-title-format: 显示 [修改标记] 文件名 [项目名]
+ frame-title-format
+ '(:eval (let* ((file (buffer-file-name))
+                (proj-root (or (and (project-current) (project-root (project-current)))
+                               (vc-root-dir)))
+                (proj-path (when proj-root (abbreviate-file-name proj-root)))
+                (rel-path (if (and proj-root file)
+                              (file-relative-name file proj-root)
+                            (if file (abbreviate-file-name file) (buffer-name)))))
+           (if proj-path
+               (concat  proj-path " > " rel-path)
+             rel-path)))
 
  ;;中键点击时的功能
  ;;不要在鼠标中键点击的那个地方插入剪贴板内容。
@@ -70,6 +82,61 @@
  ;; find-function-C-source-directory "~/repos/emacs/src/"
  Man-notify-method 'bully
  )
+
+ ;; 隐藏原生标题栏
+(add-to-list 'default-frame-alist '(undecorated-round . t))
+
+;; 用 tab-bar 显示标题信息（类似 VSCode）
+(setq tab-bar-show t)                          ; 始终显示 tab-bar
+(setq tab-bar-close-button-show nil)           ; 不显示关闭按钮
+(setq tab-bar-new-button-show nil)             ; 不显示新建按钮
+
+;; 自定义 tab-bar 显示内容的函数（精确居中）
+(defun vmacs-tab-bar-format-path ()
+  "显示项目路径 > 文件相对路径（精确居中 + 颜色区分）"
+  (let* ((file (buffer-file-name))
+         (proj-root (or (and (project-current) (project-root (project-current)))
+                        (vc-root-dir)))
+         (proj-path (when proj-root (abbreviate-file-name proj-root)))
+         (rel-path (if (and proj-root file)
+                       (file-relative-name file proj-root)
+                     (if file (abbreviate-file-name file) (buffer-name))))
+         ;; 修改标记（红色）
+         (modified (if (and file (buffer-modified-p))
+                       (propertize "● " 'face '(:foreground "#ff6b6b" :weight bold))
+                     ""))
+         ;; 项目路径（蓝色）
+         (proj-str (if proj-path
+                       (propertize proj-path 'face '(:foreground "#4d96ff" :weight bold))
+                     ""))
+         ;; 分隔符（灰色）
+         (sep (if proj-path
+                  (propertize " > " 'face '(:foreground "#666666"))
+                ""))
+         ;; 文件路径
+         (file-str (propertize rel-path 'face '(:foreground "#cdd6f4")))
+         ;; 完整内容（不含填充）
+         (content (concat modified proj-str sep file-str))
+         ;; 计算精确居中所需的左侧填充
+         (content-width (string-width content))
+         (frame-width (frame-width))
+         (left-pad (max 0 (/ (- frame-width content-width) 2)))
+         ;; 带填充的完整字符串
+         (centered-content (concat (make-string left-pad ?\s) content)))
+    `((global menu-item ,centered-content ignore))))
+
+;; 设置 tab-bar 格式
+(setq tab-bar-format '(vmacs-tab-bar-format-path))
+
+;; 自定义 tab-bar 样式
+(custom-set-faces
+ '(tab-bar ((t (:height 1.1
+                :background "#000000"
+                :foreground "#cdd6f4"
+                :box (:line-width 4 :color "#000000"))))))
+(tab-bar-mode 1)
+
+
 ;; Increase undo limits. Why?
 ;; .. ability to go far back in history can be useful, modern systems have sufficient memory.
 ;; Limit of 64mb.

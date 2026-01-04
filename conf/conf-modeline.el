@@ -261,6 +261,44 @@ command reveals the other lines."
         ))))
 
 
+;;; ===== Mode-line 配置 =====
+;; 简洁显示：项目名 + 文件绝对路径
+
+(setq-default header-line-format nil)  ; 禁用 header-line
+
+(setq-default mode-line-format
+              '(" "
+                ;; 修改标记
+                (:eval (if (buffer-modified-p)
+                           (propertize "● " 'face '(:foreground "#ff6b6b" :weight bold))
+                         "  "))
+                ;; [项目绝对路径] + 文件相对路径
+                (:eval (let* ((file (buffer-file-name))
+                              (proj-root (or (and (project-current) (project-root (project-current)))
+                                             (vc-root-dir)))
+                              (proj-path (when proj-root (abbreviate-file-name proj-root)))
+                              (rel-path (if (and proj-root file)
+                                            (file-relative-name file proj-root)
+                                          (if file (abbreviate-file-name file) (buffer-name)))))
+                         (if proj-path
+                             (concat (propertize (concat  proj-path " >")
+                                                 'face '(:foreground "#4d96ff" :weight bold))
+                                     " "
+                                     (propertize rel-path 'face '(:weight bold)))
+                           (propertize rel-path 'face '(:weight bold)))))
+                "  "))
+
+;; Mode-line 样式
+(custom-set-faces
+ '(mode-line ((t (:height 1.0
+                  :background "#1a1a2e"
+                  :foreground "#eaeaea"
+                  :box (:line-width 4 :color "#1a1a2e")))))
+ '(mode-line-inactive ((t (:inherit mode-line
+                           :background "#0d0d1a"
+                           :foreground "#666666")))))
+
+
 
 ;; (require 'doom-modeline)
 ;; (doom-modeline-mode 1)
