@@ -89,16 +89,19 @@
  '(global-hl-line-mode t)
  '(gofmt-args '("-s" "-d" "-w" "-e"))
  '(initial-frame-alist '((fullscreen . maximized)))
+ '(magit-log-margin '(t "%y-%m-%d %H:%M " magit-log-margin-width t 6))
+ '(magit-save-repository-buffers 'dontask)
  '(org-agenda-files nil)
+ '(outline-minor-mode-cycle t)
+ '(outline-minor-mode-use-buttons 'in-margins)
  '(package-selected-packages
-   '(0blayout blacken blamer bm cape centaur-tabs chatgpt-shell color-theme-sanityinc-tomorrow
-              conda consult-dir consult-flycheck corfu 
-              dashboard diff-hl dired-filetype-face dired-narrow dired-subtree diredfl
-              dockerfile-mode doom dumb-jump editorconfig elisp-def embark-consult evil-collection
-              evil-leader evil-search-highlight-persist exec-path-from-shell flatbuffers-mode
-              flycheck-golangci-lint general git-link go-mode golden-ratio
-              golden-ratio-scroll-screen gptai graphviz-dot-mode helpful highlight-parentheses iedit
-              json-mode kind-icon leetcode lsp-pyright lua-mode magit
+   '(0blayout blacken blamer bm cape centaur-tabs chatgpt-shell color-theme-sanityinc-tomorrow conda
+              consult-dir consult-flycheck corfu dashboard diff-hl dired-filetype-face dired-narrow
+              dired-subtree diredfl dockerfile-mode doom dumb-jump editorconfig elisp-def
+              embark-consult evil-collection evil-leader evil-search-highlight-persist
+              exec-path-from-shell flatbuffers-mode flycheck-golangci-lint general git-link go-mode
+              golden-ratio golden-ratio-scroll-screen gptai graphviz-dot-mode helpful
+              highlight-parentheses iedit json-mode kind-icon leetcode lsp-pyright lua-mode magit
               marginalia meow miniedit neotree orderless org-bullets org-make-toc org-superstar
               org-web-tools osx-dictionary ox-gfm ox-hugo pinyinlib projectile protobuf-mode
               protocols pylint pyvenv rg scratch slime smex smooth-scrolling timu-spacegrey-theme
@@ -108,9 +111,11 @@
  '(pos-tip-foreground-color "#FFFFC8")
  '(save-place-file "~/.emacs.d/cache/place")
  '(savehist-file "~/.emacs.d/cache/history")
+ '(scroll-bar-mode nil)
  '(split-width-threshold 90)
  '(tool-bar-mode nil)
  '(tramp-persistency-file-name "~/.emacs.d/cache/tramp")
+ '(uniquify-buffer-name-style 'forward nil (uniquify))
  '(vc-annotate-background nil)
  '(vc-annotate-color-map
    '((20 . "#d54e53") (40 . "#e78c45") (60 . "#e7c547") (80 . "#b9ca4a") (100 . "#70c0b1")
@@ -124,14 +129,7 @@
  '(window-divider-default-places 'bottom-only)
  '(window-divider-default-right-width 1)
  '(window-divider-mode t)
- '(xref-after-jump-hook '(recenter)) ;; xref跳转后居中显示
- '(uniquify-buffer-name-style 'forward nil (uniquify))
- '(scroll-bar-mode nil)
- '(outline-minor-mode-cycle t)
- '(outline-minor-mode-use-buttons 'in-margins)
- '(magit-save-repository-buffers 'dontask)
- '(magit-log-margin '(t "%y-%m-%d %H:%M " magit-log-margin-width t 6))
- )
+ '(xref-after-jump-hook '(recenter)))
 
 
 (custom-set-faces
@@ -141,7 +139,6 @@
  ;; If there is more than one, they won't work right.
  '(cursor ((t (:background "chartreuse"))))
  '(eglot-highlight-symbol-face ((t (:inherit (bold highlight)))))
- '(visible-mark-face1 ((t (:background "gold" :foreground "black"))))
  '(evil-search-highlight-persist-highlight-face ((t (:background "dark cyan"))))
  '(font-lock-comment-face ((t (:inherit modus-themes-slant :slant italic))))
  '(font-lock-done-face ((t (:foreground "Green" :box (:line-width 2 :color "grey75" :style released-button) :height 1.2))) t)
@@ -149,7 +146,9 @@
  '(gnus-summary-normal-ancient ((t (:extend t :foreground "gray"))))
  '(region ((t (:extend t :foreground unspecified :background "#5a5a5a"))))
  '(secondary-selection ((t (:extend t :foreground unspecified :background "#020202"))))
- '(show-paren-match ((t (:foreground "SpringGreen3" :weight bold)))))
+ '(show-paren-match ((t (:foreground "SpringGreen3" :weight bold))))
+ '(tab-bar ((t (:height 1.1 :background "#000000" :foreground "#cdd6f4" :box (:line-width 4 :color "#000000")))))
+ '(visible-mark-face1 ((t (:background "gold" :foreground "black")))))
 
 
 

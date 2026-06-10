@@ -415,8 +415,8 @@
 
   ;; 【Buffer 来源】consult-buffer 显示的内容来源
   (setq consult-buffer-sources
-        '(consult--source-buffer        ;; 当前打开的 buffer
-          consult--source-recent-file   ;; 最近打开的文件
+        '(consult-source-buffer        ;; 当前打开的 buffer
+          consult-source-recent-file   ;; 最近打开的文件
           vmacs-consult--source-git))   ;; Git 项目文件
 
   ;; 【自定义 recentf 显示】显示简短的文件名
@@ -447,7 +447,7 @@
       (propertize short-name 'multi-category `(file . ,file))))
 
   ;; 应用自定义的 recentf 显示
-  (plist-put consult--source-recent-file
+  (plist-put consult-source-recent-file
              :items #'vmacs-consult--source-recentf-items))
 
 
